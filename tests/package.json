@@ -1,0 +1,14 @@
+{
+  "name": "@beton-ui/tests",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:browser": "playwright test",
+    "test:visual:update": "playwright test --project=visual --update-snapshots"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.11.0",
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^22.19.0"
+  }
+}
