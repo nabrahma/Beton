@@ -26,7 +26,9 @@
     "release": "turbo run build --filter=./packages/* && changeset publish",
     "lint:root": "eslint scripts tooling",
     "registry:build": "node scripts/build-registry.mjs",
-    "registry:check": "node scripts/build-registry.mjs --check"
+    "registry:check": "node scripts/build-registry.mjs --check",
+    "test:browser": "pnpm --filter @beton-ui/tests test:browser",
+    "docs:data": "node scripts/generate-docs-data.mjs"
   },
   "devDependencies": {
     "@changesets/changelog-github": "^1.0.1",

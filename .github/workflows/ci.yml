@@ -1,0 +1,97 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    name: Lint, types, tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Format
+        run: pnpm format:check
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Unit, behaviour and axe tests
+        run: pnpm test
+        env:
+          CI: true
+
+      - name: Token contrast
+        run: pnpm check:contrast
+
+      - name: Registry is up to date
+        run: pnpm registry:check
+
+      - name: Build packages and docs (server-rendering smoke test)
+        run: pnpm build
+
+      - name: Changeset present
+        if: github.event_name == 'pull_request'
+        run: pnpm changeset status --since=origin/${{ github.base_ref }}
+
+  browser:
+    name: Browser accessibility and visual tests
+    # Visual baselines are recorded on Windows; render them on the same platform.
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Build docs
+        run: pnpm --filter docs build
+
+      - name: Install Chromium
+        run: pnpm --filter @beton-ui/tests exec playwright install chromium
+
+      - name: axe on every page, hit areas, keyboard, visual regression
+        run: pnpm test:browser
+        env:
+          CI: true
+
+      - name: Upload report
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: tests/playwright-report
+          retention-days: 7

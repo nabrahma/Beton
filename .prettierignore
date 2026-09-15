@@ -9,3 +9,10 @@ apps/docs/public/r/
 apps/docs/generated/
 tests/visual/__screenshots__/
 CHANGELOG.md
+apps/docs/public/
+**/reports/
+tests/visual/__screenshots__/
+tests/test-results/
+tests/playwright-report/
+pnpm-workspace.yaml
+.next/
