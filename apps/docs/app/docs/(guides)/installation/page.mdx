@@ -1,0 +1,151 @@
+export const metadata = {
+  title: "Installation",
+  description: "Set up Béton in Next.js, Vite, Astro or React Router.",
+};
+
+# Installation
+
+Béton works in any React 19 project that uses Tailwind CSS v4 and an import alias such as `@/*`.
+
+## 1. Set up Tailwind CSS v4
+
+If your project does not use Tailwind CSS v4 yet, follow the
+[Tailwind CSS installation guide](https://tailwindcss.com/docs/installation) for your framework.
+Your global stylesheet should start with:
+
+```css
+@import "tailwindcss";
+```
+
+## 2. Initialise Béton
+
+```bash
+npx beton-ui init
+```
+
+This:
+
+- detects your import alias from `tsconfig.json` and your global stylesheet,
+- writes `beton.json`,
+- adds `beton.css` next to your stylesheet and imports it after Tailwind,
+- installs the shared utilities into `lib/beton/`,
+- installs `@base-ui/react`, `tailwind-variants` and `tailwind-merge`.
+
+Pass the stylesheet explicitly if it is somewhere unusual:
+
+```bash
+npx beton-ui init --css src/styles/app.css
+```
+
+## 3. Load the fonts
+
+Béton's poster typography uses Archivo, Public Sans and JetBrains Mono. With Next.js:
+
+```tsx
+import { Archivo, JetBrains_Mono, Public_Sans } from "next/font/google";
+
+const archivo = Archivo({ subsets: ["latin"], axes: ["wdth"], variable: "--font-archivo" });
+const publicSans = Public_Sans({ subsets: ["latin"], variable: "--font-public-sans" });
+const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains-mono" });
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" className={`${archivo.variable} ${publicSans.variable} ${mono.variable}`}>
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+Then point the tokens at them in your stylesheet:
+
+```css
+@theme {
+  --font-display: var(--font-archivo), "Archivo", sans-serif;
+  --font-sans: var(--font-public-sans), "Public Sans", sans-serif;
+  --font-mono: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+}
+```
+
+For Vite, Astro or React Router, install the fonts from
+[Fontsource](https://fontsource.org) (`@fontsource-variable/archivo`,
+`@fontsource-variable/public-sans`, `@fontsource-variable/jetbrains-mono`) and import them in
+your entry file. The token stacks already name these families.
+
+## 4. Add components
+
+```bash
+npx beton-ui add button card input
+```
+
+```tsx
+import { Button } from "@/components/ui/beton/button";
+
+export function Save() {
+  return <Button>Save changes</Button>;
+}
+```
+
+## Framework notes
+
+### Next.js
+
+Presentational components (Badge, Card, Text, Kbd, Separator, Spinner, Label) render in Server
+Components. Interactive components are marked `"use client"`. Compound client components, such as
+dialogs, are used inside your own client components: a Server Component cannot reach into
+`Dialog.Trigger`.
+
+### Vite
+
+Add the alias to both `tsconfig.app.json` and `vite.config.ts`:
+
+```ts
+import { fileURLToPath } from "node:url";
+
+export default defineConfig({
+  resolve: { alias: { "@": fileURLToPath(new URL("./src", import.meta.url)) } },
+});
+```
+
+### Astro
+
+Use components inside React islands with a `client:*` directive when they are interactive.
+
+## Using the shadcn CLI
+
+Béton is a standard shadcn registry. Add the namespace to `components.json`:
+
+```json
+{
+  "registries": {
+    "@beton": "https://beton.dev/r/{name}.json"
+  }
+}
+```
+
+Then:
+
+```bash
+npx shadcn@latest add @beton/button
+```
+
+Running `npx beton-ui init` in a project that already has `components.json` adds the namespace
+for you.
+
+## Using the npm packages
+
+If you prefer a dependency over owned source:
+
+```bash
+npm install @beton-ui/react @beton-ui/tokens
+```
+
+```css
+@import "tailwindcss";
+@import "@beton-ui/tokens";
+@source "../node_modules/@beton-ui/recipes/dist";
+```
+
+```tsx
+import { Button } from "@beton-ui/react";
+```

@@ -1,0 +1,100 @@
+export const metadata = {
+  title: "Theming",
+  description: "Retheme Béton by overriding semantic tokens.",
+};
+
+# Theming
+
+Béton's design lives in CSS custom properties defined in a Tailwind CSS v4 `@theme` block.
+Components never reference a colour directly. They use a small semantic layer, so retheming means
+changing a handful of variables.
+
+## Semantic colours
+
+| Token                         | Default           | Used for                          |
+| ----------------------------- | ----------------- | --------------------------------- |
+| `--color-foreground`          | ink `#000000`     | Text and icons                    |
+| `--color-surface`             | paper `#F5F5DC`   | Page background                   |
+| `--color-raised`              | white `#FFFFFF`   | Cards, inputs, secondary buttons  |
+| `--color-border`              | ink               | Every stroke and hard shadow      |
+| `--color-primary`             | teal `#00C2CB`    | The one filled action per view    |
+| `--color-secondary`           | yellow `#FFC700`  | Highlights and secondary emphasis |
+| `--color-danger`              | magenta `#FF00FF` | Destructive actions               |
+| `--color-success`             | mint `#3EDBA0`    | Success states                    |
+| `--color-disabled`            | grey `#D4D4D4`    | Disabled fills                    |
+| `--color-disabled-foreground` | `#3D3D3D`         | Disabled text                     |
+| `--color-focus`               | ink               | Outer focus ring                  |
+| `--color-focus-gap`           | white             | Inner focus ring                  |
+
+## Changing the palette
+
+Override tokens after the Béton import:
+
+```css
+@import "tailwindcss";
+@import "./beton.css";
+
+@theme {
+  --color-primary: #7cf29c;
+  --color-secondary: #ff8a3d;
+  --color-danger: #ff4d4d;
+}
+```
+
+Accents are always light. Text on an accent fill is always ink, so keep your accents light enough
+for ink text to reach 4.5:1. Béton checks its own palette in CI; check yours with any WCAG contrast
+checker.
+
+Never use an accent as a text colour on paper or white. None of the default accents reach 4.5:1
+there, and that rule is enforced in Béton's recipes.
+
+## Typography
+
+| Token            | Size | Weight | Tracking |
+| ---------------- | ---- | ------ | -------- |
+| `--text-h1`      | 96px | 900    | -0.03em  |
+| `--text-h2`      | 64px | 900    | -0.02em  |
+| `--text-h3`      | 48px | 800    | -0.01em  |
+| `--text-h4`      | 32px | 800    | 0        |
+| `--text-body`    | 18px | 400    | 0        |
+| `--text-caption` | 14px | 400    | 0        |
+
+```css
+@theme {
+  --font-display: "Space Grotesk", sans-serif;
+}
+```
+
+## Radii, shadows and strokes
+
+The design sheet allows exactly three radii and three shadows. Béton removes Tailwind's other radius
+and shadow values so they cannot creep in.
+
+| Token          | Value               |
+| -------------- | ------------------- |
+| `rounded-none` | 0                   |
+| `rounded-md`   | 12px                |
+| `rounded-lg`   | 24px                |
+| `shadow-none`  | none                |
+| `shadow-sm`    | `4px 4px 0 0` ink   |
+| `shadow-lg`    | `12px 12px 0 0` ink |
+
+Stroke widths are `border-2`, `border-3` and `border-5`.
+
+## Press physics
+
+A pressed element translates by exactly its shadow offset and drops the shadow, so its edge lands
+where the shadow was. Any other distance looks broken. The shared `pressable` style in
+`lib/beton/shared.ts` implements this for 4px shadows.
+
+## Motion
+
+Béton removes Tailwind's easing curves, leaving `ease-linear`. Press transitions last 70ms.
+Animations use `steps()` rather than smooth interpolation, and everything stops under
+`prefers-reduced-motion`.
+
+## Dark mode
+
+Béton is light-only for now. Neobrutalism is built on black strokes against a light ground, and a
+dark theme that keeps that identity is still being designed. The semantic token layer means it can
+be added without changing components.

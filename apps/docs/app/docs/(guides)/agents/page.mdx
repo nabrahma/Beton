@@ -1,0 +1,53 @@
+export const metadata = {
+  title: "Coding agents",
+  description: "Install Béton components from Cursor, Claude Code, v0 and other coding agents.",
+};
+
+# Coding agents
+
+Coding agents can install Béton without any extra setup, because Béton speaks the shadcn registry
+protocol that agents already use.
+
+## Ask for a component
+
+Tell your agent what you want and where it comes from:
+
+> Add the Béton button and card components to this project.
+
+Agents that support shadcn registries run:
+
+```bash
+npx shadcn@latest add https://beton.dev/r/button.json
+```
+
+or, with the namespace configured:
+
+```bash
+npx shadcn@latest add @beton/button
+```
+
+The Béton CLI works the same way:
+
+```bash
+npx beton-ui add button card
+```
+
+## Machine-readable index
+
+| Resource                               | Contents                                         |
+| -------------------------------------- | ------------------------------------------------ |
+| [`/r/registry.json`](/r/registry.json) | Every item with its description and dependencies |
+| `/r/<name>.json`                       | A single item, including its full source         |
+| [`/llms.txt`](/llms.txt)               | A plain-text guide to Béton for language models  |
+
+Each item lists its npm dependencies and the other items it needs, so an agent installs everything
+in the right order.
+
+## What agents should know
+
+- Components live in `components/ui/beton/` and import from `lib/beton/`.
+- Styling comes from recipes. To change a component's look, edit its recipe in
+  `lib/beton/recipes/`, not the component file.
+- Variants are `primary`, `secondary`, `ghost` and `danger`; sizes are `sm`, `md` and `lg`.
+- Use the `render` prop to change the rendered element. There is no `asChild`.
+- Links styled as buttons use the `button()` recipe on an `<a>`, not `<Button>`.

@@ -1,0 +1,161 @@
+@import "tailwindcss";
+@import "@beton-ui/tokens";
+
+@source "../../../packages/recipes/src";
+@source "../../../packages/react/src";
+
+/* Self-hosted fonts from next/font, with the token stacks as fallbacks. */
+@theme {
+  --font-display: var(--font-archivo), "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-public-sans), "Public Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), "JetBrains Mono", ui-monospace, monospace;
+}
+
+@keyframes ticker {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@utility bg-grid {
+  background-image:
+    linear-gradient(
+      to right,
+      color-mix(in srgb, var(--color-ink) 9%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--color-ink) 9%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 32px 32px;
+}
+
+@utility bg-halftone {
+  background-image: radial-gradient(var(--color-ink) 1.2px, transparent 1.3px);
+  background-size: 10px 10px;
+}
+
+@utility font-stretch-wide {
+  font-stretch: 125%;
+}
+
+@utility font-stretch-condensed {
+  font-stretch: 75%;
+}
+
+@layer base {
+  html {
+    scroll-padding-top: 6rem;
+  }
+
+  :where(a) {
+    text-underline-offset: 3px;
+  }
+
+  :where(:focus-visible) {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 3px var(--color-focus-gap);
+  }
+}
+
+@layer components {
+  .prose-beton {
+    font-size: var(--text-body);
+    line-height: 1.7;
+    max-width: 72ch;
+  }
+  .prose-beton > * + * {
+    margin-top: 1.1em;
+  }
+  .prose-beton h1 {
+    margin-bottom: 0.6em;
+    font-family: var(--font-display);
+    font-size: clamp(2.75rem, 6vw, 4rem);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+  }
+  .prose-beton h1 + p {
+    font-size: 1.3rem;
+  }
+  .prose-beton h2 {
+    margin-top: 2.2em;
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+  .prose-beton h3 {
+    margin-top: 1.8em;
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 800;
+  }
+  .prose-beton a {
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-decoration-color: var(--color-primary);
+  }
+  .prose-beton a:hover {
+    background: var(--color-secondary);
+  }
+  .prose-beton ul {
+    list-style: square;
+    padding-left: 1.4em;
+  }
+  .prose-beton ol {
+    list-style: decimal;
+    padding-left: 1.4em;
+  }
+  .prose-beton li + li {
+    margin-top: 0.4em;
+  }
+  .prose-beton :not(pre) > code {
+    border: 2px solid var(--color-ink);
+    background: var(--color-white);
+    padding: 0.05em 0.35em;
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+  }
+  .prose-beton table {
+    width: 100%;
+    border: 3px solid var(--color-ink);
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+  .prose-beton th,
+  .prose-beton td {
+    border: 2px solid var(--color-ink);
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+    vertical-align: top;
+  }
+  .prose-beton th {
+    background: var(--color-secondary);
+    font-family: var(--font-display);
+  }
+  .prose-beton blockquote {
+    border-left: 6px solid var(--color-ink);
+    background: var(--color-white);
+    padding: 0.75rem 1rem;
+  }
+
+  /* The focusable wrapper scrolls; the pre itself never does. */
+  .code-block pre {
+    width: max-content;
+    min-width: 100%;
+    padding: 1.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    line-height: 1.7;
+    background: transparent !important;
+  }
+  .code-block code {
+    counter-reset: line;
+  }
+}

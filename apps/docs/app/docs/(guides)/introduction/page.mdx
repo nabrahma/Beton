@@ -1,0 +1,62 @@
+export const metadata = {
+  title: "Introduction",
+  description: "What Béton is, who it is for, and how it is built.",
+};
+
+# Introduction
+
+Béton is a neobrutalist design system and component library for React.
+
+The name is the French word for concrete. _Béton brut_, raw concrete, is the phrase the word
+"brutalism" was coined from. The library takes the style at its word: thick ink strokes, hard
+shadows with no blur, flat colour, and motion that cuts instead of easing.
+
+## Loud on the surface, WCAG AA underneath
+
+Most expressive component libraries sell the surface. Béton treats accessibility as part of the
+contract, not a feature:
+
+- Every component has automated **axe**, **keyboard** and **accessible name** tests. The results
+  are published on the [accessibility page](/docs/accessibility), generated from the test run.
+- Focus rings are two-tone, so they stay visible on every accent colour.
+- Every interactive target is at least 44 × 44 pixels.
+- Colour pairings are checked against WCAG 2.2 AA in CI.
+- Animation respects `prefers-reduced-motion`.
+
+## You own the code
+
+Components install into your project as readable source. There is no runtime dependency on
+Béton: once a component is in your repository, it is yours to change.
+
+```bash
+npx beton-ui add button card input
+```
+
+## How it is built
+
+Béton has three layers, and each knows only what it needs to:
+
+| Layer      | What it is                                                |
+| ---------- | --------------------------------------------------------- |
+| Tokens     | Plain CSS. Colours, type, radii, shadows and motion.      |
+| Recipes    | Class strings built with tailwind-variants. No React.     |
+| Components | React components that call recipes. No hardcoded classes. |
+
+Interactive behaviour comes from [Base UI](https://base-ui.com), which handles focus management,
+keyboard interaction and ARIA. Béton adds the design and the tests.
+
+## Who it is for
+
+- **Developers who want a site that does not look like every other one.** You are comfortable
+  owning source and you use Tailwind CSS.
+- **Coding agents.** Béton is a standard shadcn registry, so agents can install components with
+  commands they already know. See [coding agents](/docs/agents).
+- **Teams with accessibility requirements**, who have so far had no neobrutalist option.
+
+## Requirements
+
+- React 19
+- Tailwind CSS v4
+- A bundler-based setup such as Next.js, Vite, Astro or React Router
+
+Ready? Continue to [installation](/docs/installation).

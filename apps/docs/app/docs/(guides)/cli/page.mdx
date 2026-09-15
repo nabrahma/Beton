@@ -1,0 +1,97 @@
+export const metadata = {
+  title: "CLI",
+  description: "Reference for the beton-ui command line installer.",
+};
+
+# CLI
+
+`beton-ui` copies components into your project as source. It has no runtime dependencies and runs
+with `npx`.
+
+## init
+
+Sets up the theme and shared utilities.
+
+```bash
+npx beton-ui init
+```
+
+| Option             | Description                                                  |
+| ------------------ | ------------------------------------------------------------ |
+| `--css <file>`     | Your global stylesheet. Detected automatically when omitted. |
+| `--registry <url>` | Registry URL or a local directory.                           |
+| `--force`          | Regenerate `beton.json` and replace the theme.               |
+| `--no-install`     | Print the dependency install command instead of running it.  |
+| `--cwd <dir>`      | Run in another directory.                                    |
+
+In a project with `components.json`, `init` also registers the `@beton` namespace so the shadcn
+CLI can install Béton items.
+
+## add
+
+Installs components, their recipes and the components they depend on.
+
+```bash
+npx beton-ui add button card
+npx beton-ui add all
+```
+
+| Option             | Description                                                    |
+| ------------------ | -------------------------------------------------------------- |
+| `--overwrite`      | Replace files you have edited. Unedited files are always safe. |
+| `--dry-run`        | List the files that would be written.                          |
+| `--no-install`     | Print the dependency install command instead of running it.    |
+| `--registry <url>` | Install from another registry URL or a local directory.        |
+
+Files you have changed are never overwritten without `--overwrite`. The CLI tells you which ones it
+kept.
+
+## list
+
+Shows every component in the registry.
+
+```bash
+npx beton-ui list
+```
+
+## beton.json
+
+```json
+{
+  "registry": "https://beton.dev/r",
+  "css": "src/app/globals.css",
+  "aliases": {
+    "ui": "@/components/ui",
+    "lib": "@/lib"
+  }
+}
+```
+
+| Field         | Description                                                           |
+| ------------- | --------------------------------------------------------------------- |
+| `registry`    | Where components are fetched from.                                    |
+| `css`         | The stylesheet `beton.css` is imported into.                          |
+| `aliases.ui`  | Import alias for components. Files go into `<ui>/beton/`.             |
+| `aliases.lib` | Import alias for utilities and recipes. Files go into `<lib>/beton/`. |
+
+The `beton/` subfolders keep Béton files apart from anything else in your project, including
+shadcn/ui components with the same names.
+
+## Where files go
+
+```text
+src/
+  app/
+    globals.css          @import "./beton.css" is added here
+    beton.css            tokens
+  components/ui/beton/
+    button.tsx
+    spinner.tsx
+  lib/beton/
+    tv.ts                class merging
+    shared.ts            focus ring, press physics, disabled styles
+    render-element.ts    render prop helper
+    recipes/
+      button.recipe.ts
+      spinner.recipe.ts
+```
