@@ -1,0 +1,49 @@
+{
+  "name": "beton-ui",
+  "version": "0.1.0",
+  "description": "Add Béton neobrutalist components to your React project.",
+  "license": "SEE LICENSE IN LICENSE",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nabrahma/Beton.git",
+    "directory": "packages/cli"
+  },
+  "homepage": "https://beton.dev/docs/cli",
+  "bugs": "https://github.com/nabrahma/Beton/issues",
+  "keywords": [
+    "beton",
+    "neobrutalism",
+    "react",
+    "components",
+    "cli",
+    "shadcn",
+    "registry"
+  ],
+  "type": "module",
+  "bin": {
+    "beton-ui": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "dev": "tsc -p tsconfig.build.json --watch",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src",
+    "test": "vitest run"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.0",
+    "eslint": "^10.10.0",
+    "typescript": "~5.9.3",
+    "vitest": "^5.0.1"
+  }
+}
