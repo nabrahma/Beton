@@ -1,0 +1,873 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`recipe snapshots > avatar output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "base": undefined,
+      "fallback": "flex size-full items-center justify-center",
+      "image": "size-full object-cover",
+      "root": "relative inline-flex shrink-0 select-none items-center justify-center overflow-hidden rounded-md border-border align-middle font-display font-extrabold uppercase text-foreground bg-primary size-8 border-2 text-xs",
+    },
+    "props": {
+      "size": "sm",
+      "variant": "primary",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "fallback": "flex size-full items-center justify-center",
+      "image": "size-full object-cover",
+      "root": "relative inline-flex shrink-0 select-none items-center justify-center overflow-hidden rounded-md border-3 border-border align-middle font-display font-extrabold uppercase text-foreground bg-primary size-11 text-sm",
+    },
+    "props": {
+      "size": "md",
+      "variant": "primary",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "fallback": "flex size-full items-center justify-center",
+      "image": "size-full object-cover",
+      "root": "relative inline-flex shrink-0 select-none items-center justify-center overflow-hidden rounded-md border-3 border-border align-middle font-display font-extrabold uppercase text-foreground bg-primary size-16 text-xl",
+    },
+    "props": {
+      "size": "lg",
+      "variant": "primary",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "fallback": "flex size-full items-center justify-center",
+      "image": "size-full object-cover",
+      "root": "relative inline-flex shrink-0 select-none items-center justify-center overflow-hidden rounded-md border-border align-middle font-display font-extrabold uppercase text-foreground bg-secondary size-8 border-2 text-xs",
+    },
+    "props": {
+      "size": "sm",
+      "variant": "secondary",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "fallback": "flex size-full items-center justify-center",
+      "image": "size-full object-cover",
+      "root": "relative inline-flex shrink-0 select-none items-center justify-center overflow-hidden rounded-md border-3 border-border align-middle font-display font-extrabold uppercase text-foreground bg-secondary size-11 text-sm",
+    },
+    "props": {
+      "size": "md",
+      "variant": "secondary",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "fallback": "flex size-full items-center justify-center",
+      "image": "size-full object-cover",
+      "root": "relative inline-flex shrink-0 select-none items-center justify-center overflow-hidden rounded-md border-3 border-border align-middle font-display font-extrabold uppercase text-foreground bg-secondary size-16 text-xl",
+    },
+    "props": {
+      "size": "lg",
+      "variant": "secondary",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "fallback": "flex size-full items-center justify-center",
+      "image": "size-full object-cover",
+      "root": "relative inline-flex shrink-0 select-none items-center justify-center overflow-hidden rounded-md border-border align-middle font-display font-extrabold uppercase text-foreground bg-raised size-8 border-2 text-xs",
+    },
+    "props": {
+      "size": "sm",
+      "variant": "ghost",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "fallback": "flex size-full items-center justify-center",
+      "image": "size-full object-cover",
+      "root": "relative inline-flex shrink-0 select-none items-center justify-center overflow-hidden rounded-md border-3 border-border align-middle font-display font-extrabold uppercase text-foreground bg-raised size-11 text-sm",
+    },
+    "props": {
+      "size": "md",
+      "variant": "ghost",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "fallback": "flex size-full items-center justify-center",
+      "image": "size-full object-cover",
+      "root": "relative inline-flex shrink-0 select-none items-center justify-center overflow-hidden rounded-md border-3 border-border align-middle font-display font-extrabold uppercase text-foreground bg-raised size-16 text-xl",
+    },
+    "props": {
+      "size": "lg",
+      "variant": "ghost",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "fallback": "flex size-full items-center justify-center",
+      "image": "size-full object-cover",
+      "root": "relative inline-flex shrink-0 select-none items-center justify-center overflow-hidden rounded-md border-border align-middle font-display font-extrabold uppercase text-foreground bg-danger size-8 border-2 text-xs",
+    },
+    "props": {
+      "size": "sm",
+      "variant": "danger",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "fallback": "flex size-full items-center justify-center",
+      "image": "size-full object-cover",
+      "root": "relative inline-flex shrink-0 select-none items-center justify-center overflow-hidden rounded-md border-3 border-border align-middle font-display font-extrabold uppercase text-foreground bg-danger size-11 text-sm",
+    },
+    "props": {
+      "size": "md",
+      "variant": "danger",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "fallback": "flex size-full items-center justify-center",
+      "image": "size-full object-cover",
+      "root": "relative inline-flex shrink-0 select-none items-center justify-center overflow-hidden rounded-md border-3 border-border align-middle font-display font-extrabold uppercase text-foreground bg-danger size-16 text-xl",
+    },
+    "props": {
+      "size": "lg",
+      "variant": "danger",
+    },
+  },
+]
+`;
+
+exports[`recipe snapshots > badge output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground bg-primary h-5 px-1.5 text-[0.6875rem]",
+    "props": {
+      "size": "sm",
+      "variant": "primary",
+    },
+  },
+  {
+    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground bg-primary h-6 px-2 text-xs",
+    "props": {
+      "size": "md",
+      "variant": "primary",
+    },
+  },
+  {
+    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground bg-primary h-8 px-3 text-sm",
+    "props": {
+      "size": "lg",
+      "variant": "primary",
+    },
+  },
+  {
+    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground bg-secondary h-5 px-1.5 text-[0.6875rem]",
+    "props": {
+      "size": "sm",
+      "variant": "secondary",
+    },
+  },
+  {
+    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground bg-secondary h-6 px-2 text-xs",
+    "props": {
+      "size": "md",
+      "variant": "secondary",
+    },
+  },
+  {
+    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground bg-secondary h-8 px-3 text-sm",
+    "props": {
+      "size": "lg",
+      "variant": "secondary",
+    },
+  },
+  {
+    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground bg-raised h-5 px-1.5 text-[0.6875rem]",
+    "props": {
+      "size": "sm",
+      "variant": "ghost",
+    },
+  },
+  {
+    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground bg-raised h-6 px-2 text-xs",
+    "props": {
+      "size": "md",
+      "variant": "ghost",
+    },
+  },
+  {
+    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground bg-raised h-8 px-3 text-sm",
+    "props": {
+      "size": "lg",
+      "variant": "ghost",
+    },
+  },
+  {
+    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground bg-danger h-5 px-1.5 text-[0.6875rem]",
+    "props": {
+      "size": "sm",
+      "variant": "danger",
+    },
+  },
+  {
+    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground bg-danger h-6 px-2 text-xs",
+    "props": {
+      "size": "md",
+      "variant": "danger",
+    },
+  },
+  {
+    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground bg-danger h-8 px-3 text-sm",
+    "props": {
+      "size": "lg",
+      "variant": "danger",
+    },
+  },
+  {
+    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground bg-success h-5 px-1.5 text-[0.6875rem]",
+    "props": {
+      "size": "sm",
+      "variant": "success",
+    },
+  },
+  {
+    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground bg-success h-6 px-2 text-xs",
+    "props": {
+      "size": "md",
+      "variant": "success",
+    },
+  },
+  {
+    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground bg-success h-8 px-3 text-sm",
+    "props": {
+      "size": "lg",
+      "variant": "success",
+    },
+  },
+]
+`;
+
+exports[`recipe snapshots > button output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": "relative inline-flex shrink-0 cursor-pointer select-none items-center justify-center whitespace-nowrap border-3 border-border font-display font-extrabold uppercase tracking-wide text-foreground outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap not-data-loading:data-disabled:cursor-not-allowed not-data-loading:data-disabled:border-disabled-foreground not-data-loading:data-disabled:bg-disabled not-data-loading:data-disabled:text-disabled-foreground not-data-loading:data-disabled:shadow-none not-data-loading:data-disabled:translate-none data-loading:cursor-progress data-loading:translate-x-1 data-loading:translate-y-1 data-loading:shadow-none bg-primary shadow-sm transition-[translate,box-shadow] duration-70 ease-linear motion-reduce:transition-none active:translate-x-1 active:translate-y-1 active:shadow-none data-pressed:translate-x-1 data-pressed:translate-y-1 data-pressed:shadow-none h-9 gap-1.5 text-sm after:absolute after:-inset-1 after:content-[''] px-0 w-9",
+    "props": {
+      "iconOnly": true,
+      "size": "sm",
+      "variant": "primary",
+    },
+  },
+  {
+    "classes": "relative inline-flex shrink-0 cursor-pointer select-none items-center justify-center whitespace-nowrap border-3 border-border font-display font-extrabold uppercase tracking-wide text-foreground outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap not-data-loading:data-disabled:cursor-not-allowed not-data-loading:data-disabled:border-disabled-foreground not-data-loading:data-disabled:bg-disabled not-data-loading:data-disabled:text-disabled-foreground not-data-loading:data-disabled:shadow-none not-data-loading:data-disabled:translate-none data-loading:cursor-progress data-loading:translate-x-1 data-loading:translate-y-1 data-loading:shadow-none bg-primary shadow-sm transition-[translate,box-shadow] duration-70 ease-linear motion-reduce:transition-none active:translate-x-1 active:translate-y-1 active:shadow-none data-pressed:translate-x-1 data-pressed:translate-y-1 data-pressed:shadow-none h-11 gap-2 text-base px-0 w-11",
+    "props": {
+      "iconOnly": true,
+      "size": "md",
+      "variant": "primary",
+    },
+  },
+  {
+    "classes": "relative inline-flex shrink-0 cursor-pointer select-none items-center justify-center whitespace-nowrap border-3 border-border font-display font-extrabold uppercase tracking-wide text-foreground outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap not-data-loading:data-disabled:cursor-not-allowed not-data-loading:data-disabled:border-disabled-foreground not-data-loading:data-disabled:bg-disabled not-data-loading:data-disabled:text-disabled-foreground not-data-loading:data-disabled:shadow-none not-data-loading:data-disabled:translate-none data-loading:cursor-progress data-loading:translate-x-1 data-loading:translate-y-1 data-loading:shadow-none bg-primary shadow-sm transition-[translate,box-shadow] duration-70 ease-linear motion-reduce:transition-none active:translate-x-1 active:translate-y-1 active:shadow-none data-pressed:translate-x-1 data-pressed:translate-y-1 data-pressed:shadow-none h-14 gap-2.5 text-lg px-0 w-14",
+    "props": {
+      "iconOnly": true,
+      "size": "lg",
+      "variant": "primary",
+    },
+  },
+  {
+    "classes": "relative inline-flex shrink-0 cursor-pointer select-none items-center justify-center whitespace-nowrap border-3 border-border font-display font-extrabold uppercase tracking-wide text-foreground outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap not-data-loading:data-disabled:cursor-not-allowed not-data-loading:data-disabled:border-disabled-foreground not-data-loading:data-disabled:bg-disabled not-data-loading:data-disabled:text-disabled-foreground not-data-loading:data-disabled:shadow-none not-data-loading:data-disabled:translate-none data-loading:cursor-progress data-loading:translate-x-1 data-loading:translate-y-1 data-loading:shadow-none bg-raised shadow-sm transition-[translate,box-shadow] duration-70 ease-linear motion-reduce:transition-none active:translate-x-1 active:translate-y-1 active:shadow-none data-pressed:translate-x-1 data-pressed:translate-y-1 data-pressed:shadow-none h-9 gap-1.5 text-sm after:absolute after:-inset-1 after:content-[''] px-0 w-9",
+    "props": {
+      "iconOnly": true,
+      "size": "sm",
+      "variant": "secondary",
+    },
+  },
+  {
+    "classes": "relative inline-flex shrink-0 cursor-pointer select-none items-center justify-center whitespace-nowrap border-3 border-border font-display font-extrabold uppercase tracking-wide text-foreground outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap not-data-loading:data-disabled:cursor-not-allowed not-data-loading:data-disabled:border-disabled-foreground not-data-loading:data-disabled:bg-disabled not-data-loading:data-disabled:text-disabled-foreground not-data-loading:data-disabled:shadow-none not-data-loading:data-disabled:translate-none data-loading:cursor-progress data-loading:translate-x-1 data-loading:translate-y-1 data-loading:shadow-none bg-raised shadow-sm transition-[translate,box-shadow] duration-70 ease-linear motion-reduce:transition-none active:translate-x-1 active:translate-y-1 active:shadow-none data-pressed:translate-x-1 data-pressed:translate-y-1 data-pressed:shadow-none h-11 gap-2 text-base px-0 w-11",
+    "props": {
+      "iconOnly": true,
+      "size": "md",
+      "variant": "secondary",
+    },
+  },
+  {
+    "classes": "relative inline-flex shrink-0 cursor-pointer select-none items-center justify-center whitespace-nowrap border-3 border-border font-display font-extrabold uppercase tracking-wide text-foreground outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap not-data-loading:data-disabled:cursor-not-allowed not-data-loading:data-disabled:border-disabled-foreground not-data-loading:data-disabled:bg-disabled not-data-loading:data-disabled:text-disabled-foreground not-data-loading:data-disabled:shadow-none not-data-loading:data-disabled:translate-none data-loading:cursor-progress data-loading:translate-x-1 data-loading:translate-y-1 data-loading:shadow-none bg-raised shadow-sm transition-[translate,box-shadow] duration-70 ease-linear motion-reduce:transition-none active:translate-x-1 active:translate-y-1 active:shadow-none data-pressed:translate-x-1 data-pressed:translate-y-1 data-pressed:shadow-none h-14 gap-2.5 text-lg px-0 w-14",
+    "props": {
+      "iconOnly": true,
+      "size": "lg",
+      "variant": "secondary",
+    },
+  },
+  {
+    "classes": "relative inline-flex shrink-0 cursor-pointer select-none items-center justify-center whitespace-nowrap border-3 font-display font-extrabold uppercase tracking-wide text-foreground outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap not-data-loading:data-disabled:cursor-not-allowed not-data-loading:data-disabled:border-disabled-foreground not-data-loading:data-disabled:bg-disabled not-data-loading:data-disabled:text-disabled-foreground not-data-loading:data-disabled:shadow-none not-data-loading:data-disabled:translate-none data-loading:cursor-progress data-loading:translate-x-1 data-loading:translate-y-1 data-loading:shadow-none border-transparent bg-transparent shadow-none hover:border-border active:bg-secondary data-pressed:bg-secondary h-9 gap-1.5 text-sm after:absolute after:-inset-1 after:content-[''] px-0 w-9",
+    "props": {
+      "iconOnly": true,
+      "size": "sm",
+      "variant": "ghost",
+    },
+  },
+  {
+    "classes": "relative inline-flex shrink-0 cursor-pointer select-none items-center justify-center whitespace-nowrap border-3 font-display font-extrabold uppercase tracking-wide text-foreground outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap not-data-loading:data-disabled:cursor-not-allowed not-data-loading:data-disabled:border-disabled-foreground not-data-loading:data-disabled:bg-disabled not-data-loading:data-disabled:text-disabled-foreground not-data-loading:data-disabled:shadow-none not-data-loading:data-disabled:translate-none data-loading:cursor-progress data-loading:translate-x-1 data-loading:translate-y-1 data-loading:shadow-none border-transparent bg-transparent shadow-none hover:border-border active:bg-secondary data-pressed:bg-secondary h-11 gap-2 text-base px-0 w-11",
+    "props": {
+      "iconOnly": true,
+      "size": "md",
+      "variant": "ghost",
+    },
+  },
+  {
+    "classes": "relative inline-flex shrink-0 cursor-pointer select-none items-center justify-center whitespace-nowrap border-3 font-display font-extrabold uppercase tracking-wide text-foreground outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap not-data-loading:data-disabled:cursor-not-allowed not-data-loading:data-disabled:border-disabled-foreground not-data-loading:data-disabled:bg-disabled not-data-loading:data-disabled:text-disabled-foreground not-data-loading:data-disabled:shadow-none not-data-loading:data-disabled:translate-none data-loading:cursor-progress data-loading:translate-x-1 data-loading:translate-y-1 data-loading:shadow-none border-transparent bg-transparent shadow-none hover:border-border active:bg-secondary data-pressed:bg-secondary h-14 gap-2.5 text-lg px-0 w-14",
+    "props": {
+      "iconOnly": true,
+      "size": "lg",
+      "variant": "ghost",
+    },
+  },
+  {
+    "classes": "relative inline-flex shrink-0 cursor-pointer select-none items-center justify-center whitespace-nowrap border-3 border-border font-display font-extrabold uppercase tracking-wide text-foreground outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap not-data-loading:data-disabled:cursor-not-allowed not-data-loading:data-disabled:border-disabled-foreground not-data-loading:data-disabled:bg-disabled not-data-loading:data-disabled:text-disabled-foreground not-data-loading:data-disabled:shadow-none not-data-loading:data-disabled:translate-none data-loading:cursor-progress data-loading:translate-x-1 data-loading:translate-y-1 data-loading:shadow-none bg-danger shadow-sm transition-[translate,box-shadow] duration-70 ease-linear motion-reduce:transition-none active:translate-x-1 active:translate-y-1 active:shadow-none data-pressed:translate-x-1 data-pressed:translate-y-1 data-pressed:shadow-none h-9 gap-1.5 text-sm after:absolute after:-inset-1 after:content-[''] px-0 w-9",
+    "props": {
+      "iconOnly": true,
+      "size": "sm",
+      "variant": "danger",
+    },
+  },
+  {
+    "classes": "relative inline-flex shrink-0 cursor-pointer select-none items-center justify-center whitespace-nowrap border-3 border-border font-display font-extrabold uppercase tracking-wide text-foreground outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap not-data-loading:data-disabled:cursor-not-allowed not-data-loading:data-disabled:border-disabled-foreground not-data-loading:data-disabled:bg-disabled not-data-loading:data-disabled:text-disabled-foreground not-data-loading:data-disabled:shadow-none not-data-loading:data-disabled:translate-none data-loading:cursor-progress data-loading:translate-x-1 data-loading:translate-y-1 data-loading:shadow-none bg-danger shadow-sm transition-[translate,box-shadow] duration-70 ease-linear motion-reduce:transition-none active:translate-x-1 active:translate-y-1 active:shadow-none data-pressed:translate-x-1 data-pressed:translate-y-1 data-pressed:shadow-none h-11 gap-2 text-base px-0 w-11",
+    "props": {
+      "iconOnly": true,
+      "size": "md",
+      "variant": "danger",
+    },
+  },
+  {
+    "classes": "relative inline-flex shrink-0 cursor-pointer select-none items-center justify-center whitespace-nowrap border-3 border-border font-display font-extrabold uppercase tracking-wide text-foreground outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap not-data-loading:data-disabled:cursor-not-allowed not-data-loading:data-disabled:border-disabled-foreground not-data-loading:data-disabled:bg-disabled not-data-loading:data-disabled:text-disabled-foreground not-data-loading:data-disabled:shadow-none not-data-loading:data-disabled:translate-none data-loading:cursor-progress data-loading:translate-x-1 data-loading:translate-y-1 data-loading:shadow-none bg-danger shadow-sm transition-[translate,box-shadow] duration-70 ease-linear motion-reduce:transition-none active:translate-x-1 active:translate-y-1 active:shadow-none data-pressed:translate-x-1 data-pressed:translate-y-1 data-pressed:shadow-none h-14 gap-2.5 text-lg px-0 w-14",
+    "props": {
+      "iconOnly": true,
+      "size": "lg",
+      "variant": "danger",
+    },
+  },
+]
+`;
+
+exports[`recipe snapshots > card output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "base": undefined,
+      "body": "flex flex-col gap-4 p-6",
+      "description": "text-base text-foreground",
+      "footer": "mt-auto flex flex-wrap items-center gap-3 border-t-3 border-border p-6",
+      "header": "flex flex-col gap-1.5 p-6 pb-0",
+      "root": "flex flex-col rounded-md border-3 border-border text-foreground bg-primary shadow-none cursor-pointer transition-[translate,box-shadow] duration-70 ease-linear motion-reduce:transition-none outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap",
+      "title": "font-display text-2xl font-extrabold leading-tight tracking-tight",
+    },
+    "props": {
+      "elevation": "none",
+      "interactive": true,
+      "variant": "primary",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "body": "flex flex-col gap-4 p-6",
+      "description": "text-base text-foreground",
+      "footer": "mt-auto flex flex-wrap items-center gap-3 border-t-3 border-border p-6",
+      "header": "flex flex-col gap-1.5 p-6 pb-0",
+      "root": "flex flex-col rounded-md border-3 border-border text-foreground bg-primary shadow-sm cursor-pointer transition-[translate,box-shadow] duration-70 ease-linear motion-reduce:transition-none outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap active:translate-x-1 active:translate-y-1 active:shadow-none",
+      "title": "font-display text-2xl font-extrabold leading-tight tracking-tight",
+    },
+    "props": {
+      "elevation": "sm",
+      "interactive": true,
+      "variant": "primary",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "body": "flex flex-col gap-4 p-6",
+      "description": "text-base text-foreground",
+      "footer": "mt-auto flex flex-wrap items-center gap-3 border-t-3 border-border p-6",
+      "header": "flex flex-col gap-1.5 p-6 pb-0",
+      "root": "flex flex-col rounded-md border-3 border-border text-foreground bg-primary shadow-lg cursor-pointer transition-[translate,box-shadow] duration-70 ease-linear motion-reduce:transition-none outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap active:translate-x-3 active:translate-y-3 active:shadow-none",
+      "title": "font-display text-2xl font-extrabold leading-tight tracking-tight",
+    },
+    "props": {
+      "elevation": "lg",
+      "interactive": true,
+      "variant": "primary",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "body": "flex flex-col gap-4 p-6",
+      "description": "text-base text-foreground",
+      "footer": "mt-auto flex flex-wrap items-center gap-3 border-t-3 border-border p-6",
+      "header": "flex flex-col gap-1.5 p-6 pb-0",
+      "root": "flex flex-col rounded-md border-3 border-border text-foreground bg-secondary shadow-none cursor-pointer transition-[translate,box-shadow] duration-70 ease-linear motion-reduce:transition-none outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap",
+      "title": "font-display text-2xl font-extrabold leading-tight tracking-tight",
+    },
+    "props": {
+      "elevation": "none",
+      "interactive": true,
+      "variant": "secondary",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "body": "flex flex-col gap-4 p-6",
+      "description": "text-base text-foreground",
+      "footer": "mt-auto flex flex-wrap items-center gap-3 border-t-3 border-border p-6",
+      "header": "flex flex-col gap-1.5 p-6 pb-0",
+      "root": "flex flex-col rounded-md border-3 border-border text-foreground bg-secondary shadow-sm cursor-pointer transition-[translate,box-shadow] duration-70 ease-linear motion-reduce:transition-none outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap active:translate-x-1 active:translate-y-1 active:shadow-none",
+      "title": "font-display text-2xl font-extrabold leading-tight tracking-tight",
+    },
+    "props": {
+      "elevation": "sm",
+      "interactive": true,
+      "variant": "secondary",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "body": "flex flex-col gap-4 p-6",
+      "description": "text-base text-foreground",
+      "footer": "mt-auto flex flex-wrap items-center gap-3 border-t-3 border-border p-6",
+      "header": "flex flex-col gap-1.5 p-6 pb-0",
+      "root": "flex flex-col rounded-md border-3 border-border text-foreground bg-secondary shadow-lg cursor-pointer transition-[translate,box-shadow] duration-70 ease-linear motion-reduce:transition-none outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap active:translate-x-3 active:translate-y-3 active:shadow-none",
+      "title": "font-display text-2xl font-extrabold leading-tight tracking-tight",
+    },
+    "props": {
+      "elevation": "lg",
+      "interactive": true,
+      "variant": "secondary",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "body": "flex flex-col gap-4 p-6",
+      "description": "text-base text-foreground",
+      "footer": "mt-auto flex flex-wrap items-center gap-3 border-t-3 border-border p-6",
+      "header": "flex flex-col gap-1.5 p-6 pb-0",
+      "root": "flex flex-col rounded-md border-3 border-border text-foreground bg-raised shadow-none cursor-pointer transition-[translate,box-shadow] duration-70 ease-linear motion-reduce:transition-none outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap",
+      "title": "font-display text-2xl font-extrabold leading-tight tracking-tight",
+    },
+    "props": {
+      "elevation": "none",
+      "interactive": true,
+      "variant": "ghost",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "body": "flex flex-col gap-4 p-6",
+      "description": "text-base text-foreground",
+      "footer": "mt-auto flex flex-wrap items-center gap-3 border-t-3 border-border p-6",
+      "header": "flex flex-col gap-1.5 p-6 pb-0",
+      "root": "flex flex-col rounded-md border-3 border-border text-foreground bg-raised shadow-sm cursor-pointer transition-[translate,box-shadow] duration-70 ease-linear motion-reduce:transition-none outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap active:translate-x-1 active:translate-y-1 active:shadow-none",
+      "title": "font-display text-2xl font-extrabold leading-tight tracking-tight",
+    },
+    "props": {
+      "elevation": "sm",
+      "interactive": true,
+      "variant": "ghost",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "body": "flex flex-col gap-4 p-6",
+      "description": "text-base text-foreground",
+      "footer": "mt-auto flex flex-wrap items-center gap-3 border-t-3 border-border p-6",
+      "header": "flex flex-col gap-1.5 p-6 pb-0",
+      "root": "flex flex-col rounded-md border-3 border-border text-foreground bg-raised shadow-lg cursor-pointer transition-[translate,box-shadow] duration-70 ease-linear motion-reduce:transition-none outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap active:translate-x-3 active:translate-y-3 active:shadow-none",
+      "title": "font-display text-2xl font-extrabold leading-tight tracking-tight",
+    },
+    "props": {
+      "elevation": "lg",
+      "interactive": true,
+      "variant": "ghost",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "body": "flex flex-col gap-4 p-6",
+      "description": "text-base text-foreground",
+      "footer": "mt-auto flex flex-wrap items-center gap-3 border-t-3 border-border p-6",
+      "header": "flex flex-col gap-1.5 p-6 pb-0",
+      "root": "flex flex-col rounded-md border-3 border-border text-foreground bg-danger shadow-none cursor-pointer transition-[translate,box-shadow] duration-70 ease-linear motion-reduce:transition-none outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap",
+      "title": "font-display text-2xl font-extrabold leading-tight tracking-tight",
+    },
+    "props": {
+      "elevation": "none",
+      "interactive": true,
+      "variant": "danger",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "body": "flex flex-col gap-4 p-6",
+      "description": "text-base text-foreground",
+      "footer": "mt-auto flex flex-wrap items-center gap-3 border-t-3 border-border p-6",
+      "header": "flex flex-col gap-1.5 p-6 pb-0",
+      "root": "flex flex-col rounded-md border-3 border-border text-foreground bg-danger shadow-sm cursor-pointer transition-[translate,box-shadow] duration-70 ease-linear motion-reduce:transition-none outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap active:translate-x-1 active:translate-y-1 active:shadow-none",
+      "title": "font-display text-2xl font-extrabold leading-tight tracking-tight",
+    },
+    "props": {
+      "elevation": "sm",
+      "interactive": true,
+      "variant": "danger",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "body": "flex flex-col gap-4 p-6",
+      "description": "text-base text-foreground",
+      "footer": "mt-auto flex flex-wrap items-center gap-3 border-t-3 border-border p-6",
+      "header": "flex flex-col gap-1.5 p-6 pb-0",
+      "root": "flex flex-col rounded-md border-3 border-border text-foreground bg-danger shadow-lg cursor-pointer transition-[translate,box-shadow] duration-70 ease-linear motion-reduce:transition-none outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap active:translate-x-3 active:translate-y-3 active:shadow-none",
+      "title": "font-display text-2xl font-extrabold leading-tight tracking-tight",
+    },
+    "props": {
+      "elevation": "lg",
+      "interactive": true,
+      "variant": "danger",
+    },
+  },
+]
+`;
+
+exports[`recipe snapshots > heading output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": "font-display text-foreground text-balance text-2xl font-extrabold leading-tight sm:text-h4 uppercase",
+    "props": {
+      "size": "sm",
+      "uppercase": true,
+    },
+  },
+  {
+    "classes": "font-display text-foreground text-balance text-3xl font-extrabold leading-none tracking-tight sm:text-4xl lg:text-h3 uppercase",
+    "props": {
+      "size": "md",
+      "uppercase": true,
+    },
+  },
+  {
+    "classes": "font-display text-foreground text-balance text-4xl font-black leading-none tracking-tight sm:text-5xl lg:text-h2 uppercase",
+    "props": {
+      "size": "lg",
+      "uppercase": true,
+    },
+  },
+  {
+    "classes": "font-display text-foreground text-balance text-5xl font-black leading-[0.95] tracking-tighter sm:text-7xl lg:text-h1 uppercase",
+    "props": {
+      "size": "xl",
+      "uppercase": true,
+    },
+  },
+]
+`;
+
+exports[`recipe snapshots > input output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": "w-full min-w-0 border-3 border-border bg-raised text-foreground shadow-sm font-sans placeholder:text-disabled-foreground file:mr-3 file:border-0 file:bg-transparent file:font-display file:font-bold file:uppercase aria-invalid:bg-danger/15 data-invalid:bg-danger/15 read-only:shadow-none outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap disabled:cursor-not-allowed disabled:border-disabled-foreground disabled:bg-disabled disabled:text-disabled-foreground disabled:shadow-none disabled:translate-none data-disabled:cursor-not-allowed data-disabled:border-disabled-foreground data-disabled:bg-disabled data-disabled:text-disabled-foreground data-disabled:shadow-none data-disabled:translate-none h-11 px-2.5 text-sm",
+    "props": {
+      "size": "sm",
+    },
+  },
+  {
+    "classes": "w-full min-w-0 border-3 border-border bg-raised text-foreground shadow-sm font-sans placeholder:text-disabled-foreground file:mr-3 file:border-0 file:bg-transparent file:font-display file:font-bold file:uppercase aria-invalid:bg-danger/15 data-invalid:bg-danger/15 read-only:shadow-none outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap disabled:cursor-not-allowed disabled:border-disabled-foreground disabled:bg-disabled disabled:text-disabled-foreground disabled:shadow-none disabled:translate-none data-disabled:cursor-not-allowed data-disabled:border-disabled-foreground data-disabled:bg-disabled data-disabled:text-disabled-foreground data-disabled:shadow-none data-disabled:translate-none h-12 px-3 text-base",
+    "props": {
+      "size": "md",
+    },
+  },
+  {
+    "classes": "w-full min-w-0 border-3 border-border bg-raised text-foreground shadow-sm font-sans placeholder:text-disabled-foreground file:mr-3 file:border-0 file:bg-transparent file:font-display file:font-bold file:uppercase aria-invalid:bg-danger/15 data-invalid:bg-danger/15 read-only:shadow-none outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap disabled:cursor-not-allowed disabled:border-disabled-foreground disabled:bg-disabled disabled:text-disabled-foreground disabled:shadow-none disabled:translate-none data-disabled:cursor-not-allowed data-disabled:border-disabled-foreground data-disabled:bg-disabled data-disabled:text-disabled-foreground data-disabled:shadow-none data-disabled:translate-none h-14 px-4 text-lg",
+    "props": {
+      "size": "lg",
+    },
+  },
+]
+`;
+
+exports[`recipe snapshots > kbd output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": "inline-flex shrink-0 items-center justify-center whitespace-nowrap border-2 border-b-4 border-border bg-raised font-mono font-bold text-foreground h-5 min-w-5 px-1 text-[0.6875rem]",
+    "props": {
+      "size": "sm",
+    },
+  },
+  {
+    "classes": "inline-flex shrink-0 items-center justify-center whitespace-nowrap border-2 border-b-4 border-border bg-raised font-mono font-bold text-foreground h-6 min-w-6 px-1.5 text-xs",
+    "props": {
+      "size": "md",
+    },
+  },
+  {
+    "classes": "inline-flex shrink-0 items-center justify-center whitespace-nowrap border-2 border-b-4 border-border bg-raised font-mono font-bold text-foreground h-8 min-w-8 px-2 text-sm",
+    "props": {
+      "size": "lg",
+    },
+  },
+]
+`;
+
+exports[`recipe snapshots > label output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "base": undefined,
+      "indicator": "font-mono text-foreground",
+      "root": "inline-flex items-center gap-1 font-display font-bold uppercase tracking-wide text-foreground data-disabled:cursor-not-allowed data-disabled:text-disabled-foreground text-xs",
+    },
+    "props": {
+      "size": "sm",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "indicator": "font-mono text-foreground",
+      "root": "inline-flex items-center gap-1 font-display font-bold uppercase tracking-wide text-foreground data-disabled:cursor-not-allowed data-disabled:text-disabled-foreground text-sm",
+    },
+    "props": {
+      "size": "md",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "indicator": "font-mono text-foreground",
+      "root": "inline-flex items-center gap-1 font-display font-bold uppercase tracking-wide text-foreground data-disabled:cursor-not-allowed data-disabled:text-disabled-foreground text-base",
+    },
+    "props": {
+      "size": "lg",
+    },
+  },
+]
+`;
+
+exports[`recipe snapshots > separator output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": "shrink-0 border-0 bg-border w-full h-0.5",
+    "props": {
+      "orientation": "horizontal",
+      "size": "sm",
+    },
+  },
+  {
+    "classes": "shrink-0 border-0 bg-border w-full h-0.75",
+    "props": {
+      "orientation": "horizontal",
+      "size": "md",
+    },
+  },
+  {
+    "classes": "shrink-0 border-0 bg-border w-full h-1.25",
+    "props": {
+      "orientation": "horizontal",
+      "size": "lg",
+    },
+  },
+  {
+    "classes": "shrink-0 border-0 bg-border self-stretch w-0.5",
+    "props": {
+      "orientation": "vertical",
+      "size": "sm",
+    },
+  },
+  {
+    "classes": "shrink-0 border-0 bg-border self-stretch w-0.75",
+    "props": {
+      "orientation": "vertical",
+      "size": "md",
+    },
+  },
+  {
+    "classes": "shrink-0 border-0 bg-border self-stretch w-1.25",
+    "props": {
+      "orientation": "vertical",
+      "size": "lg",
+    },
+  },
+]
+`;
+
+exports[`recipe snapshots > spinner output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "base": undefined,
+      "icon": "shrink-0 animate-spin-stepped fill-current motion-reduce:animate-none size-4",
+      "label": "font-mono text-sm font-bold uppercase",
+      "root": "inline-flex items-center gap-2 text-foreground",
+    },
+    "props": {
+      "showLabel": true,
+      "size": "sm",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "icon": "shrink-0 animate-spin-stepped fill-current motion-reduce:animate-none size-4",
+      "label": "font-mono text-sm font-bold uppercase sr-only",
+      "root": "inline-flex items-center gap-2 text-foreground",
+    },
+    "props": {
+      "showLabel": false,
+      "size": "sm",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "icon": "shrink-0 animate-spin-stepped fill-current motion-reduce:animate-none size-6",
+      "label": "font-mono text-sm font-bold uppercase",
+      "root": "inline-flex items-center gap-2 text-foreground",
+    },
+    "props": {
+      "showLabel": true,
+      "size": "md",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "icon": "shrink-0 animate-spin-stepped fill-current motion-reduce:animate-none size-6",
+      "label": "font-mono text-sm font-bold uppercase sr-only",
+      "root": "inline-flex items-center gap-2 text-foreground",
+    },
+    "props": {
+      "showLabel": false,
+      "size": "md",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "icon": "shrink-0 animate-spin-stepped fill-current motion-reduce:animate-none size-10",
+      "label": "font-mono font-bold uppercase text-base",
+      "root": "inline-flex items-center gap-2 text-foreground",
+    },
+    "props": {
+      "showLabel": true,
+      "size": "lg",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "icon": "shrink-0 animate-spin-stepped fill-current motion-reduce:animate-none size-10",
+      "label": "font-mono font-bold uppercase text-base sr-only",
+      "root": "inline-flex items-center gap-2 text-foreground",
+    },
+    "props": {
+      "showLabel": false,
+      "size": "lg",
+    },
+  },
+]
+`;
+
+exports[`recipe snapshots > text output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": "text-foreground text-caption font-normal font-mono",
+    "props": {
+      "mono": true,
+      "size": "sm",
+      "weight": "regular",
+    },
+  },
+  {
+    "classes": "text-foreground text-caption font-medium font-mono",
+    "props": {
+      "mono": true,
+      "size": "sm",
+      "weight": "medium",
+    },
+  },
+  {
+    "classes": "text-foreground text-caption font-bold font-mono",
+    "props": {
+      "mono": true,
+      "size": "sm",
+      "weight": "bold",
+    },
+  },
+  {
+    "classes": "text-foreground text-body font-normal font-mono",
+    "props": {
+      "mono": true,
+      "size": "md",
+      "weight": "regular",
+    },
+  },
+  {
+    "classes": "text-foreground text-body font-medium font-mono",
+    "props": {
+      "mono": true,
+      "size": "md",
+      "weight": "medium",
+    },
+  },
+  {
+    "classes": "text-foreground text-body font-bold font-mono",
+    "props": {
+      "mono": true,
+      "size": "md",
+      "weight": "bold",
+    },
+  },
+  {
+    "classes": "text-foreground text-xl leading-relaxed font-normal font-mono",
+    "props": {
+      "mono": true,
+      "size": "lg",
+      "weight": "regular",
+    },
+  },
+  {
+    "classes": "text-foreground text-xl leading-relaxed font-medium font-mono",
+    "props": {
+      "mono": true,
+      "size": "lg",
+      "weight": "medium",
+    },
+  },
+  {
+    "classes": "text-foreground text-xl leading-relaxed font-bold font-mono",
+    "props": {
+      "mono": true,
+      "size": "lg",
+      "weight": "bold",
+    },
+  },
+]
+`;
