@@ -1,3 +1,4 @@
+import { readdirSync, readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import * as recipes from "./index.ts";
 import { cn } from "./tv.ts";
@@ -87,6 +88,18 @@ describe("design law", () => {
   it("never uses blurred shadows or opacity-based disabled states", () => {
     expect(allClasses).not.toMatch(/shadow-(xs|md|xl|2xl|inner)\b/);
     expect(allClasses).not.toMatch(/disabled:opacity-/);
+  });
+
+  it("writes every class in full so Tailwind's scanner can find it", () => {
+    const dir = new URL(".", import.meta.url);
+    for (const file of readdirSync(dir).filter(
+      (f) => f.endsWith(".ts") && !f.endsWith(".test.ts"),
+    )) {
+      const source = readFileSync(new URL(file, dir), "utf8");
+      expect(source, `${file} builds class names with template interpolation`).not.toMatch(
+        /`[^`]*\$\{/,
+      );
+    }
   });
 
   it("never uses easing curves other than linear", () => {

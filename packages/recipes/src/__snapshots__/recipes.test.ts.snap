@@ -152,105 +152,105 @@ exports[`recipe snapshots > avatar output is stable for every variant combinatio
 exports[`recipe snapshots > badge output is stable for every variant combination 1`] = `
 [
   {
-    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground bg-primary h-5 px-1.5 text-[0.6875rem]",
+    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground [&:is(a,button)]:relative [&:is(a,button)]:min-w-11 [&:is(a,button)]:justify-center [&:is(a,button)]:hover:underline [&:is(a,button)]:after:absolute [&:is(a,button)]:after:inset-x-0 [&:is(a,button)]:after:content-[''] outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap bg-primary h-5 px-1.5 text-[0.6875rem] [&:is(a,button)]:after:-inset-y-3",
     "props": {
       "size": "sm",
       "variant": "primary",
     },
   },
   {
-    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground bg-primary h-6 px-2 text-xs",
+    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground [&:is(a,button)]:relative [&:is(a,button)]:min-w-11 [&:is(a,button)]:justify-center [&:is(a,button)]:hover:underline [&:is(a,button)]:after:absolute [&:is(a,button)]:after:inset-x-0 [&:is(a,button)]:after:content-[''] outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap bg-primary h-6 px-2 text-xs [&:is(a,button)]:after:-inset-y-2.5",
     "props": {
       "size": "md",
       "variant": "primary",
     },
   },
   {
-    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground bg-primary h-8 px-3 text-sm",
+    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground [&:is(a,button)]:relative [&:is(a,button)]:min-w-11 [&:is(a,button)]:justify-center [&:is(a,button)]:hover:underline [&:is(a,button)]:after:absolute [&:is(a,button)]:after:inset-x-0 [&:is(a,button)]:after:content-[''] outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap bg-primary h-8 px-3 text-sm [&:is(a,button)]:after:-inset-y-1.5",
     "props": {
       "size": "lg",
       "variant": "primary",
     },
   },
   {
-    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground bg-secondary h-5 px-1.5 text-[0.6875rem]",
+    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground [&:is(a,button)]:relative [&:is(a,button)]:min-w-11 [&:is(a,button)]:justify-center [&:is(a,button)]:hover:underline [&:is(a,button)]:after:absolute [&:is(a,button)]:after:inset-x-0 [&:is(a,button)]:after:content-[''] outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap bg-secondary h-5 px-1.5 text-[0.6875rem] [&:is(a,button)]:after:-inset-y-3",
     "props": {
       "size": "sm",
       "variant": "secondary",
     },
   },
   {
-    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground bg-secondary h-6 px-2 text-xs",
+    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground [&:is(a,button)]:relative [&:is(a,button)]:min-w-11 [&:is(a,button)]:justify-center [&:is(a,button)]:hover:underline [&:is(a,button)]:after:absolute [&:is(a,button)]:after:inset-x-0 [&:is(a,button)]:after:content-[''] outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap bg-secondary h-6 px-2 text-xs [&:is(a,button)]:after:-inset-y-2.5",
     "props": {
       "size": "md",
       "variant": "secondary",
     },
   },
   {
-    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground bg-secondary h-8 px-3 text-sm",
+    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground [&:is(a,button)]:relative [&:is(a,button)]:min-w-11 [&:is(a,button)]:justify-center [&:is(a,button)]:hover:underline [&:is(a,button)]:after:absolute [&:is(a,button)]:after:inset-x-0 [&:is(a,button)]:after:content-[''] outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap bg-secondary h-8 px-3 text-sm [&:is(a,button)]:after:-inset-y-1.5",
     "props": {
       "size": "lg",
       "variant": "secondary",
     },
   },
   {
-    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground bg-raised h-5 px-1.5 text-[0.6875rem]",
+    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground [&:is(a,button)]:relative [&:is(a,button)]:min-w-11 [&:is(a,button)]:justify-center [&:is(a,button)]:hover:underline [&:is(a,button)]:after:absolute [&:is(a,button)]:after:inset-x-0 [&:is(a,button)]:after:content-[''] outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap bg-raised h-5 px-1.5 text-[0.6875rem] [&:is(a,button)]:after:-inset-y-3",
     "props": {
       "size": "sm",
       "variant": "ghost",
     },
   },
   {
-    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground bg-raised h-6 px-2 text-xs",
+    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground [&:is(a,button)]:relative [&:is(a,button)]:min-w-11 [&:is(a,button)]:justify-center [&:is(a,button)]:hover:underline [&:is(a,button)]:after:absolute [&:is(a,button)]:after:inset-x-0 [&:is(a,button)]:after:content-[''] outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap bg-raised h-6 px-2 text-xs [&:is(a,button)]:after:-inset-y-2.5",
     "props": {
       "size": "md",
       "variant": "ghost",
     },
   },
   {
-    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground bg-raised h-8 px-3 text-sm",
+    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground [&:is(a,button)]:relative [&:is(a,button)]:min-w-11 [&:is(a,button)]:justify-center [&:is(a,button)]:hover:underline [&:is(a,button)]:after:absolute [&:is(a,button)]:after:inset-x-0 [&:is(a,button)]:after:content-[''] outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap bg-raised h-8 px-3 text-sm [&:is(a,button)]:after:-inset-y-1.5",
     "props": {
       "size": "lg",
       "variant": "ghost",
     },
   },
   {
-    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground bg-danger h-5 px-1.5 text-[0.6875rem]",
+    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground [&:is(a,button)]:relative [&:is(a,button)]:min-w-11 [&:is(a,button)]:justify-center [&:is(a,button)]:hover:underline [&:is(a,button)]:after:absolute [&:is(a,button)]:after:inset-x-0 [&:is(a,button)]:after:content-[''] outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap bg-danger h-5 px-1.5 text-[0.6875rem] [&:is(a,button)]:after:-inset-y-3",
     "props": {
       "size": "sm",
       "variant": "danger",
     },
   },
   {
-    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground bg-danger h-6 px-2 text-xs",
+    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground [&:is(a,button)]:relative [&:is(a,button)]:min-w-11 [&:is(a,button)]:justify-center [&:is(a,button)]:hover:underline [&:is(a,button)]:after:absolute [&:is(a,button)]:after:inset-x-0 [&:is(a,button)]:after:content-[''] outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap bg-danger h-6 px-2 text-xs [&:is(a,button)]:after:-inset-y-2.5",
     "props": {
       "size": "md",
       "variant": "danger",
     },
   },
   {
-    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground bg-danger h-8 px-3 text-sm",
+    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground [&:is(a,button)]:relative [&:is(a,button)]:min-w-11 [&:is(a,button)]:justify-center [&:is(a,button)]:hover:underline [&:is(a,button)]:after:absolute [&:is(a,button)]:after:inset-x-0 [&:is(a,button)]:after:content-[''] outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap bg-danger h-8 px-3 text-sm [&:is(a,button)]:after:-inset-y-1.5",
     "props": {
       "size": "lg",
       "variant": "danger",
     },
   },
   {
-    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground bg-success h-5 px-1.5 text-[0.6875rem]",
+    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground [&:is(a,button)]:relative [&:is(a,button)]:min-w-11 [&:is(a,button)]:justify-center [&:is(a,button)]:hover:underline [&:is(a,button)]:after:absolute [&:is(a,button)]:after:inset-x-0 [&:is(a,button)]:after:content-[''] outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap bg-success h-5 px-1.5 text-[0.6875rem] [&:is(a,button)]:after:-inset-y-3",
     "props": {
       "size": "sm",
       "variant": "success",
     },
   },
   {
-    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground bg-success h-6 px-2 text-xs",
+    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground [&:is(a,button)]:relative [&:is(a,button)]:min-w-11 [&:is(a,button)]:justify-center [&:is(a,button)]:hover:underline [&:is(a,button)]:after:absolute [&:is(a,button)]:after:inset-x-0 [&:is(a,button)]:after:content-[''] outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap bg-success h-6 px-2 text-xs [&:is(a,button)]:after:-inset-y-2.5",
     "props": {
       "size": "md",
       "variant": "success",
     },
   },
   {
-    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground bg-success h-8 px-3 text-sm",
+    "classes": "inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap border-2 border-border font-mono font-bold uppercase text-foreground [&:is(a,button)]:relative [&:is(a,button)]:min-w-11 [&:is(a,button)]:justify-center [&:is(a,button)]:hover:underline [&:is(a,button)]:after:absolute [&:is(a,button)]:after:inset-x-0 [&:is(a,button)]:after:content-[''] outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap bg-success h-8 px-3 text-sm [&:is(a,button)]:after:-inset-y-1.5",
     "props": {
       "size": "lg",
       "variant": "success",
