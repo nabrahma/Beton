@@ -7,11 +7,11 @@ reviewed before any component relies on it.
 
 ## 1. The three layers
 
-| Layer      | Package            | Knows React? | Knows Tailwind?                  |
-| ---------- | ------------------ | ------------ | -------------------------------- |
-| Tokens     | `@beton-ui/tokens`  | no           | it _is_ the theme                |
-| Recipes    | `@beton-ui/recipes` | no           | yes, emits class strings         |
-| Components | `@beton-ui/react`   | yes          | no, only calls recipes           |
+| Layer      | Package             | Knows React? | Knows Tailwind?          |
+| ---------- | ------------------- | ------------ | ------------------------ |
+| Tokens     | `@beton-ui/tokens`  | no           | it _is_ the theme        |
+| Recipes    | `@beton-ui/recipes` | no           | yes, emits class strings |
+| Components | `@beton-ui/react`   | yes          | no, only calls recipes   |
 
 - Components never contain Tailwind utility classes. Every class string comes
   from a recipe. The `beton/no-inline-classes` lint rule fails the build on
@@ -26,9 +26,12 @@ reviewed before any component relies on it.
 - `variant` uses only this vocabulary: `primary`, `secondary`, `ghost`,
   `danger`. Components that need fewer may use a subset. Adding a fifth name
   requires amending this document first.
+- Status components (`Badge`, `Alert`, `Toast`, `Progress`) additionally accept
+  `success`, which maps to the success token. This is the only extension to the
+  vocabulary.
 - Non-interactive components (for example `Card`, `Kbd`) accept `className` and
   only the variants that make sense for them, from the same vocabulary where one
-  applies.
+  applies. Display typography (`Heading`) may add an `xl` size.
 - `className` is merged last and always wins conflicts (via `tailwind-merge`).
 - All remaining props spread onto the outermost DOM element.
 
@@ -56,15 +59,15 @@ outermost DOM element. No `forwardRef` wrappers.
 
 State is exposed as data attributes, never as classes:
 
-| Attribute        | Meaning                              |
-| ---------------- | ------------------------------------ |
-| `data-disabled`  | The component is disabled            |
-| `data-loading`   | An async action is in progress       |
-| `data-selected`  | The item is selected                 |
-| `data-invalid`   | The value failed validation          |
-| `data-state`     | Open/closed or checked/unchecked     |
-| `data-variant`   | The active variant                   |
-| `data-size`      | The active size                      |
+| Attribute       | Meaning                          |
+| --------------- | -------------------------------- |
+| `data-disabled` | The component is disabled        |
+| `data-loading`  | An async action is in progress   |
+| `data-selected` | The item is selected             |
+| `data-invalid`  | The value failed validation      |
+| `data-state`    | Open/closed or checked/unchecked |
+| `data-variant`  | The active variant               |
+| `data-size`     | The active size                  |
 
 Consumers may style these attributes; internals can change freely underneath.
 
@@ -74,6 +77,11 @@ Consumers may style these attributes; internals can change freely underneath.
   `"use client"`.
 - Presentational components do not, so they render in Server Components.
 - No component reads `window`, `document` or `navigator` during render.
+- A Server Component cannot "dot into" a client module (`Dialog.Trigger`).
+  Compound client components are therefore used inside client components,
+  which matches how interactive UI is written anyway. A client component that
+  is commonly placed directly in server-rendered markup (for example `Avatar`)
+  uses a single-element API instead of parts.
 
 ## 8. Design law
 
@@ -107,11 +115,12 @@ A component does not merge unless it has:
 
 ## 10. File layout
 
-```
-packages/recipes/src/<name>.ts           recipe (tailwind-variants)
+```text
+packages/recipes/src/<name>.ts            recipe (tailwind-variants)
 packages/react/src/<name>/<name>.tsx      component
 packages/react/src/<name>/<name>.test.tsx behaviour + axe tests
-packages/react/src/<name>/<name>.meta.ts  docs metadata (examples, a11y notes)
+packages/react/src/<name>/<name>.meta.ts  docs metadata (description, a11y notes)
+apps/docs/examples/<name>/*.tsx           live, copyable usage examples
 ```
 
 Test names carry tags that feed the published accessibility table:

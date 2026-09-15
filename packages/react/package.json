@@ -1,0 +1,74 @@
+{
+  "name": "@beton-ui/react",
+  "version": "0.1.0",
+  "description": "Neobrutalist React components. Loud on the surface, WCAG AA underneath.",
+  "license": "SEE LICENSE IN LICENSE",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nabrahma/Beton.git",
+    "directory": "packages/react"
+  },
+  "homepage": "https://beton.dev",
+  "bugs": "https://github.com/nabrahma/Beton/issues",
+  "keywords": [
+    "beton",
+    "neobrutalism",
+    "react",
+    "components",
+    "tailwindcss",
+    "accessibility"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": "./src/*/index.ts"
+  },
+  "publishConfig": {
+    "access": "public",
+    "exports": {
+      ".": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "./*": {
+        "types": "./dist/*/index.d.ts",
+        "default": "./dist/*/index.js"
+      }
+    }
+  },
+  "files": [
+    "dist",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@base-ui/react": "^1.8.0",
+    "@beton-ui/recipes": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwindcss": "^4.1.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.7",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.1",
+    "axe-core": "^4.13.0",
+    "eslint": "^10.10.0",
+    "jsdom": "^30.0.1",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "typescript": "~5.9.3",
+    "vitest": "^5.0.1"
+  }
+}

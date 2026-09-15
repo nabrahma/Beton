@@ -29,7 +29,7 @@ instantly.
 
 ## Repository layout
 
-```
+```text
 packages/
   tokens/     Design tokens as plain CSS (Tailwind v4 @theme)
   recipes/    tailwind-variants recipes; framework-agnostic class strings
@@ -44,17 +44,17 @@ tests/        Browser tests: hit areas and visual regression (Playwright)
 
 ## Common tasks
 
-| Command                 | What it does                                          |
-| ----------------------- | ----------------------------------------------------- |
-| `pnpm dev`              | Run the docs site                                     |
-| `pnpm build`            | Build every package and the docs site                 |
-| `pnpm test`             | Unit, behaviour and axe tests                         |
-| `pnpm lint`             | ESLint, including the no-inline-classes rule          |
-| `pnpm typecheck`        | TypeScript across the workspace                       |
-| `pnpm check:contrast`   | Assert every token colour pair meets WCAG AA          |
-| `pnpm registry:build`   | Regenerate `registry/` from component source          |
-| `pnpm test:browser`     | Playwright hit-area and visual tests                  |
-| `pnpm changeset`        | Describe a change to a published package              |
+| Command               | What it does                                 |
+| --------------------- | -------------------------------------------- |
+| `pnpm dev`            | Run the docs site                            |
+| `pnpm build`          | Build every package and the docs site        |
+| `pnpm test`           | Unit, behaviour and axe tests                |
+| `pnpm lint`           | ESLint, including the no-inline-classes rule |
+| `pnpm typecheck`      | TypeScript across the workspace              |
+| `pnpm check:contrast` | Assert every token colour pair meets WCAG AA |
+| `pnpm registry:build` | Regenerate `registry/` from component source |
+| `pnpm test:browser`   | Playwright hit-area and visual tests         |
+| `pnpm changeset`      | Describe a change to a published package     |
 
 ## Adding a component
 
