@@ -25,4 +25,5 @@ export const meta: ComponentMeta = {
     ],
   },
   related: ["button", "badge"],
+  playground: { recipe: "card", controls: ["variant", "elevation"], toggles: ["interactive"] },
 };

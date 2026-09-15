@@ -28,4 +28,16 @@ export interface ComponentMeta {
     limitations?: string[];
   };
   related: string[];
+  /**
+   * Live prop controls on the docs page. Options for each control are read
+   * from the recipe's variants, so they never drift from the implementation.
+   */
+  playground?: {
+    /** Recipe export whose variants become select controls. */
+    recipe: string;
+    /** Variant names to expose, in display order. */
+    controls: string[];
+    /** Boolean props that are not recipe variants, shown as toggles. */
+    toggles?: string[];
+  };
 }

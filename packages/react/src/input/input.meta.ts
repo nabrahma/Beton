@@ -23,4 +23,5 @@ export const meta: ComponentMeta = {
     ],
   },
   related: ["label", "button"],
+  playground: { recipe: "input", controls: ["size"], toggles: ["disabled"] },
 };

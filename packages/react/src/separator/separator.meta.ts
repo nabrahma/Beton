@@ -16,4 +16,5 @@ export const meta: ComponentMeta = {
     notes: ["Only mark a separator as semantic when it divides distinct groups of content."],
   },
   related: ["card"],
+  playground: { recipe: "separator", controls: ["orientation", "size"] },
 };

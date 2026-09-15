@@ -25,4 +25,5 @@ export const meta: ComponentMeta = {
     ],
   },
   related: ["spinner", "kbd"],
+  playground: { recipe: "button", controls: ["variant", "size"], toggles: ["loading", "disabled"] },
 };

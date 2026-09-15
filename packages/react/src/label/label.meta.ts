@@ -16,4 +16,5 @@ export const meta: ComponentMeta = {
     ],
   },
   related: ["input"],
+  playground: { recipe: "label", controls: ["size"], toggles: ["required", "disabled"] },
 };

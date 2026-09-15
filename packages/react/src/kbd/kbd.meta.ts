@@ -13,4 +13,5 @@ export const meta: ComponentMeta = {
     notes: ['Write key names in full where symbols are ambiguous ("Ctrl" rather than "^").'],
   },
   related: ["button"],
+  playground: { recipe: "kbd", controls: ["size"] },
 };
