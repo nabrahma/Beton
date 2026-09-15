@@ -1,0 +1,32 @@
+name: Accessibility issue
+description: A component fails WCAG 2.2 AA, a keyboard path, or works poorly with assistive technology.
+labels: ["accessibility", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: Accessibility bugs are treated as release blockers. Detail about your setup helps a lot.
+  - type: input
+    id: component
+    attributes:
+      label: Component
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is the barrier?
+      description: What you tried to do, what you expected, and what happened.
+    validations:
+      required: true
+  - type: input
+    id: criterion
+    attributes:
+      label: WCAG success criterion (if known)
+      placeholder: "2.4.7 Focus Visible"
+  - type: textarea
+    id: assistive-tech
+    attributes:
+      label: Assistive technology and browser
+      placeholder: "NVDA 2026.1 + Firefox 142, VoiceOver + Safari 19, keyboard only, ..."
+    validations:
+      required: true

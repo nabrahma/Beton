@@ -1,0 +1,11 @@
+MD/
+dist/
+.next/
+.turbo/
+coverage/
+pnpm-lock.yaml
+registry/
+apps/docs/public/r/
+apps/docs/generated/
+tests/visual/__screenshots__/
+CHANGELOG.md

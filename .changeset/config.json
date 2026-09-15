@@ -1,0 +1,11 @@
+{
+  "$schema": "https://unpkg.com/@changesets/config@3.0.0/schema.json",
+  "changelog": ["@changesets/changelog-github", { "repo": "nabrahma/Beton" }],
+  "commit": false,
+  "fixed": [["@beton-ui/tokens", "@beton-ui/recipes", "@beton-ui/react"]],
+  "linked": [],
+  "access": "public",
+  "baseBranch": "main",
+  "updateInternalDependencies": "patch",
+  "ignore": ["docs", "@beton-ui/tests"]
+}

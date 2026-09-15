@@ -1,0 +1,42 @@
+name: Bug report
+description: Something in a component, the CLI or the docs does not work as documented.
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for taking the time to report this. A minimal reproduction gets it fixed fastest.
+  - type: input
+    id: component
+    attributes:
+      label: Component or package
+      placeholder: "Button, @beton-ui/cli, docs site, ..."
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: What did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: A link to a repository or sandbox, or the smallest code that shows the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Framework and version, React version, Tailwind version, browser and OS.
+      placeholder: "Next.js 16.3, React 19.3, Tailwind 4.3, Chrome 140, macOS"
+    validations:
+      required: true
+  - type: checkboxes
+    id: accessibility
+    attributes:
+      label: Accessibility
+      options:
+        - label: This bug affects keyboard, screen reader, or other assistive technology users.

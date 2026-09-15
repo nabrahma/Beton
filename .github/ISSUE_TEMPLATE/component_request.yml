@@ -1,0 +1,29 @@
+name: Component or block request
+description: Propose a new component, block, or variant.
+labels: ["enhancement", "triage"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Name
+      placeholder: "Date picker"
+    validations:
+      required: true
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use case
+      description: What are you building, and why do existing components not cover it?
+    validations:
+      required: true
+  - type: textarea
+    id: references
+    attributes:
+      label: References
+      description: Links to similar components in other libraries, WAI-ARIA patterns, or designs.
+  - type: checkboxes
+    id: contribute
+    attributes:
+      label: Contribution
+      options:
+        - label: I would like to build this myself.
