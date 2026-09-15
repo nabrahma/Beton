@@ -108,7 +108,11 @@ export default async function ComponentPage({ params }: PageProps<"/docs/compone
             <Playground
               component={loaded.playground}
               exportName={
-                meta.playground.recipe.charAt(0).toUpperCase() + meta.playground.recipe.slice(1)
+                meta.exports.find(
+                  (name) => name.toLowerCase() === meta.playground?.recipe.toLowerCase(),
+                ) ??
+                meta.exports[0] ??
+                meta.title
               }
               recipe={meta.playground.recipe}
               controls={meta.playground.controls}

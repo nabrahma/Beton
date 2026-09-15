@@ -53,7 +53,8 @@ export function Playground({
   return (
     <div className="grid border-3 border-border bg-raised shadow-lg lg:grid-cols-[1fr_16rem]">
       <div className="bg-grid flex min-h-72 items-center justify-center overflow-x-auto border-b-3 border-border p-8 lg:border-r-3 lg:border-b-0">
-        <Component {...props} />
+        {/* Remount on change so uncontrolled props such as defaultChecked apply. */}
+        <Component key={snippet} {...props} />
       </div>
       <form
         aria-label="Props"
