@@ -1,0 +1,41 @@
+{
+  "name": "@beton-ui/tokens",
+  "version": "0.1.0",
+  "description": "Béton design tokens as a Tailwind CSS v4 theme.",
+  "license": "SEE LICENSE IN LICENSE",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nabrahma/Beton.git",
+    "directory": "packages/tokens"
+  },
+  "homepage": "https://beton.dev/docs/theming",
+  "keywords": [
+    "beton",
+    "neobrutalism",
+    "design-tokens",
+    "tailwindcss"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
+  "exports": {
+    ".": {
+      "style": "./src/theme.css",
+      "default": "./src/theme.css"
+    },
+    "./theme.css": "./src/theme.css"
+  },
+  "files": [
+    "src",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node ../../scripts/check-contrast.mjs"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "tailwindcss": "^4.1.0"
+  }
+}
