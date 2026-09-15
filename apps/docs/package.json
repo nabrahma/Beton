@@ -9,7 +9,7 @@
     "build": "node ../../scripts/generate-docs-data.mjs && next build",
     "start": "next start",
     "lint": "eslint .",
-    "typecheck": "node ../../scripts/generate-docs-data.mjs --quick && tsc --noEmit"
+    "typecheck": "node ../../scripts/generate-docs-data.mjs --quick && next typegen && tsc --noEmit"
   },
   "dependencies": {
     "@beton-ui/react": "workspace:*",

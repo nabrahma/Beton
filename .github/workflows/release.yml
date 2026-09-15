@@ -15,24 +15,36 @@ jobs:
   release:
     name: Version or publish
     runs-on: ubuntu-latest
+    env:
+      # Publishing is enabled once an NPM_TOKEN repository secret exists.
+      HAS_NPM_TOKEN: ${{ secrets.NPM_TOKEN != '' }}
     steps:
-      - uses: actions/checkout@v4
+      - name: Publishing not configured
+        if: env.HAS_NPM_TOKEN != 'true'
+        run: echo "::notice::Add an NPM_TOKEN repository secret to enable versioning and publishing."
 
-      - uses: pnpm/action-setup@v4
+      - uses: actions/checkout@v7
+        if: env.HAS_NPM_TOKEN == 'true'
 
-      - uses: actions/setup-node@v4
+      - uses: pnpm/action-setup@v6
+        if: env.HAS_NPM_TOKEN == 'true'
+
+      - uses: actions/setup-node@v7
+        if: env.HAS_NPM_TOKEN == 'true'
         with:
           node-version: 22
           cache: pnpm
           registry-url: https://registry.npmjs.org
 
       - name: Install
+        if: env.HAS_NPM_TOKEN == 'true'
         run: pnpm install --frozen-lockfile
 
       # Opens a "Version packages" pull request while changesets are pending,
       # and publishes to npm when that pull request is merged.
       - name: Create release pull request or publish
-        uses: changesets/action@v1
+        if: env.HAS_NPM_TOKEN == 'true'
+        uses: changesets/action@v2
         with:
           version: pnpm version-packages
           publish: pnpm release

@@ -283,7 +283,8 @@ write(join(generated, "props.json"), json(props));
 
 // -------------------------------------------------------------------- a11y
 
-const reportFile = join(reactPkg, "reports/vitest.json");
+// A dedicated report file, so a parallel `pnpm test` run never writes the same file.
+const reportFile = join(reactPkg, "reports/docs-a11y.json");
 if (!quick || !existsSync(reportFile)) {
   console.log("Running the component test suite for accessibility results...");
   const run = spawnSync(
