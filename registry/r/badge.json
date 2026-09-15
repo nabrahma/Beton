@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge",
+  "type": "registry:ui",
+  "title": "Badge",
+  "description": "A short status or category label in a monospace sticker.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/badge.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/badge.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const badge = tv({\n  base: [\n    \"inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap\",\n    \"border-2 border-border font-mono font-bold uppercase text-foreground\",\n  ],\n  variants: {\n    variant: {\n      primary: \"bg-primary\",\n      secondary: \"bg-secondary\",\n      ghost: \"bg-raised\",\n      danger: \"bg-danger\",\n      success: \"bg-success\",\n    },\n    size: {\n      sm: \"h-5 px-1.5 text-[0.6875rem]\",\n      md: \"h-6 px-2 text-xs\",\n      lg: \"h-8 px-3 text-sm\",\n    },\n  },\n  defaultVariants: {\n    variant: \"primary\",\n    size: \"md\",\n  },\n});\n\nexport type BadgeVariants = VariantProps<typeof badge>;\n"
+    },
+    {
+      "path": "registry/beton/ui/badge.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/badge.tsx",
+      "content": "import { badge, type BadgeVariants } from \"@/lib/beton/recipes/badge.recipe\";\nimport type { ComponentProps } from \"react\";\nimport { renderElement, type RenderProp } from \"@/lib/beton/render-element\";\n\nexport interface BadgeProps extends ComponentProps<\"span\">, BadgeVariants {\n  render?: RenderProp;\n}\n\nexport function Badge({\n  variant = \"primary\",\n  size = \"md\",\n  className,\n  render,\n  ...props\n}: BadgeProps) {\n  return renderElement(\n    \"span\",\n    {\n      ...props,\n      \"data-variant\": variant,\n      \"data-size\": size,\n      className: badge({ variant, size, class: className }),\n    },\n    render,\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "foundation"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": false,
+    "exports": [
+      "Badge"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/badge"
+  }
+}

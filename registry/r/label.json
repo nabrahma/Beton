@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "label",
+  "type": "registry:ui",
+  "title": "Label",
+  "description": "Names a form control, with optional required marker.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/label.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/label.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const label = tv({\n  slots: {\n    root: [\n      \"inline-flex items-center gap-1 font-display font-bold uppercase tracking-wide text-foreground\",\n      \"data-disabled:cursor-not-allowed data-disabled:text-disabled-foreground\",\n    ],\n    indicator: \"font-mono text-foreground\",\n  },\n  variants: {\n    size: {\n      sm: { root: \"text-xs\" },\n      md: { root: \"text-sm\" },\n      lg: { root: \"text-base\" },\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n});\n\nexport type LabelVariants = VariantProps<typeof label>;\n"
+    },
+    {
+      "path": "registry/beton/ui/label.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/label.tsx",
+      "content": "import { label, type LabelVariants } from \"@/lib/beton/recipes/label.recipe\";\nimport type { ComponentProps } from \"react\";\nimport { dataAttr } from \"@/lib/beton/render-element\";\n\nexport interface LabelProps extends ComponentProps<\"label\">, LabelVariants {\n  /** Shows a required marker. Also set `required` on the associated control. */\n  required?: boolean;\n  /** Styles the label as disabled. */\n  disabled?: boolean;\n}\n\nexport function Label({\n  size = \"md\",\n  required = false,\n  disabled = false,\n  className,\n  children,\n  ...props\n}: LabelProps) {\n  const styles = label({ size });\n  return (\n    <label\n      {...props}\n      data-size={size}\n      data-disabled={dataAttr(disabled)}\n      className={styles.root({ class: className })}\n    >\n      {children}\n      {required ? (\n        <span aria-hidden=\"true\" className={styles.indicator()}>\n          *\n        </span>\n      ) : null}\n    </label>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "foundation"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": false,
+    "exports": [
+      "Label"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/label"
+  }
+}

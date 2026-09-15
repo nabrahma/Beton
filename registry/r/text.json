@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "text",
+  "type": "registry:ui",
+  "title": "Text & Heading",
+  "description": "Body copy and poster-scale headings from the Béton type scale.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/text.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/text.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const text = tv({\n  base: \"font-sans text-foreground\",\n  variants: {\n    size: {\n      sm: \"text-caption\",\n      md: \"text-body\",\n      lg: \"text-xl leading-relaxed\",\n    },\n    weight: {\n      regular: \"font-normal\",\n      medium: \"font-medium\",\n      bold: \"font-bold\",\n    },\n    mono: {\n      true: \"font-mono\",\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n    weight: \"regular\",\n    mono: false,\n  },\n});\n\nexport const heading = tv({\n  base: \"font-display text-foreground text-balance\",\n  variants: {\n    size: {\n      sm: \"text-2xl font-extrabold leading-tight sm:text-h4\",\n      md: \"text-3xl font-extrabold leading-none tracking-tight sm:text-4xl lg:text-h3\",\n      lg: \"text-4xl font-black leading-none tracking-tight sm:text-5xl lg:text-h2\",\n      xl: \"text-5xl font-black leading-[0.95] tracking-tighter sm:text-7xl lg:text-h1\",\n    },\n    uppercase: {\n      true: \"uppercase\",\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n    uppercase: false,\n  },\n});\n\nexport type TextVariants = VariantProps<typeof text>;\nexport type HeadingVariants = VariantProps<typeof heading>;\n"
+    },
+    {
+      "path": "registry/beton/ui/text.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/text.tsx",
+      "content": "import { heading, text, type HeadingVariants, type TextVariants } from \"@/lib/beton/recipes/text.recipe\";\nimport type { ComponentProps } from \"react\";\nimport { renderElement, type RenderProp } from \"@/lib/beton/render-element\";\n\nexport interface TextProps extends ComponentProps<\"p\">, TextVariants {\n  render?: RenderProp;\n}\n\nexport function Text({ size = \"md\", weight, mono, className, render, ...props }: TextProps) {\n  return renderElement(\n    \"p\",\n    { ...props, \"data-size\": size, className: text({ size, weight, mono, class: className }) },\n    render,\n  );\n}\n\ntype Level = 1 | 2 | 3 | 4 | 5 | 6;\n\nconst DEFAULT_SIZE: Record<Level, NonNullable<HeadingVariants[\"size\"]>> = {\n  1: \"xl\",\n  2: \"lg\",\n  3: \"md\",\n  4: \"sm\",\n  5: \"sm\",\n  6: \"sm\",\n};\n\nexport interface HeadingProps extends ComponentProps<\"h2\">, HeadingVariants {\n  /** The semantic heading level. Visual size follows it unless `size` is set. */\n  level?: Level;\n  render?: RenderProp;\n}\n\nexport function Heading({ level = 2, size, uppercase, className, render, ...props }: HeadingProps) {\n  const resolvedSize = size ?? DEFAULT_SIZE[level];\n  return renderElement(\n    `h${level}`,\n    {\n      ...props,\n      \"data-size\": resolvedSize,\n      className: heading({ size: resolvedSize, uppercase, class: className }),\n    },\n    render,\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "foundation"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": false,
+    "exports": [
+      "Heading",
+      "Text"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/text"
+  }
+}

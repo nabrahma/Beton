@@ -1,0 +1,518 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "beton",
+  "homepage": "https://beton.dev",
+  "items": [
+    {
+      "name": "theme",
+      "type": "registry:theme",
+      "title": "Béton theme",
+      "description": "Design tokens: palette, semantic colours, type scale, radii, hard shadows and motion.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "cssVars": {
+        "theme": {
+          "color-ink": "#000000",
+          "color-paper": "#f5f5dc",
+          "color-white": "#ffffff",
+          "color-teal": "#00c2cb",
+          "color-magenta": "#ff00ff",
+          "color-yellow": "#ffc700",
+          "color-mint": "#3edba0",
+          "color-grey": "#d4d4d4",
+          "color-grey-ink": "#3d3d3d",
+          "color-foreground": "var(--color-ink)",
+          "color-surface": "var(--color-paper)",
+          "color-raised": "var(--color-white)",
+          "color-border": "var(--color-ink)",
+          "color-primary": "var(--color-teal)",
+          "color-secondary": "var(--color-yellow)",
+          "color-danger": "var(--color-magenta)",
+          "color-success": "var(--color-mint)",
+          "color-warning": "var(--color-yellow)",
+          "color-disabled": "var(--color-grey)",
+          "color-disabled-foreground": "var(--color-grey-ink)",
+          "color-focus": "var(--color-ink)",
+          "color-focus-gap": "var(--color-white)",
+          "font-display": "\"Archivo\", \"Archivo Variable\", ui-sans-serif, system-ui, sans-serif",
+          "font-sans": "\"Public Sans\", \"Public Sans Variable\", ui-sans-serif, system-ui, sans-serif",
+          "font-mono": "\"JetBrains Mono\", \"JetBrains Mono Variable\", ui-monospace, \"SFMono-Regular\", Menlo, Consolas, monospace",
+          "text-h1": "6rem",
+          "text-h1--line-height": "0.95",
+          "text-h1--letter-spacing": "-0.03em",
+          "text-h1--font-weight": "900",
+          "text-h2": "4rem",
+          "text-h2--line-height": "1",
+          "text-h2--letter-spacing": "-0.02em",
+          "text-h2--font-weight": "900",
+          "text-h3": "3rem",
+          "text-h3--line-height": "1.05",
+          "text-h3--letter-spacing": "-0.01em",
+          "text-h3--font-weight": "800",
+          "text-h4": "2rem",
+          "text-h4--line-height": "1.1",
+          "text-h4--letter-spacing": "0em",
+          "text-h4--font-weight": "800",
+          "text-body": "1.125rem",
+          "text-body--line-height": "1.6",
+          "text-caption": "0.875rem",
+          "text-caption--line-height": "1.45",
+          "radius-*": "initial",
+          "radius-md": "12px",
+          "radius-lg": "24px",
+          "shadow-*": "initial",
+          "shadow-sm": "4px 4px 0 0 var(--color-ink)",
+          "shadow-lg": "12px 12px 0 0 var(--color-ink)",
+          "ease-*": "initial",
+          "ease-linear": "linear",
+          "animate-spin-stepped": "spin-stepped 960ms steps(8, end) infinite",
+          "animate-blink": "blink 1s steps(1, end) infinite"
+        }
+      },
+      "css": {
+        "@keyframes spin-stepped": {
+          "to": {
+            "transform": "rotate(360deg)"
+          }
+        },
+        "@keyframes blink": {
+          "50%": {
+            "opacity": "0"
+          }
+        },
+        "@layer base": {
+          "html": {
+            "color-scheme": "light",
+            "-webkit-text-size-adjust": "100%"
+          },
+          "body": {
+            "background-color": "var(--color-surface)",
+            "color": "var(--color-foreground)",
+            "font-family": "var(--font-sans)",
+            "-webkit-font-smoothing": "antialiased"
+          },
+          "::selection": {
+            "background-color": "var(--color-secondary)",
+            "color": "var(--color-ink)"
+          },
+          "@media (prefers-reduced-motion: reduce)": {
+            "*, *::before, *::after": {
+              "animation-duration": "0.01ms !important",
+              "animation-iteration-count": "1 !important",
+              "transition-duration": "0.01ms !important",
+              "scroll-behavior": "auto !important"
+            }
+          }
+        }
+      },
+      "docs": "Load Archivo, Public Sans and JetBrains Mono, for example with next/font or Fontsource.",
+      "categories": [
+        "theme"
+      ]
+    },
+    {
+      "name": "core",
+      "type": "registry:lib",
+      "title": "Béton core",
+      "description": "Class merging, shared interaction styles and the render prop helper.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [
+        "@base-ui/react",
+        "tailwind-merge",
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "https://beton.dev/r/theme.json"
+      ],
+      "categories": [
+        "lib"
+      ],
+      "files": [
+        {
+          "path": "registry/beton/lib/tv.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/tv.ts"
+        },
+        {
+          "path": "registry/beton/lib/shared.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/shared.ts"
+        },
+        {
+          "path": "registry/beton/lib/render-element.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/render-element.ts"
+        }
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "A profile image that falls back to initials when the image is missing or fails.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "foundation"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "Avatar"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/avatar"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/avatar.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/avatar.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/avatar.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/avatar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "A short status or category label in a monospace sticker.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "foundation"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": false,
+        "exports": [
+          "Badge"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/badge"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/badge.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/badge.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/badge.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/badge.tsx"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "Triggers an action. Presses down by exactly its shadow offset.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json",
+        "https://beton.dev/r/spinner.json"
+      ],
+      "categories": [
+        "foundation"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "Button"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/button"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/button.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/button.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/button.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "A bordered container with a hard shadow, composed from header, body and footer parts.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "foundation"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": false,
+        "exports": [
+          "Card"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/card"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/card.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/card.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/card.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "A single-line text field with a thick stroke and hard shadow.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "foundation"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "Input"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/input"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/input.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/input.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/input.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/input.tsx"
+        }
+      ]
+    },
+    {
+      "name": "kbd",
+      "type": "registry:ui",
+      "title": "Kbd",
+      "description": "Displays a keyboard key or shortcut.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "foundation"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": false,
+        "exports": [
+          "Kbd"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/kbd"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/kbd.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/kbd.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/kbd.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/kbd.tsx"
+        }
+      ]
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label",
+      "description": "Names a form control, with optional required marker.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "foundation"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": false,
+        "exports": [
+          "Label"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/label"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/label.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/label.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/label.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/label.tsx"
+        }
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "A solid ink rule in three stroke weights, horizontal or vertical.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "foundation"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": false,
+        "exports": [
+          "Separator"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/separator"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/separator.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/separator.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/separator.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/separator.tsx"
+        }
+      ]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "title": "Spinner",
+      "description": "A stepped, eight-block loading indicator. No smooth rotation.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "foundation"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": false,
+        "exports": [
+          "Spinner"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/spinner"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/spinner.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/spinner.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/spinner.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/spinner.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text",
+      "type": "registry:ui",
+      "title": "Text & Heading",
+      "description": "Body copy and poster-scale headings from the Béton type scale.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "foundation"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": false,
+        "exports": [
+          "Heading",
+          "Text"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/text"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/text.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/text.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/text.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "all",
+      "type": "registry:item",
+      "title": "Every Béton component",
+      "description": "Installs the theme, core and every component.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "registryDependencies": [
+        "https://beton.dev/r/avatar.json",
+        "https://beton.dev/r/badge.json",
+        "https://beton.dev/r/button.json",
+        "https://beton.dev/r/card.json",
+        "https://beton.dev/r/input.json",
+        "https://beton.dev/r/kbd.json",
+        "https://beton.dev/r/label.json",
+        "https://beton.dev/r/separator.json",
+        "https://beton.dev/r/spinner.json",
+        "https://beton.dev/r/text.json"
+      ],
+      "categories": [
+        "bundle"
+      ]
+    }
+  ]
+}

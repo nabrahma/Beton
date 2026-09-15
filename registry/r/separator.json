@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "separator",
+  "type": "registry:ui",
+  "title": "Separator",
+  "description": "A solid ink rule in three stroke weights, horizontal or vertical.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/separator.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/separator.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const separator = tv({\n  base: \"shrink-0 border-0 bg-border\",\n  variants: {\n    orientation: {\n      horizontal: \"w-full\",\n      vertical: \"self-stretch\",\n    },\n    size: {\n      sm: \"\",\n      md: \"\",\n      lg: \"\",\n    },\n  },\n  compoundVariants: [\n    { orientation: \"horizontal\", size: \"sm\", class: \"h-0.5\" },\n    { orientation: \"horizontal\", size: \"md\", class: \"h-0.75\" },\n    { orientation: \"horizontal\", size: \"lg\", class: \"h-1.25\" },\n    { orientation: \"vertical\", size: \"sm\", class: \"w-0.5\" },\n    { orientation: \"vertical\", size: \"md\", class: \"w-0.75\" },\n    { orientation: \"vertical\", size: \"lg\", class: \"w-1.25\" },\n  ],\n  defaultVariants: {\n    orientation: \"horizontal\",\n    size: \"md\",\n  },\n});\n\nexport type SeparatorVariants = VariantProps<typeof separator>;\n"
+    },
+    {
+      "path": "registry/beton/ui/separator.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/separator.tsx",
+      "content": "import { separator, type SeparatorVariants } from \"@/lib/beton/recipes/separator.recipe\";\nimport type { ComponentProps } from \"react\";\nimport { renderElement, type RenderProp } from \"@/lib/beton/render-element\";\n\nexport interface SeparatorProps extends ComponentProps<\"div\">, SeparatorVariants {\n  /**\n   * A decorative separator is hidden from assistive technology. Set to `false`\n   * when the separator divides meaningful groups of content.\n   */\n  decorative?: boolean;\n  render?: RenderProp;\n}\n\nexport function Separator({\n  orientation = \"horizontal\",\n  size = \"md\",\n  decorative = true,\n  className,\n  render,\n  ...props\n}: SeparatorProps) {\n  const semantics = decorative\n    ? { role: \"none\" }\n    : { role: \"separator\", \"aria-orientation\": orientation };\n\n  return renderElement(\n    \"div\",\n    {\n      ...semantics,\n      ...props,\n      \"data-orientation\": orientation,\n      \"data-size\": size,\n      className: separator({ orientation, size, class: className }),\n    },\n    render,\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "foundation"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": false,
+    "exports": [
+      "Separator"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/separator"
+  }
+}

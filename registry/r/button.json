@@ -1,0 +1,40 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button",
+  "type": "registry:ui",
+  "title": "Button",
+  "description": "Triggers an action. Presses down by exactly its shadow offset.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json",
+    "https://beton.dev/r/spinner.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/button.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/button.recipe.ts",
+      "content": "import { focusRing, hitArea, pressable } from \"@/lib/beton/shared\";\nimport { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const button = tv({\n  base: [\n    \"relative inline-flex shrink-0 cursor-pointer select-none items-center justify-center whitespace-nowrap\",\n    \"border-3 border-border font-display font-extrabold uppercase tracking-wide text-foreground\",\n    focusRing,\n    // Disabled: flat grey. A loading button keeps its fill and sits pressed instead.\n    \"not-data-loading:data-disabled:cursor-not-allowed not-data-loading:data-disabled:border-disabled-foreground not-data-loading:data-disabled:bg-disabled not-data-loading:data-disabled:text-disabled-foreground not-data-loading:data-disabled:shadow-none not-data-loading:data-disabled:translate-none\",\n    \"data-loading:cursor-progress data-loading:translate-x-1 data-loading:translate-y-1 data-loading:shadow-none\",\n  ],\n  variants: {\n    variant: {\n      primary: [\"bg-primary\", pressable],\n      secondary: [\"bg-raised\", pressable],\n      ghost: [\n        \"border-transparent bg-transparent shadow-none\",\n        \"hover:border-border active:bg-secondary data-pressed:bg-secondary\",\n      ],\n      danger: [\"bg-danger\", pressable],\n    },\n    size: {\n      sm: [\"h-9 gap-1.5 px-3 text-sm\", hitArea],\n      md: \"h-11 gap-2 px-5 text-base\",\n      lg: \"h-14 gap-2.5 px-7 text-lg\",\n    },\n    iconOnly: {\n      true: \"px-0\",\n    },\n  },\n  compoundVariants: [\n    { iconOnly: true, size: \"sm\", class: \"w-9\" },\n    { iconOnly: true, size: \"md\", class: \"w-11\" },\n    { iconOnly: true, size: \"lg\", class: \"w-14\" },\n  ],\n  defaultVariants: {\n    variant: \"primary\",\n    size: \"md\",\n    iconOnly: false,\n  },\n});\n\nexport type ButtonVariants = VariantProps<typeof button>;\n"
+    },
+    {
+      "path": "registry/beton/ui/button.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/button.tsx",
+      "content": "\"use client\";\n\nimport { Button as BaseButton } from \"@base-ui/react/button\";\nimport { button, type ButtonVariants } from \"@/lib/beton/recipes/button.recipe\";\nimport type { ReactNode } from \"react\";\nimport { Spinner } from \"@/components/ui/beton/spinner\";\nimport { dataAttr } from \"@/lib/beton/render-element\";\n\nexport interface ButtonProps extends Omit<BaseButton.Props, \"className\">, ButtonVariants {\n  className?: string;\n  /** Shows a spinner, keeps focus, and blocks activation while an action runs. */\n  loading?: boolean;\n  /** Accessible text announced while loading. */\n  loadingLabel?: string;\n  /** Renders a square button for a single icon. Requires `aria-label`. */\n  iconOnly?: boolean;\n  children?: ReactNode;\n}\n\nexport function Button({\n  variant = \"primary\",\n  size = \"md\",\n  iconOnly = false,\n  loading = false,\n  loadingLabel = \"Loading\",\n  disabled = false,\n  focusableWhenDisabled,\n  className,\n  children,\n  ...props\n}: ButtonProps) {\n  return (\n    <BaseButton\n      {...props}\n      disabled={disabled || loading}\n      focusableWhenDisabled={focusableWhenDisabled ?? loading}\n      aria-busy={loading || undefined}\n      data-variant={variant}\n      data-size={size}\n      data-loading={dataAttr(loading)}\n      className={button({ variant, size, iconOnly, class: className })}\n    >\n      {loading ? <Spinner role=\"none\" size=\"sm\" label={loadingLabel} /> : null}\n      {loading && iconOnly ? null : children}\n    </BaseButton>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "foundation"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "Button"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/button"
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "theme",
+  "type": "registry:theme",
+  "title": "Béton theme",
+  "description": "Design tokens: palette, semantic colours, type scale, radii, hard shadows and motion.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "cssVars": {
+    "theme": {
+      "color-ink": "#000000",
+      "color-paper": "#f5f5dc",
+      "color-white": "#ffffff",
+      "color-teal": "#00c2cb",
+      "color-magenta": "#ff00ff",
+      "color-yellow": "#ffc700",
+      "color-mint": "#3edba0",
+      "color-grey": "#d4d4d4",
+      "color-grey-ink": "#3d3d3d",
+      "color-foreground": "var(--color-ink)",
+      "color-surface": "var(--color-paper)",
+      "color-raised": "var(--color-white)",
+      "color-border": "var(--color-ink)",
+      "color-primary": "var(--color-teal)",
+      "color-secondary": "var(--color-yellow)",
+      "color-danger": "var(--color-magenta)",
+      "color-success": "var(--color-mint)",
+      "color-warning": "var(--color-yellow)",
+      "color-disabled": "var(--color-grey)",
+      "color-disabled-foreground": "var(--color-grey-ink)",
+      "color-focus": "var(--color-ink)",
+      "color-focus-gap": "var(--color-white)",
+      "font-display": "\"Archivo\", \"Archivo Variable\", ui-sans-serif, system-ui, sans-serif",
+      "font-sans": "\"Public Sans\", \"Public Sans Variable\", ui-sans-serif, system-ui, sans-serif",
+      "font-mono": "\"JetBrains Mono\", \"JetBrains Mono Variable\", ui-monospace, \"SFMono-Regular\", Menlo, Consolas, monospace",
+      "text-h1": "6rem",
+      "text-h1--line-height": "0.95",
+      "text-h1--letter-spacing": "-0.03em",
+      "text-h1--font-weight": "900",
+      "text-h2": "4rem",
+      "text-h2--line-height": "1",
+      "text-h2--letter-spacing": "-0.02em",
+      "text-h2--font-weight": "900",
+      "text-h3": "3rem",
+      "text-h3--line-height": "1.05",
+      "text-h3--letter-spacing": "-0.01em",
+      "text-h3--font-weight": "800",
+      "text-h4": "2rem",
+      "text-h4--line-height": "1.1",
+      "text-h4--letter-spacing": "0em",
+      "text-h4--font-weight": "800",
+      "text-body": "1.125rem",
+      "text-body--line-height": "1.6",
+      "text-caption": "0.875rem",
+      "text-caption--line-height": "1.45",
+      "radius-*": "initial",
+      "radius-md": "12px",
+      "radius-lg": "24px",
+      "shadow-*": "initial",
+      "shadow-sm": "4px 4px 0 0 var(--color-ink)",
+      "shadow-lg": "12px 12px 0 0 var(--color-ink)",
+      "ease-*": "initial",
+      "ease-linear": "linear",
+      "animate-spin-stepped": "spin-stepped 960ms steps(8, end) infinite",
+      "animate-blink": "blink 1s steps(1, end) infinite"
+    }
+  },
+  "css": {
+    "@keyframes spin-stepped": {
+      "to": {
+        "transform": "rotate(360deg)"
+      }
+    },
+    "@keyframes blink": {
+      "50%": {
+        "opacity": "0"
+      }
+    },
+    "@layer base": {
+      "html": {
+        "color-scheme": "light",
+        "-webkit-text-size-adjust": "100%"
+      },
+      "body": {
+        "background-color": "var(--color-surface)",
+        "color": "var(--color-foreground)",
+        "font-family": "var(--font-sans)",
+        "-webkit-font-smoothing": "antialiased"
+      },
+      "::selection": {
+        "background-color": "var(--color-secondary)",
+        "color": "var(--color-ink)"
+      },
+      "@media (prefers-reduced-motion: reduce)": {
+        "*, *::before, *::after": {
+          "animation-duration": "0.01ms !important",
+          "animation-iteration-count": "1 !important",
+          "transition-duration": "0.01ms !important",
+          "scroll-behavior": "auto !important"
+        }
+      }
+    }
+  },
+  "docs": "Load Archivo, Public Sans and JetBrains Mono, for example with next/font or Fontsource.",
+  "categories": [
+    "theme"
+  ]
+}

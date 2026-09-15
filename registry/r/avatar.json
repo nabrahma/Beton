@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar",
+  "type": "registry:ui",
+  "title": "Avatar",
+  "description": "A profile image that falls back to initials when the image is missing or fails.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/avatar.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/avatar.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const avatar = tv({\n  slots: {\n    root: [\n      \"relative inline-flex shrink-0 select-none items-center justify-center overflow-hidden\",\n      \"rounded-md border-3 border-border align-middle font-display font-extrabold uppercase text-foreground\",\n    ],\n    image: \"size-full object-cover\",\n    fallback: \"flex size-full items-center justify-center\",\n  },\n  variants: {\n    variant: {\n      primary: { root: \"bg-primary\" },\n      secondary: { root: \"bg-secondary\" },\n      ghost: { root: \"bg-raised\" },\n      danger: { root: \"bg-danger\" },\n    },\n    size: {\n      sm: { root: \"size-8 border-2 text-xs\" },\n      md: { root: \"size-11 text-sm\" },\n      lg: { root: \"size-16 text-xl\" },\n    },\n  },\n  defaultVariants: {\n    variant: \"secondary\",\n    size: \"md\",\n  },\n});\n\nexport type AvatarVariants = VariantProps<typeof avatar>;\n"
+    },
+    {
+      "path": "registry/beton/ui/avatar.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/avatar.tsx",
+      "content": "\"use client\";\n\nimport { Avatar as BaseAvatar } from \"@base-ui/react/avatar\";\nimport { avatar, type AvatarVariants } from \"@/lib/beton/recipes/avatar.recipe\";\nimport type { ReactNode } from \"react\";\n\nexport interface AvatarProps\n  extends Omit<BaseAvatar.Root.Props, \"className\" | \"children\">, AvatarVariants {\n  className?: string;\n  /** Image URL. When missing or broken, the fallback is shown. */\n  src?: string;\n  /** Describes the person or entity. Used as the image alt text and the fallback's accessible name. */\n  alt: string;\n  /** Shown while the image loads or when it fails. Defaults to initials derived from `alt`. */\n  fallback?: ReactNode;\n  /** Milliseconds to wait before showing the fallback, to avoid a flash on fast connections. */\n  fallbackDelay?: number;\n}\n\nexport function initials(name: string): string {\n  const parts = name.trim().split(/\\s+/).filter(Boolean);\n  const first = parts[0]?.[0] ?? \"\";\n  const last = parts.length > 1 ? (parts[parts.length - 1]?.[0] ?? \"\") : \"\";\n  return (first + last).toUpperCase();\n}\n\nexport function Avatar({\n  variant = \"secondary\",\n  size = \"md\",\n  src,\n  alt,\n  fallback,\n  fallbackDelay,\n  className,\n  ...props\n}: AvatarProps) {\n  const styles = avatar({ variant, size });\n  return (\n    <BaseAvatar.Root\n      {...props}\n      data-variant={variant}\n      data-size={size}\n      className={styles.root({ class: className })}\n    >\n      {src ? <BaseAvatar.Image src={src} alt={alt} className={styles.image()} /> : null}\n      <BaseAvatar.Fallback\n        delay={src ? fallbackDelay : undefined}\n        role=\"img\"\n        aria-label={alt}\n        className={styles.fallback()}\n      >\n        <span aria-hidden=\"true\">{fallback ?? initials(alt)}</span>\n      </BaseAvatar.Fallback>\n    </BaseAvatar.Root>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "foundation"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "Avatar"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/avatar"
+  }
+}

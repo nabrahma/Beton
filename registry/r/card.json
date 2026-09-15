@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card",
+  "type": "registry:ui",
+  "title": "Card",
+  "description": "A bordered container with a hard shadow, composed from header, body and footer parts.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/card.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/card.recipe.ts",
+      "content": "import { focusRing } from \"@/lib/beton/shared\";\nimport { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const card = tv({\n  slots: {\n    root: \"flex flex-col rounded-md border-3 border-border text-foreground\",\n    header: \"flex flex-col gap-1.5 p-6 pb-0\",\n    title: \"font-display text-2xl font-extrabold leading-tight tracking-tight\",\n    description: \"text-base text-foreground\",\n    body: \"flex flex-col gap-4 p-6\",\n    footer: \"mt-auto flex flex-wrap items-center gap-3 border-t-3 border-border p-6\",\n  },\n  variants: {\n    variant: {\n      primary: { root: \"bg-primary\" },\n      secondary: { root: \"bg-secondary\" },\n      ghost: { root: \"bg-raised\" },\n      danger: { root: \"bg-danger\" },\n    },\n    elevation: {\n      none: { root: \"shadow-none\" },\n      sm: { root: \"shadow-sm\" },\n      lg: { root: \"shadow-lg\" },\n    },\n    interactive: {\n      true: {\n        root: [\n          \"cursor-pointer transition-[translate,box-shadow] duration-70 ease-linear motion-reduce:transition-none\",\n          focusRing,\n        ],\n      },\n    },\n  },\n  compoundVariants: [\n    {\n      interactive: true,\n      elevation: \"sm\",\n      class: { root: \"active:translate-x-1 active:translate-y-1 active:shadow-none\" },\n    },\n    {\n      interactive: true,\n      elevation: \"lg\",\n      class: { root: \"active:translate-x-3 active:translate-y-3 active:shadow-none\" },\n    },\n  ],\n  defaultVariants: {\n    variant: \"ghost\",\n    elevation: \"sm\",\n    interactive: false,\n  },\n});\n\nexport type CardVariants = VariantProps<typeof card>;\n"
+    },
+    {
+      "path": "registry/beton/ui/card.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/card.tsx",
+      "content": "import { card, type CardVariants } from \"@/lib/beton/recipes/card.recipe\";\nimport type { ComponentProps } from \"react\";\nimport { renderElement, type RenderProp } from \"@/lib/beton/render-element\";\n\nconst slots = card();\n\nexport interface CardProps extends ComponentProps<\"div\">, CardVariants {\n  render?: RenderProp;\n}\n\nfunction CardRoot({\n  variant = \"ghost\",\n  elevation = \"sm\",\n  interactive = false,\n  className,\n  render,\n  ...props\n}: CardProps) {\n  return renderElement(\n    \"div\",\n    {\n      ...props,\n      \"data-variant\": variant,\n      className: card({ variant, elevation, interactive }).root({ class: className }),\n    },\n    render,\n  );\n}\n\nexport interface CardPartProps extends ComponentProps<\"div\"> {\n  render?: RenderProp;\n}\n\nfunction CardHeader({ className, render, ...props }: CardPartProps) {\n  return renderElement(\"div\", { ...props, className: slots.header({ class: className }) }, render);\n}\n\nexport interface CardTitleProps extends ComponentProps<\"h3\"> {\n  render?: RenderProp;\n}\n\nfunction CardTitle({ className, render, ...props }: CardTitleProps) {\n  return renderElement(\"h3\", { ...props, className: slots.title({ class: className }) }, render);\n}\n\nexport interface CardDescriptionProps extends ComponentProps<\"p\"> {\n  render?: RenderProp;\n}\n\nfunction CardDescription({ className, render, ...props }: CardDescriptionProps) {\n  return renderElement(\n    \"p\",\n    { ...props, className: slots.description({ class: className }) },\n    render,\n  );\n}\n\nfunction CardBody({ className, render, ...props }: CardPartProps) {\n  return renderElement(\"div\", { ...props, className: slots.body({ class: className }) }, render);\n}\n\nfunction CardFooter({ className, render, ...props }: CardPartProps) {\n  return renderElement(\"div\", { ...props, className: slots.footer({ class: className }) }, render);\n}\n\nexport const Card = Object.assign(CardRoot, {\n  Header: CardHeader,\n  Title: CardTitle,\n  Description: CardDescription,\n  Body: CardBody,\n  Footer: CardFooter,\n});\n"
+    }
+  ],
+  "categories": [
+    "foundation"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": false,
+    "exports": [
+      "Card"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/card"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner",
+  "type": "registry:ui",
+  "title": "Spinner",
+  "description": "A stepped, eight-block loading indicator. No smooth rotation.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/spinner.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/spinner.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const spinner = tv({\n  slots: {\n    root: \"inline-flex items-center gap-2 text-foreground\",\n    icon: \"shrink-0 animate-spin-stepped fill-current motion-reduce:animate-none\",\n    label: \"font-mono text-sm font-bold uppercase\",\n  },\n  variants: {\n    size: {\n      sm: { icon: \"size-4\" },\n      md: { icon: \"size-6\" },\n      lg: { icon: \"size-10\", label: \"text-base\" },\n    },\n    showLabel: {\n      true: {},\n      false: { label: \"sr-only\" },\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n    showLabel: false,\n  },\n});\n\nexport type SpinnerVariants = VariantProps<typeof spinner>;\n"
+    },
+    {
+      "path": "registry/beton/ui/spinner.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/spinner.tsx",
+      "content": "import { spinner, type SpinnerVariants } from \"@/lib/beton/recipes/spinner.recipe\";\nimport type { ComponentProps } from \"react\";\n\nexport interface SpinnerProps extends Omit<ComponentProps<\"span\">, \"children\">, SpinnerVariants {\n  /** Text announced to assistive technology. Visible when `showLabel` is set. */\n  label?: string;\n}\n\nconst BLOCKS = [0, 1, 2, 3, 4, 5, 6, 7];\n\nexport function Spinner({\n  size = \"md\",\n  showLabel = false,\n  label = \"Loading\",\n  className,\n  ...props\n}: SpinnerProps) {\n  const styles = spinner({ size, showLabel });\n  return (\n    <span role=\"status\" data-size={size} {...props} className={styles.root({ class: className })}>\n      <svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\" className={styles.icon()}>\n        {BLOCKS.map((i) => (\n          <rect\n            key={i}\n            x=\"10.5\"\n            y=\"1\"\n            width=\"3\"\n            height=\"6\"\n            transform={`rotate(${i * 45} 12 12)`}\n            opacity={i === 0 ? 1 : 0.2 + (i / BLOCKS.length) * 0.8}\n          />\n        ))}\n      </svg>\n      <span className={styles.label()}>{label}</span>\n    </span>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "foundation"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": false,
+    "exports": [
+      "Spinner"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/spinner"
+  }
+}
