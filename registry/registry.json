@@ -138,6 +138,11 @@
           "target": "@lib/beton/shared.ts"
         },
         {
+          "path": "registry/beton/lib/icons.tsx",
+          "type": "registry:lib",
+          "target": "@lib/beton/icons.tsx"
+        },
+        {
           "path": "registry/beton/lib/render-element.ts",
           "type": "registry:lib",
           "target": "@lib/beton/render-element.ts"
@@ -286,6 +291,182 @@
       ]
     },
     {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "A square toggle for independent choices, with an indeterminate state.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "forms"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "Checkbox"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/checkbox"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/checkbox.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/checkbox.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/checkbox.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/checkbox.tsx"
+        }
+      ]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "title": "Field",
+      "description": "Label, control, description and error message, wired together with validation.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json",
+        "https://beton.dev/r/input.json"
+      ],
+      "categories": [
+        "forms"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "Field"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/field"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/field.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/field.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/field.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/field.tsx"
+        }
+      ]
+    },
+    {
+      "name": "fieldset",
+      "type": "registry:ui",
+      "title": "Fieldset",
+      "description": "Groups related controls under a shared legend.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json",
+        "https://beton.dev/r/field.json"
+      ],
+      "categories": [
+        "forms"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "Fieldset"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/fieldset"
+      },
+      "files": [
+        {
+          "path": "registry/beton/ui/fieldset.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/fieldset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "file-upload",
+      "type": "registry:ui",
+      "title": "File Upload",
+      "description": "A drop zone backed by a native file input, with a removable file list.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json",
+        "https://beton.dev/r/button.json"
+      ],
+      "categories": [
+        "forms"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "FileUpload"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/file-upload"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/file-upload.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/file-upload.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/file-upload.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/file-upload.tsx"
+        }
+      ]
+    },
+    {
+      "name": "form",
+      "type": "registry:ui",
+      "title": "Form",
+      "description": "A form that validates its fields together and focuses the first error.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "forms"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "Form"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/form"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/form.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/form.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/form.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/form.tsx"
+        }
+      ]
+    },
+    {
       "name": "input",
       "type": "registry:ui",
       "title": "Input",
@@ -390,6 +571,187 @@
       ]
     },
     {
+      "name": "number-input",
+      "type": "registry:ui",
+      "title": "Number Input",
+      "description": "A numeric field with stepper buttons, limits and locale formatting.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "forms"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "NumberInput"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/number-input"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/number-input.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/number-input.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/number-input.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/number-input.tsx"
+        }
+      ]
+    },
+    {
+      "name": "otp-input",
+      "type": "registry:ui",
+      "title": "OTP Input",
+      "description": "Single-character slots for one-time codes, with paste and SMS autofill.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "forms"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "OtpInput"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/otp-input"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/otp-input.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/otp-input.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/otp-input.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/otp-input.tsx"
+        }
+      ]
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "Radio Group",
+      "description": "Pick exactly one option from a short list.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "forms"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "RadioGroup"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/radio-group"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/radio-group.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/radio-group.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/radio-group.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/radio-group.tsx"
+        }
+      ]
+    },
+    {
+      "name": "search-input",
+      "type": "registry:ui",
+      "title": "Search Input",
+      "description": "A search field with an icon and a clear button.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json",
+        "https://beton.dev/r/button.json"
+      ],
+      "categories": [
+        "forms"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "SearchInput"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/search-input"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/search-input.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/search-input.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/search-input.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/search-input.tsx"
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "A custom listbox for choosing from a set of options.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "forms"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "Select"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/select"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/select.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/select.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/select.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/select.tsx"
+        }
+      ]
+    },
+    {
       "name": "separator",
       "type": "registry:ui",
       "title": "Separator",
@@ -424,6 +786,42 @@
       ]
     },
     {
+      "name": "slider",
+      "type": "registry:ui",
+      "title": "Slider",
+      "description": "Choose a value or range by dragging a square thumb along a track.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "forms"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "Slider"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/slider"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/slider.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/slider.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/slider.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/slider.tsx"
+        }
+      ]
+    },
+    {
       "name": "spinner",
       "type": "registry:ui",
       "title": "Spinner",
@@ -454,6 +852,42 @@
           "path": "registry/beton/ui/spinner.tsx",
           "type": "registry:ui",
           "target": "@ui/beton/spinner.tsx"
+        }
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "An on/off toggle for settings that apply immediately.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "forms"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "Switch"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/switch"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/switch.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/switch.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/switch.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/switch.tsx"
         }
       ]
     },
@@ -493,6 +927,42 @@
       ]
     },
     {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "A multi-line text field that resizes vertically.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "forms"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "Textarea"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/textarea"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/textarea.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/textarea.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/textarea.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/textarea.tsx"
+        }
+      ]
+    },
+    {
       "name": "all",
       "type": "registry:item",
       "title": "Every Béton component",
@@ -503,12 +973,25 @@
         "https://beton.dev/r/badge.json",
         "https://beton.dev/r/button.json",
         "https://beton.dev/r/card.json",
+        "https://beton.dev/r/checkbox.json",
+        "https://beton.dev/r/field.json",
+        "https://beton.dev/r/fieldset.json",
+        "https://beton.dev/r/file-upload.json",
+        "https://beton.dev/r/form.json",
         "https://beton.dev/r/input.json",
         "https://beton.dev/r/kbd.json",
         "https://beton.dev/r/label.json",
+        "https://beton.dev/r/number-input.json",
+        "https://beton.dev/r/otp-input.json",
+        "https://beton.dev/r/radio-group.json",
+        "https://beton.dev/r/search-input.json",
+        "https://beton.dev/r/select.json",
         "https://beton.dev/r/separator.json",
+        "https://beton.dev/r/slider.json",
         "https://beton.dev/r/spinner.json",
-        "https://beton.dev/r/text.json"
+        "https://beton.dev/r/switch.json",
+        "https://beton.dev/r/text.json",
+        "https://beton.dev/r/textarea.json"
       ],
       "categories": [
         "bundle"

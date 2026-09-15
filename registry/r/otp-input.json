@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "otp-input",
+  "type": "registry:ui",
+  "title": "OTP Input",
+  "description": "Single-character slots for one-time codes, with paste and SMS autofill.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/otp-input.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/otp-input.recipe.ts",
+      "content": "import { disabled, fieldSurface, focusRing } from \"@/lib/beton/shared\";\nimport { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const otpInput = tv({\n  slots: {\n    root: \"flex w-fit flex-wrap items-center gap-2\",\n    input: [\n      fieldSurface,\n      // After fieldSurface, so the monospace face wins over its font-sans.\n      \"text-center font-mono font-bold caret-foreground\",\n      \"data-filled:bg-secondary aria-invalid:data-filled:bg-danger/15\",\n      focusRing,\n      disabled,\n    ],\n    separator: \"h-1 w-3 shrink-0 bg-border\",\n  },\n  variants: {\n    size: {\n      sm: { input: \"size-11 text-lg\" },\n      md: { input: \"size-12 text-xl\" },\n      lg: { input: \"size-14 text-2xl\" },\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n});\n\nexport type OtpInputVariants = VariantProps<typeof otpInput>;\n"
+    },
+    {
+      "path": "registry/beton/ui/otp-input.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/otp-input.tsx",
+      "content": "\"use client\";\n\nimport { OTPField } from \"@base-ui/react/otp-field\";\nimport { otpInput, type OtpInputVariants } from \"@/lib/beton/recipes/otp-input.recipe\";\nimport { Fragment, useId } from \"react\";\n\nexport interface OtpInputProps\n  extends Omit<OTPField.Root.Props, \"className\" | \"children\" | \"length\">, OtpInputVariants {\n  className?: string;\n  /** Number of characters. */\n  length?: number;\n  /** Inserts a separator after every `groupSize` characters, e.g. 3 for \"123-456\". */\n  groupSize?: number;\n  /** Accessible name for each slot after the first. */\n  slotLabel?: (index: number, length: number) => string;\n}\n\n/**\n * A one-time code entry split into single-character slots. Supports paste,\n * autofill from SMS and arrow-key navigation. Label it with a `<label htmlFor>`\n * pointing at `id`, with `aria-labelledby`, or with `aria-label`.\n */\nexport function OtpInput({\n  length = 6,\n  groupSize,\n  size = \"md\",\n  className,\n  slotLabel = (index, total) => `Character ${index + 1} of ${total}`,\n  \"aria-label\": ariaLabel,\n  \"aria-labelledby\": ariaLabelledBy,\n  ...props\n}: OtpInputProps) {\n  const styles = otpInput({ size });\n  const labelId = useId();\n  // Base UI names the first slot only through aria-labelledby, so an\n  // aria-label is rendered as a hidden label element and referenced instead.\n  const labelledBy = ariaLabelledBy ?? (ariaLabel ? labelId : undefined);\n\n  return (\n    <>\n      {ariaLabel && !ariaLabelledBy ? (\n        <span id={labelId} hidden>\n          {ariaLabel}\n        </span>\n      ) : null}\n      <OTPField.Root\n        {...props}\n        aria-labelledby={labelledBy}\n        length={length}\n        data-size={size}\n        className={styles.root({ class: className })}\n      >\n        {Array.from({ length }, (_, index) => (\n          <Fragment key={index}>\n            {groupSize && index > 0 && index % groupSize === 0 ? (\n              <OTPField.Separator className={styles.separator()} />\n            ) : null}\n            <OTPField.Input\n              aria-label={index === 0 ? undefined : slotLabel(index, length)}\n              aria-labelledby={index === 0 ? labelledBy : undefined}\n              className={styles.input()}\n            />\n          </Fragment>\n        ))}\n      </OTPField.Root>\n    </>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "forms"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "OtpInput"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/otp-input"
+  }
+}

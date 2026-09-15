@@ -1,0 +1,40 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field",
+  "type": "registry:ui",
+  "title": "Field",
+  "description": "Label, control, description and error message, wired together with validation.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json",
+    "https://beton.dev/r/input.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/field.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/field.recipe.ts",
+      "content": "import { labelText } from \"@/lib/beton/shared\";\nimport { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const field = tv({\n  slots: {\n    root: \"flex w-full flex-col gap-2\",\n    label: [\"inline-flex w-fit items-center gap-1\", labelText],\n    description: \"text-caption text-foreground\",\n    error: [\n      \"flex items-start gap-2 font-bold text-foreground\",\n      \"before:mt-1 before:size-3 before:shrink-0 before:border-2 before:border-border before:bg-danger before:content-['']\",\n    ],\n    fieldset: \"flex w-full min-w-0 flex-col gap-3 border-0 p-0\",\n    legend: [\"mb-1 p-0\", labelText],\n  },\n  variants: {\n    size: {\n      sm: { label: \"text-xs\", description: \"text-xs\", error: \"text-xs\", legend: \"text-xs\" },\n      md: { label: \"text-sm\", error: \"text-sm\", legend: \"text-sm\" },\n      lg: { label: \"text-base\", description: \"text-base\", error: \"text-base\", legend: \"text-base\" },\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n});\n\nexport type FieldVariants = VariantProps<typeof field>;\n"
+    },
+    {
+      "path": "registry/beton/ui/field.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/field.tsx",
+      "content": "\"use client\";\n\nimport { Field as BaseField } from \"@base-ui/react/field\";\nimport { field, type FieldVariants } from \"@/lib/beton/recipes/field.recipe\";\nimport { input } from \"@/lib/beton/recipes/input.recipe\";\nimport { createContext, useContext } from \"react\";\n\nconst FieldContext = createContext<NonNullable<FieldVariants[\"size\"]>>(\"md\");\n\nexport interface FieldProps extends Omit<BaseField.Root.Props, \"className\">, FieldVariants {\n  className?: string;\n}\n\nfunction FieldRoot({ size = \"md\", className, ...props }: FieldProps) {\n  return (\n    <FieldContext.Provider value={size}>\n      <BaseField.Root\n        {...props}\n        data-size={size}\n        className={field({ size }).root({ class: className })}\n      />\n    </FieldContext.Provider>\n  );\n}\n\ntype WithClassName<P> = Omit<P, \"className\"> & { className?: string };\n\nfunction FieldLabel({ className, ...props }: WithClassName<BaseField.Label.Props>) {\n  const size = useContext(FieldContext);\n  return <BaseField.Label {...props} className={field({ size }).label({ class: className })} />;\n}\n\nfunction FieldDescription({ className, ...props }: WithClassName<BaseField.Description.Props>) {\n  const size = useContext(FieldContext);\n  return (\n    <BaseField.Description\n      {...props}\n      className={field({ size }).description({ class: className })}\n    />\n  );\n}\n\nfunction FieldError({ className, ...props }: WithClassName<BaseField.Error.Props>) {\n  const size = useContext(FieldContext);\n  return <BaseField.Error {...props} className={field({ size }).error({ class: className })} />;\n}\n\n/** A text input wired to the field's label, description, error and validation. */\nfunction FieldControl({ className, ...props }: WithClassName<BaseField.Control.Props>) {\n  const size = useContext(FieldContext);\n  return (\n    <BaseField.Control {...props} data-size={size} className={input({ size, class: className })} />\n  );\n}\n\n/**\n * Groups a label, control, description and error message, and runs native or\n * custom validation. Works with Input, Textarea, Select, Checkbox and the other form controls.\n */\nexport const Field = Object.assign(FieldRoot, {\n  Label: FieldLabel,\n  Control: FieldControl,\n  Description: FieldDescription,\n  Error: FieldError,\n});\n"
+    }
+  ],
+  "categories": [
+    "forms"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "Field"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/field"
+  }
+}

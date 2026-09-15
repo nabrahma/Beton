@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox",
+  "type": "registry:ui",
+  "title": "Checkbox",
+  "description": "A square toggle for independent choices, with an indeterminate state.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/checkbox.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/checkbox.recipe.ts",
+      "content": "import { focusRing } from \"@/lib/beton/shared\";\nimport { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const checkbox = tv({\n  slots: {\n    root: [\n      \"relative inline-flex shrink-0 cursor-pointer items-center justify-center\",\n      \"border-3 border-border bg-raised text-foreground\",\n      \"after:absolute after:content-['']\",\n      \"data-invalid:bg-danger/15 data-readonly:cursor-default\",\n      \"data-disabled:cursor-not-allowed data-disabled:border-disabled-foreground data-disabled:bg-disabled data-disabled:text-disabled-foreground\",\n      \"data-disabled:data-checked:bg-disabled data-disabled:data-indeterminate:bg-disabled\",\n      focusRing,\n    ],\n    indicator: \"flex size-full items-center justify-center\",\n    icon: \"size-full\",\n  },\n  variants: {\n    variant: {\n      primary: { root: \"data-checked:bg-primary data-indeterminate:bg-primary\" },\n      secondary: { root: \"data-checked:bg-secondary data-indeterminate:bg-secondary\" },\n      danger: { root: \"data-checked:bg-danger data-indeterminate:bg-danger\" },\n    },\n    size: {\n      // Hit-area extensions bring every size to a 44px target.\n      sm: { root: \"size-5 border-2 after:-inset-3\" },\n      md: { root: \"size-6 after:-inset-2.5\" },\n      lg: { root: \"size-8 after:-inset-1.5\" },\n    },\n  },\n  defaultVariants: {\n    variant: \"primary\",\n    size: \"md\",\n  },\n});\n\nexport type CheckboxVariants = VariantProps<typeof checkbox>;\n"
+    },
+    {
+      "path": "registry/beton/ui/checkbox.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/checkbox.tsx",
+      "content": "\"use client\";\n\nimport { Checkbox as BaseCheckbox } from \"@base-ui/react/checkbox\";\nimport { checkbox, type CheckboxVariants } from \"@/lib/beton/recipes/checkbox.recipe\";\nimport { CheckIcon, MinusIcon } from \"@/lib/beton/icons\";\n\nexport interface CheckboxProps\n  extends Omit<BaseCheckbox.Root.Props, \"className\" | \"children\">, CheckboxVariants {\n  className?: string;\n}\n\n/**\n * A checkbox. Name it by wrapping it in a `<label>` with text, placing it in a\n * `Field`, or passing `aria-label`.\n */\nexport function Checkbox({ variant = \"primary\", size = \"md\", className, ...props }: CheckboxProps) {\n  const styles = checkbox({ variant, size });\n  return (\n    <BaseCheckbox.Root\n      {...props}\n      data-variant={variant}\n      data-size={size}\n      className={styles.root({ class: className })}\n    >\n      <BaseCheckbox.Indicator\n        className={styles.indicator()}\n        render={(indicatorProps, state) => (\n          <span {...indicatorProps}>\n            {state.indeterminate ? (\n              <MinusIcon className={styles.icon()} />\n            ) : (\n              <CheckIcon className={styles.icon()} />\n            )}\n          </span>\n        )}\n      />\n    </BaseCheckbox.Root>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "forms"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "Checkbox"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/checkbox"
+  }
+}

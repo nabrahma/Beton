@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "select",
+  "type": "registry:ui",
+  "title": "Select",
+  "description": "A custom listbox for choosing from a set of options.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/select.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/select.recipe.ts",
+      "content": "import { disabled, fieldSurface, focusRing } from \"@/lib/beton/shared\";\nimport { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const select = tv({\n  slots: {\n    trigger: [\n      \"relative inline-flex w-full min-w-40 cursor-pointer select-none items-center justify-between gap-3 text-left\",\n      fieldSurface,\n      \"transition-[translate,box-shadow] duration-70 ease-linear motion-reduce:transition-none\",\n      \"active:translate-x-1 active:translate-y-1 active:shadow-none\",\n      \"data-popup-open:translate-x-1 data-popup-open:translate-y-1 data-popup-open:shadow-none\",\n      focusRing,\n      disabled,\n    ],\n    value: \"truncate data-placeholder:text-disabled-foreground\",\n    icon: \"flex shrink-0 items-center\",\n    positioner: \"z-50 outline-none\",\n    popup: [\n      \"max-h-(--available-height) min-w-(--anchor-width) overflow-y-auto\",\n      \"border-3 border-border bg-raised text-foreground shadow-lg outline-none\",\n    ],\n    list: \"py-1\",\n    item: [\n      \"relative flex min-h-11 cursor-pointer select-none items-center gap-3 px-3 font-medium outline-none\",\n      \"data-highlighted:bg-secondary data-selected:font-bold\",\n      \"data-disabled:cursor-not-allowed data-disabled:text-disabled-foreground\",\n    ],\n    itemIndicator: \"flex size-4 shrink-0 items-center justify-center\",\n    itemText: \"flex-1\",\n    groupLabel: \"px-3 pt-3 pb-1 font-mono text-xs font-bold uppercase\",\n    separator: \"my-1 h-0.5 bg-border\",\n    label: \"font-display text-sm font-bold uppercase tracking-wide text-foreground\",\n  },\n  variants: {\n    size: {\n      sm: { trigger: \"h-11 px-2.5 text-sm\", item: \"text-sm\" },\n      md: { trigger: \"h-12 px-3 text-base\", item: \"text-base\" },\n      lg: { trigger: \"h-14 px-4 text-lg\", item: \"text-lg\" },\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n});\n\nexport type SelectVariants = VariantProps<typeof select>;\n"
+    },
+    {
+      "path": "registry/beton/ui/select.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/select.tsx",
+      "content": "\"use client\";\n\nimport { Select as BaseSelect } from \"@base-ui/react/select\";\nimport { select, type SelectVariants } from \"@/lib/beton/recipes/select.recipe\";\nimport { createContext, useContext, type ReactNode } from \"react\";\nimport { CheckIcon, ChevronDownIcon } from \"@/lib/beton/icons\";\n\nconst SelectContext = createContext<NonNullable<SelectVariants[\"size\"]>>(\"md\");\n\nfunction useStyles() {\n  return select({ size: useContext(SelectContext) });\n}\n\nexport type SelectProps<\n  Value,\n  Multiple extends boolean | undefined = false,\n> = BaseSelect.Root.Props<Value, Multiple> & SelectVariants;\n\nfunction SelectRoot<Value, Multiple extends boolean | undefined = false>({\n  size = \"md\",\n  ...props\n}: SelectProps<Value, Multiple>) {\n  return (\n    <SelectContext.Provider value={size}>\n      <BaseSelect.Root {...props} />\n    </SelectContext.Provider>\n  );\n}\n\nexport interface SelectTriggerProps extends Omit<\n  BaseSelect.Trigger.Props,\n  \"className\" | \"children\"\n> {\n  className?: string;\n  /** Shown when nothing is selected. */\n  placeholder?: ReactNode;\n  /** Custom rendering of the selected value. */\n  children?: BaseSelect.Value.Props[\"children\"];\n}\n\nfunction SelectTrigger({ className, placeholder, children, ...props }: SelectTriggerProps) {\n  const styles = useStyles();\n  return (\n    <BaseSelect.Trigger {...props} className={styles.trigger({ class: className })}>\n      <BaseSelect.Value className={styles.value()} placeholder={placeholder}>\n        {children}\n      </BaseSelect.Value>\n      <BaseSelect.Icon className={styles.icon()}>\n        <ChevronDownIcon width={18} height={18} />\n      </BaseSelect.Icon>\n    </BaseSelect.Trigger>\n  );\n}\n\nexport interface SelectContentProps extends Omit<BaseSelect.Popup.Props, \"className\"> {\n  className?: string;\n  side?: BaseSelect.Positioner.Props[\"side\"];\n  align?: BaseSelect.Positioner.Props[\"align\"];\n  sideOffset?: number;\n  /** Overlap the trigger with the selected item, like a native select. Off by default. */\n  alignItemWithTrigger?: boolean;\n}\n\nfunction SelectContent({\n  className,\n  children,\n  side = \"bottom\",\n  align = \"start\",\n  sideOffset = 8,\n  alignItemWithTrigger = false,\n  ...props\n}: SelectContentProps) {\n  const styles = useStyles();\n  return (\n    <BaseSelect.Portal>\n      <BaseSelect.Positioner\n        side={side}\n        align={align}\n        sideOffset={sideOffset}\n        alignItemWithTrigger={alignItemWithTrigger}\n        className={styles.positioner()}\n      >\n        <BaseSelect.Popup {...props} className={styles.popup({ class: className })}>\n          <BaseSelect.List className={styles.list()}>{children}</BaseSelect.List>\n        </BaseSelect.Popup>\n      </BaseSelect.Positioner>\n    </BaseSelect.Portal>\n  );\n}\n\nexport interface SelectItemProps extends Omit<BaseSelect.Item.Props, \"className\"> {\n  className?: string;\n}\n\nfunction SelectItem({ className, children, ...props }: SelectItemProps) {\n  const styles = useStyles();\n  return (\n    <BaseSelect.Item {...props} className={styles.item({ class: className })}>\n      <span className={styles.itemIndicator()}>\n        <BaseSelect.ItemIndicator>\n          <CheckIcon width={16} height={16} />\n        </BaseSelect.ItemIndicator>\n      </span>\n      <BaseSelect.ItemText className={styles.itemText()}>{children}</BaseSelect.ItemText>\n    </BaseSelect.Item>\n  );\n}\n\nfunction SelectGroup(props: BaseSelect.Group.Props) {\n  return <BaseSelect.Group {...props} />;\n}\n\nfunction SelectGroupLabel({\n  className,\n  ...props\n}: Omit<BaseSelect.GroupLabel.Props, \"className\"> & { className?: string }) {\n  return (\n    <BaseSelect.GroupLabel {...props} className={useStyles().groupLabel({ class: className })} />\n  );\n}\n\nfunction SelectSeparator({\n  className,\n  ...props\n}: Omit<BaseSelect.Separator.Props, \"className\"> & { className?: string }) {\n  return (\n    <BaseSelect.Separator {...props} className={useStyles().separator({ class: className })} />\n  );\n}\n\nfunction SelectLabel({\n  className,\n  ...props\n}: Omit<BaseSelect.Label.Props, \"className\"> & { className?: string }) {\n  return <BaseSelect.Label {...props} className={useStyles().label({ class: className })} />;\n}\n\n/** Choose one option, or several with `multiple`, from a list. */\nexport const Select = Object.assign(SelectRoot, {\n  Label: SelectLabel,\n  Trigger: SelectTrigger,\n  Content: SelectContent,\n  Item: SelectItem,\n  Group: SelectGroup,\n  GroupLabel: SelectGroupLabel,\n  Separator: SelectSeparator,\n});\n"
+    }
+  ],
+  "categories": [
+    "forms"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "Select"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/select"
+  }
+}

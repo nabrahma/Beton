@@ -1,0 +1,40 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "search-input",
+  "type": "registry:ui",
+  "title": "Search Input",
+  "description": "A search field with an icon and a clear button.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json",
+    "https://beton.dev/r/button.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/search-input.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/search-input.recipe.ts",
+      "content": "import { disabled, fieldSurface, focusRing } from \"@/lib/beton/shared\";\nimport { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const searchInput = tv({\n  slots: {\n    root: \"relative flex w-full items-center\",\n    icon: \"pointer-events-none absolute left-3 shrink-0 text-foreground\",\n    input: [\n      \"w-full min-w-0\",\n      fieldSurface,\n      \"[&::-webkit-search-cancel-button]:appearance-none [&::-webkit-search-decoration]:appearance-none\",\n      focusRing,\n      disabled,\n    ],\n    clear: \"absolute right-1.5\",\n  },\n  variants: {\n    size: {\n      sm: { input: \"h-11 pr-11 pl-9 text-sm\", icon: \"left-2.5 size-4\" },\n      md: { input: \"h-12 pr-12 pl-10 text-base\", icon: \"size-5\" },\n      lg: { input: \"h-14 pr-14 pl-12 text-lg\", icon: \"left-3.5 size-6\", clear: \"right-2\" },\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n});\n\nexport type SearchInputVariants = VariantProps<typeof searchInput>;\n"
+    },
+    {
+      "path": "registry/beton/ui/search-input.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/search-input.tsx",
+      "content": "\"use client\";\n\nimport { Input as BaseInput } from \"@base-ui/react/input\";\nimport { button } from \"@/lib/beton/recipes/button.recipe\";\nimport { searchInput, type SearchInputVariants } from \"@/lib/beton/recipes/search-input.recipe\";\nimport { useRef, useState, type KeyboardEvent, type Ref } from \"react\";\nimport { CloseIcon, SearchIcon } from \"@/lib/beton/icons\";\n\nexport interface SearchInputProps\n  extends\n    Omit<\n      BaseInput.Props,\n      \"className\" | \"size\" | \"type\" | \"value\" | \"defaultValue\" | \"onValueChange\" | \"ref\"\n    >,\n    SearchInputVariants {\n  className?: string;\n  value?: string;\n  defaultValue?: string;\n  onValueChange?: (value: string) => void;\n  /** Called after the clear button or Escape empties the field. */\n  onClear?: () => void;\n  /** Accessible name for the clear button. */\n  clearLabel?: string;\n  /** Ref to the underlying input. `ref` points at the wrapper. */\n  inputRef?: Ref<HTMLInputElement>;\n  ref?: Ref<HTMLDivElement>;\n}\n\n/** A search field with an icon and a clear button. Escape clears it. */\nexport function SearchInput({\n  size = \"md\",\n  value,\n  defaultValue = \"\",\n  onValueChange,\n  onClear,\n  clearLabel = \"Clear search\",\n  disabled,\n  className,\n  inputRef,\n  ref,\n  onKeyDown,\n  ...props\n}: SearchInputProps) {\n  const styles = searchInput({ size });\n  const [inner, setInner] = useState(defaultValue);\n  const controlled = value !== undefined;\n  const current = controlled ? value : inner;\n  const localRef = useRef<HTMLInputElement | null>(null);\n\n  function change(next: string) {\n    if (!controlled) setInner(next);\n    onValueChange?.(next);\n  }\n\n  function clear() {\n    change(\"\");\n    onClear?.();\n  }\n\n  return (\n    <div ref={ref} data-size={size} className={styles.root({ class: className })}>\n      <SearchIcon className={styles.icon()} />\n      <BaseInput\n        {...props}\n        ref={(element) => {\n          const node = element as HTMLInputElement | null;\n          localRef.current = node;\n          if (typeof inputRef === \"function\") inputRef(node);\n          else if (inputRef) inputRef.current = node;\n        }}\n        type=\"search\"\n        value={current}\n        disabled={disabled}\n        onValueChange={(next) => change(next)}\n        onKeyDown={(event: KeyboardEvent<HTMLInputElement>) => {\n          if (event.key === \"Escape\" && current) {\n            event.preventDefault();\n            clear();\n          }\n          onKeyDown?.(event as never);\n        }}\n        className={styles.input()}\n      />\n      {current && !disabled ? (\n        <button\n          type=\"button\"\n          data-size=\"sm\"\n          aria-label={clearLabel}\n          onClick={() => {\n            clear();\n            localRef.current?.focus();\n          }}\n          className={button({\n            variant: \"ghost\",\n            size: \"sm\",\n            iconOnly: true,\n            class: styles.clear(),\n          })}\n        >\n          <CloseIcon width={16} height={16} />\n        </button>\n      ) : null}\n    </div>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "forms"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "SearchInput"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/search-input"
+  }
+}

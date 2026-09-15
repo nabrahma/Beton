@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "slider",
+  "type": "registry:ui",
+  "title": "Slider",
+  "description": "Choose a value or range by dragging a square thumb along a track.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/slider.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/slider.recipe.ts",
+      "content": "import { focusRingWithin } from \"@/lib/beton/shared\";\nimport { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const slider = tv({\n  slots: {\n    root: \"flex w-full flex-col gap-2 data-disabled:cursor-not-allowed\",\n    header: \"flex items-center justify-between gap-4\",\n    label: \"font-display text-sm font-bold uppercase tracking-wide text-foreground\",\n    value: \"font-mono text-sm font-bold tabular-nums text-foreground\",\n    control: \"relative flex w-full touch-none select-none items-center py-4\",\n    track: \"relative w-full grow border-3 border-border bg-raised data-disabled:bg-disabled\",\n    indicator: \"h-full bg-primary data-disabled:bg-disabled-foreground\",\n    thumb: [\n      \"relative border-3 border-border bg-raised shadow-sm\",\n      \"after:absolute after:content-['']\",\n      \"data-dragging:shadow-none\",\n      \"data-disabled:border-disabled-foreground data-disabled:bg-disabled data-disabled:shadow-none\",\n      focusRingWithin,\n    ],\n  },\n  variants: {\n    variant: {\n      primary: { indicator: \"bg-primary\" },\n      secondary: { indicator: \"bg-secondary\" },\n      danger: { indicator: \"bg-danger\" },\n    },\n    size: {\n      sm: { track: \"h-2.5\", thumb: \"size-5 border-2 after:-inset-3\" },\n      md: { track: \"h-3\", thumb: \"size-7 after:-inset-2\" },\n      lg: { track: \"h-4\", thumb: \"size-9 after:-inset-1\" },\n    },\n  },\n  defaultVariants: {\n    variant: \"primary\",\n    size: \"md\",\n  },\n});\n\nexport type SliderVariants = VariantProps<typeof slider>;\n"
+    },
+    {
+      "path": "registry/beton/ui/slider.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/slider.tsx",
+      "content": "\"use client\";\n\nimport { Slider as BaseSlider } from \"@base-ui/react/slider\";\nimport { slider, type SliderVariants } from \"@/lib/beton/recipes/slider.recipe\";\nimport type { ReactNode } from \"react\";\n\nexport interface SliderProps\n  extends Omit<BaseSlider.Root.Props, \"className\" | \"children\">, SliderVariants {\n  className?: string;\n  /** Visible label, associated with every thumb. */\n  label?: ReactNode;\n  /** Shows the formatted value next to the label. */\n  showValue?: boolean;\n  /** Accessible names for each thumb of a range slider, e.g. [\"Minimum\", \"Maximum\"]. */\n  thumbLabels?: string[];\n}\n\n/** Select a value, or a range with an array value, by dragging or with the arrow keys. */\nexport function Slider({\n  variant = \"primary\",\n  size = \"md\",\n  label,\n  showValue = false,\n  thumbLabels,\n  className,\n  \"aria-label\": ariaLabel,\n  ...props\n}: SliderProps) {\n  const styles = slider({ variant, size });\n  const current = props.value ?? props.defaultValue;\n  const count = Array.isArray(current) ? current.length : 1;\n\n  return (\n    <BaseSlider.Root\n      {...props}\n      data-variant={variant}\n      data-size={size}\n      className={styles.root({ class: className })}\n    >\n      {label || showValue ? (\n        <div className={styles.header()}>\n          {label ? <BaseSlider.Label className={styles.label()}>{label}</BaseSlider.Label> : null}\n          {showValue ? <BaseSlider.Value className={styles.value()} /> : null}\n        </div>\n      ) : null}\n      <BaseSlider.Control className={styles.control()}>\n        <BaseSlider.Track className={styles.track()}>\n          <BaseSlider.Indicator className={styles.indicator()} />\n          {Array.from({ length: count }, (_, index) => (\n            <BaseSlider.Thumb\n              key={index}\n              index={index}\n              aria-label={thumbLabels?.[index] ?? (label ? undefined : ariaLabel)}\n              className={styles.thumb()}\n            />\n          ))}\n        </BaseSlider.Track>\n      </BaseSlider.Control>\n    </BaseSlider.Root>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "forms"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "Slider"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/slider"
+  }
+}

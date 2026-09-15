@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "textarea",
+  "type": "registry:ui",
+  "title": "Textarea",
+  "description": "A multi-line text field that resizes vertically.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/textarea.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/textarea.recipe.ts",
+      "content": "import { disabled, fieldSurface, focusRing } from \"@/lib/beton/shared\";\nimport { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const textarea = tv({\n  base: [\n    \"block w-full min-w-0 resize-y\",\n    fieldSurface,\n    \"read-only:shadow-none\",\n    focusRing,\n    disabled,\n  ],\n  variants: {\n    size: {\n      sm: \"min-h-24 px-2.5 py-2 text-sm\",\n      md: \"min-h-28 px-3 py-2.5 text-base\",\n      lg: \"min-h-36 px-4 py-3 text-lg\",\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n});\n\nexport type TextareaVariants = VariantProps<typeof textarea>;\n"
+    },
+    {
+      "path": "registry/beton/ui/textarea.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/textarea.tsx",
+      "content": "\"use client\";\n\nimport { Field } from \"@base-ui/react/field\";\nimport { textarea, type TextareaVariants } from \"@/lib/beton/recipes/textarea.recipe\";\nimport type { ComponentProps } from \"react\";\n\nexport interface TextareaProps\n  extends Omit<ComponentProps<\"textarea\">, \"className\" | \"defaultValue\">, TextareaVariants {\n  className?: string;\n  defaultValue?: string;\n}\n\n/** A multi-line text field. Inside `Field`, it is labelled and validated automatically. */\nexport function Textarea({ size = \"md\", className, ...props }: TextareaProps) {\n  return (\n    <Field.Control\n      {...(props as Field.Control.Props)}\n      render={<textarea />}\n      data-size={size}\n      className={textarea({ size, class: className })}\n    />\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "forms"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "Textarea"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/textarea"
+  }
+}

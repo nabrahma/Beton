@@ -16,7 +16,7 @@
       "path": "registry/beton/recipes/input.recipe.ts",
       "type": "registry:lib",
       "target": "@lib/beton/recipes/input.recipe.ts",
-      "content": "import { disabled, focusRing } from \"@/lib/beton/shared\";\nimport { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const input = tv({\n  base: [\n    \"w-full min-w-0 border-3 border-border bg-raised text-foreground shadow-sm\",\n    \"font-sans placeholder:text-disabled-foreground\",\n    \"file:mr-3 file:border-0 file:bg-transparent file:font-display file:font-bold file:uppercase\",\n    \"aria-invalid:bg-danger/15 data-invalid:bg-danger/15\",\n    \"read-only:shadow-none\",\n    focusRing,\n    disabled,\n  ],\n  variants: {\n    size: {\n      sm: \"h-11 px-2.5 text-sm\",\n      md: \"h-12 px-3 text-base\",\n      lg: \"h-14 px-4 text-lg\",\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n});\n\nexport type InputVariants = VariantProps<typeof input>;\n"
+      "content": "import { disabled, fieldSurface, focusRing } from \"@/lib/beton/shared\";\nimport { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const input = tv({\n  base: [\n    \"w-full min-w-0\",\n    fieldSurface,\n    \"file:mr-3 file:border-0 file:bg-transparent file:font-display file:font-bold file:uppercase\",\n    \"read-only:shadow-none\",\n    focusRing,\n    disabled,\n  ],\n  variants: {\n    size: {\n      sm: \"h-11 px-2.5 text-sm\",\n      md: \"h-12 px-3 text-base\",\n      lg: \"h-14 px-4 text-lg\",\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n});\n\nexport type InputVariants = VariantProps<typeof input>;\n"
     },
     {
       "path": "registry/beton/ui/input.tsx",

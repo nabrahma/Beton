@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radio-group",
+  "type": "registry:ui",
+  "title": "Radio Group",
+  "description": "Pick exactly one option from a short list.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/radio-group.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/radio-group.recipe.ts",
+      "content": "import { focusRing } from \"@/lib/beton/shared\";\nimport { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const radioGroup = tv({\n  slots: {\n    root: \"flex\",\n    item: [\n      \"inline-flex w-fit cursor-pointer items-center gap-3 font-medium text-foreground\",\n      \"has-data-disabled:cursor-not-allowed has-data-disabled:text-disabled-foreground\",\n    ],\n    radio: [\n      \"relative inline-flex shrink-0 items-center justify-center rounded-lg\",\n      \"border-3 border-border bg-raised\",\n      \"after:absolute after:content-['']\",\n      \"data-invalid:bg-danger/15\",\n      \"data-disabled:border-disabled-foreground data-disabled:bg-disabled data-disabled:data-checked:bg-disabled\",\n      focusRing,\n    ],\n    indicator:\n      \"rounded-lg border-2 border-border bg-foreground data-disabled:bg-disabled-foreground\",\n  },\n  variants: {\n    variant: {\n      primary: { radio: \"data-checked:bg-primary\" },\n      secondary: { radio: \"data-checked:bg-secondary\" },\n      danger: { radio: \"data-checked:bg-danger\" },\n    },\n    size: {\n      sm: { radio: \"size-5 border-2 after:-inset-3\", indicator: \"size-2\", item: \"text-sm\" },\n      md: { radio: \"size-6 after:-inset-2.5\", indicator: \"size-2.5\", item: \"text-base\" },\n      lg: { radio: \"size-8 after:-inset-1.5\", indicator: \"size-3.5\", item: \"text-lg\" },\n    },\n    orientation: {\n      vertical: { root: \"flex-col gap-3\" },\n      horizontal: { root: \"flex-row flex-wrap gap-x-6 gap-y-3\" },\n    },\n  },\n  defaultVariants: {\n    variant: \"primary\",\n    size: \"md\",\n    orientation: \"vertical\",\n  },\n});\n\nexport type RadioGroupVariants = VariantProps<typeof radioGroup>;\n"
+    },
+    {
+      "path": "registry/beton/ui/radio-group.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/radio-group.tsx",
+      "content": "\"use client\";\n\nimport { Radio } from \"@base-ui/react/radio\";\nimport { RadioGroup as BaseRadioGroup } from \"@base-ui/react/radio-group\";\nimport { radioGroup, type RadioGroupVariants } from \"@/lib/beton/recipes/radio-group.recipe\";\nimport { createContext, useContext, type ComponentProps, type ReactNode, type Ref } from \"react\";\n\ntype Context = Pick<RadioGroupVariants, \"variant\" | \"size\">;\nconst RadioGroupContext = createContext<Context>({ variant: \"primary\", size: \"md\" });\n\nexport interface RadioGroupProps\n  extends Omit<BaseRadioGroup.Props, \"className\">, RadioGroupVariants {\n  className?: string;\n}\n\nfunction RadioGroupRoot({\n  variant = \"primary\",\n  size = \"md\",\n  orientation = \"vertical\",\n  className,\n  ...props\n}: RadioGroupProps) {\n  return (\n    <RadioGroupContext.Provider value={{ variant, size }}>\n      <BaseRadioGroup\n        {...props}\n        aria-orientation={orientation}\n        data-orientation={orientation}\n        data-size={size}\n        className={radioGroup({ orientation }).root({ class: className })}\n      />\n    </RadioGroupContext.Provider>\n  );\n}\n\nexport interface RadioGroupItemProps extends Omit<ComponentProps<\"label\">, \"children\"> {\n  /** The value submitted when this option is selected. */\n  value: string;\n  disabled?: boolean;\n  readOnly?: boolean;\n  inputRef?: Ref<HTMLInputElement>;\n  children: ReactNode;\n}\n\nfunction RadioGroupItem({\n  value,\n  disabled,\n  readOnly,\n  inputRef,\n  className,\n  children,\n  ...props\n}: RadioGroupItemProps) {\n  const { variant, size } = useContext(RadioGroupContext);\n  const styles = radioGroup({ variant, size });\n  return (\n    <label {...props} className={styles.item({ class: className })}>\n      <Radio.Root\n        value={value}\n        disabled={disabled}\n        readOnly={readOnly}\n        inputRef={inputRef}\n        className={styles.radio()}\n      >\n        <Radio.Indicator className={styles.indicator()} />\n      </Radio.Root>\n      {children}\n    </label>\n  );\n}\n\n/** A set of mutually exclusive options. Label the group with `aria-labelledby` or a `Fieldset`. */\nexport const RadioGroup = Object.assign(RadioGroupRoot, {\n  Item: RadioGroupItem,\n});\n"
+    }
+  ],
+  "categories": [
+    "forms"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "RadioGroup"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/radio-group"
+  }
+}

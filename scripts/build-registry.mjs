@@ -149,10 +149,11 @@ const coreDeps = newDeps();
 const coreFiles = [
   { src: join(recipesSrc, "tv.ts"), target: `${TARGETS.lib}/tv.ts`, inRecipes: true },
   { src: join(recipesSrc, "shared.ts"), target: `${TARGETS.lib}/shared.ts`, inRecipes: true },
-  {
-    src: join(reactSrc, "utils/render-element.ts"),
-    target: `${TARGETS.lib}/render-element.ts`,
-  },
+  // Every shared React utility (render prop helper, icons) ships in core.
+  ...readdirSync(join(reactSrc, "utils"))
+    .filter((file) => /\.tsx?$/.test(file) && !/\.test\.tsx?$/.test(file))
+    .sort()
+    .map((file) => ({ src: join(reactSrc, "utils", file), target: `${TARGETS.lib}/${file}` })),
 ].map(({ src, target, inRecipes }) => ({
   path: `registry/${REGISTRY_NAME}/lib/${basename(src)}`,
   type: "registry:lib",

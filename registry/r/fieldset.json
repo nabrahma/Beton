@@ -1,0 +1,34 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "fieldset",
+  "type": "registry:ui",
+  "title": "Fieldset",
+  "description": "Groups related controls under a shared legend.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json",
+    "https://beton.dev/r/field.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/ui/fieldset.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/fieldset.tsx",
+      "content": "\"use client\";\n\nimport { Fieldset as BaseFieldset } from \"@base-ui/react/fieldset\";\nimport { field, type FieldVariants } from \"@/lib/beton/recipes/field.recipe\";\nimport { createContext, useContext } from \"react\";\n\nconst FieldsetContext = createContext<NonNullable<FieldVariants[\"size\"]>>(\"md\");\n\nexport interface FieldsetProps extends Omit<BaseFieldset.Root.Props, \"className\">, FieldVariants {\n  className?: string;\n}\n\nfunction FieldsetRoot({ size = \"md\", className, ...props }: FieldsetProps) {\n  return (\n    <FieldsetContext.Provider value={size}>\n      <BaseFieldset.Root\n        {...props}\n        data-size={size}\n        className={field({ size }).fieldset({ class: className })}\n      />\n    </FieldsetContext.Provider>\n  );\n}\n\nfunction FieldsetLegend({\n  className,\n  ...props\n}: Omit<BaseFieldset.Legend.Props, \"className\"> & { className?: string }) {\n  const size = useContext(FieldsetContext);\n  return (\n    <BaseFieldset.Legend {...props} className={field({ size }).legend({ class: className })} />\n  );\n}\n\n/** Groups related controls, such as radio buttons or checkboxes, under a shared legend. */\nexport const Fieldset = Object.assign(FieldsetRoot, {\n  Legend: FieldsetLegend,\n});\n"
+    }
+  ],
+  "categories": [
+    "forms"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "Fieldset"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/fieldset"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form",
+  "type": "registry:ui",
+  "title": "Form",
+  "description": "A form that validates its fields together and focuses the first error.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/form.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/form.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const form = tv({\n  base: \"flex w-full flex-col\",\n  variants: {\n    size: {\n      sm: \"gap-4\",\n      md: \"gap-6\",\n      lg: \"gap-8\",\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n});\n\nexport type FormVariants = VariantProps<typeof form>;\n"
+    },
+    {
+      "path": "registry/beton/ui/form.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/form.tsx",
+      "content": "\"use client\";\n\nimport { Form as BaseForm } from \"@base-ui/react/form\";\nimport { form, type FormVariants } from \"@/lib/beton/recipes/form.recipe\";\n\nexport interface FormProps extends Omit<BaseForm.Props, \"className\">, FormVariants {\n  className?: string;\n}\n\n/**\n * A form that consolidates validation for its fields and focuses the first\n * invalid one on submit. Pass server errors through `errors`, keyed by field name.\n */\nexport function Form({ size = \"md\", className, ...props }: FormProps) {\n  return <BaseForm {...props} data-size={size} className={form({ size, class: className })} />;\n}\n"
+    }
+  ],
+  "categories": [
+    "forms"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "Form"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/form"
+  }
+}

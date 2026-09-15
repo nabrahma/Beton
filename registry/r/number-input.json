@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "number-input",
+  "type": "registry:ui",
+  "title": "Number Input",
+  "description": "A numeric field with stepper buttons, limits and locale formatting.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/number-input.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/number-input.recipe.ts",
+      "content": "import { focusRingWithin, labelText } from \"@/lib/beton/shared\";\nimport { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const numberInput = tv({\n  slots: {\n    root: \"flex w-full flex-col gap-2\",\n    label: [\"w-fit text-sm\", labelText],\n    group: [\n      \"flex w-full items-stretch border-3 border-border bg-raised text-foreground shadow-sm\",\n      \"data-invalid:bg-danger/15\",\n      \"data-disabled:border-disabled-foreground data-disabled:bg-disabled data-disabled:text-disabled-foreground data-disabled:shadow-none\",\n      focusRingWithin,\n    ],\n    input: [\n      \"min-w-0 flex-1 bg-transparent px-2 text-center font-mono font-bold tabular-nums outline-none\",\n      \"data-disabled:cursor-not-allowed\",\n    ],\n    button: [\n      \"flex shrink-0 cursor-pointer items-center justify-center bg-secondary font-display font-black\",\n      \"hover:bg-primary active:bg-primary\",\n      \"data-disabled:cursor-not-allowed data-disabled:bg-disabled data-disabled:text-disabled-foreground\",\n      \"focus-visible:outline-none\",\n    ],\n    decrement: \"border-r-3 border-border\",\n    increment: \"border-l-3 border-border\",\n  },\n  variants: {\n    size: {\n      sm: { group: \"h-11\", input: \"text-sm\", button: \"w-11 text-lg\" },\n      md: { group: \"h-12\", input: \"text-base\", button: \"w-12 text-xl\" },\n      lg: { group: \"h-14\", input: \"text-lg\", button: \"w-14 text-2xl\" },\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n});\n\nexport type NumberInputVariants = VariantProps<typeof numberInput>;\n"
+    },
+    {
+      "path": "registry/beton/ui/number-input.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/number-input.tsx",
+      "content": "\"use client\";\n\nimport { NumberField } from \"@base-ui/react/number-field\";\nimport { numberInput, type NumberInputVariants } from \"@/lib/beton/recipes/number-input.recipe\";\nimport { useId, type ReactNode } from \"react\";\nimport { MinusIcon, PlusIcon } from \"@/lib/beton/icons\";\n\nexport interface NumberInputProps\n  extends Omit<NumberField.Root.Props, \"className\" | \"children\">, NumberInputVariants {\n  className?: string;\n  /** Visible label. Without it, pass `aria-label`. */\n  label?: ReactNode;\n  decrementLabel?: string;\n  incrementLabel?: string;\n}\n\n/** A numeric field with stepper buttons. Arrow keys step, Shift+Arrow takes large steps. */\nexport function NumberInput({\n  size = \"md\",\n  label,\n  decrementLabel = \"Decrease\",\n  incrementLabel = \"Increase\",\n  className,\n  id,\n  \"aria-label\": ariaLabel,\n  ...props\n}: NumberInputProps) {\n  const styles = numberInput({ size });\n  const generatedId = useId();\n  const inputId = id ?? generatedId;\n\n  return (\n    <NumberField.Root\n      {...props}\n      id={inputId}\n      data-size={size}\n      className={styles.root({ class: className })}\n    >\n      {label ? (\n        <label htmlFor={inputId} className={styles.label()}>\n          {label}\n        </label>\n      ) : null}\n      <NumberField.Group className={styles.group()}>\n        <NumberField.Decrement\n          aria-label={decrementLabel}\n          className={styles.button({ class: styles.decrement() })}\n        >\n          <MinusIcon width={18} height={18} />\n        </NumberField.Decrement>\n        <NumberField.Input aria-label={label ? undefined : ariaLabel} className={styles.input()} />\n        <NumberField.Increment\n          aria-label={incrementLabel}\n          className={styles.button({ class: styles.increment() })}\n        >\n          <PlusIcon width={18} height={18} />\n        </NumberField.Increment>\n      </NumberField.Group>\n    </NumberField.Root>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "forms"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "NumberInput"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/number-input"
+  }
+}
