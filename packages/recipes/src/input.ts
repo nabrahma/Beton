@@ -1,12 +1,11 @@
-import { disabled, focusRing } from "./shared.ts";
+import { disabled, fieldSurface, focusRing } from "./shared.ts";
 import { tv, type VariantProps } from "./tv.ts";
 
 export const input = tv({
   base: [
-    "w-full min-w-0 border-3 border-border bg-raised text-foreground shadow-sm",
-    "font-sans placeholder:text-disabled-foreground",
+    "w-full min-w-0",
+    fieldSurface,
     "file:mr-3 file:border-0 file:bg-transparent file:font-display file:font-bold file:uppercase",
-    "aria-invalid:bg-danger/15 data-invalid:bg-danger/15",
     "read-only:shadow-none",
     focusRing,
     disabled,

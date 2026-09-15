@@ -30,3 +30,14 @@ export const disabled = [
 
 /** Extends the pointer target to 44x44 without changing layout. Requires `relative`. */
 export const hitArea = "after:absolute after:-inset-1 after:content-['']";
+
+/** The raised, stroked surface shared by every text-entry control. */
+export const fieldSurface = [
+  "border-3 border-border bg-raised text-foreground shadow-sm",
+  "font-sans placeholder:text-disabled-foreground",
+  "aria-invalid:bg-danger/15 data-invalid:bg-danger/15",
+].join(" ");
+
+/** Label typography shared by Label, Field and group legends. */
+export const labelText =
+  "font-display font-bold uppercase tracking-wide text-foreground data-disabled:text-disabled-foreground";
