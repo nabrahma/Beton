@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sidebar",
+  "type": "registry:ui",
+  "title": "Sidebar",
+  "description": "The column of links down the side of an application.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/sidebar.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/sidebar.recipe.ts",
+      "content": "import { focusRing } from \"@/lib/beton/shared\";\nimport { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const sidebar = tv({\n  slots: {\n    root: \"flex h-full w-full flex-col gap-6 border-border bg-raised p-4\",\n    section: \"flex flex-col gap-1\",\n    sectionLabel: \"px-2 pb-1 font-mono text-xs font-bold tracking-widest uppercase\",\n    list: \"flex flex-col gap-0.5\",\n    item: \"flex\",\n    link: [\n      \"flex min-h-11 w-full items-center gap-3 border-l-4 border-transparent px-3\",\n      \"font-medium text-foreground\",\n      \"hover:border-border hover:bg-surface\",\n      \"aria-[current=page]:border-border aria-[current=page]:bg-secondary aria-[current=page]:font-bold\",\n      focusRing,\n    ],\n    icon: \"size-5 shrink-0\",\n    badge: \"ml-auto\",\n  },\n  variants: {\n    size: {\n      sm: { root: \"gap-4 p-3\", link: \"text-sm\" },\n      md: { root: \"gap-6 p-4\", link: \"text-base\" },\n      lg: { root: \"gap-8 p-5\", link: \"text-lg\" },\n    },\n    bordered: {\n      true: { root: \"border-r-3\" },\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n    bordered: true,\n  },\n});\n\nexport type SidebarVariants = VariantProps<typeof sidebar>;\n"
+    },
+    {
+      "path": "registry/beton/ui/sidebar.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/sidebar.tsx",
+      "content": "\"use client\";\n\nimport { sidebar, type SidebarVariants } from \"@/lib/beton/recipes/sidebar.recipe\";\nimport { createContext, useContext, type ComponentProps, type ReactNode } from \"react\";\nimport { renderElement, type RenderProp } from \"@/lib/beton/render-element\";\n\ntype Styles = ReturnType<typeof sidebar>;\n\nconst SidebarContext = createContext<Styles>(sidebar());\n\nfunction useStyles() {\n  return useContext(SidebarContext);\n}\n\nexport interface SidebarProps extends ComponentProps<\"nav\">, SidebarVariants {\n  render?: RenderProp;\n}\n\nfunction SidebarRoot({\n  size = \"md\",\n  bordered = true,\n  className,\n  \"aria-label\": ariaLabel = \"Sidebar\",\n  render,\n  ...props\n}: SidebarProps) {\n  const styles = sidebar({ size, bordered });\n  return (\n    <SidebarContext.Provider value={styles}>\n      {renderElement(\n        \"nav\",\n        { ...props, \"aria-label\": ariaLabel, className: styles.root({ class: className }) },\n        render,\n      )}\n    </SidebarContext.Provider>\n  );\n}\n\nexport interface SidebarSectionProps extends Omit<ComponentProps<\"div\">, \"title\"> {\n  /** A heading above the group of links. */\n  title?: ReactNode;\n  render?: RenderProp;\n}\n\nfunction SidebarSection({ className, title, children, render, ...props }: SidebarSectionProps) {\n  const styles = useStyles();\n  return renderElement(\n    \"div\",\n    {\n      ...props,\n      className: styles.section({ class: className }),\n      children: (\n        <>\n          {title ? <p className={styles.sectionLabel()}>{title}</p> : null}\n          <ul className={styles.list()}>{children}</ul>\n        </>\n      ),\n    },\n    render,\n  );\n}\n\nexport interface SidebarItemProps extends ComponentProps<\"a\"> {\n  /** Marks the page you are on. Sets `aria-current=\"page\"`. */\n  active?: boolean;\n  /** Shown before the label. */\n  icon?: ReactNode;\n  /** Shown at the end of the row, such as a count. */\n  badge?: ReactNode;\n  /** Classes for the surrounding list item. */\n  itemClassName?: string;\n  render?: RenderProp;\n}\n\nfunction SidebarItem({\n  className,\n  itemClassName,\n  active = false,\n  icon,\n  badge,\n  children,\n  render,\n  ...props\n}: SidebarItemProps) {\n  const styles = useStyles();\n  return (\n    <li className={styles.item({ class: itemClassName })}>\n      {renderElement(\n        \"a\",\n        {\n          ...props,\n          \"aria-current\": active ? \"page\" : undefined,\n          className: styles.link({ class: className }),\n          children: (\n            <>\n              {icon ? <span className={styles.icon()}>{icon}</span> : null}\n              {children}\n              {badge ? <span className={styles.badge()}>{badge}</span> : null}\n            </>\n          ),\n        },\n        render,\n      )}\n    </li>\n  );\n}\n\n/** The column of links down the side of an application. */\nexport const Sidebar = Object.assign(SidebarRoot, {\n  Section: SidebarSection,\n  Item: SidebarItem,\n});\n"
+    }
+  ],
+  "categories": [
+    "navigation"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "Sidebar"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/sidebar"
+  }
+}

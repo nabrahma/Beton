@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-area",
+  "type": "registry:ui",
+  "title": "Scroll Area",
+  "description": "A scrolling panel with scrollbars that match the rest of the set.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/scroll-area.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/scroll-area.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const scrollArea = tv({\n  slots: {\n    root: \"relative overflow-hidden\",\n    viewport: \"size-full overscroll-contain outline-none\",\n    content: \"min-w-full\",\n    scrollbar: [\n      \"flex touch-none select-none border-border bg-surface p-0.5\",\n      \"data-[orientation=vertical]:w-4 data-[orientation=vertical]:border-l-3\",\n      \"data-[orientation=horizontal]:h-4 data-[orientation=horizontal]:flex-col data-[orientation=horizontal]:border-t-3\",\n    ],\n    thumb: \"flex-1 bg-foreground\",\n    corner: \"bg-surface\",\n  },\n});\n\nexport type ScrollAreaVariants = VariantProps<typeof scrollArea>;\n"
+    },
+    {
+      "path": "registry/beton/ui/scroll-area.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/scroll-area.tsx",
+      "content": "\"use client\";\n\nimport { ScrollArea as BaseScrollArea } from \"@base-ui/react/scroll-area\";\nimport { scrollArea } from \"@/lib/beton/recipes/scroll-area.recipe\";\n\nconst styles = scrollArea();\n\nexport interface ScrollAreaProps extends Omit<BaseScrollArea.Root.Props, \"className\"> {\n  className?: string;\n  /** Classes for the scrolling viewport. */\n  viewportClassName?: string;\n  /** Show the horizontal scrollbar as well. Off by default. */\n  horizontal?: boolean;\n  /** Keeps the viewport reachable with the keyboard, as scrollable regions must be. */\n  label?: string;\n}\n\nfunction ScrollAreaRoot({\n  className,\n  viewportClassName,\n  horizontal = false,\n  label,\n  children,\n  ...props\n}: ScrollAreaProps) {\n  return (\n    <BaseScrollArea.Root {...props} className={styles.root({ class: className })}>\n      <BaseScrollArea.Viewport\n        tabIndex={0}\n        role=\"group\"\n        aria-label={label}\n        className={styles.viewport({ class: viewportClassName })}\n      >\n        <BaseScrollArea.Content className={styles.content()}>{children}</BaseScrollArea.Content>\n      </BaseScrollArea.Viewport>\n      <BaseScrollArea.Scrollbar orientation=\"vertical\" className={styles.scrollbar()}>\n        <BaseScrollArea.Thumb className={styles.thumb()} />\n      </BaseScrollArea.Scrollbar>\n      {horizontal ? (\n        <>\n          <BaseScrollArea.Scrollbar orientation=\"horizontal\" className={styles.scrollbar()}>\n            <BaseScrollArea.Thumb className={styles.thumb()} />\n          </BaseScrollArea.Scrollbar>\n          <BaseScrollArea.Corner className={styles.corner()} />\n        </>\n      ) : null}\n    </BaseScrollArea.Root>\n  );\n}\n\n/** A scrolling panel with scrollbars that match the rest of the set. */\nexport const ScrollArea = ScrollAreaRoot;\n"
+    }
+  ],
+  "categories": [
+    "navigation"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "ScrollArea"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/scroll-area"
+  }
+}

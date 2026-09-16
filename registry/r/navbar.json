@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "navbar",
+  "type": "registry:ui",
+  "title": "Navbar",
+  "description": "The bar across the top of a page: a mark, the main links and a few actions.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/navbar.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/navbar.recipe.ts",
+      "content": "import { focusRing } from \"@/lib/beton/shared\";\nimport { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const navbar = tv({\n  slots: {\n    root: \"w-full border-b-3 border-border bg-raised\",\n    inner: \"mx-auto flex w-full max-w-7xl items-center gap-6 px-4 sm:px-6\",\n    brand: [\n      \"flex shrink-0 items-center gap-2.5 font-display font-black uppercase tracking-tight text-foreground\",\n      focusRing,\n    ],\n    nav: \"hidden flex-1 items-center gap-1 md:flex\",\n    link: [\n      \"flex min-h-11 items-center border-3 border-transparent px-3\",\n      \"font-display font-extrabold uppercase tracking-wide text-foreground\",\n      \"hover:border-border aria-[current=page]:border-border aria-[current=page]:bg-secondary\",\n      focusRing,\n    ],\n    actions: \"ml-auto flex items-center gap-3\",\n  },\n  variants: {\n    size: {\n      sm: { inner: \"h-14\", brand: \"text-lg\", link: \"text-sm\" },\n      md: { inner: \"h-16\", brand: \"text-2xl\", link: \"text-sm\" },\n      lg: { inner: \"h-20\", brand: \"text-3xl\", link: \"text-base\" },\n    },\n    sticky: {\n      true: { root: \"sticky top-0 z-40\" },\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n    sticky: false,\n  },\n});\n\nexport type NavbarVariants = VariantProps<typeof navbar>;\n"
+    },
+    {
+      "path": "registry/beton/ui/navbar.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/navbar.tsx",
+      "content": "\"use client\";\n\nimport { navbar, type NavbarVariants } from \"@/lib/beton/recipes/navbar.recipe\";\nimport { createContext, useContext, type ComponentProps } from \"react\";\nimport { renderElement, type RenderProp } from \"@/lib/beton/render-element\";\n\ntype Styles = ReturnType<typeof navbar>;\n\nconst NavbarContext = createContext<Styles>(navbar());\n\nfunction useStyles() {\n  return useContext(NavbarContext);\n}\n\nexport interface NavbarProps extends ComponentProps<\"header\">, NavbarVariants {\n  /** Classes for the centred row inside the bar. */\n  innerClassName?: string;\n  render?: RenderProp;\n}\n\nfunction NavbarRoot({\n  size = \"md\",\n  sticky = false,\n  className,\n  innerClassName,\n  children,\n  render,\n  ...props\n}: NavbarProps) {\n  const styles = navbar({ size, sticky });\n  return (\n    <NavbarContext.Provider value={styles}>\n      {renderElement(\n        \"header\",\n        {\n          ...props,\n          className: styles.root({ class: className }),\n          children: <div className={styles.inner({ class: innerClassName })}>{children}</div>,\n        },\n        render,\n      )}\n    </NavbarContext.Provider>\n  );\n}\n\nexport interface NavbarBrandProps extends ComponentProps<\"a\"> {\n  render?: RenderProp;\n}\n\nfunction NavbarBrand({ className, href = \"/\", render, ...props }: NavbarBrandProps) {\n  return renderElement(\n    \"a\",\n    { ...props, href, className: useStyles().brand({ class: className }) },\n    render,\n  );\n}\n\nexport interface NavbarNavProps extends ComponentProps<\"nav\"> {\n  render?: RenderProp;\n}\n\nfunction NavbarNav({\n  className,\n  \"aria-label\": ariaLabel = \"Main\",\n  render,\n  ...props\n}: NavbarNavProps) {\n  return renderElement(\n    \"nav\",\n    { ...props, \"aria-label\": ariaLabel, className: useStyles().nav({ class: className }) },\n    render,\n  );\n}\n\nexport interface NavbarLinkProps extends ComponentProps<\"a\"> {\n  /** Marks the page you are on. Sets `aria-current=\"page\"`. */\n  active?: boolean;\n  render?: RenderProp;\n}\n\nfunction NavbarLink({ className, active = false, render, ...props }: NavbarLinkProps) {\n  return renderElement(\n    \"a\",\n    {\n      ...props,\n      \"aria-current\": active ? \"page\" : undefined,\n      className: useStyles().link({ class: className }),\n    },\n    render,\n  );\n}\n\nexport interface NavbarActionsProps extends ComponentProps<\"div\"> {\n  render?: RenderProp;\n}\n\nfunction NavbarActions({ className, render, ...props }: NavbarActionsProps) {\n  return renderElement(\n    \"div\",\n    { ...props, className: useStyles().actions({ class: className }) },\n    render,\n  );\n}\n\n/** The bar across the top of a page: a mark, the main links and a few actions. */\nexport const Navbar = Object.assign(NavbarRoot, {\n  Brand: NavbarBrand,\n  Nav: NavbarNav,\n  Link: NavbarLink,\n  Actions: NavbarActions,\n});\n"
+    }
+  ],
+  "categories": [
+    "navigation"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "Navbar"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/navbar"
+  }
+}

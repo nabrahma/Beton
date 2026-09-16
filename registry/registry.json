@@ -150,6 +150,42 @@
       ]
     },
     {
+      "name": "accordion",
+      "type": "registry:ui",
+      "title": "Accordion",
+      "description": "Sections of content that open one at a time, or several at once.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "navigation"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "Accordion"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/accordion"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/accordion.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/accordion.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/accordion.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/accordion.tsx"
+        }
+      ]
+    },
+    {
       "name": "alert-dialog",
       "type": "registry:ui",
       "title": "Alert Dialog",
@@ -219,6 +255,41 @@
       ]
     },
     {
+      "name": "back-to-top",
+      "type": "registry:ui",
+      "title": "Back to Top",
+      "description": "A button that returns to the top of a long page, and moves focus there too.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json",
+        "https://beton.dev/r/button.json"
+      ],
+      "categories": [
+        "navigation"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "BackToTop"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/back-to-top"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/back-to-top.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/back-to-top.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/back-to-top.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/back-to-top.tsx"
+        }
+      ]
+    },
+    {
       "name": "badge",
       "type": "registry:ui",
       "title": "Badge",
@@ -249,6 +320,40 @@
           "path": "registry/beton/ui/badge.tsx",
           "type": "registry:ui",
           "target": "@ui/beton/badge.tsx"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumbs",
+      "type": "registry:ui",
+      "title": "Breadcrumbs",
+      "description": "The trail of pages above the one you are on.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "navigation"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": false,
+        "exports": [
+          "Breadcrumbs"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/breadcrumbs"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/breadcrumbs.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/breadcrumbs.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/breadcrumbs.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/breadcrumbs.tsx"
         }
       ]
     },
@@ -787,6 +892,77 @@
       ]
     },
     {
+      "name": "menubar",
+      "type": "registry:ui",
+      "title": "Menubar",
+      "description": "A row of menus along the top of an application, as in a desktop app.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json",
+        "https://beton.dev/r/dropdown-menu.json"
+      ],
+      "categories": [
+        "navigation"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "Menubar"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/menubar"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/menubar.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/menubar.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/menubar.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/menubar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "navbar",
+      "type": "registry:ui",
+      "title": "Navbar",
+      "description": "The bar across the top of a page: a mark, the main links and a few actions.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "navigation"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "Navbar"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/navbar"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/navbar.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/navbar.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/navbar.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/navbar.tsx"
+        }
+      ]
+    },
+    {
       "name": "number-input",
       "type": "registry:ui",
       "title": "Number Input",
@@ -855,6 +1031,41 @@
           "path": "registry/beton/ui/otp-input.tsx",
           "type": "registry:ui",
           "target": "@ui/beton/otp-input.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "title": "Pagination",
+      "description": "Move through a list that is split across pages.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "navigation"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": false,
+        "exports": [
+          "Pagination",
+          "paginationRange"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/pagination"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/pagination.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/pagination.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/pagination.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/pagination.tsx"
         }
       ]
     },
@@ -928,6 +1139,42 @@
           "path": "registry/beton/ui/radio-group.tsx",
           "type": "registry:ui",
           "target": "@ui/beton/radio-group.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-area",
+      "type": "registry:ui",
+      "title": "Scroll Area",
+      "description": "A scrolling panel with scrollbars that match the rest of the set.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "navigation"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "ScrollArea"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/scroll-area"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/scroll-area.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/scroll-area.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/scroll-area.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/scroll-area.tsx"
         }
       ]
     },
@@ -1076,6 +1323,40 @@
       ]
     },
     {
+      "name": "sidebar",
+      "type": "registry:ui",
+      "title": "Sidebar",
+      "description": "The column of links down the side of an application.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "navigation"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "Sidebar"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/sidebar"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/sidebar.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/sidebar.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/sidebar.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/sidebar.tsx"
+        }
+      ]
+    },
+    {
       "name": "slider",
       "type": "registry:ui",
       "title": "Slider",
@@ -1146,6 +1427,40 @@
       ]
     },
     {
+      "name": "stepper",
+      "type": "registry:ui",
+      "title": "Stepper",
+      "description": "Shows where someone is in a task that runs over several steps.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "navigation"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": false,
+        "exports": [
+          "Stepper"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/stepper"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/stepper.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/stepper.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/stepper.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/stepper.tsx"
+        }
+      ]
+    },
+    {
       "name": "switch",
       "type": "registry:ui",
       "title": "Switch",
@@ -1178,6 +1493,42 @@
           "path": "registry/beton/ui/switch.tsx",
           "type": "registry:ui",
           "target": "@ui/beton/switch.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "Switch between views that sit at the same level of a page.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "navigation"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "Tabs"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/tabs"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/tabs.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/tabs.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/tabs.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/tabs.tsx"
         }
       ]
     },
@@ -1335,9 +1686,12 @@
       "description": "Installs the theme, core and every component.",
       "author": "Nabaskar Brahma (https://github.com/nabrahma)",
       "registryDependencies": [
+        "https://beton.dev/r/accordion.json",
         "https://beton.dev/r/alert-dialog.json",
         "https://beton.dev/r/avatar.json",
+        "https://beton.dev/r/back-to-top.json",
         "https://beton.dev/r/badge.json",
+        "https://beton.dev/r/breadcrumbs.json",
         "https://beton.dev/r/button.json",
         "https://beton.dev/r/card.json",
         "https://beton.dev/r/checkbox.json",
@@ -1353,17 +1707,24 @@
         "https://beton.dev/r/input.json",
         "https://beton.dev/r/kbd.json",
         "https://beton.dev/r/label.json",
+        "https://beton.dev/r/menubar.json",
+        "https://beton.dev/r/navbar.json",
         "https://beton.dev/r/number-input.json",
         "https://beton.dev/r/otp-input.json",
+        "https://beton.dev/r/pagination.json",
         "https://beton.dev/r/popover.json",
         "https://beton.dev/r/radio-group.json",
+        "https://beton.dev/r/scroll-area.json",
         "https://beton.dev/r/search-input.json",
         "https://beton.dev/r/select.json",
         "https://beton.dev/r/separator.json",
         "https://beton.dev/r/sheet.json",
+        "https://beton.dev/r/sidebar.json",
         "https://beton.dev/r/slider.json",
         "https://beton.dev/r/spinner.json",
+        "https://beton.dev/r/stepper.json",
         "https://beton.dev/r/switch.json",
+        "https://beton.dev/r/tabs.json",
         "https://beton.dev/r/text.json",
         "https://beton.dev/r/textarea.json",
         "https://beton.dev/r/toast.json",

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion",
+  "type": "registry:ui",
+  "title": "Accordion",
+  "description": "Sections of content that open one at a time, or several at once.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/accordion.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/accordion.recipe.ts",
+      "content": "import { focusRing } from \"@/lib/beton/shared\";\nimport { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const accordion = tv({\n  slots: {\n    root: \"flex w-full flex-col border-3 border-border bg-raised\",\n    item: \"border-b-3 border-border last:border-b-0\",\n    header: \"flex\",\n    trigger: [\n      \"group flex w-full cursor-pointer items-center justify-between gap-4 text-left\",\n      \"font-display font-extrabold text-foreground\",\n      \"hover:bg-secondary data-panel-open:bg-secondary\",\n      \"data-disabled:cursor-not-allowed data-disabled:bg-disabled data-disabled:text-disabled-foreground\",\n      focusRing,\n    ],\n    icon: [\n      \"size-5 shrink-0 transition-transform duration-70 ease-linear motion-reduce:transition-none\",\n      \"group-data-panel-open:rotate-180\",\n    ],\n    panel: [\n      \"h-(--accordion-panel-height) overflow-hidden border-t-3 border-border\",\n      \"transition-[height] duration-100 ease-linear motion-reduce:transition-none\",\n      \"data-starting-style:h-0 data-ending-style:h-0\",\n    ],\n    content: \"flex flex-col gap-3\",\n  },\n  variants: {\n    size: {\n      sm: { trigger: \"min-h-11 px-4 text-base\", content: \"px-4 py-3 text-sm\" },\n      md: { trigger: \"min-h-14 px-5 text-lg\", content: \"px-5 py-4\" },\n      lg: { trigger: \"min-h-16 px-6 text-xl\", content: \"px-6 py-5 text-lg\" },\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n});\n\nexport type AccordionVariants = VariantProps<typeof accordion>;\n"
+    },
+    {
+      "path": "registry/beton/ui/accordion.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/accordion.tsx",
+      "content": "\"use client\";\n\nimport { Accordion as BaseAccordion } from \"@base-ui/react/accordion\";\nimport { accordion, type AccordionVariants } from \"@/lib/beton/recipes/accordion.recipe\";\nimport { createContext, useContext } from \"react\";\nimport { ChevronDownIcon } from \"@/lib/beton/icons\";\n\ntype Styles = ReturnType<typeof accordion>;\n\nconst AccordionContext = createContext<Styles>(accordion());\n\nfunction useStyles() {\n  return useContext(AccordionContext);\n}\n\nexport interface AccordionProps\n  extends Omit<BaseAccordion.Root.Props, \"className\">, AccordionVariants {\n  className?: string;\n}\n\nfunction AccordionRoot({ size = \"md\", className, ...props }: AccordionProps) {\n  const styles = accordion({ size });\n  return (\n    <AccordionContext.Provider value={styles}>\n      <BaseAccordion.Root {...props} className={styles.root({ class: className })} />\n    </AccordionContext.Provider>\n  );\n}\n\nexport interface AccordionItemProps extends Omit<BaseAccordion.Item.Props, \"className\"> {\n  className?: string;\n}\n\nfunction AccordionItem({ className, ...props }: AccordionItemProps) {\n  return <BaseAccordion.Item {...props} className={useStyles().item({ class: className })} />;\n}\n\nexport interface AccordionTriggerProps extends Omit<BaseAccordion.Trigger.Props, \"className\"> {\n  className?: string;\n  /** The heading level the trigger sits in. Defaults to `h3`. */\n  headingLevel?: 2 | 3 | 4 | 5 | 6;\n  /** Show the chevron that turns when the panel opens. On by default. */\n  icon?: boolean;\n}\n\nfunction AccordionTrigger({\n  className,\n  children,\n  headingLevel = 3,\n  icon = true,\n  ...props\n}: AccordionTriggerProps) {\n  const styles = useStyles();\n  const Heading = `h${headingLevel}` as const;\n  return (\n    <BaseAccordion.Header className={styles.header()} render={<Heading />}>\n      <BaseAccordion.Trigger {...props} className={styles.trigger({ class: className })}>\n        {children}\n        {icon ? <ChevronDownIcon className={styles.icon()} /> : null}\n      </BaseAccordion.Trigger>\n    </BaseAccordion.Header>\n  );\n}\n\nexport interface AccordionPanelProps extends Omit<BaseAccordion.Panel.Props, \"className\"> {\n  className?: string;\n  /** Classes for the inner element that holds the content. */\n  contentClassName?: string;\n}\n\nfunction AccordionPanel({ className, contentClassName, children, ...props }: AccordionPanelProps) {\n  const styles = useStyles();\n  return (\n    <BaseAccordion.Panel {...props} className={styles.panel({ class: className })}>\n      <div className={styles.content({ class: contentClassName })}>{children}</div>\n    </BaseAccordion.Panel>\n  );\n}\n\n/** Sections of content that open one at a time, or several at once with `multiple`. */\nexport const Accordion = Object.assign(AccordionRoot, {\n  Item: AccordionItem,\n  Trigger: AccordionTrigger,\n  Panel: AccordionPanel,\n});\n"
+    }
+  ],
+  "categories": [
+    "navigation"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "Accordion"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/accordion"
+  }
+}

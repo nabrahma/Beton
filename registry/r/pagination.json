@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pagination",
+  "type": "registry:ui",
+  "title": "Pagination",
+  "description": "Move through a list that is split across pages.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/pagination.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/pagination.recipe.ts",
+      "content": "import { focusRing, pressable } from \"@/lib/beton/shared\";\nimport { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const pagination = tv({\n  slots: {\n    root: \"flex w-full items-center justify-between gap-4\",\n    list: \"flex flex-wrap items-center gap-2\",\n    item: [\n      \"inline-flex shrink-0 cursor-pointer items-center justify-center\",\n      \"border-3 border-border bg-raised font-display font-extrabold text-foreground\",\n      \"aria-[current=page]:bg-primary\",\n      \"data-disabled:cursor-not-allowed data-disabled:border-disabled-foreground data-disabled:bg-disabled data-disabled:text-disabled-foreground data-disabled:shadow-none\",\n      pressable,\n      focusRing,\n    ],\n    ellipsis: \"inline-flex items-center justify-center font-mono font-bold select-none\",\n    status: \"font-mono text-sm font-bold\",\n  },\n  variants: {\n    size: {\n      sm: { item: \"size-11 text-sm\", ellipsis: \"size-11 text-sm\" },\n      md: { item: \"size-12 text-base\", ellipsis: \"size-12\" },\n      lg: { item: \"size-14 text-lg\", ellipsis: \"size-14 text-lg\" },\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n});\n\nexport type PaginationVariants = VariantProps<typeof pagination>;\n"
+    },
+    {
+      "path": "registry/beton/ui/pagination.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/pagination.tsx",
+      "content": "import { pagination, type PaginationVariants } from \"@/lib/beton/recipes/pagination.recipe\";\r\nimport type { ComponentProps, ReactNode } from \"react\";\r\nimport { ChevronLeftIcon, ChevronRightIcon, EllipsisIcon } from \"@/lib/beton/icons\";\r\n\r\n/**\r\n * The pages to show: page numbers, with `null` where a run has been collapsed.\r\n * Always keeps the first page, the last page and `siblings` pages either side\r\n * of the current one.\r\n */\r\nexport function paginationRange(page: number, count: number, siblings = 1): (number | null)[] {\r\n  const total = Math.max(0, Math.trunc(count));\r\n  if (total <= 0) return [];\r\n  const current = Math.min(Math.max(1, Math.trunc(page)), total);\r\n  const span = Math.max(0, Math.trunc(siblings));\r\n  // First, last, current, the siblings either side and up to two gap markers.\r\n  const slots = span * 2 + 5;\r\n  if (total <= slots) return Array.from({ length: total }, (_, i) => i + 1);\r\n\r\n  const left = Math.max(current - span, 1);\r\n  const right = Math.min(current + span, total);\r\n  const gapLeft = left > 2;\r\n  const gapRight = right < total - 1;\r\n  const run = (from: number, to: number) =>\r\n    Array.from({ length: to - from + 1 }, (_, i) => from + i);\r\n\r\n  if (!gapLeft && gapRight) return [...run(1, span * 2 + 3), null, total];\r\n  if (gapLeft && !gapRight) return [1, null, ...run(total - (span * 2 + 2), total)];\r\n  return [1, null, ...run(left, right), null, total];\r\n}\r\n\r\nexport interface PaginationProps\r\n  extends Omit<ComponentProps<\"nav\">, \"onChange\">, PaginationVariants {\r\n  /** The page being shown, counting from 1. */\r\n  page: number;\r\n  /** How many pages there are in total. */\r\n  count: number;\r\n  /** How many pages to show either side of the current one. */\r\n  siblings?: number;\r\n  /** Called with the page that was chosen. Renders buttons. */\r\n  onPageChange?: (page: number) => void;\r\n  /** Builds the address for a page. Renders links, which work without JavaScript. */\r\n  href?: (page: number) => string;\r\n  /** Text beside the pages, such as \"Page 2 of 10\". Pass `null` to leave it out. */\r\n  status?: ReactNode;\r\n}\r\n\r\nfunction PaginationRoot({\r\n  page,\r\n  count,\r\n  siblings = 1,\r\n  size = \"md\",\r\n  onPageChange,\r\n  href,\r\n  status,\r\n  className,\r\n  \"aria-label\": ariaLabel = \"Pagination\",\r\n  ...props\r\n}: PaginationProps) {\r\n  const styles = pagination({ size });\r\n  const current = Math.min(Math.max(1, Math.trunc(page)), Math.max(1, Math.trunc(count)));\r\n  const range = paginationRange(current, count, siblings);\r\n  const label = status === undefined ? `Page ${current} of ${Math.max(1, count)}` : status;\r\n\r\n  function item(target: number, children: ReactNode, itemLabel: string, isCurrent = false) {\r\n    const disabled = target < 1 || target > count;\r\n    const classes = styles.item();\r\n    if (href && !disabled) {\r\n      return (\r\n        <a\r\n          href={href(target)}\r\n          aria-label={itemLabel}\r\n          aria-current={isCurrent ? \"page\" : undefined}\r\n          className={classes}\r\n        >\r\n          {children}\r\n        </a>\r\n      );\r\n    }\r\n    return (\r\n      <button\r\n        type=\"button\"\r\n        disabled={disabled}\r\n        data-disabled={disabled ? \"\" : undefined}\r\n        aria-label={itemLabel}\r\n        aria-current={isCurrent ? \"page\" : undefined}\r\n        className={classes}\r\n        onClick={onPageChange && !disabled ? () => onPageChange(target) : undefined}\r\n      >\r\n        {children}\r\n      </button>\r\n    );\r\n  }\r\n\r\n  return (\r\n    <nav {...props} aria-label={ariaLabel} className={styles.root({ class: className })}>\r\n      <ul className={styles.list()}>\r\n        <li>{item(current - 1, <ChevronLeftIcon width={20} height={20} />, \"Previous page\")}</li>\r\n        {range.map((target, index) => (\r\n          <li key={target ?? `gap-${index}`}>\r\n            {target === null ? (\r\n              <span aria-hidden=\"true\" className={styles.ellipsis()}>\r\n                <EllipsisIcon width={20} height={20} />\r\n              </span>\r\n            ) : (\r\n              item(target, target, `Page ${target}`, target === current)\r\n            )}\r\n          </li>\r\n        ))}\r\n        <li>{item(current + 1, <ChevronRightIcon width={20} height={20} />, \"Next page\")}</li>\r\n      </ul>\r\n      {label === null ? null : (\r\n        <p aria-live=\"polite\" className={styles.status()}>\r\n          {label}\r\n        </p>\r\n      )}\r\n    </nav>\r\n  );\r\n}\r\n\r\n/** Move through a list that is split across pages. */\r\nexport const Pagination = PaginationRoot;\r\n"
+    }
+  ],
+  "categories": [
+    "navigation"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": false,
+    "exports": [
+      "Pagination",
+      "paginationRange"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/pagination"
+  }
+}

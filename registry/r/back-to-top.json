@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "back-to-top",
+  "type": "registry:ui",
+  "title": "Back to Top",
+  "description": "A button that returns to the top of a long page, and moves focus there too.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json",
+    "https://beton.dev/r/button.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/back-to-top.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/back-to-top.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const backToTop = tv({\n  slots: {\n    root: \"fixed right-4 bottom-4 z-40 sm:right-6 sm:bottom-6\",\n  },\n  variants: {\n    hidden: {\n      true: { root: \"pointer-events-none invisible opacity-0\" },\n      false: { root: \"visible opacity-100\" },\n    },\n  },\n  defaultVariants: {\n    hidden: false,\n  },\n});\n\nexport type BackToTopVariants = VariantProps<typeof backToTop>;\n"
+    },
+    {
+      "path": "registry/beton/ui/back-to-top.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/back-to-top.tsx",
+      "content": "\"use client\";\n\nimport { backToTop } from \"@/lib/beton/recipes/back-to-top.recipe\";\nimport { useEffect, useState, type ComponentProps } from \"react\";\nimport { Button } from \"@/components/ui/beton/button\";\nimport { ArrowUpIcon } from \"@/lib/beton/icons\";\n\nexport interface BackToTopProps extends Omit<ComponentProps<typeof Button>, \"children\"> {\n  /** How far the page must scroll before the button appears, in pixels. */\n  threshold?: number;\n  /** The label read out and shown in a tooltip. */\n  label?: string;\n  /** Where focus goes after scrolling. Defaults to the first heading or the body. */\n  targetId?: string;\n  /** Classes for the fixed wrapper. */\n  wrapperClassName?: string;\n}\n\n/** A button that returns to the top of a long page, and moves focus there too. */\nexport function BackToTop({\n  threshold = 400,\n  label = \"Back to top\",\n  targetId,\n  wrapperClassName,\n  className,\n  variant = \"secondary\",\n  size = \"md\",\n  onClick,\n  ...props\n}: BackToTopProps) {\n  const [visible, setVisible] = useState(false);\n\n  useEffect(() => {\n    const update = () => setVisible(window.scrollY > threshold);\n    update();\n    window.addEventListener(\"scroll\", update, { passive: true });\n    return () => window.removeEventListener(\"scroll\", update);\n  }, [threshold]);\n\n  const styles = backToTop({ hidden: !visible });\n\n  return (\n    <div className={styles.root({ class: wrapperClassName })}>\n      <Button\n        {...props}\n        variant={variant}\n        size={size}\n        iconOnly\n        aria-label={label}\n        tabIndex={visible ? undefined : -1}\n        className={className}\n        onClick={(event) => {\n          onClick?.(event);\n          if (event.defaultPrevented) return;\n          const target = targetId\n            ? document.getElementById(targetId)\n            : document.querySelector<HTMLElement>(\"h1\");\n          const behavior = window.matchMedia(\"(prefers-reduced-motion: reduce)\").matches\n            ? \"auto\"\n            : \"smooth\";\n          window.scrollTo({ top: 0, behavior });\n          // Scrolling alone leaves the keyboard where it was, so move focus too.\n          if (target) {\n            target.setAttribute(\"tabindex\", \"-1\");\n            target.focus({ preventScroll: true });\n          }\n        }}\n      >\n        <ArrowUpIcon width={20} height={20} />\n      </Button>\n    </div>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "navigation"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "BackToTop"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/back-to-top"
+  }
+}

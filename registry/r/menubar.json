@@ -1,0 +1,40 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "menubar",
+  "type": "registry:ui",
+  "title": "Menubar",
+  "description": "A row of menus along the top of an application, as in a desktop app.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json",
+    "https://beton.dev/r/dropdown-menu.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/menubar.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/menubar.recipe.ts",
+      "content": "import { focusRing } from \"@/lib/beton/shared\";\nimport { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const menubar = tv({\n  slots: {\n    root: \"flex w-fit items-center gap-1 border-3 border-border bg-raised p-1 shadow-sm\",\n    trigger: [\n      \"flex min-h-11 cursor-pointer select-none items-center gap-2 border-3 border-transparent px-3\",\n      \"font-display font-extrabold uppercase tracking-wide text-foreground\",\n      \"hover:border-border data-popup-open:border-border data-popup-open:bg-secondary\",\n      \"data-disabled:cursor-not-allowed data-disabled:text-disabled-foreground\",\n      focusRing,\n    ],\n  },\n  variants: {\n    size: {\n      sm: { trigger: \"text-xs\" },\n      md: { trigger: \"text-sm\" },\n      lg: { trigger: \"min-h-12 text-base\" },\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n});\n\nexport type MenubarVariants = VariantProps<typeof menubar>;\n"
+    },
+    {
+      "path": "registry/beton/ui/menubar.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/menubar.tsx",
+      "content": "\"use client\";\n\nimport { Menubar as BaseMenubar } from \"@base-ui/react/menubar\";\nimport { Menu } from \"@base-ui/react/menu\";\nimport { menubar, type MenubarVariants } from \"@/lib/beton/recipes/menubar.recipe\";\nimport { createContext, useContext } from \"react\";\nimport { DropdownMenu } from \"@/components/ui/beton/dropdown-menu\";\n\nconst MenubarContext = createContext<NonNullable<MenubarVariants[\"size\"]>>(\"md\");\n\nexport interface MenubarProps extends Omit<BaseMenubar.Props, \"className\">, MenubarVariants {\n  className?: string;\n}\n\nfunction MenubarRoot({ size = \"md\", className, ...props }: MenubarProps) {\n  return (\n    <MenubarContext.Provider value={size}>\n      <BaseMenubar {...props} className={menubar({ size }).root({ class: className })} />\n    </MenubarContext.Provider>\n  );\n}\n\nexport type MenubarMenuProps = Menu.Root.Props;\n\nfunction MenubarMenu(props: MenubarMenuProps) {\n  return <Menu.Root {...props} />;\n}\n\nexport interface MenubarTriggerProps extends Omit<Menu.Trigger.Props, \"className\"> {\n  className?: string;\n}\n\nfunction MenubarTrigger({ className, ...props }: MenubarTriggerProps) {\n  const size = useContext(MenubarContext);\n  return <Menu.Trigger {...props} className={menubar({ size }).trigger({ class: className })} />;\n}\n\n/** A row of menus along the top of an application, as in a desktop app. */\nexport const Menubar = Object.assign(MenubarRoot, {\n  Menu: MenubarMenu,\n  Trigger: MenubarTrigger,\n  Content: DropdownMenu.Content,\n  Item: DropdownMenu.Item,\n  Link: DropdownMenu.Link,\n  CheckboxItem: DropdownMenu.CheckboxItem,\n  RadioGroup: DropdownMenu.RadioGroup,\n  RadioItem: DropdownMenu.RadioItem,\n  Group: DropdownMenu.Group,\n  GroupLabel: DropdownMenu.GroupLabel,\n  Separator: DropdownMenu.Separator,\n  Submenu: DropdownMenu.Submenu,\n  SubmenuTrigger: DropdownMenu.SubmenuTrigger,\n});\n"
+    }
+  ],
+  "categories": [
+    "navigation"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "Menubar"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/menubar"
+  }
+}

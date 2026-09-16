@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stepper",
+  "type": "registry:ui",
+  "title": "Stepper",
+  "description": "Shows where someone is in a task that runs over several steps.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/stepper.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/stepper.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const stepper = tv({\n  slots: {\n    root: \"flex w-full\",\n    item: \"relative flex min-w-0 flex-1 gap-3\",\n    marker: [\n      \"z-10 flex shrink-0 items-center justify-center border-3 border-border bg-raised\",\n      \"font-display font-black text-foreground\",\n      \"data-[state=complete]:bg-primary data-[state=current]:bg-secondary\",\n    ],\n    content: \"flex min-w-0 flex-col gap-0.5\",\n    title: \"font-display font-extrabold text-foreground\",\n    description: \"text-caption text-foreground\",\n    connector: \"bg-border data-[state=complete]:bg-primary\",\n  },\n  variants: {\n    orientation: {\n      horizontal: {\n        root: \"flex-row items-start gap-2\",\n        item: \"flex-col items-center text-center\",\n        connector:\n          \"absolute top-(--connector-offset) right-[calc(-50%+var(--marker-half))] left-[calc(50%+var(--marker-half))] h-1\",\n      },\n      vertical: {\n        root: \"flex-col gap-6\",\n        item: \"flex-row items-start pb-6 last:pb-0\",\n        connector: \"absolute top-(--marker-size) bottom-0 left-(--connector-offset) w-1\",\n      },\n    },\n    size: {\n      sm: {\n        root: \"[--marker-size:2.25rem] [--marker-half:1.125rem] [--connector-offset:1rem]\",\n        marker: \"size-9 text-sm\",\n        title: \"text-sm\",\n      },\n      md: {\n        root: \"[--marker-size:2.75rem] [--marker-half:1.375rem] [--connector-offset:1.25rem]\",\n        marker: \"size-11 text-base\",\n        title: \"text-base\",\n      },\n      lg: {\n        root: \"[--marker-size:3.5rem] [--marker-half:1.75rem] [--connector-offset:1.625rem]\",\n        marker: \"size-14 text-lg\",\n        title: \"text-lg\",\n      },\n    },\n  },\n  defaultVariants: {\n    orientation: \"horizontal\",\n    size: \"md\",\n  },\n});\n\nexport type StepperVariants = VariantProps<typeof stepper>;\n"
+    },
+    {
+      "path": "registry/beton/ui/stepper.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/stepper.tsx",
+      "content": "import { stepper, type StepperVariants } from \"@/lib/beton/recipes/stepper.recipe\";\nimport { visuallyHidden } from \"@/lib/beton/shared\";\nimport {\n  Children,\n  cloneElement,\n  isValidElement,\n  type ComponentProps,\n  type ReactElement,\n  type ReactNode,\n} from \"react\";\nimport { CheckIcon } from \"@/lib/beton/icons\";\n\nexport type StepState = \"complete\" | \"current\" | \"upcoming\";\n\nexport interface StepperProps extends Omit<ComponentProps<\"ol\">, \"children\">, StepperVariants {\n  children?: ReactNode;\n  /** The step being worked on, counting from 0. Earlier steps read as done. */\n  activeStep?: number;\n}\n\nfunction StepperRoot({\n  activeStep = 0,\n  orientation = \"horizontal\",\n  size = \"md\",\n  className,\n  children,\n  \"aria-label\": ariaLabel = \"Progress\",\n  ...props\n}: StepperProps) {\n  const styles = stepper({ orientation, size });\n  const steps = Children.toArray(children).filter(isValidElement);\n  return (\n    <ol\n      {...props}\n      aria-label={ariaLabel}\n      data-orientation={orientation}\n      className={styles.root({ class: className })}\n    >\n      {steps.map((step, index) =>\n        cloneElement(step as ReactElement<StepProps>, {\n          index,\n          orientation,\n          size,\n          state:\n            (step as ReactElement<StepProps>).props.state ??\n            (index < activeStep ? \"complete\" : index === activeStep ? \"current\" : \"upcoming\"),\n          last: index === steps.length - 1,\n        }),\n      )}\n    </ol>\n  );\n}\n\nexport interface StepProps extends Omit<ComponentProps<\"li\">, \"title\">, StepperVariants {\n  /** The name of the step. */\n  title: ReactNode;\n  /** A line of detail under the title. */\n  description?: ReactNode;\n  /** What is shown in the marker. Defaults to the step number, or a tick once done. */\n  marker?: ReactNode;\n  /** Overrides what Stepper worked out from `activeStep`. */\n  state?: StepState;\n  /** Set by Stepper. */\n  index?: number;\n  /** Set by Stepper. */\n  last?: boolean;\n}\n\nfunction Step({\n  title,\n  description,\n  marker,\n  state = \"upcoming\",\n  index = 0,\n  last = false,\n  orientation = \"horizontal\",\n  size = \"md\",\n  className,\n  children,\n  ...props\n}: StepProps) {\n  const styles = stepper({ orientation, size });\n  return (\n    <li\n      {...props}\n      data-state={state}\n      aria-current={state === \"current\" ? \"step\" : undefined}\n      className={styles.item({ class: className })}\n    >\n      <span data-state={state} className={styles.marker()}>\n        {marker ?? (state === \"complete\" ? <CheckIcon width={20} height={20} /> : index + 1)}\n        <span className={visuallyHidden}>\n          {state === \"complete\" ? \" (done)\" : state === \"current\" ? \" (current step)\" : \"\"}\n        </span>\n      </span>\n      <span className={styles.content()}>\n        <span className={styles.title()}>{title}</span>\n        {description ? <span className={styles.description()}>{description}</span> : null}\n        {children}\n      </span>\n      {last ? null : <span aria-hidden=\"true\" data-state={state} className={styles.connector()} />}\n    </li>\n  );\n}\n\n/** Shows where someone is in a task that runs over several steps. */\nexport const Stepper = Object.assign(StepperRoot, { Step });\n"
+    }
+  ],
+  "categories": [
+    "navigation"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": false,
+    "exports": [
+      "Stepper"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/stepper"
+  }
+}
