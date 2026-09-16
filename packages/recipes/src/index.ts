@@ -63,3 +63,30 @@ export { textarea, type TextareaVariants } from "./textarea.ts";
 export { timeline, type TimelineVariants } from "./timeline.ts";
 export { toast, type ToastVariants } from "./toast.ts";
 export { tooltip, type TooltipVariants } from "./tooltip.ts";
+export {
+  confetti,
+  cursorTrail,
+  type ConfettiVariants,
+  type CursorTrailVariants,
+} from "./cursor-trail.ts";
+export {
+  gridBackground,
+  halftoneBackground,
+  noiseOverlay,
+  type GridBackgroundVariants,
+  type HalftoneBackgroundVariants,
+  type NoiseOverlayVariants,
+} from "./backgrounds.ts";
+export { marquee, type MarqueeVariants } from "./marquee.ts";
+export { splitFlap, type SplitFlapVariants } from "./split-flap.ts";
+export { sticker, type StickerVariants } from "./sticker.ts";
+export { stickerPeel, type StickerPeelVariants } from "./sticker-peel.ts";
+export {
+  glitchText,
+  textEffect,
+  typewriter,
+  type GlitchTextVariants,
+  type TextEffectVariants,
+  type TypewriterVariants,
+} from "./text-effects.ts";
+export { ticker, type TickerVariants } from "./ticker.ts";

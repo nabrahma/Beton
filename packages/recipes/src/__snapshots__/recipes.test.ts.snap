@@ -1087,6 +1087,64 @@ exports[`recipe snapshots > commandPalette output is stable for every variant co
 ]
 `;
 
+exports[`recipe snapshots > confetti output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "base": undefined,
+      "piece": "absolute border-3 border-border",
+      "root": "pointer-events-none fixed inset-0 z-50",
+    },
+    "props": {},
+  },
+]
+`;
+
+exports[`recipe snapshots > cursorTrail output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "base": undefined,
+      "dot": "absolute border-3 border-border bg-primary",
+      "root": "pointer-events-none fixed inset-0 z-50",
+    },
+    "props": {
+      "variant": "primary",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "dot": "absolute border-3 border-border bg-secondary",
+      "root": "pointer-events-none fixed inset-0 z-50",
+    },
+    "props": {
+      "variant": "secondary",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "dot": "absolute border-3 border-border bg-danger",
+      "root": "pointer-events-none fixed inset-0 z-50",
+    },
+    "props": {
+      "variant": "danger",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "dot": "absolute border-3 border-border bg-ink",
+      "root": "pointer-events-none fixed inset-0 z-50",
+    },
+    "props": {
+      "variant": "ink",
+    },
+  },
+]
+`;
+
 exports[`recipe snapshots > descriptionList output is stable for every variant combination 1`] = `
 [
   {
@@ -1564,6 +1622,127 @@ exports[`recipe snapshots > form output is stable for every variant combination 
 ]
 `;
 
+exports[`recipe snapshots > glitchText output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "a": "text-primary motion-safe:animate-glitch-a motion-reduce:hidden",
+      "b": "text-danger motion-safe:animate-glitch-b motion-reduce:hidden",
+      "base": undefined,
+      "body": "relative",
+      "layer": "pointer-events-none absolute inset-0 select-none",
+      "root": "relative inline-block font-display font-black tracking-tight text-foreground text-h4",
+    },
+    "props": {
+      "size": "sm",
+    },
+  },
+  {
+    "classes": {
+      "a": "text-primary motion-safe:animate-glitch-a motion-reduce:hidden",
+      "b": "text-danger motion-safe:animate-glitch-b motion-reduce:hidden",
+      "base": undefined,
+      "body": "relative",
+      "layer": "pointer-events-none absolute inset-0 select-none",
+      "root": "relative inline-block font-display font-black tracking-tight text-foreground text-h3",
+    },
+    "props": {
+      "size": "md",
+    },
+  },
+  {
+    "classes": {
+      "a": "text-primary motion-safe:animate-glitch-a motion-reduce:hidden",
+      "b": "text-danger motion-safe:animate-glitch-b motion-reduce:hidden",
+      "base": undefined,
+      "body": "relative",
+      "layer": "pointer-events-none absolute inset-0 select-none",
+      "root": "relative inline-block font-display font-black tracking-tight text-foreground text-h2",
+    },
+    "props": {
+      "size": "lg",
+    },
+  },
+  {
+    "classes": {
+      "a": "text-primary motion-safe:animate-glitch-a motion-reduce:hidden",
+      "b": "text-danger motion-safe:animate-glitch-b motion-reduce:hidden",
+      "base": undefined,
+      "body": "relative",
+      "layer": "pointer-events-none absolute inset-0 select-none",
+      "root": "relative inline-block font-display font-black tracking-tight text-foreground text-h1",
+    },
+    "props": {
+      "size": "xl",
+    },
+  },
+]
+`;
+
+exports[`recipe snapshots > gridBackground output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "base": undefined,
+      "root": "pointer-events-none absolute inset-0 -z-10 opacity-40",
+    },
+    "props": {
+      "weight": "light",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "root": "pointer-events-none absolute inset-0 -z-10 opacity-70",
+    },
+    "props": {
+      "weight": "medium",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "root": "pointer-events-none absolute inset-0 -z-10 opacity-100",
+    },
+    "props": {
+      "weight": "heavy",
+    },
+  },
+]
+`;
+
+exports[`recipe snapshots > halftoneBackground output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "base": undefined,
+      "root": "pointer-events-none absolute inset-0 -z-10 opacity-15",
+    },
+    "props": {
+      "weight": "light",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "root": "pointer-events-none absolute inset-0 -z-10 opacity-30",
+    },
+    "props": {
+      "weight": "medium",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "root": "pointer-events-none absolute inset-0 -z-10 opacity-60",
+    },
+    "props": {
+      "weight": "heavy",
+    },
+  },
+]
+`;
+
 exports[`recipe snapshots > heading output is stable for every variant combination 1`] = `
 [
   {
@@ -1772,6 +1951,89 @@ exports[`recipe snapshots > list output is stable for every variant combination 
 ]
 `;
 
+exports[`recipe snapshots > marquee output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "base": undefined,
+      "item": "shrink-0",
+      "root": "group flex w-full overflow-hidden border-y-3 border-border bg-raised py-3",
+      "track": "flex w-max shrink-0 items-center motion-safe:animate-marquee motion-reduce:animate-none group-hover:[animation-play-state:paused] gap-4 pr-4",
+    },
+    "props": {
+      "bordered": true,
+      "direction": "left",
+      "gap": "sm",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "item": "shrink-0",
+      "root": "group flex w-full overflow-hidden border-y-3 border-border bg-raised py-3",
+      "track": "flex w-max shrink-0 items-center motion-safe:animate-marquee motion-reduce:animate-none group-hover:[animation-play-state:paused] gap-8 pr-8",
+    },
+    "props": {
+      "bordered": true,
+      "direction": "left",
+      "gap": "md",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "item": "shrink-0",
+      "root": "group flex w-full overflow-hidden border-y-3 border-border bg-raised py-3",
+      "track": "flex w-max shrink-0 items-center motion-safe:animate-marquee motion-reduce:animate-none group-hover:[animation-play-state:paused] gap-12 pr-12",
+    },
+    "props": {
+      "bordered": true,
+      "direction": "left",
+      "gap": "lg",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "item": "shrink-0",
+      "root": "group flex w-full overflow-hidden border-y-3 border-border bg-raised py-3",
+      "track": "flex w-max shrink-0 items-center motion-reduce:animate-none group-hover:[animation-play-state:paused] motion-safe:animate-marquee-reverse gap-4 pr-4",
+    },
+    "props": {
+      "bordered": true,
+      "direction": "right",
+      "gap": "sm",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "item": "shrink-0",
+      "root": "group flex w-full overflow-hidden border-y-3 border-border bg-raised py-3",
+      "track": "flex w-max shrink-0 items-center motion-reduce:animate-none group-hover:[animation-play-state:paused] motion-safe:animate-marquee-reverse gap-8 pr-8",
+    },
+    "props": {
+      "bordered": true,
+      "direction": "right",
+      "gap": "md",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "item": "shrink-0",
+      "root": "group flex w-full overflow-hidden border-y-3 border-border bg-raised py-3",
+      "track": "flex w-max shrink-0 items-center motion-reduce:animate-none group-hover:[animation-play-state:paused] motion-safe:animate-marquee-reverse gap-12 pr-12",
+    },
+    "props": {
+      "bordered": true,
+      "direction": "right",
+      "gap": "lg",
+    },
+  },
+]
+`;
+
 exports[`recipe snapshots > menu output is stable for every variant combination 1`] = `
 [
   {
@@ -1908,6 +2170,38 @@ exports[`recipe snapshots > navbar output is stable for every variant combinatio
     "props": {
       "size": "lg",
       "sticky": true,
+    },
+  },
+]
+`;
+
+exports[`recipe snapshots > noiseOverlay output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "base": undefined,
+      "root": "pointer-events-none absolute inset-0 z-10 mix-blend-multiply opacity-20",
+    },
+    "props": {
+      "weight": "light",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "root": "pointer-events-none absolute inset-0 z-10 mix-blend-multiply opacity-35",
+    },
+    "props": {
+      "weight": "medium",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "root": "pointer-events-none absolute inset-0 z-10 mix-blend-multiply opacity-60",
+    },
+    "props": {
+      "weight": "heavy",
     },
   },
 ]
@@ -3896,6 +4190,47 @@ exports[`recipe snapshots > spinner output is stable for every variant combinati
 ]
 `;
 
+exports[`recipe snapshots > splitFlap output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "base": undefined,
+      "cell": "relative grid place-items-center overflow-hidden border-3 border-border bg-ink font-mono font-black text-paper tabular-nums h-10 w-7 text-lg",
+      "char": "motion-safe:animate-flap motion-reduce:animate-none",
+      "root": "inline-flex gap-1",
+      "seam": "pointer-events-none absolute inset-x-0 top-1/2 h-0.5 bg-border",
+    },
+    "props": {
+      "size": "sm",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "cell": "relative grid place-items-center overflow-hidden border-3 border-border bg-ink font-mono font-black text-paper tabular-nums h-14 w-10 text-2xl",
+      "char": "motion-safe:animate-flap motion-reduce:animate-none",
+      "root": "inline-flex gap-1",
+      "seam": "pointer-events-none absolute inset-x-0 top-1/2 h-0.5 bg-border",
+    },
+    "props": {
+      "size": "md",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "cell": "relative grid place-items-center overflow-hidden border-3 border-border bg-ink font-mono font-black text-paper tabular-nums h-20 w-14 text-4xl",
+      "char": "motion-safe:animate-flap motion-reduce:animate-none",
+      "root": "inline-flex gap-1",
+      "seam": "pointer-events-none absolute inset-x-0 top-1/2 h-0.5 bg-border",
+    },
+    "props": {
+      "size": "lg",
+    },
+  },
+]
+`;
+
 exports[`recipe snapshots > stat output is stable for every variant combination 1`] = `
 [
   {
@@ -4131,6 +4466,217 @@ exports[`recipe snapshots > stepper output is stable for every variant combinati
     },
     "props": {
       "orientation": "vertical",
+      "size": "lg",
+    },
+  },
+]
+`;
+
+exports[`recipe snapshots > sticker output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "base": undefined,
+      "center": "relative z-10 grid place-items-center font-display font-black uppercase text-xs",
+      "root": "relative inline-grid shrink-0 place-items-center border-3 border-border shadow-sm bg-primary text-ink size-24",
+      "spinner": "absolute inset-0 motion-safe:animate-spin-slow motion-reduce:animate-none [animation-direction:reverse]",
+      "text": "fill-current font-display font-black tracking-[0.2em] uppercase",
+    },
+    "props": {
+      "reverse": true,
+      "size": "sm",
+      "variant": "primary",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "center": "relative z-10 grid place-items-center font-display font-black uppercase text-sm",
+      "root": "relative inline-grid shrink-0 place-items-center border-3 border-border shadow-sm bg-primary text-ink size-32",
+      "spinner": "absolute inset-0 motion-safe:animate-spin-slow motion-reduce:animate-none [animation-direction:reverse]",
+      "text": "fill-current font-display font-black tracking-[0.2em] uppercase",
+    },
+    "props": {
+      "reverse": true,
+      "size": "md",
+      "variant": "primary",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "center": "relative z-10 grid place-items-center font-display font-black uppercase text-base",
+      "root": "relative inline-grid shrink-0 place-items-center border-3 border-border shadow-sm bg-primary text-ink size-44",
+      "spinner": "absolute inset-0 motion-safe:animate-spin-slow motion-reduce:animate-none [animation-direction:reverse]",
+      "text": "fill-current font-display font-black tracking-[0.2em] uppercase",
+    },
+    "props": {
+      "reverse": true,
+      "size": "lg",
+      "variant": "primary",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "center": "relative z-10 grid place-items-center font-display font-black uppercase text-xs",
+      "root": "relative inline-grid shrink-0 place-items-center border-3 border-border shadow-sm bg-secondary text-ink size-24",
+      "spinner": "absolute inset-0 motion-safe:animate-spin-slow motion-reduce:animate-none [animation-direction:reverse]",
+      "text": "fill-current font-display font-black tracking-[0.2em] uppercase",
+    },
+    "props": {
+      "reverse": true,
+      "size": "sm",
+      "variant": "secondary",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "center": "relative z-10 grid place-items-center font-display font-black uppercase text-sm",
+      "root": "relative inline-grid shrink-0 place-items-center border-3 border-border shadow-sm bg-secondary text-ink size-32",
+      "spinner": "absolute inset-0 motion-safe:animate-spin-slow motion-reduce:animate-none [animation-direction:reverse]",
+      "text": "fill-current font-display font-black tracking-[0.2em] uppercase",
+    },
+    "props": {
+      "reverse": true,
+      "size": "md",
+      "variant": "secondary",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "center": "relative z-10 grid place-items-center font-display font-black uppercase text-base",
+      "root": "relative inline-grid shrink-0 place-items-center border-3 border-border shadow-sm bg-secondary text-ink size-44",
+      "spinner": "absolute inset-0 motion-safe:animate-spin-slow motion-reduce:animate-none [animation-direction:reverse]",
+      "text": "fill-current font-display font-black tracking-[0.2em] uppercase",
+    },
+    "props": {
+      "reverse": true,
+      "size": "lg",
+      "variant": "secondary",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "center": "relative z-10 grid place-items-center font-display font-black uppercase text-xs",
+      "root": "relative inline-grid shrink-0 place-items-center border-3 border-border shadow-sm bg-raised text-ink size-24",
+      "spinner": "absolute inset-0 motion-safe:animate-spin-slow motion-reduce:animate-none [animation-direction:reverse]",
+      "text": "fill-current font-display font-black tracking-[0.2em] uppercase",
+    },
+    "props": {
+      "reverse": true,
+      "size": "sm",
+      "variant": "ghost",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "center": "relative z-10 grid place-items-center font-display font-black uppercase text-sm",
+      "root": "relative inline-grid shrink-0 place-items-center border-3 border-border shadow-sm bg-raised text-ink size-32",
+      "spinner": "absolute inset-0 motion-safe:animate-spin-slow motion-reduce:animate-none [animation-direction:reverse]",
+      "text": "fill-current font-display font-black tracking-[0.2em] uppercase",
+    },
+    "props": {
+      "reverse": true,
+      "size": "md",
+      "variant": "ghost",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "center": "relative z-10 grid place-items-center font-display font-black uppercase text-base",
+      "root": "relative inline-grid shrink-0 place-items-center border-3 border-border shadow-sm bg-raised text-ink size-44",
+      "spinner": "absolute inset-0 motion-safe:animate-spin-slow motion-reduce:animate-none [animation-direction:reverse]",
+      "text": "fill-current font-display font-black tracking-[0.2em] uppercase",
+    },
+    "props": {
+      "reverse": true,
+      "size": "lg",
+      "variant": "ghost",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "center": "relative z-10 grid place-items-center font-display font-black uppercase text-xs",
+      "root": "relative inline-grid shrink-0 place-items-center border-3 border-border shadow-sm bg-danger text-ink size-24",
+      "spinner": "absolute inset-0 motion-safe:animate-spin-slow motion-reduce:animate-none [animation-direction:reverse]",
+      "text": "fill-current font-display font-black tracking-[0.2em] uppercase",
+    },
+    "props": {
+      "reverse": true,
+      "size": "sm",
+      "variant": "danger",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "center": "relative z-10 grid place-items-center font-display font-black uppercase text-sm",
+      "root": "relative inline-grid shrink-0 place-items-center border-3 border-border shadow-sm bg-danger text-ink size-32",
+      "spinner": "absolute inset-0 motion-safe:animate-spin-slow motion-reduce:animate-none [animation-direction:reverse]",
+      "text": "fill-current font-display font-black tracking-[0.2em] uppercase",
+    },
+    "props": {
+      "reverse": true,
+      "size": "md",
+      "variant": "danger",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "center": "relative z-10 grid place-items-center font-display font-black uppercase text-base",
+      "root": "relative inline-grid shrink-0 place-items-center border-3 border-border shadow-sm bg-danger text-ink size-44",
+      "spinner": "absolute inset-0 motion-safe:animate-spin-slow motion-reduce:animate-none [animation-direction:reverse]",
+      "text": "fill-current font-display font-black tracking-[0.2em] uppercase",
+    },
+    "props": {
+      "reverse": true,
+      "size": "lg",
+      "variant": "danger",
+    },
+  },
+]
+`;
+
+exports[`recipe snapshots > stickerPeel output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "base": undefined,
+      "content": "relative z-10 block p-3",
+      "corner": "pointer-events-none absolute top-0 right-0 size-0 border-t-transparent border-l-transparent border-r-border border-b-border transition-[border-width] duration-70 ease-linear motion-reduce:transition-none group-hover:border-[12px]",
+      "root": "group relative isolate inline-block border-3 border-border bg-raised shadow-sm transition-[translate,box-shadow] duration-70 ease-linear motion-reduce:transition-none hover:-translate-y-1 hover:shadow-lg",
+    },
+    "props": {
+      "size": "sm",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "content": "relative z-10 block p-4",
+      "corner": "pointer-events-none absolute top-0 right-0 size-0 border-t-transparent border-l-transparent border-r-border border-b-border transition-[border-width] duration-70 ease-linear motion-reduce:transition-none group-hover:border-[16px]",
+      "root": "group relative isolate inline-block border-3 border-border bg-raised shadow-sm transition-[translate,box-shadow] duration-70 ease-linear motion-reduce:transition-none hover:-translate-y-1 hover:shadow-lg",
+    },
+    "props": {
+      "size": "md",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "content": "relative z-10 block p-6",
+      "corner": "pointer-events-none absolute top-0 right-0 size-0 border-t-transparent border-l-transparent border-r-border border-b-border transition-[border-width] duration-70 ease-linear motion-reduce:transition-none group-hover:border-[24px]",
+      "root": "group relative isolate inline-block border-3 border-border bg-raised shadow-sm transition-[translate,box-shadow] duration-70 ease-linear motion-reduce:transition-none hover:-translate-y-1 hover:shadow-lg",
+    },
+    "props": {
       "size": "lg",
     },
   },
@@ -4484,6 +5030,35 @@ exports[`recipe snapshots > text output is stable for every variant combination 
 ]
 `;
 
+exports[`recipe snapshots > textEffect output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": "font-display font-black tracking-tight text-foreground tabular-nums text-h4",
+    "props": {
+      "size": "sm",
+    },
+  },
+  {
+    "classes": "font-display font-black tracking-tight text-foreground tabular-nums text-h3",
+    "props": {
+      "size": "md",
+    },
+  },
+  {
+    "classes": "font-display font-black tracking-tight text-foreground tabular-nums text-h2",
+    "props": {
+      "size": "lg",
+    },
+  },
+  {
+    "classes": "font-display font-black tracking-tight text-foreground tabular-nums text-h1",
+    "props": {
+      "size": "xl",
+    },
+  },
+]
+`;
+
 exports[`recipe snapshots > textarea output is stable for every variant combination 1`] = `
 [
   {
@@ -4500,6 +5075,53 @@ exports[`recipe snapshots > textarea output is stable for every variant combinat
   },
   {
     "classes": "block w-full min-w-0 resize-y border-3 border-border bg-raised text-foreground shadow-sm font-sans placeholder:text-disabled-foreground aria-invalid:bg-danger/15 data-invalid:bg-danger/15 read-only:shadow-none outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap disabled:cursor-not-allowed disabled:border-disabled-foreground disabled:bg-disabled disabled:text-disabled-foreground disabled:shadow-none disabled:translate-none data-disabled:cursor-not-allowed data-disabled:border-disabled-foreground data-disabled:bg-disabled data-disabled:text-disabled-foreground data-disabled:shadow-none data-disabled:translate-none min-h-36 px-4 py-3 text-lg",
+    "props": {
+      "size": "lg",
+    },
+  },
+]
+`;
+
+exports[`recipe snapshots > ticker output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "base": undefined,
+      "item": "flex shrink-0 items-center gap-2 font-mono font-bold text-xs",
+      "label": "flex shrink-0 items-center border-r-3 border-border bg-primary px-4 font-display font-black tracking-widest text-ink uppercase text-xs",
+      "root": "flex w-full items-stretch overflow-hidden border-y-3 border-border bg-ink text-paper h-10",
+      "separator": "px-4 font-mono font-black text-primary select-none",
+      "track": "flex w-max shrink-0 items-center motion-safe:animate-marquee motion-reduce:animate-none group-hover:[animation-play-state:paused] gap-6 pr-6",
+      "viewport": "group flex min-w-0 flex-1 overflow-hidden",
+    },
+    "props": {
+      "size": "sm",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "item": "flex shrink-0 items-center gap-2 font-mono font-bold text-sm",
+      "label": "flex shrink-0 items-center border-r-3 border-border bg-primary px-4 font-display font-black tracking-widest text-ink uppercase text-sm",
+      "root": "flex w-full items-stretch overflow-hidden border-y-3 border-border bg-ink text-paper h-12",
+      "separator": "px-4 font-mono font-black text-primary select-none",
+      "track": "flex w-max shrink-0 items-center motion-safe:animate-marquee motion-reduce:animate-none group-hover:[animation-play-state:paused] gap-8 pr-8",
+      "viewport": "group flex min-w-0 flex-1 overflow-hidden",
+    },
+    "props": {
+      "size": "md",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "item": "flex shrink-0 items-center gap-2 font-mono font-bold text-base",
+      "label": "flex shrink-0 items-center border-r-3 border-border bg-primary px-4 font-display font-black tracking-widest text-ink uppercase text-base",
+      "root": "flex w-full items-stretch overflow-hidden border-y-3 border-border bg-ink text-paper h-14",
+      "separator": "px-4 font-mono font-black text-primary select-none",
+      "track": "flex w-max shrink-0 items-center motion-safe:animate-marquee motion-reduce:animate-none group-hover:[animation-play-state:paused] gap-10 pr-10",
+      "viewport": "group flex min-w-0 flex-1 overflow-hidden",
+    },
     "props": {
       "size": "lg",
     },
@@ -4587,6 +5209,51 @@ exports[`recipe snapshots > tooltip output is stable for every variant combinati
       "positioner": "z-50 outline-none",
     },
     "props": {},
+  },
+]
+`;
+
+exports[`recipe snapshots > typewriter output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "base": undefined,
+      "caret": "ml-0.5 inline-block w-[0.6ch] bg-foreground align-baseline motion-safe:animate-blink h-[1em]",
+      "root": "font-display font-black tracking-tight text-foreground text-h4",
+    },
+    "props": {
+      "size": "sm",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "caret": "ml-0.5 inline-block w-[0.6ch] bg-foreground align-baseline motion-safe:animate-blink h-[1em]",
+      "root": "font-display font-black tracking-tight text-foreground text-h3",
+    },
+    "props": {
+      "size": "md",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "caret": "ml-0.5 inline-block w-[0.6ch] bg-foreground align-baseline motion-safe:animate-blink h-[1em]",
+      "root": "font-display font-black tracking-tight text-foreground text-h2",
+    },
+    "props": {
+      "size": "lg",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "caret": "ml-0.5 inline-block w-[0.6ch] bg-foreground align-baseline motion-safe:animate-blink h-[1em]",
+      "root": "font-display font-black tracking-tight text-foreground text-h1",
+    },
+    "props": {
+      "size": "xl",
+    },
   },
 ]
 `;

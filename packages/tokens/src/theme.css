@@ -88,6 +88,14 @@
   --animate-pulse-stepped: pulse-stepped 1.2s steps(1, end) infinite;
   --animate-indeterminate: indeterminate 1.2s steps(6, end) infinite;
 
+  /* Tier 5 flair. Every one of these is stepped or linear, never eased. */
+  --animate-marquee: marquee var(--marquee-duration, 20s) linear infinite;
+  --animate-marquee-reverse: marquee-reverse var(--marquee-duration, 20s) linear infinite;
+  --animate-spin-slow: spin-stepped 8s steps(24, end) infinite;
+  --animate-glitch-a: glitch-a 900ms steps(2, end) infinite;
+  --animate-glitch-b: glitch-b 900ms steps(2, end) infinite;
+  --animate-flap: flap 180ms steps(3, end) 1;
+
   @keyframes spin-stepped {
     to {
       transform: rotate(360deg);
@@ -112,6 +120,44 @@
     }
     to {
       translate: 260% 0;
+    }
+  }
+
+  @keyframes marquee {
+    to {
+      translate: -100% 0;
+    }
+  }
+
+  @keyframes marquee-reverse {
+    from {
+      translate: -100% 0;
+    }
+    to {
+      translate: 0 0;
+    }
+  }
+
+  @keyframes glitch-a {
+    50% {
+      translate: -3px 2px;
+      clip-path: inset(10% 0 55% 0);
+    }
+  }
+
+  @keyframes glitch-b {
+    50% {
+      translate: 3px -2px;
+      clip-path: inset(60% 0 12% 0);
+    }
+  }
+
+  @keyframes flap {
+    from {
+      transform: rotateX(-90deg);
+    }
+    to {
+      transform: rotateX(0deg);
     }
   }
 }
