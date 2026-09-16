@@ -10,6 +10,11 @@ export const componentSlugs = registry.items
   .filter((item) => item.type === "registry:ui")
   .map((item) => item.name);
 
+/** Blocks are whole sections of a page and are documented separately. */
+export const blockSlugs = registry.items
+  .filter((item) => item.type === "registry:block")
+  .map((item) => item.name);
+
 export const pageRoutes = [
   "/",
   "/docs/introduction",
@@ -19,8 +24,10 @@ export const pageRoutes = [
   "/docs/accessibility",
   "/docs/agents",
   "/docs/components",
+  "/docs/blocks",
   "/showcase",
   "/changelog",
   "/this-page-does-not-exist",
   ...componentSlugs.map((slug) => `/docs/components/${slug}`),
+  ...blockSlugs.map((slug) => `/docs/blocks/${slug}`),
 ];

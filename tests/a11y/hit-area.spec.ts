@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { componentSlugs } from "../routes.ts";
+import { blockSlugs, componentSlugs } from "../routes.ts";
 
 const MIN_TARGET = 44;
 
@@ -7,9 +7,14 @@ const MIN_TARGET = 44;
  * Measures every interactive Béton control rendered in a component's examples,
  * including the invisible ::after extension used by small sizes.
  */
-for (const slug of componentSlugs) {
+const pages = [
+  ...componentSlugs.map((slug) => [slug, `/docs/components/${slug}`] as const),
+  ...blockSlugs.map((slug) => [slug, `/docs/blocks/${slug}`] as const),
+];
+
+for (const [slug, route] of pages) {
   test(`${slug}: interactive targets are at least ${MIN_TARGET}px`, async ({ page }) => {
-    await page.goto(`/docs/components/${slug}`);
+    await page.goto(route);
 
     const targets = await page.evaluate(() => {
       const selector =

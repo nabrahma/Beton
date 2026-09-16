@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { componentSlugs } from "../routes.ts";
+import { blockSlugs, componentSlugs } from "../routes.ts";
 
 /**
  * The calendar draws the month it is opened on, so its picture changes every
@@ -7,10 +7,34 @@ import { componentSlugs } from "../routes.ts";
  */
 const NOT_STABLE_OVER_TIME = new Set(["calendar"]);
 
-for (const slug of componentSlugs.filter((name) => !NOT_STABLE_OVER_TIME.has(name))) {
+const pages = [
+  ...componentSlugs.map((slug) => [slug, `/docs/components/${slug}`] as const),
+  ...blockSlugs.map((slug) => [slug, `/docs/blocks/${slug}`] as const),
+].filter(([slug]) => !NOT_STABLE_OVER_TIME.has(slug));
+
+for (const [slug, route] of pages) {
   test(`${slug} preview matches the baseline`, async ({ page }) => {
-    await page.goto(`/docs/components/${slug}`, { waitUntil: "networkidle" });
+    await page.goto(route, { waitUntil: "networkidle" });
     await page.evaluate(() => document.fonts.ready);
+    // The docs header is sticky and would land on top of a tall preview.
+    await page.addStyleTag({ content: "header { visibility: hidden !important; }" });
+
+    // Blocks are drawn in an iframe, so they meet the breakpoints of the frame.
+    const preview = page.getByRole("region", { name: "Live preview" });
+    if (await preview.count()) {
+      const frame = preview.locator("iframe");
+      await expect(frame).toBeVisible();
+      // The frame grows to fit its content; wait for that to settle.
+      await expect
+        .poll(async () => {
+          const first = (await frame.boundingBox())?.height;
+          await page.waitForTimeout(600);
+          return (await frame.boundingBox())?.height === first;
+        })
+        .toBe(true);
+      await expect(preview).toHaveScreenshot(`${slug}.png`);
+      return;
+    }
 
     // The live playground when the component has one, otherwise its first example.
     const playground = page.getByRole("region", { name: "Live playground" });
