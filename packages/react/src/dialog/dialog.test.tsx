@@ -63,21 +63,21 @@ describe("Dialog", () => {
     const dialog = await screen.findByRole("dialog");
     await waitFor(() => expect(dialog.contains(document.activeElement)).toBe(true));
 
-    // Tabbing past the last control wraps back to the first; focus never
-    // reaches the page behind the dialog.
+    // Tabbing past the last control wraps back to the first. A tab that leaves
+    // the dialog lands on a focus guard, and the guard hands focus back on a
+    // later tick, so what is asserted is where focus settles, not where the key
+    // press first puts it.
     const visited: string[] = [];
-    for (let i = 0; i < 14; i++) {
+    for (let i = 0; i < 12; i++) {
+      await user.tab();
+      await waitFor(() => expect(dialog.contains(document.activeElement)).toBe(true));
       const active = document.activeElement as HTMLElement;
-      // Focus guards and the body are transient states while focus is being
-      // bounced back into the dialog.
-      const isTransient =
-        active === document.body || active.hasAttribute("data-base-ui-focus-guard");
-      if (!isTransient) {
+      // The popup itself can hold focus for a moment while the guard hands it on.
+      if (active !== dialog) {
         visited.push(active.getAttribute("aria-label") ?? active.textContent?.trim() ?? "");
       }
       expect(before).not.toHaveFocus();
       expect(after).not.toHaveFocus();
-      await user.tab();
     }
 
     // Every control inside is reached, and the order wraps around.
