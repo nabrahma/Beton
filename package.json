@@ -28,7 +28,9 @@
     "registry:build": "node scripts/build-registry.mjs",
     "registry:check": "node scripts/build-registry.mjs --check",
     "test:browser": "pnpm --filter @beton-ui/tests test:browser",
-    "docs:data": "node scripts/generate-docs-data.mjs"
+    "docs:data": "node scripts/generate-docs-data.mjs",
+    "readme:build": "node scripts/update-readme.mjs",
+    "readme:check": "node scripts/update-readme.mjs --check"
   },
   "devDependencies": {
     "@changesets/changelog-github": "^1.0.1",

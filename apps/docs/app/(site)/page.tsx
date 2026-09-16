@@ -5,7 +5,7 @@ import { ArrowRightIcon, GitHubIcon } from "@/components/icons";
 import { ComponentWall } from "@/components/landing/component-wall";
 import { HeroPanel } from "@/components/landing/hero-panel";
 import { TabDemo } from "@/components/landing/tab-demo";
-import { getA11ySummary, getComponents } from "@/lib/components";
+import { getA11ySummary, getBlocks, getComponents } from "@/lib/components";
 import { site } from "@/lib/site";
 
 const ticker = [
@@ -22,6 +22,7 @@ const ticker = [
 
 export default function Home() {
   const components = getComponents();
+  const blocks = getBlocks();
   const a11y = getA11ySummary();
 
   return (
@@ -31,7 +32,7 @@ export default function Home() {
         <div className="mx-auto grid max-w-7xl items-center gap-14 px-4 py-16 sm:px-6 lg:grid-cols-[1.15fr_1fr] lg:py-24">
           <div className="flex flex-col gap-8">
             <p className="w-fit border-3 border-border bg-raised px-3 py-1 font-mono text-xs font-bold tracking-widest uppercase shadow-sm">
-              v0.1 · {components.length} components · open source
+              v0.1 · {components.length} components · {blocks.length} blocks · open source
             </p>
             <h1 className="font-display text-[clamp(3rem,8vw,6rem)] leading-[0.92] font-black tracking-tight text-balance">
               The complete{" "}
@@ -237,26 +238,53 @@ export default function Home() {
       </section>
 
       {/* ----------------------------------------------------------- blocks */}
-      <section aria-labelledby="blocks">
+      <section aria-labelledby="blocks" className="border-b-3 border-border">
         <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
-          <div className="flex flex-col items-start gap-8 border-3 border-border bg-secondary p-8 shadow-lg sm:p-12 lg:flex-row lg:items-center lg:justify-between">
-            <div className="flex flex-col gap-3">
-              <p className="font-mono text-sm font-bold uppercase">05 / Blocks</p>
+          <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
+            <div>
+              <p className="mb-3 font-mono text-sm font-bold uppercase">05 / Blocks</p>
               <h2
                 id="blocks"
-                className="max-w-2xl font-display text-4xl leading-none font-black tracking-tight sm:text-5xl"
+                className="max-w-2xl font-display text-5xl leading-none font-black tracking-tight sm:text-6xl"
               >
-                Heroes, pricing tables and footers are next on the pour.
+                Whole sections, already poured.
               </h2>
-              <p className="max-w-xl text-lg">
-                Watch the repository to hear when marketing blocks land.
+              <p className="mt-4 max-w-xl text-lg">
+                Heroes, pricing tables, footers and the rest. Built from the same components, tested
+                the same way, and yours to edit once installed.
               </p>
             </div>
-            <a href={site.github} className={button({ size: "lg", class: "gap-3" })}>
-              <GitHubIcon className="size-5" />
-              Watch on GitHub
-            </a>
+            <Link href="/docs/blocks" className={button({ variant: "secondary", class: "gap-2" })}>
+              All blocks <ArrowRightIcon className="size-4" />
+            </Link>
           </div>
+          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {blocks.map((block, index) => (
+              <li key={block.name}>
+                <Link
+                  href={`/docs/blocks/${block.name}`}
+                  className="group flex h-full flex-col border-3 border-border bg-raised shadow-sm transition-[translate,box-shadow] duration-70 ease-linear active:translate-x-1 active:translate-y-1 active:shadow-none"
+                >
+                  <span
+                    aria-hidden="true"
+                    className={`flex h-16 items-end border-b-3 border-border p-3 font-display text-2xl font-black uppercase ${
+                      ["bg-primary", "bg-secondary", "bg-success", "bg-danger", "bg-surface"][
+                        index % 5
+                      ]
+                    }`}
+                  >
+                    {block.title.slice(0, 2)}
+                  </span>
+                  <span className="flex flex-1 flex-col gap-1 p-4">
+                    <span className="font-display text-lg font-extrabold group-hover:underline">
+                      {block.title}
+                    </span>
+                    <span className="text-sm">{block.description}</span>
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
     </main>
