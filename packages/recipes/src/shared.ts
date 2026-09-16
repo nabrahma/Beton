@@ -38,6 +38,12 @@ export const fieldSurface = [
   "aria-invalid:bg-danger/15 data-invalid:bg-danger/15",
 ].join(" ");
 
+/** The dimmed layer behind modal overlays. */
+export const backdrop = "fixed inset-0 z-50 bg-ink/50";
+
+/** Raised surface for floating popups: menus, popovers, selects. */
+export const popupSurface = "border-3 border-border bg-raised text-foreground outline-none";
+
 /** Label typography shared by Label, Field and group legends. */
 export const labelText =
   "font-display font-bold uppercase tracking-wide text-foreground data-disabled:text-disabled-foreground";

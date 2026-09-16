@@ -670,6 +670,251 @@ exports[`recipe snapshots > checkbox output is stable for every variant combinat
 ]
 `;
 
+exports[`recipe snapshots > commandPalette output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "empty": "px-4 py-10 text-center font-display text-lg font-extrabold",
+      "footer": "flex flex-wrap items-center justify-between gap-3 border-t-3 border-border bg-surface px-4 py-2.5 font-mono text-xs font-bold",
+      "group": "py-1",
+      "groupLabel": "px-4 pt-2 pb-1 font-mono text-xs font-bold uppercase",
+      "icon": "size-5 shrink-0",
+      "input": "h-14 w-full min-w-0 bg-transparent font-sans text-lg outline-none placeholder:text-disabled-foreground",
+      "inputGroup": "flex items-center gap-3 border-b-3 border-border px-4 has-focus-visible:border-b-5",
+      "item": "flex min-h-11 cursor-pointer select-none items-center gap-3 px-4 font-medium outline-none data-highlighted:bg-secondary data-disabled:cursor-not-allowed data-disabled:text-disabled-foreground",
+      "itemHint": "ml-auto font-mono text-xs font-bold",
+      "list": "min-h-0 flex-1 scroll-py-2 overflow-y-auto py-2",
+      "popup": "flex max-h-[76dvh] w-full max-w-xl flex-col overflow-hidden shadow-lg border-3 border-border bg-raised text-foreground outline-none",
+      "viewport": "fixed inset-0 z-50 flex items-start justify-center p-4 pt-[12dvh]",
+    },
+    "props": {},
+  },
+]
+`;
+
+exports[`recipe snapshots > dialog output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-primary",
+      "popup": "relative flex max-h-[calc(100dvh-2rem)] w-full flex-col overflow-hidden rounded-lg shadow-lg border-3 border-border bg-raised text-foreground outline-none max-w-sm",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+      "viewport": "fixed inset-0 z-50 flex items-center justify-center overflow-y-auto p-4 sm:p-6",
+    },
+    "props": {
+      "size": "sm",
+      "variant": "primary",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-primary",
+      "popup": "relative flex max-h-[calc(100dvh-2rem)] w-full flex-col overflow-hidden rounded-lg shadow-lg border-3 border-border bg-raised text-foreground outline-none max-w-lg",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+      "viewport": "fixed inset-0 z-50 flex items-center justify-center overflow-y-auto p-4 sm:p-6",
+    },
+    "props": {
+      "size": "md",
+      "variant": "primary",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-primary",
+      "popup": "relative flex max-h-[calc(100dvh-2rem)] w-full flex-col overflow-hidden rounded-lg shadow-lg border-3 border-border bg-raised text-foreground outline-none max-w-2xl",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+      "viewport": "fixed inset-0 z-50 flex items-center justify-center overflow-y-auto p-4 sm:p-6",
+    },
+    "props": {
+      "size": "lg",
+      "variant": "primary",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-secondary",
+      "popup": "relative flex max-h-[calc(100dvh-2rem)] w-full flex-col overflow-hidden rounded-lg shadow-lg border-3 border-border bg-raised text-foreground outline-none max-w-sm",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+      "viewport": "fixed inset-0 z-50 flex items-center justify-center overflow-y-auto p-4 sm:p-6",
+    },
+    "props": {
+      "size": "sm",
+      "variant": "secondary",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-secondary",
+      "popup": "relative flex max-h-[calc(100dvh-2rem)] w-full flex-col overflow-hidden rounded-lg shadow-lg border-3 border-border bg-raised text-foreground outline-none max-w-lg",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+      "viewport": "fixed inset-0 z-50 flex items-center justify-center overflow-y-auto p-4 sm:p-6",
+    },
+    "props": {
+      "size": "md",
+      "variant": "secondary",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-secondary",
+      "popup": "relative flex max-h-[calc(100dvh-2rem)] w-full flex-col overflow-hidden rounded-lg shadow-lg border-3 border-border bg-raised text-foreground outline-none max-w-2xl",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+      "viewport": "fixed inset-0 z-50 flex items-center justify-center overflow-y-auto p-4 sm:p-6",
+    },
+    "props": {
+      "size": "lg",
+      "variant": "secondary",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-raised",
+      "popup": "relative flex max-h-[calc(100dvh-2rem)] w-full flex-col overflow-hidden rounded-lg shadow-lg border-3 border-border bg-raised text-foreground outline-none max-w-sm",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+      "viewport": "fixed inset-0 z-50 flex items-center justify-center overflow-y-auto p-4 sm:p-6",
+    },
+    "props": {
+      "size": "sm",
+      "variant": "ghost",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-raised",
+      "popup": "relative flex max-h-[calc(100dvh-2rem)] w-full flex-col overflow-hidden rounded-lg shadow-lg border-3 border-border bg-raised text-foreground outline-none max-w-lg",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+      "viewport": "fixed inset-0 z-50 flex items-center justify-center overflow-y-auto p-4 sm:p-6",
+    },
+    "props": {
+      "size": "md",
+      "variant": "ghost",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-raised",
+      "popup": "relative flex max-h-[calc(100dvh-2rem)] w-full flex-col overflow-hidden rounded-lg shadow-lg border-3 border-border bg-raised text-foreground outline-none max-w-2xl",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+      "viewport": "fixed inset-0 z-50 flex items-center justify-center overflow-y-auto p-4 sm:p-6",
+    },
+    "props": {
+      "size": "lg",
+      "variant": "ghost",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-danger",
+      "popup": "relative flex max-h-[calc(100dvh-2rem)] w-full flex-col overflow-hidden rounded-lg shadow-lg border-3 border-border bg-raised text-foreground outline-none max-w-sm",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+      "viewport": "fixed inset-0 z-50 flex items-center justify-center overflow-y-auto p-4 sm:p-6",
+    },
+    "props": {
+      "size": "sm",
+      "variant": "danger",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-danger",
+      "popup": "relative flex max-h-[calc(100dvh-2rem)] w-full flex-col overflow-hidden rounded-lg shadow-lg border-3 border-border bg-raised text-foreground outline-none max-w-lg",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+      "viewport": "fixed inset-0 z-50 flex items-center justify-center overflow-y-auto p-4 sm:p-6",
+    },
+    "props": {
+      "size": "md",
+      "variant": "danger",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-danger",
+      "popup": "relative flex max-h-[calc(100dvh-2rem)] w-full flex-col overflow-hidden rounded-lg shadow-lg border-3 border-border bg-raised text-foreground outline-none max-w-2xl",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+      "viewport": "fixed inset-0 z-50 flex items-center justify-center overflow-y-auto p-4 sm:p-6",
+    },
+    "props": {
+      "size": "lg",
+      "variant": "danger",
+    },
+  },
+]
+`;
+
 exports[`recipe snapshots > field output is stable for every variant combination 1`] = `
 [
   {
@@ -832,6 +1077,41 @@ exports[`recipe snapshots > heading output is stable for every variant combinati
 ]
 `;
 
+exports[`recipe snapshots > hoverCard output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "base": undefined,
+      "popup": "flex max-w-(--available-width) flex-col gap-3 p-5 shadow-lg border-3 border-border bg-raised text-foreground outline-none w-60",
+      "positioner": "z-50 outline-none",
+    },
+    "props": {
+      "size": "sm",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "popup": "flex max-w-(--available-width) flex-col gap-3 p-5 shadow-lg border-3 border-border bg-raised text-foreground outline-none w-80",
+      "positioner": "z-50 outline-none",
+    },
+    "props": {
+      "size": "md",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "popup": "flex max-w-(--available-width) flex-col gap-3 p-5 shadow-lg border-3 border-border bg-raised text-foreground outline-none w-[26rem]",
+      "positioner": "z-50 outline-none",
+    },
+    "props": {
+      "size": "lg",
+    },
+  },
+]
+`;
+
 exports[`recipe snapshots > input output is stable for every variant combination 1`] = `
 [
   {
@@ -907,6 +1187,62 @@ exports[`recipe snapshots > label output is stable for every variant combination
       "root": "inline-flex items-center gap-1 font-display font-bold uppercase tracking-wide text-foreground data-disabled:cursor-not-allowed data-disabled:text-disabled-foreground text-base",
     },
     "props": {
+      "size": "lg",
+    },
+  },
+]
+`;
+
+exports[`recipe snapshots > menu output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "base": undefined,
+      "chevron": "ml-auto size-4 shrink-0 -rotate-90",
+      "groupLabel": "px-3 pt-2 pb-1 font-mono text-xs font-bold uppercase",
+      "indicator": "flex size-4 shrink-0 items-center justify-center",
+      "item": "relative flex min-h-11 cursor-pointer select-none items-center gap-3 px-3 font-medium outline-none data-popup-open:bg-secondary data-disabled:cursor-not-allowed data-disabled:text-disabled-foreground text-sm data-highlighted:bg-danger",
+      "popup": "min-w-52 max-w-(--available-width) py-1 shadow-sm border-3 border-border bg-raised text-foreground outline-none",
+      "positioner": "z-50 outline-none",
+      "separator": "my-1 h-0.5 bg-border",
+      "shortcut": "ml-auto pl-6 font-mono text-xs font-bold",
+    },
+    "props": {
+      "danger": true,
+      "size": "sm",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "chevron": "ml-auto size-4 shrink-0 -rotate-90",
+      "groupLabel": "px-3 pt-2 pb-1 font-mono text-xs font-bold uppercase",
+      "indicator": "flex size-4 shrink-0 items-center justify-center",
+      "item": "relative flex min-h-11 cursor-pointer select-none items-center gap-3 px-3 font-medium outline-none data-popup-open:bg-secondary data-disabled:cursor-not-allowed data-disabled:text-disabled-foreground text-base data-highlighted:bg-danger",
+      "popup": "min-w-52 max-w-(--available-width) py-1 shadow-sm border-3 border-border bg-raised text-foreground outline-none",
+      "positioner": "z-50 outline-none",
+      "separator": "my-1 h-0.5 bg-border",
+      "shortcut": "ml-auto pl-6 font-mono text-xs font-bold",
+    },
+    "props": {
+      "danger": true,
+      "size": "md",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "chevron": "ml-auto size-4 shrink-0 -rotate-90",
+      "groupLabel": "px-3 pt-2 pb-1 font-mono text-xs font-bold uppercase",
+      "indicator": "flex size-4 shrink-0 items-center justify-center",
+      "item": "relative flex cursor-pointer select-none items-center gap-3 px-3 font-medium outline-none data-popup-open:bg-secondary data-disabled:cursor-not-allowed data-disabled:text-disabled-foreground min-h-12 text-lg data-highlighted:bg-danger",
+      "popup": "min-w-52 max-w-(--available-width) py-1 shadow-sm border-3 border-border bg-raised text-foreground outline-none",
+      "positioner": "z-50 outline-none",
+      "separator": "my-1 h-0.5 bg-border",
+      "shortcut": "ml-auto pl-6 font-mono text-xs font-bold",
+    },
+    "props": {
+      "danger": true,
       "size": "lg",
     },
   },
@@ -993,6 +1329,50 @@ exports[`recipe snapshots > otpInput output is stable for every variant combinat
       "input": "border-3 border-border bg-raised text-foreground shadow-sm placeholder:text-disabled-foreground aria-invalid:bg-danger/15 data-invalid:bg-danger/15 text-center font-mono font-bold caret-foreground data-filled:bg-secondary aria-invalid:data-filled:bg-danger/15 outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap disabled:cursor-not-allowed disabled:border-disabled-foreground disabled:bg-disabled disabled:text-disabled-foreground disabled:shadow-none disabled:translate-none data-disabled:cursor-not-allowed data-disabled:border-disabled-foreground data-disabled:bg-disabled data-disabled:text-disabled-foreground data-disabled:shadow-none data-disabled:translate-none size-14 text-2xl",
       "root": "flex w-fit flex-wrap items-center gap-2",
       "separator": "h-1 w-3 shrink-0 bg-border",
+    },
+    "props": {
+      "size": "lg",
+    },
+  },
+]
+`;
+
+exports[`recipe snapshots > popover output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "base": undefined,
+      "close": "absolute top-2 right-2",
+      "description": "text-sm",
+      "popup": "relative flex max-w-(--available-width) flex-col gap-2 p-5 shadow-sm border-3 border-border bg-raised text-foreground outline-none w-56",
+      "positioner": "z-50 outline-none",
+      "title": "pr-10 font-display text-lg font-extrabold leading-tight",
+    },
+    "props": {
+      "size": "sm",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "close": "absolute top-2 right-2",
+      "description": "text-sm",
+      "popup": "relative flex max-w-(--available-width) flex-col gap-2 p-5 shadow-sm border-3 border-border bg-raised text-foreground outline-none w-72",
+      "positioner": "z-50 outline-none",
+      "title": "pr-10 font-display text-lg font-extrabold leading-tight",
+    },
+    "props": {
+      "size": "md",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "close": "absolute top-2 right-2",
+      "description": "text-sm",
+      "popup": "relative flex max-w-(--available-width) flex-col gap-2 p-5 shadow-sm border-3 border-border bg-raised text-foreground outline-none w-96",
+      "positioner": "z-50 outline-none",
+      "title": "pr-10 font-display text-lg font-extrabold leading-tight",
     },
     "props": {
       "size": "lg",
@@ -1406,6 +1786,875 @@ exports[`recipe snapshots > separator output is stable for every variant combina
     "props": {
       "orientation": "vertical",
       "size": "lg",
+    },
+  },
+]
+`;
+
+exports[`recipe snapshots > sheet output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-primary",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-y-0 right-0 h-dvh w-full border-l-5 max-w-xs",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "right",
+      "size": "sm",
+      "variant": "primary",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-secondary",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-y-0 right-0 h-dvh w-full border-l-5 max-w-xs",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "right",
+      "size": "sm",
+      "variant": "secondary",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-raised",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-y-0 right-0 h-dvh w-full border-l-5 max-w-xs",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "right",
+      "size": "sm",
+      "variant": "ghost",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-danger",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-y-0 right-0 h-dvh w-full border-l-5 max-w-xs",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "right",
+      "size": "sm",
+      "variant": "danger",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-primary",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-y-0 right-0 h-dvh w-full border-l-5 max-w-md",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "right",
+      "size": "md",
+      "variant": "primary",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-secondary",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-y-0 right-0 h-dvh w-full border-l-5 max-w-md",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "right",
+      "size": "md",
+      "variant": "secondary",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-raised",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-y-0 right-0 h-dvh w-full border-l-5 max-w-md",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "right",
+      "size": "md",
+      "variant": "ghost",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-danger",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-y-0 right-0 h-dvh w-full border-l-5 max-w-md",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "right",
+      "size": "md",
+      "variant": "danger",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-primary",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-y-0 right-0 h-dvh w-full border-l-5 max-w-2xl",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "right",
+      "size": "lg",
+      "variant": "primary",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-secondary",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-y-0 right-0 h-dvh w-full border-l-5 max-w-2xl",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "right",
+      "size": "lg",
+      "variant": "secondary",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-raised",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-y-0 right-0 h-dvh w-full border-l-5 max-w-2xl",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "right",
+      "size": "lg",
+      "variant": "ghost",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-danger",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-y-0 right-0 h-dvh w-full border-l-5 max-w-2xl",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "right",
+      "size": "lg",
+      "variant": "danger",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-primary",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-y-0 left-0 h-dvh w-full border-r-5 max-w-xs",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "left",
+      "size": "sm",
+      "variant": "primary",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-secondary",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-y-0 left-0 h-dvh w-full border-r-5 max-w-xs",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "left",
+      "size": "sm",
+      "variant": "secondary",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-raised",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-y-0 left-0 h-dvh w-full border-r-5 max-w-xs",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "left",
+      "size": "sm",
+      "variant": "ghost",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-danger",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-y-0 left-0 h-dvh w-full border-r-5 max-w-xs",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "left",
+      "size": "sm",
+      "variant": "danger",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-primary",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-y-0 left-0 h-dvh w-full border-r-5 max-w-md",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "left",
+      "size": "md",
+      "variant": "primary",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-secondary",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-y-0 left-0 h-dvh w-full border-r-5 max-w-md",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "left",
+      "size": "md",
+      "variant": "secondary",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-raised",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-y-0 left-0 h-dvh w-full border-r-5 max-w-md",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "left",
+      "size": "md",
+      "variant": "ghost",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-danger",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-y-0 left-0 h-dvh w-full border-r-5 max-w-md",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "left",
+      "size": "md",
+      "variant": "danger",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-primary",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-y-0 left-0 h-dvh w-full border-r-5 max-w-2xl",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "left",
+      "size": "lg",
+      "variant": "primary",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-secondary",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-y-0 left-0 h-dvh w-full border-r-5 max-w-2xl",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "left",
+      "size": "lg",
+      "variant": "secondary",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-raised",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-y-0 left-0 h-dvh w-full border-r-5 max-w-2xl",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "left",
+      "size": "lg",
+      "variant": "ghost",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-danger",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-y-0 left-0 h-dvh w-full border-r-5 max-w-2xl",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "left",
+      "size": "lg",
+      "variant": "danger",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-primary",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-x-0 top-0 max-h-[85dvh] border-b-5",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "top",
+      "size": "sm",
+      "variant": "primary",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-secondary",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-x-0 top-0 max-h-[85dvh] border-b-5",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "top",
+      "size": "sm",
+      "variant": "secondary",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-raised",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-x-0 top-0 max-h-[85dvh] border-b-5",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "top",
+      "size": "sm",
+      "variant": "ghost",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-danger",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-x-0 top-0 max-h-[85dvh] border-b-5",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "top",
+      "size": "sm",
+      "variant": "danger",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-primary",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-x-0 top-0 max-h-[85dvh] border-b-5",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "top",
+      "size": "md",
+      "variant": "primary",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-secondary",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-x-0 top-0 max-h-[85dvh] border-b-5",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "top",
+      "size": "md",
+      "variant": "secondary",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-raised",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-x-0 top-0 max-h-[85dvh] border-b-5",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "top",
+      "size": "md",
+      "variant": "ghost",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-danger",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-x-0 top-0 max-h-[85dvh] border-b-5",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "top",
+      "size": "md",
+      "variant": "danger",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-primary",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-x-0 top-0 max-h-[85dvh] border-b-5",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "top",
+      "size": "lg",
+      "variant": "primary",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-secondary",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-x-0 top-0 max-h-[85dvh] border-b-5",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "top",
+      "size": "lg",
+      "variant": "secondary",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-raised",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-x-0 top-0 max-h-[85dvh] border-b-5",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "top",
+      "size": "lg",
+      "variant": "ghost",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-danger",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-x-0 top-0 max-h-[85dvh] border-b-5",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "top",
+      "size": "lg",
+      "variant": "danger",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-primary",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-x-0 bottom-0 max-h-[85dvh] border-t-5",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "bottom",
+      "size": "sm",
+      "variant": "primary",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-secondary",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-x-0 bottom-0 max-h-[85dvh] border-t-5",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "bottom",
+      "size": "sm",
+      "variant": "secondary",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-raised",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-x-0 bottom-0 max-h-[85dvh] border-t-5",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "bottom",
+      "size": "sm",
+      "variant": "ghost",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-danger",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-x-0 bottom-0 max-h-[85dvh] border-t-5",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "bottom",
+      "size": "sm",
+      "variant": "danger",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-primary",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-x-0 bottom-0 max-h-[85dvh] border-t-5",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "bottom",
+      "size": "md",
+      "variant": "primary",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-secondary",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-x-0 bottom-0 max-h-[85dvh] border-t-5",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "bottom",
+      "size": "md",
+      "variant": "secondary",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-raised",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-x-0 bottom-0 max-h-[85dvh] border-t-5",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "bottom",
+      "size": "md",
+      "variant": "ghost",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-danger",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-x-0 bottom-0 max-h-[85dvh] border-t-5",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "bottom",
+      "size": "md",
+      "variant": "danger",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-primary",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-x-0 bottom-0 max-h-[85dvh] border-t-5",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "bottom",
+      "size": "lg",
+      "variant": "primary",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-secondary",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-x-0 bottom-0 max-h-[85dvh] border-t-5",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "bottom",
+      "size": "lg",
+      "variant": "secondary",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-raised",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-x-0 bottom-0 max-h-[85dvh] border-t-5",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "bottom",
+      "size": "lg",
+      "variant": "ghost",
+    },
+  },
+  {
+    "classes": {
+      "backdrop": "fixed inset-0 z-50 bg-ink/50",
+      "base": undefined,
+      "body": "flex flex-1 flex-col gap-4 overflow-y-auto p-6",
+      "close": "absolute top-4 right-4",
+      "description": "text-base",
+      "footer": "flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6",
+      "header": "flex flex-col gap-2 border-b-3 border-border p-6 pr-16 bg-danger",
+      "popup": "fixed z-50 flex flex-col border-border bg-raised text-foreground outline-none inset-x-0 bottom-0 max-h-[85dvh] border-t-5",
+      "title": "font-display text-2xl font-black leading-tight tracking-tight",
+    },
+    "props": {
+      "side": "bottom",
+      "size": "lg",
+      "variant": "danger",
     },
   },
 ]
@@ -1846,6 +3095,37 @@ exports[`recipe snapshots > textarea output is stable for every variant combinat
     "props": {
       "size": "lg",
     },
+  },
+]
+`;
+
+exports[`recipe snapshots > toast output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "actions": "mt-2 flex flex-wrap gap-2",
+      "base": undefined,
+      "close": "absolute top-2 right-2",
+      "content": "flex min-w-0 flex-1 flex-col gap-1",
+      "description": "text-sm",
+      "root": "relative flex w-full items-start gap-3 border-3 border-border bg-raised p-4 pr-14 text-foreground shadow-sm outline-none data-[type=success]:bg-success data-[type=error]:bg-danger data-[type=warning]:bg-secondary data-[type=info]:bg-primary data-limited:hidden",
+      "title": "font-display text-base font-extrabold leading-tight",
+      "viewport": "fixed right-4 bottom-4 z-[60] flex w-[calc(100vw-2rem)] flex-col-reverse gap-3 outline-none sm:right-6 sm:bottom-6 sm:w-96",
+    },
+    "props": {},
+  },
+]
+`;
+
+exports[`recipe snapshots > tooltip output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "base": undefined,
+      "popup": "max-w-64 border-2 border-border bg-ink px-2.5 py-1.5 font-mono text-xs font-bold text-paper",
+      "positioner": "z-50 outline-none",
+    },
+    "props": {},
   },
 ]
 `;
