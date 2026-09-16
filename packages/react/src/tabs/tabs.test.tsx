@@ -45,10 +45,7 @@ describe("Tabs", () => {
     const tab = screen.getByRole("tab", { name: "Details" });
     expect(tab).toHaveAttribute("aria-selected", "true");
     expect(screen.getByRole("tabpanel")).toHaveTextContent("Panel one");
-    expect(screen.getByRole("tabpanel")).toHaveAttribute(
-      "aria-labelledby",
-      tab.getAttribute("id"),
-    );
+    expect(screen.getByRole("tabpanel")).toHaveAttribute("aria-labelledby", tab.getAttribute("id"));
   });
 
   it("[keyboard] moves between tabs with the arrow keys and activates with Enter", async () => {

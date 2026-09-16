@@ -87,10 +87,7 @@ describe("Pagination", () => {
 
   it("[href] renders links that work without JavaScript", () => {
     render(<Pagination page={2} count={5} href={(page) => `/posts?page=${page}`} />);
-    expect(screen.getByRole("link", { name: "Page 3" })).toHaveAttribute(
-      "href",
-      "/posts?page=3",
-    );
+    expect(screen.getByRole("link", { name: "Page 3" })).toHaveAttribute("href", "/posts?page=3");
     // The arrow with nowhere to go stays a disabled button, not a dead link.
     render(<Pagination page={1} count={5} aria-label="First" href={(p) => `/p/${p}`} />);
     expect(screen.getAllByRole("button", { name: "Previous page" })[0]).toBeDisabled();

@@ -4,12 +4,15 @@ import { sidebar, type SidebarVariants } from "@beton-ui/recipes";
 import { createContext, useContext, type ComponentProps, type ReactNode } from "react";
 import { renderElement, type RenderProp } from "../utils/render-element.ts";
 
-type Styles = ReturnType<typeof sidebar>;
+interface SidebarState {
+  styles: ReturnType<typeof sidebar>;
+  size: NonNullable<SidebarVariants["size"]>;
+}
 
-const SidebarContext = createContext<Styles>(sidebar());
+const SidebarContext = createContext<SidebarState>({ styles: sidebar(), size: "md" });
 
 function useStyles() {
-  return useContext(SidebarContext);
+  return useContext(SidebarContext).styles;
 }
 
 export interface SidebarProps extends ComponentProps<"nav">, SidebarVariants {
@@ -26,7 +29,7 @@ function SidebarRoot({
 }: SidebarProps) {
   const styles = sidebar({ size, bordered });
   return (
-    <SidebarContext.Provider value={styles}>
+    <SidebarContext.Provider value={{ styles, size }}>
       {renderElement(
         "nav",
         { ...props, "aria-label": ariaLabel, className: styles.root({ class: className }) },
@@ -82,7 +85,7 @@ function SidebarItem({
   render,
   ...props
 }: SidebarItemProps) {
-  const styles = useStyles();
+  const { styles, size } = useContext(SidebarContext);
   return (
     <li className={styles.item({ class: itemClassName })}>
       {renderElement(
@@ -90,6 +93,7 @@ function SidebarItem({
         {
           ...props,
           "aria-current": active ? "page" : undefined,
+          "data-size": size,
           className: styles.link({ class: className }),
           children: (
             <>

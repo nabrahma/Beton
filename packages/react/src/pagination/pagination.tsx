@@ -68,6 +68,7 @@ function PaginationRoot({
       return (
         <a
           href={href(target)}
+          data-size={size}
           aria-label={itemLabel}
           aria-current={isCurrent ? "page" : undefined}
           className={classes}
@@ -79,6 +80,7 @@ function PaginationRoot({
     return (
       <button
         type="button"
+        data-size={size}
         disabled={disabled}
         data-disabled={disabled ? "" : undefined}
         aria-label={itemLabel}

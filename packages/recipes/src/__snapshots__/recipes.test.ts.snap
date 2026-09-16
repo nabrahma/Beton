@@ -9,9 +9,9 @@ exports[`recipe snapshots > accordion output is stable for every variant combina
       "header": "flex",
       "icon": "size-5 shrink-0 transition-transform duration-70 ease-linear motion-reduce:transition-none group-data-panel-open:rotate-180",
       "item": "border-b-3 border-border last:border-b-0",
-      "panel": "overflow-hidden border-t-3 border-border",
+      "panel": "h-(--accordion-panel-height) overflow-hidden border-t-3 border-border transition-[height] duration-100 ease-linear motion-reduce:transition-none data-starting-style:h-0 data-ending-style:h-0",
       "root": "flex w-full flex-col border-3 border-border bg-raised",
-      "trigger": "flex w-full cursor-pointer items-center justify-between gap-4 text-left font-display font-extrabold text-foreground hover:bg-secondary data-panel-open:bg-secondary data-disabled:cursor-not-allowed data-disabled:bg-disabled data-disabled:text-disabled-foreground outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap min-h-11 px-4 text-base",
+      "trigger": "group flex w-full cursor-pointer items-center justify-between gap-4 text-left font-display font-extrabold text-foreground hover:bg-secondary data-panel-open:bg-secondary data-disabled:cursor-not-allowed data-disabled:bg-disabled data-disabled:text-disabled-foreground outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap min-h-11 px-4 text-base",
     },
     "props": {
       "size": "sm",
@@ -24,9 +24,9 @@ exports[`recipe snapshots > accordion output is stable for every variant combina
       "header": "flex",
       "icon": "size-5 shrink-0 transition-transform duration-70 ease-linear motion-reduce:transition-none group-data-panel-open:rotate-180",
       "item": "border-b-3 border-border last:border-b-0",
-      "panel": "overflow-hidden border-t-3 border-border",
+      "panel": "h-(--accordion-panel-height) overflow-hidden border-t-3 border-border transition-[height] duration-100 ease-linear motion-reduce:transition-none data-starting-style:h-0 data-ending-style:h-0",
       "root": "flex w-full flex-col border-3 border-border bg-raised",
-      "trigger": "flex w-full cursor-pointer items-center justify-between gap-4 text-left font-display font-extrabold text-foreground hover:bg-secondary data-panel-open:bg-secondary data-disabled:cursor-not-allowed data-disabled:bg-disabled data-disabled:text-disabled-foreground outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap min-h-14 px-5 text-lg",
+      "trigger": "group flex w-full cursor-pointer items-center justify-between gap-4 text-left font-display font-extrabold text-foreground hover:bg-secondary data-panel-open:bg-secondary data-disabled:cursor-not-allowed data-disabled:bg-disabled data-disabled:text-disabled-foreground outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap min-h-14 px-5 text-lg",
     },
     "props": {
       "size": "md",
@@ -39,9 +39,9 @@ exports[`recipe snapshots > accordion output is stable for every variant combina
       "header": "flex",
       "icon": "size-5 shrink-0 transition-transform duration-70 ease-linear motion-reduce:transition-none group-data-panel-open:rotate-180",
       "item": "border-b-3 border-border last:border-b-0",
-      "panel": "overflow-hidden border-t-3 border-border",
+      "panel": "h-(--accordion-panel-height) overflow-hidden border-t-3 border-border transition-[height] duration-100 ease-linear motion-reduce:transition-none data-starting-style:h-0 data-ending-style:h-0",
       "root": "flex w-full flex-col border-3 border-border bg-raised",
-      "trigger": "flex w-full cursor-pointer items-center justify-between gap-4 text-left font-display font-extrabold text-foreground hover:bg-secondary data-panel-open:bg-secondary data-disabled:cursor-not-allowed data-disabled:bg-disabled data-disabled:text-disabled-foreground outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap min-h-16 px-6 text-xl",
+      "trigger": "group flex w-full cursor-pointer items-center justify-between gap-4 text-left font-display font-extrabold text-foreground hover:bg-secondary data-panel-open:bg-secondary data-disabled:cursor-not-allowed data-disabled:bg-disabled data-disabled:text-disabled-foreground outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap min-h-16 px-6 text-xl",
     },
     "props": {
       "size": "lg",
@@ -337,9 +337,9 @@ exports[`recipe snapshots > breadcrumbs output is stable for every variant combi
   {
     "classes": {
       "base": undefined,
-      "current": "inline-flex min-h-11 items-center font-display font-extrabold text-foreground text-sm",
+      "current": "inline-flex min-h-11 min-w-11 items-center justify-center font-display font-extrabold text-foreground text-sm",
       "item": "flex items-center gap-2",
-      "link": "relative inline-flex min-h-11 items-center font-display font-bold text-foreground underline decoration-3 decoration-primary underline-offset-4 hover:bg-secondary outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap text-sm",
+      "link": "relative inline-flex min-h-11 min-w-11 items-center justify-center font-display font-bold text-foreground underline decoration-3 decoration-primary underline-offset-4 hover:bg-secondary outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap text-sm",
       "list": "flex flex-wrap items-center gap-x-2 gap-y-1",
       "root": "w-full",
       "separator": "font-mono font-bold text-foreground select-none text-sm",
@@ -351,9 +351,9 @@ exports[`recipe snapshots > breadcrumbs output is stable for every variant combi
   {
     "classes": {
       "base": undefined,
-      "current": "inline-flex min-h-11 items-center font-display font-extrabold text-foreground text-base",
+      "current": "inline-flex min-h-11 min-w-11 items-center justify-center font-display font-extrabold text-foreground text-base",
       "item": "flex items-center gap-2",
-      "link": "relative inline-flex min-h-11 items-center font-display font-bold text-foreground underline decoration-3 decoration-primary underline-offset-4 hover:bg-secondary outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap text-base",
+      "link": "relative inline-flex min-h-11 min-w-11 items-center justify-center font-display font-bold text-foreground underline decoration-3 decoration-primary underline-offset-4 hover:bg-secondary outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap text-base",
       "list": "flex flex-wrap items-center gap-x-2 gap-y-1",
       "root": "w-full",
       "separator": "font-mono font-bold text-foreground select-none text-base",
@@ -365,9 +365,9 @@ exports[`recipe snapshots > breadcrumbs output is stable for every variant combi
   {
     "classes": {
       "base": undefined,
-      "current": "inline-flex min-h-11 items-center font-display font-extrabold text-foreground text-lg",
+      "current": "inline-flex min-h-11 min-w-11 items-center justify-center font-display font-extrabold text-foreground text-lg",
       "item": "flex items-center gap-2",
-      "link": "relative inline-flex min-h-11 items-center font-display font-bold text-foreground underline decoration-3 decoration-primary underline-offset-4 hover:bg-secondary outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap text-lg",
+      "link": "relative inline-flex min-h-11 min-w-11 items-center justify-center font-display font-bold text-foreground underline decoration-3 decoration-primary underline-offset-4 hover:bg-secondary outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap text-lg",
       "list": "flex flex-wrap items-center gap-x-2 gap-y-1",
       "root": "w-full",
       "separator": "font-mono font-bold text-foreground select-none text-lg",
@@ -3222,12 +3222,12 @@ exports[`recipe snapshots > stepper output is stable for every variant combinati
   {
     "classes": {
       "base": undefined,
-      "connector": "bg-border data-[state=complete]:bg-primary absolute top-(--connector-offset) left-[calc(50%+var(--marker-half))] right-[calc(-50%+var(--marker-half))] h-1",
+      "connector": "bg-border data-[state=complete]:bg-primary absolute top-(--connector-offset) right-[calc(-50%+var(--marker-half))] left-[calc(50%+var(--marker-half))] h-1",
       "content": "flex min-w-0 flex-col gap-0.5",
       "description": "text-caption text-foreground",
       "item": "relative flex min-w-0 flex-1 gap-3 flex-col items-center text-center",
-      "marker": "z-10 flex shrink-0 items-center justify-center border-3 border-border bg-raised font-display font-black text-foreground data-[state=complete]:bg-primary data-[state=current]:bg-secondary size-9 text-sm [--marker-size:2.25rem] [--marker-half:1.125rem] [--connector-offset:1rem]",
-      "root": "flex w-full flex-row items-start gap-2",
+      "marker": "z-10 flex shrink-0 items-center justify-center border-3 border-border bg-raised font-display font-black text-foreground data-[state=complete]:bg-primary data-[state=current]:bg-secondary size-9 text-sm",
+      "root": "flex w-full flex-row items-start gap-2 [--marker-size:2.25rem] [--marker-half:1.125rem] [--connector-offset:1rem]",
       "title": "font-display font-extrabold text-foreground text-sm",
     },
     "props": {
@@ -3238,12 +3238,12 @@ exports[`recipe snapshots > stepper output is stable for every variant combinati
   {
     "classes": {
       "base": undefined,
-      "connector": "bg-border data-[state=complete]:bg-primary absolute top-(--connector-offset) left-[calc(50%+var(--marker-half))] right-[calc(-50%+var(--marker-half))] h-1",
+      "connector": "bg-border data-[state=complete]:bg-primary absolute top-(--connector-offset) right-[calc(-50%+var(--marker-half))] left-[calc(50%+var(--marker-half))] h-1",
       "content": "flex min-w-0 flex-col gap-0.5",
       "description": "text-caption text-foreground",
       "item": "relative flex min-w-0 flex-1 gap-3 flex-col items-center text-center",
-      "marker": "z-10 flex shrink-0 items-center justify-center border-3 border-border bg-raised font-display font-black text-foreground data-[state=complete]:bg-primary data-[state=current]:bg-secondary size-11 text-base [--marker-size:2.75rem] [--marker-half:1.375rem] [--connector-offset:1.25rem]",
-      "root": "flex w-full flex-row items-start gap-2",
+      "marker": "z-10 flex shrink-0 items-center justify-center border-3 border-border bg-raised font-display font-black text-foreground data-[state=complete]:bg-primary data-[state=current]:bg-secondary size-11 text-base",
+      "root": "flex w-full flex-row items-start gap-2 [--marker-size:2.75rem] [--marker-half:1.375rem] [--connector-offset:1.25rem]",
       "title": "font-display font-extrabold text-foreground text-base",
     },
     "props": {
@@ -3254,12 +3254,12 @@ exports[`recipe snapshots > stepper output is stable for every variant combinati
   {
     "classes": {
       "base": undefined,
-      "connector": "bg-border data-[state=complete]:bg-primary absolute top-(--connector-offset) left-[calc(50%+var(--marker-half))] right-[calc(-50%+var(--marker-half))] h-1",
+      "connector": "bg-border data-[state=complete]:bg-primary absolute top-(--connector-offset) right-[calc(-50%+var(--marker-half))] left-[calc(50%+var(--marker-half))] h-1",
       "content": "flex min-w-0 flex-col gap-0.5",
       "description": "text-caption text-foreground",
       "item": "relative flex min-w-0 flex-1 gap-3 flex-col items-center text-center",
-      "marker": "z-10 flex shrink-0 items-center justify-center border-3 border-border bg-raised font-display font-black text-foreground data-[state=complete]:bg-primary data-[state=current]:bg-secondary size-14 text-lg [--marker-size:3.5rem] [--marker-half:1.75rem] [--connector-offset:1.625rem]",
-      "root": "flex w-full flex-row items-start gap-2",
+      "marker": "z-10 flex shrink-0 items-center justify-center border-3 border-border bg-raised font-display font-black text-foreground data-[state=complete]:bg-primary data-[state=current]:bg-secondary size-14 text-lg",
+      "root": "flex w-full flex-row items-start gap-2 [--marker-size:3.5rem] [--marker-half:1.75rem] [--connector-offset:1.625rem]",
       "title": "font-display font-extrabold text-foreground text-lg",
     },
     "props": {
@@ -3274,8 +3274,8 @@ exports[`recipe snapshots > stepper output is stable for every variant combinati
       "content": "flex min-w-0 flex-col gap-0.5",
       "description": "text-caption text-foreground",
       "item": "relative flex min-w-0 flex-1 gap-3 flex-row items-start pb-6 last:pb-0",
-      "marker": "z-10 flex shrink-0 items-center justify-center border-3 border-border bg-raised font-display font-black text-foreground data-[state=complete]:bg-primary data-[state=current]:bg-secondary size-9 text-sm [--marker-size:2.25rem] [--marker-half:1.125rem] [--connector-offset:1rem]",
-      "root": "flex w-full flex-col gap-6",
+      "marker": "z-10 flex shrink-0 items-center justify-center border-3 border-border bg-raised font-display font-black text-foreground data-[state=complete]:bg-primary data-[state=current]:bg-secondary size-9 text-sm",
+      "root": "flex w-full flex-col gap-6 [--marker-size:2.25rem] [--marker-half:1.125rem] [--connector-offset:1rem]",
       "title": "font-display font-extrabold text-foreground text-sm",
     },
     "props": {
@@ -3290,8 +3290,8 @@ exports[`recipe snapshots > stepper output is stable for every variant combinati
       "content": "flex min-w-0 flex-col gap-0.5",
       "description": "text-caption text-foreground",
       "item": "relative flex min-w-0 flex-1 gap-3 flex-row items-start pb-6 last:pb-0",
-      "marker": "z-10 flex shrink-0 items-center justify-center border-3 border-border bg-raised font-display font-black text-foreground data-[state=complete]:bg-primary data-[state=current]:bg-secondary size-11 text-base [--marker-size:2.75rem] [--marker-half:1.375rem] [--connector-offset:1.25rem]",
-      "root": "flex w-full flex-col gap-6",
+      "marker": "z-10 flex shrink-0 items-center justify-center border-3 border-border bg-raised font-display font-black text-foreground data-[state=complete]:bg-primary data-[state=current]:bg-secondary size-11 text-base",
+      "root": "flex w-full flex-col gap-6 [--marker-size:2.75rem] [--marker-half:1.375rem] [--connector-offset:1.25rem]",
       "title": "font-display font-extrabold text-foreground text-base",
     },
     "props": {
@@ -3306,8 +3306,8 @@ exports[`recipe snapshots > stepper output is stable for every variant combinati
       "content": "flex min-w-0 flex-col gap-0.5",
       "description": "text-caption text-foreground",
       "item": "relative flex min-w-0 flex-1 gap-3 flex-row items-start pb-6 last:pb-0",
-      "marker": "z-10 flex shrink-0 items-center justify-center border-3 border-border bg-raised font-display font-black text-foreground data-[state=complete]:bg-primary data-[state=current]:bg-secondary size-14 text-lg [--marker-size:3.5rem] [--marker-half:1.75rem] [--connector-offset:1.625rem]",
-      "root": "flex w-full flex-col gap-6",
+      "marker": "z-10 flex shrink-0 items-center justify-center border-3 border-border bg-raised font-display font-black text-foreground data-[state=complete]:bg-primary data-[state=current]:bg-secondary size-14 text-lg",
+      "root": "flex w-full flex-col gap-6 [--marker-size:3.5rem] [--marker-half:1.75rem] [--connector-offset:1.625rem]",
       "title": "font-display font-extrabold text-foreground text-lg",
     },
     "props": {
@@ -3427,8 +3427,8 @@ exports[`recipe snapshots > tabs output is stable for every variant combination 
   {
     "classes": {
       "base": undefined,
-      "indicator": "absolute bg-primary bottom-0 left-0 h-1 w-(--active-tab-width) translate-x-(--active-tab-left)",
-      "list": "flex flex-row flex-wrap border-b-3 border-border",
+      "indicator": "absolute bg-primary transition-[translate,width,height] duration-100 ease-linear motion-reduce:transition-none top-0 left-0 h-1 w-(--active-tab-width) translate-x-(--active-tab-left)",
+      "list": "relative flex flex-row flex-wrap border-b-3 border-border",
       "panel": "min-w-0 flex-1 outline-none p-4",
       "root": "flex w-full flex-col",
       "tab": "relative flex shrink-0 cursor-pointer select-none items-center justify-center gap-2 border-3 border-transparent font-display font-extrabold uppercase tracking-wide text-foreground hover:underline data-active:border-border data-active:bg-raised data-disabled:cursor-not-allowed data-disabled:text-disabled-foreground data-disabled:no-underline outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap -mb-[3px] data-active:border-b-surface min-h-11 px-3 text-sm",
@@ -3441,8 +3441,8 @@ exports[`recipe snapshots > tabs output is stable for every variant combination 
   {
     "classes": {
       "base": undefined,
-      "indicator": "absolute bg-primary bottom-0 left-0 h-1 w-(--active-tab-width) translate-x-(--active-tab-left)",
-      "list": "flex flex-row flex-wrap border-b-3 border-border",
+      "indicator": "absolute bg-primary transition-[translate,width,height] duration-100 ease-linear motion-reduce:transition-none top-0 left-0 h-1 w-(--active-tab-width) translate-x-(--active-tab-left)",
+      "list": "relative flex flex-row flex-wrap border-b-3 border-border",
       "panel": "min-w-0 flex-1 outline-none p-6",
       "root": "flex w-full flex-col",
       "tab": "relative flex shrink-0 cursor-pointer select-none items-center justify-center gap-2 border-3 border-transparent font-display font-extrabold uppercase tracking-wide text-foreground hover:underline data-active:border-border data-active:bg-raised data-disabled:cursor-not-allowed data-disabled:text-disabled-foreground data-disabled:no-underline outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap -mb-[3px] data-active:border-b-surface min-h-12 px-4 text-base",
@@ -3455,8 +3455,8 @@ exports[`recipe snapshots > tabs output is stable for every variant combination 
   {
     "classes": {
       "base": undefined,
-      "indicator": "absolute bg-primary bottom-0 left-0 h-1 w-(--active-tab-width) translate-x-(--active-tab-left)",
-      "list": "flex flex-row flex-wrap border-b-3 border-border",
+      "indicator": "absolute bg-primary transition-[translate,width,height] duration-100 ease-linear motion-reduce:transition-none top-0 left-0 h-1 w-(--active-tab-width) translate-x-(--active-tab-left)",
+      "list": "relative flex flex-row flex-wrap border-b-3 border-border",
       "panel": "min-w-0 flex-1 outline-none p-8",
       "root": "flex w-full flex-col",
       "tab": "relative flex shrink-0 cursor-pointer select-none items-center justify-center gap-2 border-3 border-transparent font-display font-extrabold uppercase tracking-wide text-foreground hover:underline data-active:border-border data-active:bg-raised data-disabled:cursor-not-allowed data-disabled:text-disabled-foreground data-disabled:no-underline outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap -mb-[3px] data-active:border-b-surface min-h-14 px-5 text-lg",
@@ -3469,8 +3469,8 @@ exports[`recipe snapshots > tabs output is stable for every variant combination 
   {
     "classes": {
       "base": undefined,
-      "indicator": "absolute bg-primary top-0 left-0 h-(--active-tab-height) w-1 translate-y-(--active-tab-top)",
-      "list": "flex flex-col border-r-3 border-border",
+      "indicator": "absolute bg-primary transition-[translate,width,height] duration-100 ease-linear motion-reduce:transition-none top-0 left-0 h-(--active-tab-height) w-1 translate-y-(--active-tab-top)",
+      "list": "relative flex flex-col border-r-3 border-border",
       "panel": "min-w-0 flex-1 outline-none p-4",
       "root": "flex w-full flex-row",
       "tab": "relative flex shrink-0 cursor-pointer select-none items-center gap-2 border-3 border-transparent font-display font-extrabold uppercase tracking-wide text-foreground hover:underline data-active:border-border data-active:bg-raised data-disabled:cursor-not-allowed data-disabled:text-disabled-foreground data-disabled:no-underline outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap -mr-[3px] justify-start data-active:border-r-surface min-h-11 px-3 text-sm",
@@ -3483,8 +3483,8 @@ exports[`recipe snapshots > tabs output is stable for every variant combination 
   {
     "classes": {
       "base": undefined,
-      "indicator": "absolute bg-primary top-0 left-0 h-(--active-tab-height) w-1 translate-y-(--active-tab-top)",
-      "list": "flex flex-col border-r-3 border-border",
+      "indicator": "absolute bg-primary transition-[translate,width,height] duration-100 ease-linear motion-reduce:transition-none top-0 left-0 h-(--active-tab-height) w-1 translate-y-(--active-tab-top)",
+      "list": "relative flex flex-col border-r-3 border-border",
       "panel": "min-w-0 flex-1 outline-none p-6",
       "root": "flex w-full flex-row",
       "tab": "relative flex shrink-0 cursor-pointer select-none items-center gap-2 border-3 border-transparent font-display font-extrabold uppercase tracking-wide text-foreground hover:underline data-active:border-border data-active:bg-raised data-disabled:cursor-not-allowed data-disabled:text-disabled-foreground data-disabled:no-underline outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap -mr-[3px] justify-start data-active:border-r-surface min-h-12 px-4 text-base",
@@ -3497,8 +3497,8 @@ exports[`recipe snapshots > tabs output is stable for every variant combination 
   {
     "classes": {
       "base": undefined,
-      "indicator": "absolute bg-primary top-0 left-0 h-(--active-tab-height) w-1 translate-y-(--active-tab-top)",
-      "list": "flex flex-col border-r-3 border-border",
+      "indicator": "absolute bg-primary transition-[translate,width,height] duration-100 ease-linear motion-reduce:transition-none top-0 left-0 h-(--active-tab-height) w-1 translate-y-(--active-tab-top)",
+      "list": "relative flex flex-col border-r-3 border-border",
       "panel": "min-w-0 flex-1 outline-none p-8",
       "root": "flex w-full flex-row",
       "tab": "relative flex shrink-0 cursor-pointer select-none items-center gap-2 border-3 border-transparent font-display font-extrabold uppercase tracking-wide text-foreground hover:underline data-active:border-border data-active:bg-raised data-disabled:cursor-not-allowed data-disabled:text-disabled-foreground data-disabled:no-underline outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap -mr-[3px] justify-start data-active:border-r-surface min-h-14 px-5 text-lg",

@@ -4,12 +4,15 @@ import { navbar, type NavbarVariants } from "@beton-ui/recipes";
 import { createContext, useContext, type ComponentProps } from "react";
 import { renderElement, type RenderProp } from "../utils/render-element.ts";
 
-type Styles = ReturnType<typeof navbar>;
+interface NavbarState {
+  styles: ReturnType<typeof navbar>;
+  size: NonNullable<NavbarVariants["size"]>;
+}
 
-const NavbarContext = createContext<Styles>(navbar());
+const NavbarContext = createContext<NavbarState>({ styles: navbar(), size: "md" });
 
 function useStyles() {
-  return useContext(NavbarContext);
+  return useContext(NavbarContext).styles;
 }
 
 export interface NavbarProps extends ComponentProps<"header">, NavbarVariants {
@@ -29,7 +32,7 @@ function NavbarRoot({
 }: NavbarProps) {
   const styles = navbar({ size, sticky });
   return (
-    <NavbarContext.Provider value={styles}>
+    <NavbarContext.Provider value={{ styles, size }}>
       {renderElement(
         "header",
         {
@@ -79,12 +82,14 @@ export interface NavbarLinkProps extends ComponentProps<"a"> {
 }
 
 function NavbarLink({ className, active = false, render, ...props }: NavbarLinkProps) {
+  const { styles, size } = useContext(NavbarContext);
   return renderElement(
     "a",
     {
       ...props,
       "aria-current": active ? "page" : undefined,
-      className: useStyles().link({ class: className }),
+      "data-size": size,
+      className: styles.link({ class: className }),
     },
     render,
   );

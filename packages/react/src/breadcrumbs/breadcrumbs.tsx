@@ -70,7 +70,7 @@ function BreadcrumbsItem({
         { "aria-current": "page", className: styles.current(), children },
         render,
       )
-    : renderElement("a", { href, className: styles.link(), children }, render);
+    : renderElement("a", { href, "data-size": size, className: styles.link(), children }, render);
   return (
     <li {...props} className={styles.item({ class: className })}>
       {separator == null ? null : (

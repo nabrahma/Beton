@@ -5,12 +5,15 @@ import { accordion, type AccordionVariants } from "@beton-ui/recipes";
 import { createContext, useContext } from "react";
 import { ChevronDownIcon } from "../utils/icons.tsx";
 
-type Styles = ReturnType<typeof accordion>;
+interface AccordionState {
+  styles: ReturnType<typeof accordion>;
+  size: NonNullable<AccordionVariants["size"]>;
+}
 
-const AccordionContext = createContext<Styles>(accordion());
+const AccordionContext = createContext<AccordionState>({ styles: accordion(), size: "md" });
 
 function useStyles() {
-  return useContext(AccordionContext);
+  return useContext(AccordionContext).styles;
 }
 
 export interface AccordionProps
@@ -21,7 +24,7 @@ export interface AccordionProps
 function AccordionRoot({ size = "md", className, ...props }: AccordionProps) {
   const styles = accordion({ size });
   return (
-    <AccordionContext.Provider value={styles}>
+    <AccordionContext.Provider value={{ styles, size }}>
       <BaseAccordion.Root {...props} className={styles.root({ class: className })} />
     </AccordionContext.Provider>
   );
@@ -50,11 +53,15 @@ function AccordionTrigger({
   icon = true,
   ...props
 }: AccordionTriggerProps) {
-  const styles = useStyles();
+  const { styles, size } = useContext(AccordionContext);
   const Heading = `h${headingLevel}` as const;
   return (
     <BaseAccordion.Header className={styles.header()} render={<Heading />}>
-      <BaseAccordion.Trigger {...props} className={styles.trigger({ class: className })}>
+      <BaseAccordion.Trigger
+        {...props}
+        data-size={size}
+        className={styles.trigger({ class: className })}
+      >
         {children}
         {icon ? <ChevronDownIcon className={styles.icon()} /> : null}
       </BaseAccordion.Trigger>

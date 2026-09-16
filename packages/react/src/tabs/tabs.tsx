@@ -4,12 +4,15 @@ import { Tabs as BaseTabs } from "@base-ui/react/tabs";
 import { tabs, type TabsVariants } from "@beton-ui/recipes";
 import { createContext, useContext } from "react";
 
-type Styles = ReturnType<typeof tabs>;
+interface TabsState {
+  styles: ReturnType<typeof tabs>;
+  size: NonNullable<TabsVariants["size"]>;
+}
 
-const TabsContext = createContext<Styles>(tabs());
+const TabsContext = createContext<TabsState>({ styles: tabs(), size: "md" });
 
 function useStyles() {
-  return useContext(TabsContext);
+  return useContext(TabsContext).styles;
 }
 
 export interface TabsProps extends Omit<BaseTabs.Root.Props, "className">, TabsVariants {
@@ -19,7 +22,7 @@ export interface TabsProps extends Omit<BaseTabs.Root.Props, "className">, TabsV
 function TabsRoot({ size = "md", orientation = "horizontal", className, ...props }: TabsProps) {
   const styles = tabs({ size, orientation });
   return (
-    <TabsContext.Provider value={styles}>
+    <TabsContext.Provider value={{ styles, size }}>
       <BaseTabs.Root
         {...props}
         orientation={orientation}
@@ -50,7 +53,8 @@ export interface TabProps extends Omit<BaseTabs.Tab.Props, "className"> {
 }
 
 function Tab({ className, ...props }: TabProps) {
-  return <BaseTabs.Tab {...props} className={useStyles().tab({ class: className })} />;
+  const { styles, size } = useContext(TabsContext);
+  return <BaseTabs.Tab {...props} data-size={size} className={styles.tab({ class: className })} />;
 }
 
 export interface TabsPanelProps extends Omit<BaseTabs.Panel.Props, "className"> {

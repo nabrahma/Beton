@@ -32,7 +32,13 @@ export interface MenubarTriggerProps extends Omit<Menu.Trigger.Props, "className
 
 function MenubarTrigger({ className, ...props }: MenubarTriggerProps) {
   const size = useContext(MenubarContext);
-  return <Menu.Trigger {...props} className={menubar({ size }).trigger({ class: className })} />;
+  return (
+    <Menu.Trigger
+      {...props}
+      data-size={size}
+      className={menubar({ size }).trigger({ class: className })}
+    />
+  );
 }
 
 /** A row of menus along the top of an application, as in a desktop app. */

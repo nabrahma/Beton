@@ -7,11 +7,12 @@ export const breadcrumbs = tv({
     list: "flex flex-wrap items-center gap-x-2 gap-y-1",
     item: "flex items-center gap-2",
     link: [
-      "relative inline-flex min-h-11 items-center font-display font-bold text-foreground",
+      "relative inline-flex min-h-11 min-w-11 items-center justify-center font-display font-bold text-foreground",
       "underline decoration-3 decoration-primary underline-offset-4 hover:bg-secondary",
       focusRing,
     ],
-    current: "inline-flex min-h-11 items-center font-display font-extrabold text-foreground",
+    current:
+      "inline-flex min-h-11 min-w-11 items-center justify-center font-display font-extrabold text-foreground",
     separator: "font-mono font-bold text-foreground select-none",
   },
   variants: {

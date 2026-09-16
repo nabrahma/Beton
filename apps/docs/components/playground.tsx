@@ -34,20 +34,19 @@ export function Playground({
       ]),
     ),
   );
+  // Boolean variants start where the recipe leaves them, so the checkbox and
+  // the preview never disagree.
   const [flags, setFlags] = useState<Record<string, boolean>>(() =>
-    Object.fromEntries(toggles.map((key) => [key, false])),
+    Object.fromEntries(toggles.map((key) => [key, defaults[key] === true])),
   );
 
-  const props = {
-    ...values,
-    ...Object.fromEntries(Object.entries(flags).filter(([, on]) => on)),
-  };
+  const props = { ...values, ...flags };
   const snippet = `<${exportName}${Object.entries(values)
     .filter(([key, value]) => String(defaults[key]) !== value)
     .map(([key, value]) => ` ${key}="${value}"`)
     .join("")}${Object.entries(flags)
-    .filter(([, on]) => on)
-    .map(([key]) => ` ${key}`)
+    .filter(([key, on]) => on !== (defaults[key] === true))
+    .map(([key, on]) => (on ? ` ${key}` : ` ${key}={false}`))
     .join("")} />`;
 
   return (
