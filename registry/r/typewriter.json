@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typewriter",
+  "type": "registry:ui",
+  "title": "Typewriter",
+  "description": "Words typed out one character at a time, with a blinking block.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/text-effects.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/text-effects.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\n/** Scramble, typewriter and counter share one plain typographic surface. */\nexport const textEffect = tv({\n  base: \"font-display font-black tracking-tight text-foreground tabular-nums\",\n  variants: {\n    size: {\n      sm: \"text-h4\",\n      md: \"text-h3\",\n      lg: \"text-h2\",\n      xl: \"text-h1\",\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n});\n\nexport const typewriter = tv({\n  slots: {\n    root: \"font-display font-black tracking-tight text-foreground\",\n    caret: \"ml-0.5 inline-block w-[0.6ch] bg-foreground align-baseline motion-safe:animate-blink\",\n  },\n  variants: {\n    size: {\n      sm: { root: \"text-h4\", caret: \"h-[1em]\" },\n      md: { root: \"text-h3\", caret: \"h-[1em]\" },\n      lg: { root: \"text-h2\", caret: \"h-[1em]\" },\n      xl: { root: \"text-h1\", caret: \"h-[1em]\" },\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n});\n\nexport const glitchText = tv({\n  slots: {\n    root: \"relative inline-block font-display font-black tracking-tight text-foreground\",\n    layer: \"pointer-events-none absolute inset-0 select-none\",\n    body: \"relative\",\n    a: \"text-primary motion-safe:animate-glitch-a motion-reduce:hidden\",\n    b: \"text-danger motion-safe:animate-glitch-b motion-reduce:hidden\",\n  },\n  variants: {\n    size: {\n      sm: { root: \"text-h4\" },\n      md: { root: \"text-h3\" },\n      lg: { root: \"text-h2\" },\n      xl: { root: \"text-h1\" },\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n});\n\nexport type TextEffectVariants = VariantProps<typeof textEffect>;\nexport type TypewriterVariants = VariantProps<typeof typewriter>;\nexport type GlitchTextVariants = VariantProps<typeof glitchText>;\n"
+    },
+    {
+      "path": "registry/beton/ui/typewriter.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/typewriter.tsx",
+      "content": "\"use client\";\n\nimport { typewriter, type TypewriterVariants } from \"@/lib/beton/recipes/text-effects.recipe\";\nimport { visuallyHidden } from \"@/lib/beton/shared\";\nimport { useEffect, useState, type ComponentProps } from \"react\";\nimport { useReducedMotion } from \"@/lib/beton/use-reduced-motion\";\n\nexport interface TypewriterProps\n  extends Omit<ComponentProps<\"span\">, \"children\">, TypewriterVariants {\n  /** The lines to type, one after another. */\n  children: string | string[];\n  /** Milliseconds per character. */\n  speed?: number;\n  /** How long a finished line stays before it is deleted. */\n  pause?: number;\n  /** Start again at the first line once the last one is done. */\n  loop?: boolean;\n  /** Show the blinking block after the text. */\n  caret?: boolean;\n}\n\n/**\n * Words typed out one character at a time. The full text is always available\n * to screen readers, and reduced motion shows it at once.\n */\nexport function Typewriter({\n  size = \"md\",\n  children,\n  speed = 60,\n  pause = 1400,\n  loop = true,\n  caret = true,\n  className,\n  ...props\n}: TypewriterProps) {\n  const lines = Array.isArray(children) ? children : [children];\n  const full = lines.join(\". \");\n  const reduced = useReducedMotion();\n  const [index, setIndex] = useState(0);\n  const [count, setCount] = useState(0);\n  const [deleting, setDeleting] = useState(false);\n\n  const line = lines[index % lines.length] ?? \"\";\n\n  useEffect(() => {\n    if (reduced) return;\n    const done = count === line.length;\n    if (done && !deleting) {\n      const last = index === lines.length - 1;\n      if (last && !loop) return;\n      const timer = setTimeout(() => setDeleting(true), pause);\n      return () => clearTimeout(timer);\n    }\n    if (deleting && count === 0) {\n      setDeleting(false);\n      setIndex((current) => (current + 1) % lines.length);\n      return;\n    }\n    const timer = setTimeout(\n      () => setCount((current) => current + (deleting ? -1 : 1)),\n      deleting ? speed / 2 : speed,\n    );\n    return () => clearTimeout(timer);\n  }, [count, deleting, index, line.length, lines.length, loop, pause, reduced, speed]);\n\n  const styles = typewriter({ size });\n  return (\n    <span {...props} className={styles.root({ class: className })}>\n      <span aria-hidden=\"true\">{reduced ? line : line.slice(0, count)}</span>\n      {caret && !reduced ? <span aria-hidden=\"true\" className={styles.caret()} /> : null}\n      <span className={visuallyHidden}>{full}</span>\n    </span>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "motion"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "Typewriter"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/typewriter"
+  }
+}

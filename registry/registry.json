@@ -67,7 +67,13 @@
           "animate-spin-stepped": "spin-stepped 960ms steps(8, end) infinite",
           "animate-blink": "blink 1s steps(1, end) infinite",
           "animate-pulse-stepped": "pulse-stepped 1.2s steps(1, end) infinite",
-          "animate-indeterminate": "indeterminate 1.2s steps(6, end) infinite"
+          "animate-indeterminate": "indeterminate 1.2s steps(6, end) infinite",
+          "animate-marquee": "marquee var(--marquee-duration, 20s) linear infinite",
+          "animate-marquee-reverse": "marquee-reverse var(--marquee-duration, 20s) linear infinite",
+          "animate-spin-slow": "spin-stepped 8s steps(24, end) infinite",
+          "animate-glitch-a": "glitch-a 900ms steps(2, end) infinite",
+          "animate-glitch-b": "glitch-b 900ms steps(2, end) infinite",
+          "animate-flap": "flap 180ms steps(3, end) 1"
         }
       },
       "css": {
@@ -92,6 +98,39 @@
           },
           "to": {
             "translate": "260% 0"
+          }
+        },
+        "@keyframes marquee": {
+          "to": {
+            "translate": "-100% 0"
+          }
+        },
+        "@keyframes marquee-reverse": {
+          "from": {
+            "translate": "-100% 0"
+          },
+          "to": {
+            "translate": "0 0"
+          }
+        },
+        "@keyframes glitch-a": {
+          "50%": {
+            "translate": "-3px 2px",
+            "clip-path": "inset(10% 0 55% 0)"
+          }
+        },
+        "@keyframes glitch-b": {
+          "50%": {
+            "translate": "3px -2px",
+            "clip-path": "inset(60% 0 12% 0)"
+          }
+        },
+        "@keyframes flap": {
+          "from": {
+            "transform": "rotateX(-90deg)"
+          },
+          "to": {
+            "transform": "rotateX(0deg)"
           }
         },
         "@layer base": {
@@ -161,6 +200,11 @@
           "path": "registry/beton/lib/render-element.ts",
           "type": "registry:lib",
           "target": "@lib/beton/render-element.ts"
+        },
+        {
+          "path": "registry/beton/lib/use-reduced-motion.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/use-reduced-motion.ts"
         }
       ]
     },
@@ -620,6 +664,36 @@
       ]
     },
     {
+      "name": "confetti",
+      "type": "registry:ui",
+      "title": "Confetti",
+      "description": "A burst of hard paper squares when something goes right.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json",
+        "https://beton.dev/r/cursor-trail.json"
+      ],
+      "categories": [
+        "motion"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "Confetti"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/confetti"
+      },
+      "files": [
+        {
+          "path": "registry/beton/ui/confetti.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/confetti.tsx"
+        }
+      ]
+    },
+    {
       "name": "context-menu",
       "type": "registry:ui",
       "title": "Context Menu",
@@ -652,6 +726,74 @@
           "path": "registry/beton/ui/context-menu.tsx",
           "type": "registry:ui",
           "target": "@ui/beton/context-menu.tsx"
+        }
+      ]
+    },
+    {
+      "name": "counter",
+      "type": "registry:ui",
+      "title": "Counter",
+      "description": "A number that counts up in hard steps and lands on its value.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "motion"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "Counter"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/counter"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/text-effects.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/text-effects.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/counter.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/counter.tsx"
+        }
+      ]
+    },
+    {
+      "name": "cursor-trail",
+      "type": "registry:ui",
+      "title": "Cursor Trail",
+      "description": "Hard squares that follow the pointer.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "motion"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "CursorTrail"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/cursor-trail"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/cursor-trail.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/cursor-trail.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/cursor-trail.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/cursor-trail.tsx"
         }
       ]
     },
@@ -938,6 +1080,108 @@
       ]
     },
     {
+      "name": "glitch-text",
+      "type": "registry:ui",
+      "title": "Glitch Text",
+      "description": "Text with two coloured copies jittering behind it.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "motion"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": false,
+        "exports": [
+          "GlitchText"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/glitch-text"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/text-effects.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/text-effects.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/glitch-text.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/glitch-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "grid-background",
+      "type": "registry:ui",
+      "title": "Grid Background",
+      "description": "Graph paper behind a section, drawn rather than downloaded.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "motion"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": false,
+        "exports": [
+          "GridBackground"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/grid-background"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/backgrounds.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/backgrounds.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/grid-background.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/grid-background.tsx"
+        }
+      ]
+    },
+    {
+      "name": "halftone-background",
+      "type": "registry:ui",
+      "title": "Halftone Background",
+      "description": "A field of printed dots, as though the section came off a press.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "motion"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": false,
+        "exports": [
+          "HalftoneBackground"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/halftone-background"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/backgrounds.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/backgrounds.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/halftone-background.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/halftone-background.tsx"
+        }
+      ]
+    },
+    {
       "name": "hover-card",
       "type": "registry:ui",
       "title": "Hover Card",
@@ -1112,6 +1356,40 @@
       ]
     },
     {
+      "name": "marquee",
+      "type": "registry:ui",
+      "title": "Marquee",
+      "description": "Content that slides past, forever, and pauses when you point at it.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "motion"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "Marquee"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/marquee"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/marquee.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/marquee.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/marquee.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/marquee.tsx"
+        }
+      ]
+    },
+    {
       "name": "menubar",
       "type": "registry:ui",
       "title": "Menubar",
@@ -1179,6 +1457,40 @@
           "path": "registry/beton/ui/navbar.tsx",
           "type": "registry:ui",
           "target": "@ui/beton/navbar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "noise-overlay",
+      "type": "registry:ui",
+      "title": "Noise Overlay",
+      "description": "Print grain over a section, drawn by the browser.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "motion"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": false,
+        "exports": [
+          "NoiseOverlay"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/noise-overlay"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/backgrounds.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/backgrounds.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/noise-overlay.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/noise-overlay.tsx"
         }
       ]
     },
@@ -1395,6 +1707,40 @@
           "path": "registry/beton/ui/radio-group.tsx",
           "type": "registry:ui",
           "target": "@ui/beton/radio-group.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scramble-text",
+      "type": "registry:ui",
+      "title": "Scramble Text",
+      "description": "Letters churn through junk and settle into the real words.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "motion"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "ScrambleText"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/scramble-text"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/text-effects.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/text-effects.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/scramble-text.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/scramble-text.tsx"
         }
       ]
     },
@@ -1717,6 +2063,40 @@
       ]
     },
     {
+      "name": "split-flap",
+      "type": "registry:ui",
+      "title": "Split Flap",
+      "description": "A departure board: each cell flaps through the alphabet to its letter.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "motion"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "SplitFlap"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/split-flap"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/split-flap.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/split-flap.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/split-flap.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/split-flap.tsx"
+        }
+      ]
+    },
+    {
       "name": "stat",
       "type": "registry:ui",
       "title": "Stat",
@@ -1781,6 +2161,74 @@
           "path": "registry/beton/ui/stepper.tsx",
           "type": "registry:ui",
           "target": "@ui/beton/stepper.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sticker",
+      "type": "registry:ui",
+      "title": "Sticker",
+      "description": "A round badge whose words run around the edge, turning slowly.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "motion"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": false,
+        "exports": [
+          "Sticker"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/sticker"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/sticker.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/sticker.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/sticker.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/sticker.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sticker-peel",
+      "type": "registry:ui",
+      "title": "Sticker Peel",
+      "description": "A panel that lifts off the page as the pointer crosses it.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "motion"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": false,
+        "exports": [
+          "StickerPeel"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/sticker-peel"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/sticker-peel.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/sticker-peel.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/sticker-peel.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/sticker-peel.tsx"
         }
       ]
     },
@@ -1962,6 +2410,40 @@
       ]
     },
     {
+      "name": "ticker",
+      "type": "registry:ui",
+      "title": "Ticker",
+      "description": "A strip of headlines scrolling past a fixed label.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "motion"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "Ticker"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/ticker"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/ticker.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/ticker.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/ticker.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/ticker.tsx"
+        }
+      ]
+    },
+    {
       "name": "timeline",
       "type": "registry:ui",
       "title": "Timeline",
@@ -2072,6 +2554,40 @@
       ]
     },
     {
+      "name": "typewriter",
+      "type": "registry:ui",
+      "title": "Typewriter",
+      "description": "Words typed out one character at a time, with a blinking block.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "motion"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "Typewriter"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/typewriter"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/text-effects.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/text-effects.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/typewriter.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/typewriter.tsx"
+        }
+      ]
+    },
+    {
       "name": "all",
       "type": "registry:item",
       "title": "Every Béton component",
@@ -2091,7 +2607,10 @@
         "https://beton.dev/r/checkbox.json",
         "https://beton.dev/r/code-block.json",
         "https://beton.dev/r/command-palette.json",
+        "https://beton.dev/r/confetti.json",
         "https://beton.dev/r/context-menu.json",
+        "https://beton.dev/r/counter.json",
+        "https://beton.dev/r/cursor-trail.json",
         "https://beton.dev/r/description-list.json",
         "https://beton.dev/r/dialog.json",
         "https://beton.dev/r/dropdown-menu.json",
@@ -2100,19 +2619,25 @@
         "https://beton.dev/r/fieldset.json",
         "https://beton.dev/r/file-upload.json",
         "https://beton.dev/r/form.json",
+        "https://beton.dev/r/glitch-text.json",
+        "https://beton.dev/r/grid-background.json",
+        "https://beton.dev/r/halftone-background.json",
         "https://beton.dev/r/hover-card.json",
         "https://beton.dev/r/input.json",
         "https://beton.dev/r/kbd.json",
         "https://beton.dev/r/label.json",
         "https://beton.dev/r/list.json",
+        "https://beton.dev/r/marquee.json",
         "https://beton.dev/r/menubar.json",
         "https://beton.dev/r/navbar.json",
+        "https://beton.dev/r/noise-overlay.json",
         "https://beton.dev/r/number-input.json",
         "https://beton.dev/r/otp-input.json",
         "https://beton.dev/r/pagination.json",
         "https://beton.dev/r/popover.json",
         "https://beton.dev/r/progress.json",
         "https://beton.dev/r/radio-group.json",
+        "https://beton.dev/r/scramble-text.json",
         "https://beton.dev/r/scroll-area.json",
         "https://beton.dev/r/search-input.json",
         "https://beton.dev/r/select.json",
@@ -2122,16 +2647,21 @@
         "https://beton.dev/r/skeleton.json",
         "https://beton.dev/r/slider.json",
         "https://beton.dev/r/spinner.json",
+        "https://beton.dev/r/split-flap.json",
         "https://beton.dev/r/stat.json",
         "https://beton.dev/r/stepper.json",
+        "https://beton.dev/r/sticker.json",
+        "https://beton.dev/r/sticker-peel.json",
         "https://beton.dev/r/switch.json",
         "https://beton.dev/r/table.json",
         "https://beton.dev/r/tabs.json",
         "https://beton.dev/r/text.json",
         "https://beton.dev/r/textarea.json",
+        "https://beton.dev/r/ticker.json",
         "https://beton.dev/r/timeline.json",
         "https://beton.dev/r/toast.json",
-        "https://beton.dev/r/tooltip.json"
+        "https://beton.dev/r/tooltip.json",
+        "https://beton.dev/r/typewriter.json"
       ],
       "categories": [
         "bundle"

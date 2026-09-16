@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "marquee",
+  "type": "registry:ui",
+  "title": "Marquee",
+  "description": "Content that slides past, forever, and pauses when you point at it.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/marquee.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/marquee.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const marquee = tv({\n  slots: {\n    root: \"group flex w-full overflow-hidden\",\n    track: [\n      \"flex w-max shrink-0 items-center\",\n      \"motion-safe:animate-marquee motion-reduce:animate-none\",\n      \"group-hover:[animation-play-state:paused]\",\n    ],\n    item: \"shrink-0\",\n  },\n  variants: {\n    direction: {\n      left: {},\n      right: { track: \"motion-safe:animate-marquee-reverse\" },\n    },\n    gap: {\n      sm: { track: \"gap-4 pr-4\", item: \"\" },\n      md: { track: \"gap-8 pr-8\", item: \"\" },\n      lg: { track: \"gap-12 pr-12\", item: \"\" },\n    },\n    bordered: {\n      true: { root: \"border-y-3 border-border bg-raised py-3\" },\n    },\n  },\n  defaultVariants: {\n    direction: \"left\",\n    gap: \"md\",\n    bordered: false,\n  },\n});\n\nexport type MarqueeVariants = VariantProps<typeof marquee>;\n"
+    },
+    {
+      "path": "registry/beton/ui/marquee.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/marquee.tsx",
+      "content": "\"use client\";\n\nimport { marquee, type MarqueeVariants } from \"@/lib/beton/recipes/marquee.recipe\";\nimport type { ComponentProps, CSSProperties, ReactNode } from \"react\";\n\nexport interface MarqueeProps extends ComponentProps<\"div\">, MarqueeVariants {\n  /** How long one full pass takes, in seconds. */\n  duration?: number;\n  /** How many copies to draw. Two is enough unless the content is very short. */\n  copies?: number;\n  children?: ReactNode;\n}\n\n/**\n * Content that slides past, forever. It pauses on hover, and holds still for\n * anyone who has asked for less motion.\n */\nexport function Marquee({\n  direction = \"left\",\n  gap = \"md\",\n  bordered = false,\n  duration = 20,\n  copies = 2,\n  className,\n  style,\n  children,\n  ...props\n}: MarqueeProps) {\n  const styles = marquee({ direction, gap, bordered });\n  const passes = Math.max(2, Math.trunc(copies));\n  return (\n    <div\n      {...props}\n      data-direction={direction}\n      className={styles.root({ class: className })}\n      style={{ ...style, \"--marquee-duration\": `${duration}s` } as CSSProperties}\n    >\n      {Array.from({ length: passes }, (_, index) => (\n        // Only the first pass is read out; the rest are the same words again.\n        <div key={index} aria-hidden={index > 0} className={styles.track()}>\n          {children}\n        </div>\n      ))}\n    </div>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "motion"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "Marquee"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/marquee"
+  }
+}

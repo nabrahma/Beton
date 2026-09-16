@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ticker",
+  "type": "registry:ui",
+  "title": "Ticker",
+  "description": "A strip of headlines scrolling past a fixed label.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/ticker.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/ticker.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const ticker = tv({\n  slots: {\n    root: \"flex w-full items-stretch overflow-hidden border-y-3 border-border bg-ink text-paper\",\n    label: [\n      \"flex shrink-0 items-center border-r-3 border-border bg-primary px-4\",\n      \"font-display font-black tracking-widest text-ink uppercase\",\n    ],\n    viewport: \"group flex min-w-0 flex-1 overflow-hidden\",\n    track: [\n      \"flex w-max shrink-0 items-center\",\n      \"motion-safe:animate-marquee motion-reduce:animate-none\",\n      \"group-hover:[animation-play-state:paused]\",\n    ],\n    item: \"flex shrink-0 items-center gap-2 font-mono font-bold\",\n    separator: \"px-4 font-mono font-black text-primary select-none\",\n  },\n  variants: {\n    size: {\n      sm: { root: \"h-10\", label: \"text-xs\", item: \"text-xs\", track: \"gap-6 pr-6\" },\n      md: { root: \"h-12\", label: \"text-sm\", item: \"text-sm\", track: \"gap-8 pr-8\" },\n      lg: { root: \"h-14\", label: \"text-base\", item: \"text-base\", track: \"gap-10 pr-10\" },\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n});\n\nexport type TickerVariants = VariantProps<typeof ticker>;\n"
+    },
+    {
+      "path": "registry/beton/ui/ticker.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/ticker.tsx",
+      "content": "\"use client\";\n\nimport { ticker, type TickerVariants } from \"@/lib/beton/recipes/ticker.recipe\";\nimport type { ComponentProps, CSSProperties, ReactNode } from \"react\";\n\nexport interface TickerProps extends Omit<ComponentProps<\"div\">, \"children\">, TickerVariants {\n  /** The chip at the start of the strip, such as LIVE or LATEST. */\n  label?: ReactNode;\n  /** The items to cycle through. */\n  items: ReactNode[];\n  /** Drawn between items. */\n  separator?: ReactNode;\n  /** How long one full pass takes, in seconds. */\n  duration?: number;\n}\n\n/**\n * A strip of headlines that scrolls past a fixed label. It pauses on hover and\n * holds still under reduced motion.\n */\nexport function Ticker({\n  size = \"md\",\n  label,\n  items,\n  separator = \"//\",\n  duration = 24,\n  className,\n  style,\n  ...props\n}: TickerProps) {\n  const styles = ticker({ size });\n  const pass = (\n    <>\n      {items.map((item, index) => (\n        <span key={index} className={styles.item()}>\n          {item}\n          <span aria-hidden=\"true\" className={styles.separator()}>\n            {separator}\n          </span>\n        </span>\n      ))}\n    </>\n  );\n\n  return (\n    <div\n      {...props}\n      className={styles.root({ class: className })}\n      style={{ ...style, \"--marquee-duration\": `${duration}s` } as CSSProperties}\n    >\n      {label ? <span className={styles.label()}>{label}</span> : null}\n      <div className={styles.viewport()}>\n        <div className={styles.track()}>{pass}</div>\n        <div aria-hidden=\"true\" className={styles.track()}>\n          {pass}\n        </div>\n      </div>\n    </div>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "motion"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "Ticker"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/ticker"
+  }
+}

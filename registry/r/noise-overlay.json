@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "noise-overlay",
+  "type": "registry:ui",
+  "title": "Noise Overlay",
+  "description": "Print grain over a section, drawn by the browser.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/backgrounds.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/backgrounds.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const gridBackground = tv({\n  slots: {\n    root: \"pointer-events-none absolute inset-0 -z-10\",\n  },\n  variants: {\n    weight: {\n      light: { root: \"opacity-40\" },\n      medium: { root: \"opacity-70\" },\n      heavy: { root: \"opacity-100\" },\n    },\n  },\n  defaultVariants: {\n    weight: \"medium\",\n  },\n});\n\nexport const halftoneBackground = tv({\n  slots: {\n    root: \"pointer-events-none absolute inset-0 -z-10\",\n  },\n  variants: {\n    weight: {\n      light: { root: \"opacity-15\" },\n      medium: { root: \"opacity-30\" },\n      heavy: { root: \"opacity-60\" },\n    },\n  },\n  defaultVariants: {\n    weight: \"medium\",\n  },\n});\n\nexport const noiseOverlay = tv({\n  slots: {\n    root: \"pointer-events-none absolute inset-0 z-10 mix-blend-multiply\",\n  },\n  variants: {\n    weight: {\n      light: { root: \"opacity-20\" },\n      medium: { root: \"opacity-35\" },\n      heavy: { root: \"opacity-60\" },\n    },\n  },\n  defaultVariants: {\n    weight: \"medium\",\n  },\n});\n\nexport type GridBackgroundVariants = VariantProps<typeof gridBackground>;\nexport type HalftoneBackgroundVariants = VariantProps<typeof halftoneBackground>;\nexport type NoiseOverlayVariants = VariantProps<typeof noiseOverlay>;\n"
+    },
+    {
+      "path": "registry/beton/ui/noise-overlay.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/noise-overlay.tsx",
+      "content": "import { noiseOverlay, type NoiseOverlayVariants } from \"@/lib/beton/recipes/backgrounds.recipe\";\nimport type { ComponentProps } from \"react\";\n\nexport interface NoiseOverlayProps\n  extends Omit<ComponentProps<\"div\">, \"children\">, NoiseOverlayVariants {\n  /** How fine the grain is. Higher is finer. */\n  frequency?: number;\n}\n\n/**\n * Print grain over a section, drawn by the browser rather than loaded as an\n * image. Decorative, and hidden from screen readers.\n */\nexport function NoiseOverlay({\n  weight = \"medium\",\n  frequency = 0.8,\n  className,\n  ...props\n}: NoiseOverlayProps) {\n  const styles = noiseOverlay({ weight });\n  const id = `beton-noise-${String(frequency).replace(\".\", \"-\")}`;\n  return (\n    <div {...props} aria-hidden=\"true\" className={styles.root({ class: className })}>\n      <svg width=\"100%\" height=\"100%\">\n        <filter id={id}>\n          <feTurbulence type=\"fractalNoise\" baseFrequency={frequency} numOctaves={3} />\n          {/* Grain, not confetti: drop the colour the turbulence generates. */}\n          <feColorMatrix type=\"saturate\" values=\"0\" />\n        </filter>\n        <rect width=\"100%\" height=\"100%\" filter={`url(#${id})`} />\n      </svg>\n    </div>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "motion"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": false,
+    "exports": [
+      "NoiseOverlay"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/noise-overlay"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glitch-text",
+  "type": "registry:ui",
+  "title": "Glitch Text",
+  "description": "Text with two coloured copies jittering behind it.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/text-effects.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/text-effects.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\n/** Scramble, typewriter and counter share one plain typographic surface. */\nexport const textEffect = tv({\n  base: \"font-display font-black tracking-tight text-foreground tabular-nums\",\n  variants: {\n    size: {\n      sm: \"text-h4\",\n      md: \"text-h3\",\n      lg: \"text-h2\",\n      xl: \"text-h1\",\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n});\n\nexport const typewriter = tv({\n  slots: {\n    root: \"font-display font-black tracking-tight text-foreground\",\n    caret: \"ml-0.5 inline-block w-[0.6ch] bg-foreground align-baseline motion-safe:animate-blink\",\n  },\n  variants: {\n    size: {\n      sm: { root: \"text-h4\", caret: \"h-[1em]\" },\n      md: { root: \"text-h3\", caret: \"h-[1em]\" },\n      lg: { root: \"text-h2\", caret: \"h-[1em]\" },\n      xl: { root: \"text-h1\", caret: \"h-[1em]\" },\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n});\n\nexport const glitchText = tv({\n  slots: {\n    root: \"relative inline-block font-display font-black tracking-tight text-foreground\",\n    layer: \"pointer-events-none absolute inset-0 select-none\",\n    body: \"relative\",\n    a: \"text-primary motion-safe:animate-glitch-a motion-reduce:hidden\",\n    b: \"text-danger motion-safe:animate-glitch-b motion-reduce:hidden\",\n  },\n  variants: {\n    size: {\n      sm: { root: \"text-h4\" },\n      md: { root: \"text-h3\" },\n      lg: { root: \"text-h2\" },\n      xl: { root: \"text-h1\" },\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n});\n\nexport type TextEffectVariants = VariantProps<typeof textEffect>;\nexport type TypewriterVariants = VariantProps<typeof typewriter>;\nexport type GlitchTextVariants = VariantProps<typeof glitchText>;\n"
+    },
+    {
+      "path": "registry/beton/ui/glitch-text.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/glitch-text.tsx",
+      "content": "import { glitchText, type GlitchTextVariants } from \"@/lib/beton/recipes/text-effects.recipe\";\nimport type { ComponentProps } from \"react\";\n\nexport interface GlitchTextProps\n  extends Omit<ComponentProps<\"span\">, \"children\">, GlitchTextVariants {\n  /** The words. Passed as a string so the layers can repeat them. */\n  children: string;\n}\n\n/**\n * Text with two coloured copies jittering behind it. The copies are hidden\n * from screen readers, and disappear entirely under reduced motion.\n */\nexport function GlitchText({ size = \"md\", children, className, ...props }: GlitchTextProps) {\n  const styles = glitchText({ size });\n  return (\n    <span {...props} data-text={children} className={styles.root({ class: className })}>\n      <span aria-hidden=\"true\" className={styles.layer({ class: styles.a() })}>\n        {children}\n      </span>\n      <span aria-hidden=\"true\" className={styles.layer({ class: styles.b() })}>\n        {children}\n      </span>\n      <span className={styles.body()}>{children}</span>\n    </span>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "motion"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": false,
+    "exports": [
+      "GlitchText"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/glitch-text"
+  }
+}

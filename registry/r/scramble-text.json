@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scramble-text",
+  "type": "registry:ui",
+  "title": "Scramble Text",
+  "description": "Letters churn through junk and settle into the real words.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/text-effects.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/text-effects.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\n/** Scramble, typewriter and counter share one plain typographic surface. */\nexport const textEffect = tv({\n  base: \"font-display font-black tracking-tight text-foreground tabular-nums\",\n  variants: {\n    size: {\n      sm: \"text-h4\",\n      md: \"text-h3\",\n      lg: \"text-h2\",\n      xl: \"text-h1\",\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n});\n\nexport const typewriter = tv({\n  slots: {\n    root: \"font-display font-black tracking-tight text-foreground\",\n    caret: \"ml-0.5 inline-block w-[0.6ch] bg-foreground align-baseline motion-safe:animate-blink\",\n  },\n  variants: {\n    size: {\n      sm: { root: \"text-h4\", caret: \"h-[1em]\" },\n      md: { root: \"text-h3\", caret: \"h-[1em]\" },\n      lg: { root: \"text-h2\", caret: \"h-[1em]\" },\n      xl: { root: \"text-h1\", caret: \"h-[1em]\" },\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n});\n\nexport const glitchText = tv({\n  slots: {\n    root: \"relative inline-block font-display font-black tracking-tight text-foreground\",\n    layer: \"pointer-events-none absolute inset-0 select-none\",\n    body: \"relative\",\n    a: \"text-primary motion-safe:animate-glitch-a motion-reduce:hidden\",\n    b: \"text-danger motion-safe:animate-glitch-b motion-reduce:hidden\",\n  },\n  variants: {\n    size: {\n      sm: { root: \"text-h4\" },\n      md: { root: \"text-h3\" },\n      lg: { root: \"text-h2\" },\n      xl: { root: \"text-h1\" },\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n});\n\nexport type TextEffectVariants = VariantProps<typeof textEffect>;\nexport type TypewriterVariants = VariantProps<typeof typewriter>;\nexport type GlitchTextVariants = VariantProps<typeof glitchText>;\n"
+    },
+    {
+      "path": "registry/beton/ui/scramble-text.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/scramble-text.tsx",
+      "content": "\"use client\";\n\nimport { textEffect, type TextEffectVariants } from \"@/lib/beton/recipes/text-effects.recipe\";\nimport { visuallyHidden } from \"@/lib/beton/shared\";\nimport { useEffect, useState, type ComponentProps } from \"react\";\nimport { useReducedMotion } from \"@/lib/beton/use-reduced-motion\";\n\nconst GLYPHS = \"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%&@\";\n\nexport interface ScrambleTextProps\n  extends Omit<ComponentProps<\"span\">, \"children\">, TextEffectVariants {\n  /** The words to settle on. */\n  children: string;\n  /** Milliseconds between frames. */\n  interval?: number;\n  /** How many frames each character churns for before it settles. */\n  churn?: number;\n  /** Scramble again whenever this changes. */\n  runKey?: string | number;\n}\n\n/**\n * Letters churn through junk and settle into the real words. Screen readers\n * only ever get the real words, and reduced motion skips the churn entirely.\n */\nexport function ScrambleText({\n  size = \"md\",\n  children,\n  interval = 40,\n  churn = 6,\n  runKey,\n  className,\n  ...props\n}: ScrambleTextProps) {\n  const reduced = useReducedMotion();\n  const [shown, setShown] = useState(children);\n\n  useEffect(() => {\n    if (reduced) {\n      setShown(children);\n      return;\n    }\n    let frame = 0;\n    const steps = children.length + churn;\n    const timer = setInterval(() => {\n      frame += 1;\n      if (frame >= steps) {\n        setShown(children);\n        clearInterval(timer);\n        return;\n      }\n      const settled = Math.max(0, frame - churn);\n      setShown(\n        children\n          .split(\"\")\n          .map((character, index) => {\n            if (index < settled || character === \" \") return character;\n            return GLYPHS[Math.floor(Math.random() * GLYPHS.length)];\n          })\n          .join(\"\"),\n      );\n    }, interval);\n    return () => clearInterval(timer);\n  }, [children, churn, interval, reduced, runKey]);\n\n  return (\n    <span {...props} className={textEffect({ size, class: className })}>\n      <span aria-hidden=\"true\">{shown}</span>\n      <span className={visuallyHidden}>{children}</span>\n    </span>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "motion"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "ScrambleText"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/scramble-text"
+  }
+}

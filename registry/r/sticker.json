@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sticker",
+  "type": "registry:ui",
+  "title": "Sticker",
+  "description": "A round badge whose words run around the edge, turning slowly.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/sticker.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/sticker.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const sticker = tv({\n  slots: {\n    // Square, not round: the radius scale has three values and none of them\n    // is a circle. The type does the circling instead.\n    root: \"relative inline-grid shrink-0 place-items-center border-3 border-border shadow-sm\",\n    spinner: \"absolute inset-0 motion-safe:animate-spin-slow motion-reduce:animate-none\",\n    text: \"fill-current font-display font-black tracking-[0.2em] uppercase\",\n    center: \"relative z-10 grid place-items-center font-display font-black uppercase\",\n  },\n  variants: {\n    variant: {\n      primary: { root: \"bg-primary text-ink\" },\n      secondary: { root: \"bg-secondary text-ink\" },\n      ghost: { root: \"bg-raised text-ink\" },\n      danger: { root: \"bg-danger text-ink\" },\n    },\n    reverse: {\n      true: { spinner: \"[animation-direction:reverse]\" },\n    },\n    size: {\n      sm: { root: \"size-24\", center: \"text-xs\" },\n      md: { root: \"size-32\", center: \"text-sm\" },\n      lg: { root: \"size-44\", center: \"text-base\" },\n    },\n  },\n  defaultVariants: {\n    variant: \"primary\",\n    size: \"md\",\n    reverse: false,\n  },\n});\n\nexport type StickerVariants = VariantProps<typeof sticker>;\n"
+    },
+    {
+      "path": "registry/beton/ui/sticker.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/sticker.tsx",
+      "content": "import { sticker, type StickerVariants } from \"@/lib/beton/recipes/sticker.recipe\";\nimport { visuallyHidden } from \"@/lib/beton/shared\";\nimport type { ComponentProps, ReactNode } from \"react\";\n\nexport interface StickerProps extends Omit<ComponentProps<\"div\">, \"children\">, StickerVariants {\n  /** The words that run around the circle. */\n  text: string;\n  /** What sits in the middle: an arrow, a price, an icon. */\n  children?: ReactNode;\n  /** How many times the text repeats around the circle. */\n  repeat?: number;\n}\n\n/**\n * A round badge whose words run around the edge, turning slowly. The turn is a\n * hard 24-step rotation, and it stops under reduced motion.\n */\nexport function Sticker({\n  variant = \"primary\",\n  size = \"md\",\n  text,\n  children,\n  repeat = 2,\n  reverse = false,\n  className,\n  ...props\n}: StickerProps) {\n  const styles = sticker({ variant, size, reverse });\n  const id = `beton-sticker-${text.replace(/[^a-z0-9]+/gi, \"-\").toLowerCase()}`;\n  const around = Array.from({ length: Math.max(1, Math.trunc(repeat)) }, () => text)\n    .join(\" · \")\n    .concat(\" · \");\n\n  return (\n    <div {...props} data-variant={variant} className={styles.root({ class: className })}>\n      <svg viewBox=\"0 0 100 100\" aria-hidden=\"true\" className={styles.spinner()}>\n        <defs>\n          <path id={id} d=\"M 50,50 m -37,0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0\" fill=\"none\" />\n        </defs>\n        <text className={styles.text()} fontSize=\"9\">\n          <textPath href={`#${id}`}>{around}</textPath>\n        </text>\n      </svg>\n      <span className={styles.center()}>{children}</span>\n      <span className={visuallyHidden}>{text}</span>\n    </div>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "motion"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": false,
+    "exports": [
+      "Sticker"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/sticker"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "counter",
+  "type": "registry:ui",
+  "title": "Counter",
+  "description": "A number that counts up in hard steps and lands on its value.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/text-effects.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/text-effects.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\n/** Scramble, typewriter and counter share one plain typographic surface. */\nexport const textEffect = tv({\n  base: \"font-display font-black tracking-tight text-foreground tabular-nums\",\n  variants: {\n    size: {\n      sm: \"text-h4\",\n      md: \"text-h3\",\n      lg: \"text-h2\",\n      xl: \"text-h1\",\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n});\n\nexport const typewriter = tv({\n  slots: {\n    root: \"font-display font-black tracking-tight text-foreground\",\n    caret: \"ml-0.5 inline-block w-[0.6ch] bg-foreground align-baseline motion-safe:animate-blink\",\n  },\n  variants: {\n    size: {\n      sm: { root: \"text-h4\", caret: \"h-[1em]\" },\n      md: { root: \"text-h3\", caret: \"h-[1em]\" },\n      lg: { root: \"text-h2\", caret: \"h-[1em]\" },\n      xl: { root: \"text-h1\", caret: \"h-[1em]\" },\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n});\n\nexport const glitchText = tv({\n  slots: {\n    root: \"relative inline-block font-display font-black tracking-tight text-foreground\",\n    layer: \"pointer-events-none absolute inset-0 select-none\",\n    body: \"relative\",\n    a: \"text-primary motion-safe:animate-glitch-a motion-reduce:hidden\",\n    b: \"text-danger motion-safe:animate-glitch-b motion-reduce:hidden\",\n  },\n  variants: {\n    size: {\n      sm: { root: \"text-h4\" },\n      md: { root: \"text-h3\" },\n      lg: { root: \"text-h2\" },\n      xl: { root: \"text-h1\" },\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n});\n\nexport type TextEffectVariants = VariantProps<typeof textEffect>;\nexport type TypewriterVariants = VariantProps<typeof typewriter>;\nexport type GlitchTextVariants = VariantProps<typeof glitchText>;\n"
+    },
+    {
+      "path": "registry/beton/ui/counter.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/counter.tsx",
+      "content": "\"use client\";\n\nimport { textEffect, type TextEffectVariants } from \"@/lib/beton/recipes/text-effects.recipe\";\nimport { visuallyHidden } from \"@/lib/beton/shared\";\nimport { useEffect, useRef, useState, type ComponentProps } from \"react\";\nimport { useReducedMotion } from \"@/lib/beton/use-reduced-motion\";\n\nexport interface CounterProps extends Omit<ComponentProps<\"span\">, \"children\">, TextEffectVariants {\n  /** The number to land on. */\n  value: number;\n  /** Where to start counting. */\n  from?: number;\n  /** How long the count takes, in milliseconds. */\n  duration?: number;\n  /** How the number is written. Also used for the value screen readers get. */\n  format?: Intl.NumberFormatOptions;\n  /** Which locale formats the number. */\n  locale?: string;\n  /** Text before and after the number, such as a currency sign or a unit. */\n  prefix?: string;\n  suffix?: string;\n}\n\n/**\n * A number that counts up in hard steps. Screen readers are given the final\n * number straight away, and reduced motion skips the count.\n */\nexport function Counter({\n  size = \"md\",\n  value,\n  from = 0,\n  duration = 1200,\n  format,\n  locale,\n  prefix = \"\",\n  suffix = \"\",\n  className,\n  ...props\n}: CounterProps) {\n  const reduced = useReducedMotion();\n  const [shown, setShown] = useState(from);\n  const frame = useRef(0);\n\n  useEffect(() => {\n    if (reduced || duration <= 0) {\n      setShown(value);\n      return;\n    }\n    const start = performance.now();\n    const step = (now: number) => {\n      const progress = Math.min(1, (now - start) / duration);\n      // Stepped, not eased: the number lands on twenty stops along the way.\n      const stepped = Math.round(progress * 20) / 20;\n      setShown(from + (value - from) * stepped);\n      if (progress < 1) frame.current = requestAnimationFrame(step);\n      else setShown(value);\n    };\n    frame.current = requestAnimationFrame(step);\n    return () => cancelAnimationFrame(frame.current);\n  }, [duration, from, reduced, value]);\n\n  const formatter = new Intl.NumberFormat(locale, format);\n  const label = `${prefix}${formatter.format(value)}${suffix}`;\n\n  return (\n    <span {...props} className={textEffect({ size, class: className })}>\n      <span aria-hidden=\"true\">\n        {prefix}\n        {formatter.format(Number.isInteger(value) ? Math.round(shown) : shown)}\n        {suffix}\n      </span>\n      <span className={visuallyHidden}>{label}</span>\n    </span>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "motion"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "Counter"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/counter"
+  }
+}

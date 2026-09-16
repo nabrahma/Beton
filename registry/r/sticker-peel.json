@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sticker-peel",
+  "type": "registry:ui",
+  "title": "Sticker Peel",
+  "description": "A panel that lifts off the page as the pointer crosses it.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/sticker-peel.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/sticker-peel.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const stickerPeel = tv({\n  slots: {\n    root: [\n      \"group relative isolate inline-block border-3 border-border bg-raised shadow-sm\",\n      \"transition-[translate,box-shadow] duration-70 ease-linear motion-reduce:transition-none\",\n      \"hover:-translate-y-1 hover:shadow-lg\",\n    ],\n    corner: [\n      \"pointer-events-none absolute top-0 right-0 size-0\",\n      \"border-t-transparent border-l-transparent border-r-border border-b-border\",\n      \"transition-[border-width] duration-70 ease-linear motion-reduce:transition-none\",\n    ],\n    content: \"relative z-10 block\",\n  },\n  variants: {\n    size: {\n      sm: { content: \"p-3\", corner: \"group-hover:border-[12px]\" },\n      md: { content: \"p-4\", corner: \"group-hover:border-[16px]\" },\n      lg: { content: \"p-6\", corner: \"group-hover:border-[24px]\" },\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n});\n\nexport type StickerPeelVariants = VariantProps<typeof stickerPeel>;\n"
+    },
+    {
+      "path": "registry/beton/ui/sticker-peel.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/sticker-peel.tsx",
+      "content": "import { stickerPeel, type StickerPeelVariants } from \"@/lib/beton/recipes/sticker-peel.recipe\";\nimport type { ComponentProps } from \"react\";\nimport { renderElement, type RenderProp } from \"@/lib/beton/render-element\";\n\nexport interface StickerPeelProps extends ComponentProps<\"div\">, StickerPeelVariants {\n  render?: RenderProp;\n}\n\n/**\n * A panel that lifts off the page as the pointer crosses it, with the corner\n * peeling back. The lift is a single hard step, and nothing moves at all under\n * reduced motion.\n */\nexport function StickerPeel({\n  size = \"md\",\n  className,\n  children,\n  render,\n  ...props\n}: StickerPeelProps) {\n  const styles = stickerPeel({ size });\n  return renderElement(\n    \"div\",\n    {\n      ...props,\n      className: styles.root({ class: className }),\n      children: (\n        <>\n          <span aria-hidden=\"true\" className={styles.corner()} />\n          <span className={styles.content()}>{children}</span>\n        </>\n      ),\n    },\n    render,\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "motion"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": false,
+    "exports": [
+      "StickerPeel"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/sticker-peel"
+  }
+}

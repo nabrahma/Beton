@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "split-flap",
+  "type": "registry:ui",
+  "title": "Split Flap",
+  "description": "A departure board: each cell flaps through the alphabet to its letter.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/split-flap.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/split-flap.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const splitFlap = tv({\n  slots: {\n    root: \"inline-flex gap-1\",\n    cell: [\n      \"relative grid place-items-center overflow-hidden\",\n      \"border-3 border-border bg-ink font-mono font-black text-paper tabular-nums\",\n    ],\n    char: \"motion-safe:animate-flap motion-reduce:animate-none\",\n    seam: \"pointer-events-none absolute inset-x-0 top-1/2 h-0.5 bg-border\",\n  },\n  variants: {\n    size: {\n      sm: { cell: \"h-10 w-7 text-lg\" },\n      md: { cell: \"h-14 w-10 text-2xl\" },\n      lg: { cell: \"h-20 w-14 text-4xl\" },\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n});\n\nexport type SplitFlapVariants = VariantProps<typeof splitFlap>;\n"
+    },
+    {
+      "path": "registry/beton/ui/split-flap.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/split-flap.tsx",
+      "content": "\"use client\";\n\nimport { splitFlap, type SplitFlapVariants } from \"@/lib/beton/recipes/split-flap.recipe\";\nimport { visuallyHidden } from \"@/lib/beton/shared\";\nimport { useEffect, useState, type ComponentProps } from \"react\";\nimport { useReducedMotion } from \"@/lib/beton/use-reduced-motion\";\n\nconst ALPHABET = \" ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,:-\";\n\nexport interface SplitFlapProps extends Omit<ComponentProps<\"div\">, \"children\">, SplitFlapVariants {\n  /** The words to land on. Anything outside the alphabet is shown as it is. */\n  children: string;\n  /** Milliseconds between flaps. */\n  interval?: number;\n  /** How many cells to draw. Defaults to the length of the text. */\n  cells?: number;\n}\n\n/**\n * A departure board. Each cell flaps through the alphabet until it reaches its\n * letter. Screen readers get the words at once, as does anyone who has asked\n * for less motion.\n */\nexport function SplitFlap({\n  size = \"md\",\n  children,\n  interval = 60,\n  cells,\n  className,\n  ...props\n}: SplitFlapProps) {\n  const target = children.toUpperCase();\n  const width = Math.max(1, cells ?? target.length);\n  const wanted = target.padEnd(width, \" \").slice(0, width);\n  const reduced = useReducedMotion();\n  const [shown, setShown] = useState(() => \" \".repeat(width));\n\n  useEffect(() => {\n    if (reduced) {\n      setShown(wanted);\n      return;\n    }\n    setShown(\" \".repeat(width));\n    const timer = setInterval(() => {\n      setShown((current) => {\n        let settled = true;\n        const next = wanted\n          .split(\"\")\n          .map((letter, index) => {\n            const at = current[index] ?? \" \";\n            if (at === letter) return at;\n            settled = false;\n            const from = ALPHABET.indexOf(at);\n            // A letter the board cannot show simply appears.\n            if (!ALPHABET.includes(letter)) return letter;\n            return ALPHABET[(from + 1) % ALPHABET.length] ?? \" \";\n          })\n          .join(\"\");\n        if (settled) clearInterval(timer);\n        return next;\n      });\n    }, interval);\n    return () => clearInterval(timer);\n  }, [interval, reduced, wanted, width]);\n\n  const styles = splitFlap({ size });\n  return (\n    <div {...props} className={styles.root({ class: className })}>\n      {shown.split(\"\").map((letter, index) => (\n        <span key={index} aria-hidden=\"true\" className={styles.cell()}>\n          <span key={letter} className={styles.char()}>\n            {letter}\n          </span>\n          <span className={styles.seam()} />\n        </span>\n      ))}\n      <span className={visuallyHidden}>{target}</span>\n    </div>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "motion"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "SplitFlap"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/split-flap"
+  }
+}

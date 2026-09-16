@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cursor-trail",
+  "type": "registry:ui",
+  "title": "Cursor Trail",
+  "description": "Hard squares that follow the pointer.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/cursor-trail.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/cursor-trail.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const cursorTrail = tv({\n  slots: {\n    root: \"pointer-events-none fixed inset-0 z-50\",\n    dot: \"absolute border-3 border-border\",\n  },\n  variants: {\n    variant: {\n      primary: { dot: \"bg-primary\" },\n      secondary: { dot: \"bg-secondary\" },\n      danger: { dot: \"bg-danger\" },\n      ink: { dot: \"bg-ink\" },\n    },\n  },\n  defaultVariants: {\n    variant: \"primary\",\n  },\n});\n\nexport const confetti = tv({\n  slots: {\n    root: \"pointer-events-none fixed inset-0 z-50\",\n    piece: \"absolute border-3 border-border\",\n  },\n});\n\nexport type CursorTrailVariants = VariantProps<typeof cursorTrail>;\nexport type ConfettiVariants = VariantProps<typeof confetti>;\n"
+    },
+    {
+      "path": "registry/beton/ui/cursor-trail.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/cursor-trail.tsx",
+      "content": "\"use client\";\n\nimport { cursorTrail, type CursorTrailVariants } from \"@/lib/beton/recipes/cursor-trail.recipe\";\nimport { useEffect, useState, type ComponentProps } from \"react\";\nimport { useReducedMotion } from \"@/lib/beton/use-reduced-motion\";\n\ninterface Mark {\n  id: number;\n  x: number;\n  y: number;\n}\n\nexport interface CursorTrailProps\n  extends Omit<ComponentProps<\"div\">, \"children\">, CursorTrailVariants {\n  /** How many marks follow the pointer. */\n  length?: number;\n  /** How big the leading mark is, in pixels. */\n  size?: number;\n  /** Only draw the trail inside this element. Defaults to the whole page. */\n  container?: React.RefObject<HTMLElement | null>;\n}\n\n/**\n * Hard squares that follow the pointer. It draws nothing for touch users, who\n * have no pointer to follow, and nothing under reduced motion.\n */\nexport function CursorTrail({\n  variant = \"primary\",\n  length = 8,\n  size = 16,\n  container,\n  className,\n  ...props\n}: CursorTrailProps) {\n  const reduced = useReducedMotion();\n  const [marks, setMarks] = useState<Mark[]>([]);\n\n  useEffect(() => {\n    if (reduced) return;\n    // A trail is meaningless without a pointer that hovers.\n    if (!window.matchMedia(\"(hover: hover) and (pointer: fine)\").matches) return;\n\n    const target: HTMLElement | Document = container?.current ?? document;\n    let id = 0;\n    const onMove = (event: Event) => {\n      const { clientX, clientY } = event as PointerEvent;\n      id += 1;\n      setMarks((current) => [...current, { id, x: clientX, y: clientY }].slice(-length));\n    };\n    target.addEventListener(\"pointermove\", onMove);\n    return () => target.removeEventListener(\"pointermove\", onMove);\n  }, [container, length, reduced]);\n\n  const styles = cursorTrail({ variant });\n  if (reduced || marks.length === 0) return null;\n\n  return (\n    <div {...props} aria-hidden=\"true\" className={styles.root({ class: className })}>\n      {marks.map((mark, index) => {\n        const scale = (index + 1) / marks.length;\n        const side = Math.max(4, Math.round(size * scale));\n        return (\n          <span\n            key={mark.id}\n            className={styles.dot()}\n            style={{\n              left: mark.x - side / 2,\n              top: mark.y - side / 2,\n              width: side,\n              height: side,\n            }}\n          />\n        );\n      })}\n    </div>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "motion"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "CursorTrail"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/cursor-trail"
+  }
+}

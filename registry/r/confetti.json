@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "confetti",
+  "type": "registry:ui",
+  "title": "Confetti",
+  "description": "A burst of hard paper squares when something goes right.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json",
+    "https://beton.dev/r/cursor-trail.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/ui/confetti.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/confetti.tsx",
+      "content": "\"use client\";\n\nimport { confetti } from \"@/lib/beton/recipes/cursor-trail.recipe\";\nimport { useEffect, useState, type ComponentProps } from \"react\";\nimport { useReducedMotion } from \"@/lib/beton/use-reduced-motion\";\n\nconst COLOURS = [\"bg-primary\", \"bg-secondary\", \"bg-danger\", \"bg-success\"] as const;\n\ninterface Piece {\n  id: number;\n  x: number;\n  y: number;\n  rotate: number;\n  colour: (typeof COLOURS)[number];\n}\n\nexport interface ConfettiProps extends Omit<ComponentProps<\"div\">, \"children\"> {\n  /** Throw a new burst whenever this number goes up. */\n  fire: number;\n  /** How many pieces are thrown. */\n  count?: number;\n  /** How long the pieces stay, in milliseconds. */\n  duration?: number;\n  /** Called once the pieces have gone. */\n  onDone?: () => void;\n}\n\n/**\n * A burst of hard paper squares. It throws nothing at all for anyone who has\n * asked for less motion, and it is decoration: say what happened in words too.\n */\nexport function Confetti({\n  fire,\n  count = 40,\n  duration = 1400,\n  onDone,\n  className,\n  ...props\n}: ConfettiProps) {\n  const reduced = useReducedMotion();\n  const [pieces, setPieces] = useState<Piece[]>([]);\n\n  useEffect(() => {\n    // useReducedMotion only knows the answer after the first paint, so clear\n    // anything that was thrown before it did.\n    if (reduced) {\n      setPieces([]);\n      return;\n    }\n    if (!fire) return;\n    setPieces(\n      Array.from({ length: Math.max(1, Math.trunc(count)) }, (_, id) => ({\n        id: fire * 1000 + id,\n        x: Math.random() * 100,\n        y: Math.random() * 40,\n        rotate: Math.round(Math.random() * 8) * 45,\n        colour: COLOURS[id % COLOURS.length] as (typeof COLOURS)[number],\n      })),\n    );\n    const timer = setTimeout(() => {\n      setPieces([]);\n      onDone?.();\n    }, duration);\n    return () => clearTimeout(timer);\n    // onDone is deliberately not a dependency: a new function each render\n    // would throw the confetti again.\n    // eslint-disable-next-line react-hooks/exhaustive-deps\n  }, [count, duration, fire, reduced]);\n\n  const styles = confetti();\n  if (pieces.length === 0) return null;\n\n  return (\n    <div {...props} aria-hidden=\"true\" className={styles.root({ class: className })}>\n      {pieces.map((piece) => (\n        <span\n          key={piece.id}\n          className={styles.piece({ class: piece.colour })}\n          style={{\n            left: `${piece.x}%`,\n            top: `${piece.y}%`,\n            width: 14,\n            height: 14,\n            rotate: `${piece.rotate}deg`,\n          }}\n        />\n      ))}\n    </div>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "motion"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "Confetti"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/confetti"
+  }
+}
