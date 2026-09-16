@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "section",
+  "type": "registry:block",
+  "title": "Section",
+  "description": "The frame every block sits in: a named landmark, a heading and a measure.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/section.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/section.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\n/**\n * The frame every marketing block sits in: full width, generous padding, and a\n * centred column that never gets wider than the measure.\n */\nexport const section = tv({\n  slots: {\n    root: \"w-full\",\n    inner: \"mx-auto flex w-full flex-col px-4 sm:px-6\",\n    header: \"flex flex-col gap-4\",\n    eyebrow: \"font-mono text-xs font-bold tracking-widest uppercase\",\n    title: \"font-display font-black tracking-tight text-balance text-foreground\",\n    description: \"max-w-prose text-pretty text-foreground\",\n    actions: \"flex flex-wrap items-center gap-3 pt-2\",\n  },\n  variants: {\n    size: {\n      sm: { inner: \"max-w-5xl gap-8 py-12\", title: \"text-h3\", description: \"text-base\" },\n      md: { inner: \"max-w-6xl gap-12 py-16\", title: \"text-h2\", description: \"text-lg\" },\n      lg: { inner: \"max-w-7xl gap-16 py-24\", title: \"text-h1\", description: \"text-xl\" },\n    },\n    align: {\n      start: { header: \"items-start text-left\" },\n      center: { header: \"items-center text-center\", actions: \"justify-center\" },\n    },\n    surface: {\n      paper: { root: \"bg-surface\" },\n      raised: { root: \"bg-raised\" },\n      accent: { root: \"bg-secondary\" },\n      ink: { root: \"bg-ink text-paper\" },\n    },\n    bordered: {\n      true: { root: \"border-y-3 border-border\" },\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n    align: \"start\",\n    surface: \"paper\",\n    bordered: false,\n  },\n});\n\nexport type SectionVariants = VariantProps<typeof section>;\n"
+    },
+    {
+      "path": "registry/beton/ui/section.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/section.tsx",
+      "content": "import { section, type SectionVariants } from \"@/lib/beton/recipes/section.recipe\";\nimport { useId, type ComponentProps, type ReactNode } from \"react\";\n\nexport interface SectionProps extends Omit<ComponentProps<\"section\">, \"title\">, SectionVariants {\n  /** The heading of the section. Every landmark needs one. */\n  title?: ReactNode;\n  /** A short line above the heading. */\n  eyebrow?: ReactNode;\n  /** A paragraph under the heading. */\n  description?: ReactNode;\n  /** Buttons under the text. */\n  actions?: ReactNode;\n  /** The heading level. Defaults to h2, which is right inside a page with one h1. */\n  headingLevel?: 2 | 3 | 4;\n}\n\n/**\n * The frame every marketing block sits in: a named landmark, a heading, and a\n * centred column that never gets wider than the measure.\n */\nexport function Section({\n  size = \"md\",\n  align = \"start\",\n  surface = \"paper\",\n  bordered = false,\n  title,\n  eyebrow,\n  description,\n  actions,\n  headingLevel = 2,\n  className,\n  children,\n  ...props\n}: SectionProps) {\n  const styles = section({ size, align, surface, bordered });\n  const id = useId();\n  const Heading = `h${headingLevel}` as const;\n\n  return (\n    <section\n      {...props}\n      aria-labelledby={title ? `${id}-title` : props[\"aria-labelledby\"]}\n      data-surface={surface}\n      className={styles.root({ class: className })}\n    >\n      <div className={styles.inner()}>\n        {title || description || eyebrow ? (\n          <div className={styles.header()}>\n            {eyebrow ? <p className={styles.eyebrow()}>{eyebrow}</p> : null}\n            {title ? (\n              <Heading id={`${id}-title`} className={styles.title()}>\n                {title}\n              </Heading>\n            ) : null}\n            {description ? <p className={styles.description()}>{description}</p> : null}\n            {actions ? <div className={styles.actions()}>{actions}</div> : null}\n          </div>\n        ) : null}\n        {children}\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "marketing"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": false,
+    "exports": [
+      "Section"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/section"
+  }
+}

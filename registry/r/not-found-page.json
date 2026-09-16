@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "not-found-page",
+  "type": "registry:block",
+  "title": "404 Page",
+  "description": "The page for an address that leads nowhere.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/not-found-page.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/not-found-page.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const notFoundPage = tv({\n  slots: {\n    root: \"relative isolate flex min-h-[70dvh] w-full items-center justify-center overflow-hidden px-4 py-20\",\n    inner: \"flex max-w-xl flex-col items-center gap-6 text-center\",\n    code: \"font-display text-[clamp(5rem,20vw,12rem)] leading-none font-black tracking-tight text-foreground\",\n    title: \"font-display text-h2 font-black tracking-tight text-balance text-foreground\",\n    description: \"text-pretty text-lg text-foreground\",\n    actions: \"flex flex-wrap items-center justify-center gap-4 pt-2\",\n  },\n});\n\nexport type NotFoundPageVariants = VariantProps<typeof notFoundPage>;\n"
+    },
+    {
+      "path": "registry/beton/ui/not-found-page.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/not-found-page.tsx",
+      "content": "import { notFoundPage } from \"@/lib/beton/recipes/not-found-page.recipe\";\nimport { useId, type ComponentProps, type ReactNode } from \"react\";\n\nexport interface NotFoundPageProps extends Omit<ComponentProps<\"main\">, \"title\"> {\n  /** The number, or whatever stands in for it. */\n  code?: ReactNode;\n  /** What went wrong, in plain words. */\n  title?: ReactNode;\n  /** What to do about it. */\n  description?: ReactNode;\n  /** The way back. */\n  actions?: ReactNode;\n  /** Drawn behind everything, such as a grid or a halftone. */\n  background?: ReactNode;\n  /** The heading level. Defaults to h1: this is the page. */\n  headingLevel?: 1 | 2;\n}\n\n/** The page for an address that leads nowhere. */\nexport function NotFoundPage({\n  code = \"404\",\n  title = \"Page not found\",\n  description = \"The address is wrong, or the page has moved. Neither is your fault.\",\n  actions,\n  background,\n  headingLevel = 1,\n  className,\n  children,\n  ...props\n}: NotFoundPageProps) {\n  const styles = notFoundPage();\n  const id = useId();\n  const Heading = `h${headingLevel}` as const;\n\n  return (\n    <main {...props} aria-labelledby={`${id}-title`} className={styles.root({ class: className })}>\n      {background}\n      <div className={styles.inner()}>\n        <p aria-hidden=\"true\" className={styles.code()}>\n          {code}\n        </p>\n        <Heading id={`${id}-title`} className={styles.title()}>\n          {title}\n        </Heading>\n        {description ? <p className={styles.description()}>{description}</p> : null}\n        {actions ? <div className={styles.actions()}>{actions}</div> : null}\n        {children}\n      </div>\n    </main>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "marketing"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": false,
+    "exports": [
+      "NotFoundPage"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/not-found-page"
+  }
+}

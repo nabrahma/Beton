@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "site-header",
+  "type": "registry:block",
+  "title": "Site Header",
+  "description": "The bar across the top of a site, with the same links in a sheet on phones.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json",
+    "https://beton.dev/r/button.json",
+    "https://beton.dev/r/navbar.json",
+    "https://beton.dev/r/sheet.json",
+    "https://beton.dev/r/sidebar.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/ui/site-header.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/site-header.tsx",
+      "content": "\"use client\";\n\nimport { navbar } from \"@/lib/beton/recipes/navbar.recipe\";\nimport type { ReactNode } from \"react\";\nimport { Navbar, type NavbarProps } from \"@/components/ui/beton/navbar\";\nimport { Sheet } from \"@/components/ui/beton/sheet\";\nimport { Sidebar } from \"@/components/ui/beton/sidebar\";\nimport { Button } from \"@/components/ui/beton/button\";\n\nexport interface HeaderLink {\n  label: ReactNode;\n  href: string;\n  /** Marks the page you are on. */\n  active?: boolean;\n}\n\nexport interface SiteHeaderProps extends Omit<NavbarProps, \"children\"> {\n  /** The name of the site. */\n  mark: ReactNode;\n  /** Where the mark leads. */\n  markHref?: string;\n  /** The main links. */\n  links?: HeaderLink[];\n  /** Buttons at the end of the bar. */\n  actions?: ReactNode;\n  /** Offer the links in a sheet below the md breakpoint. On by default. */\n  mobileMenu?: boolean;\n  /** What the button that opens the sheet says. */\n  menuLabel?: string;\n}\n\n/**\n * The bar across the top of a marketing site: a mark, the main links, a couple\n * of actions, and the same links in a sheet on small screens.\n */\nexport function SiteHeader({\n  mark,\n  markHref = \"/\",\n  links = [],\n  actions,\n  mobileMenu = true,\n  menuLabel = \"Menu\",\n  ...props\n}: SiteHeaderProps) {\n  const styles = navbar({ size: props.size });\n  return (\n    <Navbar {...props}>\n      <Navbar.Brand href={markHref}>{mark}</Navbar.Brand>\n      <Navbar.Nav>\n        {links.map((link) => (\n          <Navbar.Link key={link.href} href={link.href} active={link.active}>\n            {link.label}\n          </Navbar.Link>\n        ))}\n      </Navbar.Nav>\n      <Navbar.Actions>\n        {mobileMenu && links.length ? (\n          <Sheet side=\"left\">\n            <Sheet.Trigger\n              render={\n                <Button variant=\"secondary\" size=\"sm\" className={styles.menuButton()}>\n                  {menuLabel}\n                </Button>\n              }\n            />\n            <Sheet.Content>\n              <Sheet.Title>{menuLabel}</Sheet.Title>\n              <Sidebar aria-label={menuLabel} bordered={false}>\n                <Sidebar.Section>\n                  {links.map((link) => (\n                    <Sidebar.Item key={link.href} href={link.href} active={link.active}>\n                      {link.label}\n                    </Sidebar.Item>\n                  ))}\n                </Sidebar.Section>\n              </Sidebar>\n            </Sheet.Content>\n          </Sheet>\n        ) : null}\n        {actions}\n      </Navbar.Actions>\n    </Navbar>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "marketing"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "SiteHeader"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/site-header"
+  }
+}

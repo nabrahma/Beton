@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cta-band",
+  "type": "registry:block",
+  "title": "CTA Band",
+  "description": "A loud strip across the page with one thing to do.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/cta-band.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/cta-band.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const ctaBand = tv({\n  slots: {\n    root: \"w-full border-y-3 border-border\",\n    inner: \"mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 py-14 sm:px-6\",\n    title: \"font-display text-h2 font-black tracking-tight text-balance\",\n    description: \"max-w-prose text-pretty text-lg\",\n    actions: \"flex flex-wrap items-center gap-4\",\n  },\n  variants: {\n    surface: {\n      accent: { root: \"bg-primary text-ink\" },\n      secondary: { root: \"bg-secondary text-ink\" },\n      ink: { root: \"bg-ink text-paper\" },\n      raised: { root: \"bg-raised text-foreground\" },\n    },\n    layout: {\n      stacked: {},\n      inline: { inner: \"md:flex-row md:items-center md:justify-between\" },\n    },\n  },\n  defaultVariants: {\n    surface: \"accent\",\n    layout: \"inline\",\n  },\n});\n\nexport type CtaBandVariants = VariantProps<typeof ctaBand>;\n"
+    },
+    {
+      "path": "registry/beton/ui/cta-band.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/cta-band.tsx",
+      "content": "import { ctaBand, type CtaBandVariants } from \"@/lib/beton/recipes/cta-band.recipe\";\nimport { useId, type ComponentProps, type ReactNode } from \"react\";\n\nexport interface CtaBandProps extends Omit<ComponentProps<\"section\">, \"title\">, CtaBandVariants {\n  /** What you want people to do. */\n  title: ReactNode;\n  /** One line of reason. */\n  description?: ReactNode;\n  /** The buttons. */\n  actions?: ReactNode;\n  /** The heading level. Defaults to h2. */\n  headingLevel?: 2 | 3;\n}\n\n/** A loud strip across the page with one thing to do. */\nexport function CtaBand({\n  surface = \"accent\",\n  layout = \"inline\",\n  title,\n  description,\n  actions,\n  headingLevel = 2,\n  className,\n  children,\n  ...props\n}: CtaBandProps) {\n  const styles = ctaBand({ surface, layout });\n  const id = useId();\n  const Heading = `h${headingLevel}` as const;\n\n  return (\n    <section\n      {...props}\n      aria-labelledby={`${id}-title`}\n      data-surface={surface}\n      className={styles.root({ class: className })}\n    >\n      <div className={styles.inner()}>\n        <div>\n          <Heading id={`${id}-title`} className={styles.title()}>\n            {title}\n          </Heading>\n          {description ? <p className={styles.description()}>{description}</p> : null}\n        </div>\n        {actions ? <div className={styles.actions()}>{actions}</div> : null}\n        {children}\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "marketing"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": false,
+    "exports": [
+      "CtaBand"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/cta-band"
+  }
+}

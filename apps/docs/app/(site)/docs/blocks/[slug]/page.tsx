@@ -1,28 +1,27 @@
 import type { Metadata } from "next";
 import { DocPage } from "@/components/doc-page";
-import { getComponents } from "@/lib/components";
-import { getComponent } from "@/lib/components";
+import { getBlocks, getComponent } from "@/lib/components";
 
 export function generateStaticParams() {
-  return getComponents().map((meta) => ({ slug: meta.name }));
+  return getBlocks().map((meta) => ({ slug: meta.name }));
 }
 
 export const dynamicParams = false;
 
 export async function generateMetadata({
   params,
-}: PageProps<"/docs/components/[slug]">): Promise<Metadata> {
+}: PageProps<"/docs/blocks/[slug]">): Promise<Metadata> {
   const { slug } = await params;
   const meta = getComponent(slug);
   if (!meta) return {};
   return {
-    title: `${meta.title} component`,
+    title: `${meta.title} block`,
     description: meta.description,
-    alternates: { canonical: `/docs/components/${slug}` },
+    alternates: { canonical: `/docs/blocks/${slug}` },
   };
 }
 
-export default async function ComponentPage({ params }: PageProps<"/docs/components/[slug]">) {
+export default async function BlockPage({ params }: PageProps<"/docs/blocks/[slug]">) {
   const { slug } = await params;
   return <DocPage slug={slug} />;
 }

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature-grid",
+  "type": "registry:block",
+  "title": "Feature Grid",
+  "description": "A grid of what a thing does, one card per feature.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json",
+    "https://beton.dev/r/section.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/feature-grid.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/feature-grid.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const featureGrid = tv({\n  slots: {\n    list: \"grid gap-6\",\n    item: \"flex h-full flex-col gap-3 border-3 border-border bg-raised p-6 shadow-sm\",\n    icon: \"flex size-12 shrink-0 items-center justify-center border-3 border-border bg-secondary\",\n    itemTitle: \"font-display text-h4 font-extrabold text-foreground\",\n    itemDescription: \"text-pretty text-foreground\",\n  },\n  variants: {\n    columns: {\n      2: { list: \"sm:grid-cols-2\" },\n      3: { list: \"sm:grid-cols-2 lg:grid-cols-3\" },\n      4: { list: \"sm:grid-cols-2 lg:grid-cols-4\" },\n    },\n  },\n  defaultVariants: {\n    columns: 3,\n  },\n});\n\nexport type FeatureGridVariants = VariantProps<typeof featureGrid>;\n"
+    },
+    {
+      "path": "registry/beton/ui/feature-grid.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/feature-grid.tsx",
+      "content": "import { featureGrid, type FeatureGridVariants } from \"@/lib/beton/recipes/feature-grid.recipe\";\nimport type { ComponentProps, ReactNode } from \"react\";\nimport { Section, type SectionProps } from \"@/components/ui/beton/section\";\n\nexport interface Feature {\n  /** What the feature is called. */\n  title: ReactNode;\n  /** One or two sentences on what it does. */\n  description: ReactNode;\n  /** A mark above the title. Decorative: it is hidden from screen readers. */\n  icon?: ReactNode;\n  /** Makes the whole card a link. */\n  href?: string;\n}\n\nexport interface FeatureGridProps extends Omit<SectionProps, \"children\">, FeatureGridVariants {\n  /** The features, in order. */\n  features: Feature[];\n  /** The heading level of each feature. One below the section heading. */\n  itemHeadingLevel?: 3 | 4 | 5;\n  /** Classes for the grid itself. */\n  listClassName?: string;\n}\n\n/** A grid of what a thing does, one card per feature. */\nexport function FeatureGrid({\n  features,\n  columns = 3,\n  itemHeadingLevel = 3,\n  listClassName,\n  ...props\n}: FeatureGridProps) {\n  const styles = featureGrid({ columns });\n  const Heading = `h${itemHeadingLevel}` as const;\n\n  return (\n    <Section {...props}>\n      <ul className={styles.list({ class: listClassName })}>\n        {features.map((feature, index) => (\n          <li key={index} className={styles.item()}>\n            {feature.icon ? (\n              <span aria-hidden=\"true\" className={styles.icon()}>\n                {feature.icon}\n              </span>\n            ) : null}\n            <Heading className={styles.itemTitle()}>\n              {feature.href ? <a href={feature.href}>{feature.title}</a> : feature.title}\n            </Heading>\n            <p className={styles.itemDescription()}>{feature.description}</p>\n          </li>\n        ))}\n      </ul>\n    </Section>\n  );\n}\n\nexport type FeatureGridItemProps = ComponentProps<\"li\">;\n"
+    }
+  ],
+  "categories": [
+    "marketing"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": false,
+    "exports": [
+      "FeatureGrid"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/feature-grid"
+  }
+}

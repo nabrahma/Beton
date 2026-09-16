@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "team-grid",
+  "type": "registry:block",
+  "title": "Team Grid",
+  "description": "Who made it, with faces and roles.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json",
+    "https://beton.dev/r/section.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/team-grid.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/team-grid.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const teamGrid = tv({\n  slots: {\n    list: \"grid gap-6\",\n    item: \"flex h-full flex-col gap-3 border-3 border-border bg-raised p-5 shadow-sm\",\n    portrait: \"flex items-center gap-4\",\n    name: \"font-display text-h4 font-extrabold text-foreground\",\n    role: \"font-mono text-xs font-bold tracking-widest uppercase\",\n    bio: \"text-pretty text-sm text-foreground\",\n    links: \"mt-auto flex flex-wrap items-center gap-3 pt-2\",\n  },\n  variants: {\n    columns: {\n      2: { list: \"sm:grid-cols-2\" },\n      3: { list: \"sm:grid-cols-2 lg:grid-cols-3\" },\n      4: { list: \"sm:grid-cols-2 lg:grid-cols-4\" },\n    },\n  },\n  defaultVariants: {\n    columns: 3,\n  },\n});\n\nexport type TeamGridVariants = VariantProps<typeof teamGrid>;\n"
+    },
+    {
+      "path": "registry/beton/ui/team-grid.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/team-grid.tsx",
+      "content": "import { teamGrid, type TeamGridVariants } from \"@/lib/beton/recipes/team-grid.recipe\";\nimport type { ReactNode } from \"react\";\nimport { Section, type SectionProps } from \"@/components/ui/beton/section\";\n\nexport interface TeamMember {\n  /** Their name. */\n  name: ReactNode;\n  /** What they do. */\n  role: ReactNode;\n  /** A line or two about them. */\n  bio?: ReactNode;\n  /** A picture or an avatar. */\n  portrait?: ReactNode;\n  /** Links to wherever they are. */\n  links?: ReactNode;\n}\n\nexport interface TeamGridProps extends Omit<SectionProps, \"children\">, TeamGridVariants {\n  /** The people, in order. */\n  members: TeamMember[];\n  /** The heading level of each name. One below the section heading. */\n  itemHeadingLevel?: 3 | 4 | 5;\n  /** Classes for the grid itself. */\n  listClassName?: string;\n}\n\n/** Who made it, with faces and roles. */\nexport function TeamGrid({\n  members,\n  columns = 3,\n  itemHeadingLevel = 3,\n  listClassName,\n  ...props\n}: TeamGridProps) {\n  const styles = teamGrid({ columns });\n  const Heading = `h${itemHeadingLevel}` as const;\n\n  return (\n    <Section {...props}>\n      <ul className={styles.list({ class: listClassName })}>\n        {members.map((member, index) => (\n          <li key={index} className={styles.item()}>\n            <div className={styles.portrait()}>\n              {member.portrait}\n              <div>\n                <Heading className={styles.name()}>{member.name}</Heading>\n                <p className={styles.role()}>{member.role}</p>\n              </div>\n            </div>\n            {member.bio ? <p className={styles.bio()}>{member.bio}</p> : null}\n            {member.links ? <div className={styles.links()}>{member.links}</div> : null}\n          </li>\n        ))}\n      </ul>\n    </Section>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "marketing"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": false,
+    "exports": [
+      "TeamGrid"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/team-grid"
+  }
+}

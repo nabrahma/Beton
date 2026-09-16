@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "faq",
+  "type": "registry:block",
+  "title": "FAQ",
+  "description": "The questions people actually ask, with the answers.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json",
+    "https://beton.dev/r/accordion.json",
+    "https://beton.dev/r/section.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/faq.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/faq.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const faq = tv({\n  slots: {\n    layout: \"flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-16\",\n    aside: \"flex flex-col gap-4 lg:w-80 lg:shrink-0\",\n    list: \"min-w-0 flex-1\",\n  },\n});\n\nexport type FaqVariants = VariantProps<typeof faq>;\n"
+    },
+    {
+      "path": "registry/beton/ui/faq.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/faq.tsx",
+      "content": "\"use client\";\n\nimport { faq } from \"@/lib/beton/recipes/faq.recipe\";\nimport type { ReactNode } from \"react\";\nimport { Accordion } from \"@/components/ui/beton/accordion\";\nimport { Section, type SectionProps } from \"@/components/ui/beton/section\";\n\nexport interface FaqItem {\n  /** The question, as someone would ask it. */\n  question: ReactNode;\n  /** The answer, as short as it can honestly be. */\n  answer: ReactNode;\n}\n\nexport interface FaqProps extends Omit<SectionProps, \"children\"> {\n  /** The questions, in the order people ask them. */\n  items: FaqItem[];\n  /** Let several answers stay open at once. */\n  multiple?: boolean;\n  /** Anything to put beside the questions, such as a way to get in touch. */\n  aside?: ReactNode;\n}\n\n/** The questions people actually ask, with the answers. */\nexport function Faq({ items, multiple = false, aside, ...props }: FaqProps) {\n  const styles = faq();\n  const questions = (\n    <Accordion multiple={multiple} className={styles.list()}>\n      {items.map((item, index) => (\n        <Accordion.Item key={index} value={String(index)}>\n          <Accordion.Trigger>{item.question}</Accordion.Trigger>\n          <Accordion.Panel>{item.answer}</Accordion.Panel>\n        </Accordion.Item>\n      ))}\n    </Accordion>\n  );\n\n  if (!aside) return <Section {...props}>{questions}</Section>;\n\n  return (\n    <Section {...props}>\n      <div className={styles.layout()}>\n        <div className={styles.aside()}>{aside}</div>\n        {questions}\n      </div>\n    </Section>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "marketing"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "Faq"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/faq"
+  }
+}

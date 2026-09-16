@@ -63,14 +63,34 @@ export const categories: { id: ComponentCategory; title: string; blurb: string }
   { id: "navigation", title: "Navigation", blurb: "Tabs, menus and wayfinding." },
   { id: "data-display", title: "Data display", blurb: "Tables, lists, progress and status." },
   { id: "motion", title: "Motion", blurb: "Stepped, cut, never eased. All honour reduced motion." },
+  {
+    id: "marketing",
+    title: "Marketing",
+    blurb: "Whole sections of a page, composed from the components above.",
+  },
 ];
 
+function byTitle(a: ComponentMeta, b: ComponentMeta) {
+  return a.title.localeCompare(b.title);
+}
+
+/** Components only. Blocks live under /docs/blocks and are listed separately. */
 export function getComponents(): ComponentMeta[] {
-  return [...componentMetas].sort((a, b) => a.title.localeCompare(b.title));
+  return componentMetas.filter((meta) => meta.kind !== "block").sort(byTitle);
+}
+
+/** Whole sections of a page, composed from components. */
+export function getBlocks(): ComponentMeta[] {
+  return componentMetas.filter((meta) => meta.kind === "block").sort(byTitle);
 }
 
 export function getComponent(slug: string): ComponentMeta | undefined {
   return componentMetas.find((meta) => meta.name === slug);
+}
+
+/** Where a component or block is documented. */
+export function docHref(meta: ComponentMeta): string {
+  return meta.kind === "block" ? `/docs/blocks/${meta.name}` : `/docs/components/${meta.name}`;
 }
 
 export function getExamples(slug: string): {

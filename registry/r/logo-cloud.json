@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "logo-cloud",
+  "type": "registry:block",
+  "title": "Logo Cloud",
+  "description": "A row of the names that use the thing.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json",
+    "https://beton.dev/r/section.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/logo-cloud.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/logo-cloud.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const logoCloud = tv({\n  slots: {\n    list: \"flex flex-wrap items-center justify-center gap-4\",\n    item: [\n      \"flex min-h-16 items-center justify-center border-3 border-border bg-raised px-6\",\n      \"font-display font-black tracking-tight uppercase text-foreground\",\n    ],\n  },\n  variants: {\n    size: {\n      sm: { item: \"min-h-12 px-4 text-sm\" },\n      md: { item: \"min-h-16 px-6 text-lg\" },\n      lg: { item: \"min-h-20 px-8 text-2xl\" },\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n});\n\nexport type LogoCloudVariants = VariantProps<typeof logoCloud>;\n"
+    },
+    {
+      "path": "registry/beton/ui/logo-cloud.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/logo-cloud.tsx",
+      "content": "import { logoCloud, type LogoCloudVariants } from \"@/lib/beton/recipes/logo-cloud.recipe\";\nimport type { ReactNode } from \"react\";\nimport { Section, type SectionProps } from \"@/components/ui/beton/section\";\n\nexport interface LogoCloudProps extends Omit<SectionProps, \"children\">, LogoCloudVariants {\n  /** The names, as words or as marks. */\n  logos: ReactNode[];\n  /** Classes for the row itself. */\n  listClassName?: string;\n}\n\n/** A row of the names that use the thing. */\nexport function LogoCloud({ logos, size = \"md\", listClassName, ...props }: LogoCloudProps) {\n  const styles = logoCloud({ size });\n  return (\n    <Section align=\"center\" {...props}>\n      <ul className={styles.list({ class: listClassName })}>\n        {logos.map((logo, index) => (\n          <li key={index} className={styles.item()}>\n            {logo}\n          </li>\n        ))}\n      </ul>\n    </Section>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "marketing"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": false,
+    "exports": [
+      "LogoCloud"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/logo-cloud"
+  }
+}

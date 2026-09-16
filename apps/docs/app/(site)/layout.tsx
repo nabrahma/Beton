@@ -1,29 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Archivo, JetBrains_Mono, Public_Sans } from "next/font/google";
 import type { ReactNode } from "react";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { fontVariables } from "@/lib/fonts";
 import { site } from "@/lib/site";
-import "./globals.css";
-
-const archivo = Archivo({
-  subsets: ["latin"],
-  axes: ["wdth"],
-  variable: "--font-archivo",
-  display: "swap",
-});
-
-const publicSans = Public_Sans({
-  subsets: ["latin"],
-  variable: "--font-public-sans",
-  display: "swap",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-jetbrains-mono",
-  display: "swap",
-});
+import "../globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -64,10 +45,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html
-      lang="en"
-      className={`${archivo.variable} ${publicSans.variable} ${jetbrainsMono.variable}`}
-    >
+    <html lang="en" className={fontVariables}>
       <body className="flex min-h-dvh flex-col bg-surface text-foreground">
         <a
           href="#main"

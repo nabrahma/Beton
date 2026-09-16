@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "testimonial",
+  "type": "registry:block",
+  "title": "Testimonial",
+  "description": "What people say, attributed to the people who said it.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json",
+    "https://beton.dev/r/section.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/testimonial.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/testimonial.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const testimonial = tv({\n  slots: {\n    root: \"flex h-full flex-col gap-5 border-3 border-border bg-raised p-6 shadow-sm\",\n    mark: \"font-display text-h1 leading-none font-black text-foreground select-none\",\n    quote: \"text-pretty text-foreground\",\n    footer: \"mt-auto flex items-center gap-3 border-t-3 border-border pt-4\",\n    person: \"flex min-w-0 flex-col\",\n    name: \"font-display font-extrabold text-foreground\",\n    role: \"font-mono text-xs font-bold\",\n    list: \"grid gap-6\",\n  },\n  variants: {\n    size: {\n      sm: { quote: \"text-base\" },\n      md: { quote: \"text-lg\" },\n      lg: { quote: \"text-xl\" },\n    },\n    columns: {\n      1: { list: \"max-w-2xl\" },\n      2: { list: \"sm:grid-cols-2\" },\n      3: { list: \"sm:grid-cols-2 lg:grid-cols-3\" },\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n    columns: 3,\n  },\n});\n\nexport type TestimonialVariants = VariantProps<typeof testimonial>;\n"
+    },
+    {
+      "path": "registry/beton/ui/testimonial.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/testimonial.tsx",
+      "content": "import { testimonial, type TestimonialVariants } from \"@/lib/beton/recipes/testimonial.recipe\";\nimport type { ReactNode } from \"react\";\nimport { Section, type SectionProps } from \"@/components/ui/beton/section\";\n\nexport interface Quote {\n  /** What they said. */\n  quote: ReactNode;\n  /** Who said it. */\n  name: ReactNode;\n  /** What they do, and where. */\n  role?: ReactNode;\n  /** A picture or an avatar. */\n  portrait?: ReactNode;\n}\n\nexport interface TestimonialProps extends Omit<SectionProps, \"children\">, TestimonialVariants {\n  /** The quotes, in order. */\n  quotes: Quote[];\n  /** Classes for the grid itself. */\n  listClassName?: string;\n}\n\n/** What people say, attributed to the people who said it. */\nexport function Testimonial({\n  quotes,\n  size = \"md\",\n  columns = 3,\n  listClassName,\n  ...props\n}: TestimonialProps) {\n  const styles = testimonial({ size, columns });\n  return (\n    <Section {...props}>\n      <ul className={styles.list({ class: listClassName })}>\n        {quotes.map((entry, index) => (\n          <li key={index}>\n            <figure className={styles.root()}>\n              <span aria-hidden=\"true\" className={styles.mark()}>\n                &ldquo;\n              </span>\n              <blockquote className={styles.quote()}>{entry.quote}</blockquote>\n              <figcaption className={styles.footer()}>\n                {entry.portrait}\n                <span className={styles.person()}>\n                  <span className={styles.name()}>{entry.name}</span>\n                  {entry.role ? <span className={styles.role()}>{entry.role}</span> : null}\n                </span>\n              </figcaption>\n            </figure>\n          </li>\n        ))}\n      </ul>\n    </Section>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "marketing"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": false,
+    "exports": [
+      "Testimonial"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/testimonial"
+  }
+}

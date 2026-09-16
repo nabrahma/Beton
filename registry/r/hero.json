@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hero",
+  "type": "registry:block",
+  "title": "Hero",
+  "description": "The top of a page: what this is, why it matters, and the way in.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/hero.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/hero.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const hero = tv({\n  slots: {\n    root: \"relative isolate w-full overflow-hidden\",\n    inner: \"mx-auto flex w-full max-w-7xl flex-col px-4 py-20 sm:px-6 lg:py-28\",\n    content: \"flex flex-col gap-6\",\n    eyebrow:\n      \"w-fit border-3 border-border bg-secondary px-3 py-1 font-mono text-xs font-bold tracking-widest uppercase\",\n    title: \"font-display text-h1 font-black tracking-tight text-balance text-foreground\",\n    description: \"max-w-prose text-pretty text-lg text-foreground\",\n    actions: \"flex flex-wrap items-center gap-4 pt-2\",\n    aside: \"flex min-w-0 items-center justify-center\",\n    note: \"font-mono text-xs font-bold\",\n  },\n  variants: {\n    variant: {\n      stacked: { inner: \"items-start gap-10\" },\n      split: { inner: \"gap-12 lg:grid lg:grid-cols-2 lg:items-center\" },\n      poster: {\n        inner: \"items-center gap-8 text-center\",\n        content: \"items-center\",\n        description: \"mx-auto\",\n        actions: \"justify-center\",\n        title: \"uppercase\",\n      },\n    },\n    surface: {\n      paper: { root: \"bg-surface\" },\n      raised: { root: \"bg-raised\" },\n      accent: { root: \"bg-primary\" },\n      ink: { root: \"bg-ink text-paper\" },\n    },\n  },\n  defaultVariants: {\n    variant: \"stacked\",\n    surface: \"paper\",\n  },\n});\n\nexport type HeroVariants = VariantProps<typeof hero>;\n"
+    },
+    {
+      "path": "registry/beton/ui/hero.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/hero.tsx",
+      "content": "import { hero, type HeroVariants } from \"@/lib/beton/recipes/hero.recipe\";\nimport { useId, type ComponentProps, type ReactNode } from \"react\";\n\nexport interface HeroProps extends Omit<ComponentProps<\"section\">, \"title\">, HeroVariants {\n  /** The one heading of the page. */\n  title: ReactNode;\n  /** A short line above the heading, such as a version or a category. */\n  eyebrow?: ReactNode;\n  /** The paragraph under the heading. */\n  description?: ReactNode;\n  /** Buttons under the text. */\n  actions?: ReactNode;\n  /** A line under the buttons: a licence, a size, a reassurance. */\n  note?: ReactNode;\n  /** What goes beside the text in the split layout: a panel, a picture, a demo. */\n  aside?: ReactNode;\n  /** Drawn behind everything, such as a grid or a halftone. */\n  background?: ReactNode;\n  /** The heading level. Defaults to h1: a hero is the top of a page. */\n  headingLevel?: 1 | 2;\n}\n\n/** The top of a page: what this is, why it matters, and the way in. */\nexport function Hero({\n  variant = \"stacked\",\n  surface = \"paper\",\n  title,\n  eyebrow,\n  description,\n  actions,\n  note,\n  aside,\n  background,\n  headingLevel = 1,\n  className,\n  children,\n  ...props\n}: HeroProps) {\n  const styles = hero({ variant, surface });\n  const id = useId();\n  const Heading = `h${headingLevel}` as const;\n\n  return (\n    <section\n      {...props}\n      aria-labelledby={`${id}-title`}\n      data-variant={variant}\n      className={styles.root({ class: className })}\n    >\n      {background}\n      <div className={styles.inner()}>\n        <div className={styles.content()}>\n          {eyebrow ? <p className={styles.eyebrow()}>{eyebrow}</p> : null}\n          <Heading id={`${id}-title`} className={styles.title()}>\n            {title}\n          </Heading>\n          {description ? <p className={styles.description()}>{description}</p> : null}\n          {actions ? <div className={styles.actions()}>{actions}</div> : null}\n          {note ? <p className={styles.note()}>{note}</p> : null}\n          {children}\n        </div>\n        {aside && variant === \"split\" ? <div className={styles.aside()}>{aside}</div> : null}\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "marketing"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": false,
+    "exports": [
+      "Hero"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/hero"
+  }
+}

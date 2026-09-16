@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "bento-grid",
+  "type": "registry:block",
+  "title": "Bento Grid",
+  "description": "A grid of boxes of different sizes: the one that gets screenshotted.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json",
+    "https://beton.dev/r/section.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/bento-grid.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/bento-grid.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const bentoGrid = tv({\n  slots: {\n    list: \"grid auto-rows-[minmax(12rem,auto)] gap-4 sm:grid-cols-2 lg:grid-cols-3\",\n    item: \"flex h-full flex-col justify-between gap-4 border-3 border-border bg-raised p-6 shadow-sm\",\n    itemTitle: \"font-display text-h4 font-extrabold text-foreground\",\n    itemDescription: \"text-pretty text-foreground\",\n    media: \"flex min-h-0 flex-1 items-center justify-center\",\n  },\n  variants: {\n    span: {\n      1: {},\n      2: { item: \"sm:col-span-2\" },\n      3: { item: \"sm:col-span-2 lg:col-span-3\" },\n    },\n    tall: {\n      true: { item: \"row-span-2\" },\n    },\n    accent: {\n      none: {},\n      primary: { item: \"bg-primary\" },\n      secondary: { item: \"bg-secondary\" },\n      ink: { item: \"bg-ink text-paper\" },\n    },\n  },\n  defaultVariants: {\n    span: 1,\n    tall: false,\n    accent: \"none\",\n  },\n});\n\nexport type BentoGridVariants = VariantProps<typeof bentoGrid>;\n"
+    },
+    {
+      "path": "registry/beton/ui/bento-grid.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/bento-grid.tsx",
+      "content": "import { bentoGrid, type BentoGridVariants } from \"@/lib/beton/recipes/bento-grid.recipe\";\nimport type { ReactNode } from \"react\";\nimport { Section, type SectionProps } from \"@/components/ui/beton/section\";\n\nexport interface BentoCell extends Omit<BentoGridVariants, \"span\"> {\n  /** What the cell is called. */\n  title: ReactNode;\n  /** A line or two under the title. */\n  description?: ReactNode;\n  /** Anything to show inside: a component, a picture, a number. */\n  media?: ReactNode;\n  /** How many columns the cell takes. */\n  span?: 1 | 2 | 3;\n  /** Makes the whole cell a link. */\n  href?: string;\n}\n\nexport interface BentoGridProps extends Omit<SectionProps, \"children\"> {\n  /** The cells, in order. */\n  cells: BentoCell[];\n  /** The heading level of each cell. One below the section heading. */\n  itemHeadingLevel?: 3 | 4 | 5;\n  /** Classes for the grid itself. */\n  listClassName?: string;\n}\n\n/** A grid of boxes of different sizes: the one that gets screenshotted. */\nexport function BentoGrid({\n  cells,\n  itemHeadingLevel = 3,\n  listClassName,\n  ...props\n}: BentoGridProps) {\n  const Heading = `h${itemHeadingLevel}` as const;\n  const list = bentoGrid().list({ class: listClassName });\n\n  return (\n    <Section {...props}>\n      <ul className={list}>\n        {cells.map((cell, index) => {\n          const styles = bentoGrid({\n            span: cell.span ?? 1,\n            tall: cell.tall ?? false,\n            accent: cell.accent ?? \"none\",\n          });\n          return (\n            <li key={index} className={styles.item()}>\n              <div>\n                <Heading className={styles.itemTitle()}>\n                  {cell.href ? <a href={cell.href}>{cell.title}</a> : cell.title}\n                </Heading>\n                {cell.description ? (\n                  <p className={styles.itemDescription()}>{cell.description}</p>\n                ) : null}\n              </div>\n              {cell.media ? <div className={styles.media()}>{cell.media}</div> : null}\n            </li>\n          );\n        })}\n      </ul>\n    </Section>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "marketing"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": false,
+    "exports": [
+      "BentoGrid"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/bento-grid"
+  }
+}

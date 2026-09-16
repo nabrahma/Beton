@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "changelog-entry",
+  "type": "registry:block",
+  "title": "Changelog Entry",
+  "description": "One release: its version, its date and what changed.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/changelog-entry.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/changelog-entry.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const changelogEntry = tv({\n  slots: {\n    root: \"flex flex-col gap-4 border-b-3 border-border py-8 first:pt-0 last:border-b-0 lg:flex-row lg:gap-10\",\n    aside: \"flex shrink-0 flex-row items-center gap-3 lg:w-44 lg:flex-col lg:items-start\",\n    version:\n      \"w-fit border-3 border-border bg-secondary px-2 py-0.5 font-mono text-sm font-bold tabular-nums\",\n    date: \"font-mono text-xs font-bold tracking-widest uppercase\",\n    body: \"flex min-w-0 flex-1 flex-col gap-4\",\n    title: \"font-display text-h3 font-black tracking-tight text-foreground\",\n    changes: \"flex flex-col gap-2\",\n    change: \"flex items-start gap-3\",\n    kind: \"mt-0.5 w-20 shrink-0 border-2 border-border px-1.5 py-0.5 text-center font-mono text-xs font-bold tracking-widest uppercase\",\n  },\n  variants: {\n    kind: {\n      added: { kind: \"bg-success\" },\n      changed: { kind: \"bg-secondary\" },\n      fixed: { kind: \"bg-primary\" },\n      removed: { kind: \"bg-danger\" },\n    },\n  },\n  defaultVariants: {\n    kind: \"added\",\n  },\n});\n\nexport type ChangelogEntryVariants = VariantProps<typeof changelogEntry>;\n"
+    },
+    {
+      "path": "registry/beton/ui/changelog-entry.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/changelog-entry.tsx",
+      "content": "import { changelogEntry, type ChangelogEntryVariants } from \"@/lib/beton/recipes/changelog-entry.recipe\";\nimport { useId, type ComponentProps, type ReactNode } from \"react\";\n\nexport type ChangeKind = NonNullable<ChangelogEntryVariants[\"kind\"]>;\n\nexport interface Change {\n  /** Added, changed, fixed or removed. */\n  kind: ChangeKind;\n  /** What happened, in one line. */\n  summary: ReactNode;\n}\n\nexport interface ChangelogEntryProps extends Omit<ComponentProps<\"article\">, \"title\"> {\n  /** The version this entry covers. */\n  version: ReactNode;\n  /** When it went out. */\n  date?: ReactNode;\n  /** A machine-readable date, so the entry means something to a machine. */\n  dateTime?: string;\n  /** A headline for the release. */\n  title?: ReactNode;\n  /** What changed, grouped by kind. */\n  changes?: Change[];\n  /** The heading level. Defaults to h3, under a page heading and a year. */\n  headingLevel?: 2 | 3 | 4;\n}\n\n/** One release: its version, its date and what changed. */\nexport function ChangelogEntry({\n  version,\n  date,\n  dateTime,\n  title,\n  changes = [],\n  headingLevel = 3,\n  className,\n  children,\n  ...props\n}: ChangelogEntryProps) {\n  const styles = changelogEntry();\n  const id = useId();\n  const Heading = `h${headingLevel}` as const;\n\n  return (\n    <article\n      {...props}\n      aria-labelledby={`${id}-title`}\n      className={styles.root({ class: className })}\n    >\n      <div className={styles.aside()}>\n        <p className={styles.version()}>{version}</p>\n        {date ? (\n          <time dateTime={dateTime} className={styles.date()}>\n            {date}\n          </time>\n        ) : null}\n      </div>\n      <div className={styles.body()}>\n        <Heading id={`${id}-title`} className={styles.title()}>\n          {title ?? version}\n        </Heading>\n        {changes.length ? (\n          <ul className={styles.changes()}>\n            {changes.map((change, index) => (\n              <li key={index} className={styles.change()}>\n                <span className={changelogEntry({ kind: change.kind }).kind()}>{change.kind}</span>\n                <span>{change.summary}</span>\n              </li>\n            ))}\n          </ul>\n        ) : null}\n        {children}\n      </div>\n    </article>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "marketing"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": false,
+    "exports": [
+      "ChangelogEntry"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/changelog-entry"
+  }
+}

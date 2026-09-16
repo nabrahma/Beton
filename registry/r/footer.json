@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "footer",
+  "type": "registry:block",
+  "title": "Footer",
+  "description": "The end of the page: who made it, where everything is, and the licence.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/footer.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/footer.recipe.ts",
+      "content": "import { focusRing } from \"@/lib/beton/shared\";\nimport { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const footer = tv({\n  slots: {\n    root: \"w-full border-t-3 border-border bg-raised\",\n    inner: \"mx-auto flex w-full max-w-7xl flex-col gap-10 px-4 py-12 sm:px-6\",\n    brand: \"flex flex-col gap-3\",\n    mark: \"font-display text-2xl font-black tracking-tight uppercase text-foreground\",\n    blurb: \"max-w-xs text-pretty text-sm text-foreground\",\n    columns: \"grid flex-1 gap-8 sm:grid-cols-2 lg:grid-cols-4\",\n    column: \"flex flex-col gap-3\",\n    columnTitle: \"font-mono text-xs font-bold tracking-widest uppercase\",\n    list: \"flex flex-col gap-2\",\n    link: [\"flex min-h-11 items-center text-foreground hover:underline\", focusRing],\n    bottom:\n      \"flex flex-col gap-3 border-t-3 border-border pt-6 sm:flex-row sm:items-center sm:justify-between\",\n    note: \"font-mono text-xs font-bold\",\n    social: \"flex items-center gap-3\",\n  },\n  variants: {\n    variant: {\n      simple: { inner: \"gap-8\" },\n      columns: { inner: \"gap-10 lg:flex-row lg:justify-between\" },\n    },\n  },\n  defaultVariants: {\n    variant: \"columns\",\n  },\n});\n\nexport type FooterVariants = VariantProps<typeof footer>;\n"
+    },
+    {
+      "path": "registry/beton/ui/footer.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/footer.tsx",
+      "content": "import { footer, type FooterVariants } from \"@/lib/beton/recipes/footer.recipe\";\nimport type { ComponentProps, ReactNode } from \"react\";\n\nexport interface FooterLink {\n  label: ReactNode;\n  href: string;\n}\n\nexport interface FooterColumn {\n  /** What the group of links is called. */\n  title: ReactNode;\n  links: FooterLink[];\n}\n\nexport interface FooterProps extends ComponentProps<\"footer\">, FooterVariants {\n  /** The name of the thing. */\n  mark?: ReactNode;\n  /** A line about what it is. */\n  blurb?: ReactNode;\n  /** Groups of links. */\n  columns?: FooterColumn[];\n  /** The line along the bottom: a licence, a copyright. */\n  note?: ReactNode;\n  /** Links to wherever you are: GitHub, elsewhere. */\n  social?: ReactNode;\n}\n\n/** The end of the page: who made it, where everything is, and the licence. */\nexport function Footer({\n  variant = \"columns\",\n  mark,\n  blurb,\n  columns = [],\n  note,\n  social,\n  className,\n  children,\n  ...props\n}: FooterProps) {\n  const styles = footer({ variant });\n  return (\n    <footer {...props} className={styles.root({ class: className })}>\n      <div className={styles.inner()}>\n        {mark || blurb ? (\n          <div className={styles.brand()}>\n            {mark ? <p className={styles.mark()}>{mark}</p> : null}\n            {blurb ? <p className={styles.blurb()}>{blurb}</p> : null}\n          </div>\n        ) : null}\n        {columns.length ? (\n          <div className={styles.columns()}>\n            {columns.map((column, index) => (\n              <nav\n                key={index}\n                aria-label={typeof column.title === \"string\" ? column.title : undefined}\n                className={styles.column()}\n              >\n                <p className={styles.columnTitle()}>{column.title}</p>\n                <ul className={styles.list()}>\n                  {column.links.map((link) => (\n                    <li key={link.href}>\n                      <a href={link.href} className={styles.link()}>\n                        {link.label}\n                      </a>\n                    </li>\n                  ))}\n                </ul>\n              </nav>\n            ))}\n          </div>\n        ) : null}\n        {children}\n      </div>\n      {note || social ? (\n        <div className={styles.inner()}>\n          <div className={styles.bottom()}>\n            {note ? <p className={styles.note()}>{note}</p> : null}\n            {social ? <div className={styles.social()}>{social}</div> : null}\n          </div>\n        </div>\n      ) : null}\n    </footer>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "marketing"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": false,
+    "exports": [
+      "Footer"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/footer"
+  }
+}

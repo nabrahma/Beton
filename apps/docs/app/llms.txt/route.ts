@@ -1,10 +1,10 @@
-import { categories, getComponents } from "@/lib/components";
+import { categories, docHref, getBlocks, getComponents } from "@/lib/components";
 import { site } from "@/lib/site";
 
 export const dynamic = "force-static";
 
 export function GET() {
-  const components = getComponents();
+  const components = [...getComponents(), ...getBlocks()];
   const lines = [
     `# ${site.name}`,
     "",
@@ -43,7 +43,7 @@ export function GET() {
         "",
         ...items.map(
           (c) =>
-            `- [${c.title}](${site.url}/docs/components/${c.name}): ${c.description} Registry: ${site.registry}/${c.name}.json`,
+            `- [${c.title}](${site.url}${docHref(c)}): ${c.description} Registry: ${site.registry}/${c.name}.json`,
         ),
         "",
       ];

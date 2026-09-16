@@ -417,6 +417,41 @@
       ]
     },
     {
+      "name": "bento-grid",
+      "type": "registry:block",
+      "title": "Bento Grid",
+      "description": "A grid of boxes of different sizes: the one that gets screenshotted.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json",
+        "https://beton.dev/r/section.json"
+      ],
+      "categories": [
+        "marketing"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": false,
+        "exports": [
+          "BentoGrid"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/bento-grid"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/bento-grid.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/bento-grid.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/bento-grid.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/bento-grid.tsx"
+        }
+      ]
+    },
+    {
       "name": "breadcrumbs",
       "type": "registry:ui",
       "title": "Breadcrumbs",
@@ -552,6 +587,40 @@
           "path": "registry/beton/ui/card.tsx",
           "type": "registry:ui",
           "target": "@ui/beton/card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "changelog-entry",
+      "type": "registry:block",
+      "title": "Changelog Entry",
+      "description": "One release: its version, its date and what changed.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "marketing"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": false,
+        "exports": [
+          "ChangelogEntry"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/changelog-entry"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/changelog-entry.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/changelog-entry.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/changelog-entry.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/changelog-entry.tsx"
         }
       ]
     },
@@ -764,6 +833,40 @@
       ]
     },
     {
+      "name": "cta-band",
+      "type": "registry:block",
+      "title": "CTA Band",
+      "description": "A loud strip across the page with one thing to do.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "marketing"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": false,
+        "exports": [
+          "CtaBand"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/cta-band"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/cta-band.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/cta-band.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/cta-band.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/cta-band.tsx"
+        }
+      ]
+    },
+    {
       "name": "cursor-trail",
       "type": "registry:ui",
       "title": "Cursor Trail",
@@ -940,6 +1043,77 @@
       ]
     },
     {
+      "name": "faq",
+      "type": "registry:block",
+      "title": "FAQ",
+      "description": "The questions people actually ask, with the answers.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json",
+        "https://beton.dev/r/accordion.json",
+        "https://beton.dev/r/section.json"
+      ],
+      "categories": [
+        "marketing"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "Faq"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/faq"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/faq.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/faq.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/faq.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/faq.tsx"
+        }
+      ]
+    },
+    {
+      "name": "feature-grid",
+      "type": "registry:block",
+      "title": "Feature Grid",
+      "description": "A grid of what a thing does, one card per feature.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json",
+        "https://beton.dev/r/section.json"
+      ],
+      "categories": [
+        "marketing"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": false,
+        "exports": [
+          "FeatureGrid"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/feature-grid"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/feature-grid.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/feature-grid.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/feature-grid.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/feature-grid.tsx"
+        }
+      ]
+    },
+    {
       "name": "field",
       "type": "registry:ui",
       "title": "Field",
@@ -1040,6 +1214,40 @@
           "path": "registry/beton/ui/file-upload.tsx",
           "type": "registry:ui",
           "target": "@ui/beton/file-upload.tsx"
+        }
+      ]
+    },
+    {
+      "name": "footer",
+      "type": "registry:block",
+      "title": "Footer",
+      "description": "The end of the page: who made it, where everything is, and the licence.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "marketing"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": false,
+        "exports": [
+          "Footer"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/footer"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/footer.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/footer.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/footer.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/footer.tsx"
         }
       ]
     },
@@ -1178,6 +1386,40 @@
           "path": "registry/beton/ui/halftone-background.tsx",
           "type": "registry:ui",
           "target": "@ui/beton/halftone-background.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hero",
+      "type": "registry:block",
+      "title": "Hero",
+      "description": "The top of a page: what this is, why it matters, and the way in.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "marketing"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": false,
+        "exports": [
+          "Hero"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/hero"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/hero.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/hero.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/hero.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/hero.tsx"
         }
       ]
     },
@@ -1356,6 +1598,41 @@
       ]
     },
     {
+      "name": "logo-cloud",
+      "type": "registry:block",
+      "title": "Logo Cloud",
+      "description": "A row of the names that use the thing.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json",
+        "https://beton.dev/r/section.json"
+      ],
+      "categories": [
+        "marketing"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": false,
+        "exports": [
+          "LogoCloud"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/logo-cloud"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/logo-cloud.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/logo-cloud.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/logo-cloud.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/logo-cloud.tsx"
+        }
+      ]
+    },
+    {
       "name": "marquee",
       "type": "registry:ui",
       "title": "Marquee",
@@ -1461,6 +1738,44 @@
       ]
     },
     {
+      "name": "newsletter-signup",
+      "type": "registry:block",
+      "title": "Newsletter Signup",
+      "description": "One field and one button: the least you can ask for.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json",
+        "https://beton.dev/r/button.json",
+        "https://beton.dev/r/field.json",
+        "https://beton.dev/r/input.json",
+        "https://beton.dev/r/section.json"
+      ],
+      "categories": [
+        "marketing"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "NewsletterSignup"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/newsletter-signup"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/newsletter-signup.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/newsletter-signup.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/newsletter-signup.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/newsletter-signup.tsx"
+        }
+      ]
+    },
+    {
       "name": "noise-overlay",
       "type": "registry:ui",
       "title": "Noise Overlay",
@@ -1491,6 +1806,40 @@
           "path": "registry/beton/ui/noise-overlay.tsx",
           "type": "registry:ui",
           "target": "@ui/beton/noise-overlay.tsx"
+        }
+      ]
+    },
+    {
+      "name": "not-found-page",
+      "type": "registry:block",
+      "title": "404 Page",
+      "description": "The page for an address that leads nowhere.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "marketing"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": false,
+        "exports": [
+          "NotFoundPage"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/not-found-page"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/not-found-page.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/not-found-page.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/not-found-page.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/not-found-page.tsx"
         }
       ]
     },
@@ -1635,6 +1984,41 @@
           "path": "registry/beton/ui/popover.tsx",
           "type": "registry:ui",
           "target": "@ui/beton/popover.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pricing-table",
+      "type": "registry:block",
+      "title": "Pricing Table",
+      "description": "What each plan costs and what is in it.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json",
+        "https://beton.dev/r/section.json"
+      ],
+      "categories": [
+        "marketing"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": false,
+        "exports": [
+          "PricingTable"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/pricing-table"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/pricing-table.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/pricing-table.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/pricing-table.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/pricing-table.tsx"
         }
       ]
     },
@@ -1818,6 +2202,40 @@
       ]
     },
     {
+      "name": "section",
+      "type": "registry:block",
+      "title": "Section",
+      "description": "The frame every block sits in: a named landmark, a heading and a measure.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "marketing"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": false,
+        "exports": [
+          "Section"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/section"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/section.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/section.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/section.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/section.tsx"
+        }
+      ]
+    },
+    {
       "name": "select",
       "type": "registry:ui",
       "title": "Select",
@@ -1955,6 +2373,39 @@
           "path": "registry/beton/ui/sidebar.tsx",
           "type": "registry:ui",
           "target": "@ui/beton/sidebar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "site-header",
+      "type": "registry:block",
+      "title": "Site Header",
+      "description": "The bar across the top of a site, with the same links in a sheet on phones.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json",
+        "https://beton.dev/r/button.json",
+        "https://beton.dev/r/navbar.json",
+        "https://beton.dev/r/sheet.json",
+        "https://beton.dev/r/sidebar.json"
+      ],
+      "categories": [
+        "marketing"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "SiteHeader"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/site-header"
+      },
+      "files": [
+        {
+          "path": "registry/beton/ui/site-header.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/site-header.tsx"
         }
       ]
     },
@@ -2127,6 +2578,41 @@
           "path": "registry/beton/ui/stat.tsx",
           "type": "registry:ui",
           "target": "@ui/beton/stat.tsx"
+        }
+      ]
+    },
+    {
+      "name": "stats-band",
+      "type": "registry:block",
+      "title": "Stats Band",
+      "description": "A strip of numbers that say how much, how many, how fast.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json",
+        "https://beton.dev/r/section.json"
+      ],
+      "categories": [
+        "marketing"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": false,
+        "exports": [
+          "StatsBand"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/stats-band"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/stats-band.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/stats-band.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/stats-band.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/stats-band.tsx"
         }
       ]
     },
@@ -2335,6 +2821,76 @@
           "path": "registry/beton/ui/tabs.tsx",
           "type": "registry:ui",
           "target": "@ui/beton/tabs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "team-grid",
+      "type": "registry:block",
+      "title": "Team Grid",
+      "description": "Who made it, with faces and roles.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json",
+        "https://beton.dev/r/section.json"
+      ],
+      "categories": [
+        "marketing"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": false,
+        "exports": [
+          "TeamGrid"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/team-grid"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/team-grid.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/team-grid.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/team-grid.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/team-grid.tsx"
+        }
+      ]
+    },
+    {
+      "name": "testimonial",
+      "type": "registry:block",
+      "title": "Testimonial",
+      "description": "What people say, attributed to the people who said it.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json",
+        "https://beton.dev/r/section.json"
+      ],
+      "categories": [
+        "marketing"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": false,
+        "exports": [
+          "Testimonial"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/testimonial"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/testimonial.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/testimonial.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/testimonial.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/testimonial.tsx"
         }
       ]
     },
@@ -2600,61 +3156,77 @@
         "https://beton.dev/r/avatar.json",
         "https://beton.dev/r/back-to-top.json",
         "https://beton.dev/r/badge.json",
+        "https://beton.dev/r/bento-grid.json",
         "https://beton.dev/r/breadcrumbs.json",
         "https://beton.dev/r/button.json",
         "https://beton.dev/r/calendar.json",
         "https://beton.dev/r/card.json",
+        "https://beton.dev/r/changelog-entry.json",
         "https://beton.dev/r/checkbox.json",
         "https://beton.dev/r/code-block.json",
         "https://beton.dev/r/command-palette.json",
         "https://beton.dev/r/confetti.json",
         "https://beton.dev/r/context-menu.json",
         "https://beton.dev/r/counter.json",
+        "https://beton.dev/r/cta-band.json",
         "https://beton.dev/r/cursor-trail.json",
         "https://beton.dev/r/description-list.json",
         "https://beton.dev/r/dialog.json",
         "https://beton.dev/r/dropdown-menu.json",
         "https://beton.dev/r/empty-state.json",
+        "https://beton.dev/r/faq.json",
+        "https://beton.dev/r/feature-grid.json",
         "https://beton.dev/r/field.json",
         "https://beton.dev/r/fieldset.json",
         "https://beton.dev/r/file-upload.json",
+        "https://beton.dev/r/footer.json",
         "https://beton.dev/r/form.json",
         "https://beton.dev/r/glitch-text.json",
         "https://beton.dev/r/grid-background.json",
         "https://beton.dev/r/halftone-background.json",
+        "https://beton.dev/r/hero.json",
         "https://beton.dev/r/hover-card.json",
         "https://beton.dev/r/input.json",
         "https://beton.dev/r/kbd.json",
         "https://beton.dev/r/label.json",
         "https://beton.dev/r/list.json",
+        "https://beton.dev/r/logo-cloud.json",
         "https://beton.dev/r/marquee.json",
         "https://beton.dev/r/menubar.json",
         "https://beton.dev/r/navbar.json",
+        "https://beton.dev/r/newsletter-signup.json",
         "https://beton.dev/r/noise-overlay.json",
+        "https://beton.dev/r/not-found-page.json",
         "https://beton.dev/r/number-input.json",
         "https://beton.dev/r/otp-input.json",
         "https://beton.dev/r/pagination.json",
         "https://beton.dev/r/popover.json",
+        "https://beton.dev/r/pricing-table.json",
         "https://beton.dev/r/progress.json",
         "https://beton.dev/r/radio-group.json",
         "https://beton.dev/r/scramble-text.json",
         "https://beton.dev/r/scroll-area.json",
         "https://beton.dev/r/search-input.json",
+        "https://beton.dev/r/section.json",
         "https://beton.dev/r/select.json",
         "https://beton.dev/r/separator.json",
         "https://beton.dev/r/sheet.json",
         "https://beton.dev/r/sidebar.json",
+        "https://beton.dev/r/site-header.json",
         "https://beton.dev/r/skeleton.json",
         "https://beton.dev/r/slider.json",
         "https://beton.dev/r/spinner.json",
         "https://beton.dev/r/split-flap.json",
         "https://beton.dev/r/stat.json",
+        "https://beton.dev/r/stats-band.json",
         "https://beton.dev/r/stepper.json",
         "https://beton.dev/r/sticker.json",
         "https://beton.dev/r/sticker-peel.json",
         "https://beton.dev/r/switch.json",
         "https://beton.dev/r/table.json",
         "https://beton.dev/r/tabs.json",
+        "https://beton.dev/r/team-grid.json",
+        "https://beton.dev/r/testimonial.json",
         "https://beton.dev/r/text.json",
         "https://beton.dev/r/textarea.json",
         "https://beton.dev/r/ticker.json",

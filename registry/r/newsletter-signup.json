@@ -1,0 +1,41 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "newsletter-signup",
+  "type": "registry:block",
+  "title": "Newsletter Signup",
+  "description": "One field and one button: the least you can ask for.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json",
+    "https://beton.dev/r/button.json",
+    "https://beton.dev/r/field.json",
+    "https://beton.dev/r/input.json",
+    "https://beton.dev/r/section.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/newsletter-signup.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/newsletter-signup.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const newsletterSignup = tv({\n  slots: {\n    form: \"flex w-full max-w-xl flex-col gap-3 sm:flex-row sm:items-start\",\n    field: \"min-w-0 flex-1\",\n    note: \"max-w-prose font-mono text-xs font-bold\",\n  },\n});\n\nexport type NewsletterSignupVariants = VariantProps<typeof newsletterSignup>;\n"
+    },
+    {
+      "path": "registry/beton/ui/newsletter-signup.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/newsletter-signup.tsx",
+      "content": "\"use client\";\n\nimport { newsletterSignup } from \"@/lib/beton/recipes/newsletter-signup.recipe\";\nimport { useId, type FormEvent, type ReactNode } from \"react\";\nimport { Button } from \"@/components/ui/beton/button\";\nimport { Field } from \"@/components/ui/beton/field\";\nimport { Input } from \"@/components/ui/beton/input\";\nimport { Section, type SectionProps } from \"@/components/ui/beton/section\";\n\nexport interface NewsletterSignupProps extends Omit<SectionProps, \"children\" | \"onSubmit\"> {\n  /** What the address is for. */\n  label?: ReactNode;\n  /** Shown in the empty field. */\n  placeholder?: string;\n  /** The word on the button. */\n  submitLabel?: ReactNode;\n  /** The small print under the field. */\n  note?: ReactNode;\n  /** Where the form posts, for the case where JavaScript never arrives. */\n  action?: string;\n  /** Called with the address that was entered. */\n  onSubscribe?: (email: string) => void;\n}\n\n/** One field and one button: the least you can ask for. */\nexport function NewsletterSignup({\n  label = \"Email address\",\n  placeholder = \"you@example.com\",\n  submitLabel = \"Subscribe\",\n  note,\n  action,\n  onSubscribe,\n  ...props\n}: NewsletterSignupProps) {\n  const styles = newsletterSignup();\n  const id = useId();\n\n  function onSubmit(event: FormEvent<HTMLFormElement>) {\n    if (!onSubscribe) return;\n    event.preventDefault();\n    const data = new FormData(event.currentTarget);\n    onSubscribe(String(data.get(\"email\") ?? \"\"));\n  }\n\n  return (\n    <Section {...props}>\n      <form action={action} method=\"post\" onSubmit={onSubmit} className={styles.form()}>\n        <Field className={styles.field()}>\n          <Field.Label htmlFor={id}>{label}</Field.Label>\n          <Input\n            id={id}\n            name=\"email\"\n            type=\"email\"\n            required\n            autoComplete=\"email\"\n            placeholder={placeholder}\n          />\n          <Field.Error />\n        </Field>\n        <Button type=\"submit\">{submitLabel}</Button>\n      </form>\n      {note ? <p className={styles.note()}>{note}</p> : null}\n    </Section>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "marketing"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "NewsletterSignup"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/newsletter-signup"
+  }
+}

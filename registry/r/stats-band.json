@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stats-band",
+  "type": "registry:block",
+  "title": "Stats Band",
+  "description": "A strip of numbers that say how much, how many, how fast.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json",
+    "https://beton.dev/r/section.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/stats-band.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/stats-band.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const statsBand = tv({\n  slots: {\n    list: \"grid divide-border border-3 border-border bg-raised\",\n    item: \"flex flex-col gap-1 p-6\",\n    value: \"font-display font-black tabular-nums text-foreground\",\n    label: \"font-mono text-xs font-bold tracking-widest uppercase\",\n    description: \"text-sm text-foreground\",\n  },\n  variants: {\n    columns: {\n      2: { list: \"sm:grid-cols-2 sm:divide-x-3 divide-y-3 sm:divide-y-0\" },\n      3: { list: \"sm:grid-cols-3 sm:divide-x-3 divide-y-3 sm:divide-y-0\" },\n      4: { list: \"sm:grid-cols-2 lg:grid-cols-4 divide-y-3 sm:divide-y-0 sm:divide-x-3\" },\n    },\n    size: {\n      sm: { value: \"text-h3\" },\n      md: { value: \"text-h2\" },\n      lg: { value: \"text-h1\" },\n    },\n  },\n  defaultVariants: {\n    columns: 4,\n    size: \"md\",\n  },\n});\n\nexport type StatsBandVariants = VariantProps<typeof statsBand>;\n"
+    },
+    {
+      "path": "registry/beton/ui/stats-band.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/stats-band.tsx",
+      "content": "import { statsBand, type StatsBandVariants } from \"@/lib/beton/recipes/stats-band.recipe\";\nimport type { ReactNode } from \"react\";\nimport { Section, type SectionProps } from \"@/components/ui/beton/section\";\n\nexport interface BandStat {\n  /** The number, already formatted, or a Counter. */\n  value: ReactNode;\n  /** What the number measures. */\n  label: ReactNode;\n  /** A line of context under it. */\n  description?: ReactNode;\n}\n\nexport interface StatsBandProps extends Omit<SectionProps, \"children\">, StatsBandVariants {\n  /** The numbers, in order. */\n  stats: BandStat[];\n  /** Classes for the strip itself. */\n  listClassName?: string;\n}\n\n/** A strip of numbers that say how much, how many, how fast. */\nexport function StatsBand({\n  stats,\n  columns = 4,\n  size = \"md\",\n  listClassName,\n  ...props\n}: StatsBandProps) {\n  const styles = statsBand({ columns, size });\n  return (\n    <Section {...props}>\n      <dl className={styles.list({ class: listClassName })}>\n        {stats.map((stat, index) => (\n          <div key={index} className={styles.item()}>\n            <dt className={styles.label()}>{stat.label}</dt>\n            <dd className={styles.value()}>{stat.value}</dd>\n            {stat.description ? <dd className={styles.description()}>{stat.description}</dd> : null}\n          </div>\n        ))}\n      </dl>\n    </Section>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "marketing"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": false,
+    "exports": [
+      "StatsBand"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/stats-band"
+  }
+}

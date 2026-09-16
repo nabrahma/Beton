@@ -1,10 +1,11 @@
 import type { ReactNode } from "react";
 import { DocsSidebar } from "@/components/docs-sidebar";
-import { categories, getComponents } from "@/lib/components";
+import { categories, getBlocks, getComponents } from "@/lib/components";
 import { docsNav } from "@/lib/site";
 
 export default function DocsLayout({ children }: { children: ReactNode }) {
   const components = getComponents();
+  const blocks = getBlocks();
   const sections = [
     ...docsNav.map((section) => ({ title: section.title, items: [...section.items] })),
     ...categories
@@ -15,6 +16,13 @@ export default function DocsLayout({ children }: { children: ReactNode }) {
           .map((c) => ({ title: c.title, href: `/docs/components/${c.name}` })),
       }))
       .filter((section) => section.items.length > 0),
+    {
+      title: "Blocks",
+      items: [
+        { title: "All blocks", href: "/docs/blocks" },
+        ...blocks.map((b) => ({ title: b.title, href: `/docs/blocks/${b.name}` })),
+      ],
+    },
   ];
 
   return (

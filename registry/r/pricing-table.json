@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pricing-table",
+  "type": "registry:block",
+  "title": "Pricing Table",
+  "description": "What each plan costs and what is in it.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json",
+    "https://beton.dev/r/section.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/pricing-table.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/pricing-table.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const pricingTable = tv({\n  slots: {\n    list: \"grid items-start gap-6\",\n    plan: \"flex h-full flex-col gap-5 border-3 border-border bg-raised p-6 shadow-sm\",\n    badge:\n      \"w-fit border-3 border-border bg-primary px-2 py-0.5 font-mono text-xs font-bold tracking-widest uppercase\",\n    name: \"font-display text-h4 font-black tracking-tight text-foreground\",\n    price:\n      \"flex flex-wrap items-baseline gap-x-1 font-display font-black tabular-nums text-foreground\",\n    amount: \"text-h3\",\n    period: \"font-mono text-sm font-bold\",\n    description: \"text-pretty text-foreground\",\n    features: \"flex flex-col gap-2\",\n    feature: \"flex items-start gap-2 text-foreground\",\n    featureIcon: \"mt-1 size-4 shrink-0\",\n    action: \"pt-2\",\n    footnote: \"font-mono text-xs font-bold\",\n  },\n  variants: {\n    columns: {\n      2: { list: \"sm:grid-cols-2\", amount: \"text-h2\" },\n      3: { list: \"md:grid-cols-3\" },\n      4: { list: \"sm:grid-cols-2 xl:grid-cols-4\" },\n    },\n    featured: {\n      true: { plan: \"border-5 shadow-lg\" },\n    },\n  },\n  defaultVariants: {\n    columns: 3,\n    featured: false,\n  },\n});\n\nexport type PricingTableVariants = VariantProps<typeof pricingTable>;\n"
+    },
+    {
+      "path": "registry/beton/ui/pricing-table.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/pricing-table.tsx",
+      "content": "import { pricingTable, type PricingTableVariants } from \"@/lib/beton/recipes/pricing-table.recipe\";\nimport { visuallyHidden } from \"@/lib/beton/shared\";\nimport type { ReactNode } from \"react\";\nimport { CheckIcon, MinusIcon } from \"@/lib/beton/icons\";\nimport { Section, type SectionProps } from \"@/components/ui/beton/section\";\n\nexport interface PricingPlan {\n  /** What the plan is called. */\n  name: ReactNode;\n  /** The amount, already formatted. */\n  price: ReactNode;\n  /** What the amount is per: a month, a seat, a project. */\n  period?: ReactNode;\n  /** A line on who the plan is for. */\n  description?: ReactNode;\n  /** What is in it. Pass false as the second item to show it as missing. */\n  features: (ReactNode | [ReactNode, boolean])[];\n  /** The button. */\n  action?: ReactNode;\n  /** A word above the name, such as Most popular. */\n  badge?: ReactNode;\n  /** Thickens the border and drops a longer shadow. */\n  featured?: boolean;\n  /** Small print under the button. */\n  footnote?: ReactNode;\n}\n\nexport interface PricingTableProps\n  extends Omit<SectionProps, \"children\">, Pick<PricingTableVariants, \"columns\"> {\n  /** The plans, in order. */\n  plans: PricingPlan[];\n  /** The heading level of each plan. One below the section heading. */\n  itemHeadingLevel?: 3 | 4 | 5;\n  /** Classes for the grid itself. */\n  listClassName?: string;\n}\n\n/** What each plan costs and what is in it. */\nexport function PricingTable({\n  plans,\n  columns = 3,\n  itemHeadingLevel = 3,\n  listClassName,\n  ...props\n}: PricingTableProps) {\n  const Heading = `h${itemHeadingLevel}` as const;\n  const list = pricingTable({ columns }).list({ class: listClassName });\n\n  return (\n    <Section {...props}>\n      <ul className={list}>\n        {plans.map((plan, index) => {\n          const styles = pricingTable({ columns, featured: plan.featured ?? false });\n          return (\n            <li\n              key={index}\n              data-featured={plan.featured ? \"\" : undefined}\n              className={styles.plan()}\n            >\n              {plan.badge ? <p className={styles.badge()}>{plan.badge}</p> : null}\n              <Heading className={styles.name()}>{plan.name}</Heading>\n              <p className={styles.price()}>\n                <span className={styles.amount()}>{plan.price}</span>\n                {plan.period ? <span className={styles.period()}>{plan.period}</span> : null}\n              </p>\n              {plan.description ? <p className={styles.description()}>{plan.description}</p> : null}\n              <ul className={styles.features()}>\n                {plan.features.map((entry, featureIndex) => {\n                  const [feature, included] = Array.isArray(entry) ? entry : [entry, true];\n                  return (\n                    <li key={featureIndex} className={styles.feature()}>\n                      {included ? (\n                        <CheckIcon className={styles.featureIcon()} />\n                      ) : (\n                        <MinusIcon className={styles.featureIcon()} />\n                      )}\n                      <span className={visuallyHidden}>\n                        {included ? \"Included: \" : \"Not included: \"}\n                      </span>\n                      <span>{feature}</span>\n                    </li>\n                  );\n                })}\n              </ul>\n              {plan.action ? <div className={styles.action()}>{plan.action}</div> : null}\n              {plan.footnote ? <p className={styles.footnote()}>{plan.footnote}</p> : null}\n            </li>\n          );\n        })}\n      </ul>\n    </Section>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "marketing"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": false,
+    "exports": [
+      "PricingTable"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/pricing-table"
+  }
+}
