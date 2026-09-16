@@ -12,7 +12,7 @@ export const twMergeConfig: NonNullable<TWMConfig["twMergeConfig"]> = {
       radius: ["md", "lg"],
       shadow: ["sm", "lg"],
       font: ["display", "sans", "mono"],
-      animate: ["spin-stepped", "blink"],
+      animate: ["spin-stepped", "blink", "pulse-stepped", "indeterminate"],
     },
   },
 };

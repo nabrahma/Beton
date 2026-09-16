@@ -50,6 +50,203 @@ exports[`recipe snapshots > accordion output is stable for every variant combina
 ]
 `;
 
+exports[`recipe snapshots > alert output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "actions": "flex flex-wrap items-center gap-3 pt-1",
+      "base": undefined,
+      "close": "-mt-1 -mr-1 shrink-0",
+      "content": "flex min-w-0 flex-1 flex-col gap-1",
+      "description": "text-foreground text-sm",
+      "icon": "shrink-0 size-5",
+      "root": "flex w-full items-start gap-3 border-3 border-border shadow-sm bg-raised p-3",
+      "title": "font-display font-extrabold tracking-wide uppercase text-foreground text-sm",
+    },
+    "props": {
+      "size": "sm",
+      "variant": "info",
+    },
+  },
+  {
+    "classes": {
+      "actions": "flex flex-wrap items-center gap-3 pt-1",
+      "base": undefined,
+      "close": "-mt-1 -mr-1 shrink-0",
+      "content": "flex min-w-0 flex-1 flex-col gap-1",
+      "description": "text-foreground text-base",
+      "icon": "shrink-0 size-6",
+      "root": "flex w-full items-start gap-3 border-3 border-border shadow-sm bg-raised p-4",
+      "title": "font-display font-extrabold tracking-wide uppercase text-foreground text-base",
+    },
+    "props": {
+      "size": "md",
+      "variant": "info",
+    },
+  },
+  {
+    "classes": {
+      "actions": "flex flex-wrap items-center gap-3 pt-1",
+      "base": undefined,
+      "close": "-mt-1 -mr-1 shrink-0",
+      "content": "flex min-w-0 flex-1 flex-col gap-1",
+      "description": "text-foreground text-lg",
+      "icon": "shrink-0 size-7",
+      "root": "flex w-full items-start gap-3 border-3 border-border shadow-sm bg-raised p-5",
+      "title": "font-display font-extrabold tracking-wide uppercase text-foreground text-lg",
+    },
+    "props": {
+      "size": "lg",
+      "variant": "info",
+    },
+  },
+  {
+    "classes": {
+      "actions": "flex flex-wrap items-center gap-3 pt-1",
+      "base": undefined,
+      "close": "-mt-1 -mr-1 shrink-0",
+      "content": "flex min-w-0 flex-1 flex-col gap-1",
+      "description": "text-foreground text-sm",
+      "icon": "shrink-0 size-5",
+      "root": "flex w-full items-start gap-3 border-3 border-border shadow-sm bg-success/20 p-3",
+      "title": "font-display font-extrabold tracking-wide uppercase text-foreground text-sm",
+    },
+    "props": {
+      "size": "sm",
+      "variant": "success",
+    },
+  },
+  {
+    "classes": {
+      "actions": "flex flex-wrap items-center gap-3 pt-1",
+      "base": undefined,
+      "close": "-mt-1 -mr-1 shrink-0",
+      "content": "flex min-w-0 flex-1 flex-col gap-1",
+      "description": "text-foreground text-base",
+      "icon": "shrink-0 size-6",
+      "root": "flex w-full items-start gap-3 border-3 border-border shadow-sm bg-success/20 p-4",
+      "title": "font-display font-extrabold tracking-wide uppercase text-foreground text-base",
+    },
+    "props": {
+      "size": "md",
+      "variant": "success",
+    },
+  },
+  {
+    "classes": {
+      "actions": "flex flex-wrap items-center gap-3 pt-1",
+      "base": undefined,
+      "close": "-mt-1 -mr-1 shrink-0",
+      "content": "flex min-w-0 flex-1 flex-col gap-1",
+      "description": "text-foreground text-lg",
+      "icon": "shrink-0 size-7",
+      "root": "flex w-full items-start gap-3 border-3 border-border shadow-sm bg-success/20 p-5",
+      "title": "font-display font-extrabold tracking-wide uppercase text-foreground text-lg",
+    },
+    "props": {
+      "size": "lg",
+      "variant": "success",
+    },
+  },
+  {
+    "classes": {
+      "actions": "flex flex-wrap items-center gap-3 pt-1",
+      "base": undefined,
+      "close": "-mt-1 -mr-1 shrink-0",
+      "content": "flex min-w-0 flex-1 flex-col gap-1",
+      "description": "text-foreground text-sm",
+      "icon": "shrink-0 size-5",
+      "root": "flex w-full items-start gap-3 border-3 border-border shadow-sm bg-secondary/40 p-3",
+      "title": "font-display font-extrabold tracking-wide uppercase text-foreground text-sm",
+    },
+    "props": {
+      "size": "sm",
+      "variant": "warning",
+    },
+  },
+  {
+    "classes": {
+      "actions": "flex flex-wrap items-center gap-3 pt-1",
+      "base": undefined,
+      "close": "-mt-1 -mr-1 shrink-0",
+      "content": "flex min-w-0 flex-1 flex-col gap-1",
+      "description": "text-foreground text-base",
+      "icon": "shrink-0 size-6",
+      "root": "flex w-full items-start gap-3 border-3 border-border shadow-sm bg-secondary/40 p-4",
+      "title": "font-display font-extrabold tracking-wide uppercase text-foreground text-base",
+    },
+    "props": {
+      "size": "md",
+      "variant": "warning",
+    },
+  },
+  {
+    "classes": {
+      "actions": "flex flex-wrap items-center gap-3 pt-1",
+      "base": undefined,
+      "close": "-mt-1 -mr-1 shrink-0",
+      "content": "flex min-w-0 flex-1 flex-col gap-1",
+      "description": "text-foreground text-lg",
+      "icon": "shrink-0 size-7",
+      "root": "flex w-full items-start gap-3 border-3 border-border shadow-sm bg-secondary/40 p-5",
+      "title": "font-display font-extrabold tracking-wide uppercase text-foreground text-lg",
+    },
+    "props": {
+      "size": "lg",
+      "variant": "warning",
+    },
+  },
+  {
+    "classes": {
+      "actions": "flex flex-wrap items-center gap-3 pt-1",
+      "base": undefined,
+      "close": "-mt-1 -mr-1 shrink-0",
+      "content": "flex min-w-0 flex-1 flex-col gap-1",
+      "description": "text-foreground text-sm",
+      "icon": "shrink-0 size-5",
+      "root": "flex w-full items-start gap-3 border-3 border-border shadow-sm bg-danger/15 p-3",
+      "title": "font-display font-extrabold tracking-wide uppercase text-foreground text-sm",
+    },
+    "props": {
+      "size": "sm",
+      "variant": "danger",
+    },
+  },
+  {
+    "classes": {
+      "actions": "flex flex-wrap items-center gap-3 pt-1",
+      "base": undefined,
+      "close": "-mt-1 -mr-1 shrink-0",
+      "content": "flex min-w-0 flex-1 flex-col gap-1",
+      "description": "text-foreground text-base",
+      "icon": "shrink-0 size-6",
+      "root": "flex w-full items-start gap-3 border-3 border-border shadow-sm bg-danger/15 p-4",
+      "title": "font-display font-extrabold tracking-wide uppercase text-foreground text-base",
+    },
+    "props": {
+      "size": "md",
+      "variant": "danger",
+    },
+  },
+  {
+    "classes": {
+      "actions": "flex flex-wrap items-center gap-3 pt-1",
+      "base": undefined,
+      "close": "-mt-1 -mr-1 shrink-0",
+      "content": "flex min-w-0 flex-1 flex-col gap-1",
+      "description": "text-foreground text-lg",
+      "icon": "shrink-0 size-7",
+      "root": "flex w-full items-start gap-3 border-3 border-border shadow-sm bg-danger/15 p-5",
+      "title": "font-display font-extrabold tracking-wide uppercase text-foreground text-lg",
+    },
+    "props": {
+      "size": "lg",
+      "variant": "danger",
+    },
+  },
+]
+`;
+
 exports[`recipe snapshots > avatar output is stable for every variant combination 1`] = `
 [
   {
@@ -480,6 +677,29 @@ exports[`recipe snapshots > button output is stable for every variant combinatio
 ]
 `;
 
+exports[`recipe snapshots > calendar output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "base": undefined,
+      "cell": "p-0.5 text-center",
+      "day": "flex size-11 cursor-pointer items-center justify-center border-3 border-transparent font-display font-bold text-foreground tabular-nums hover:border-border data-today:border-border data-selected:border-border data-selected:bg-primary data-selected:font-black data-outside:text-disabled-foreground data-disabled:cursor-not-allowed data-disabled:bg-disabled data-disabled:text-disabled-foreground outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap",
+      "footer": "flex items-center justify-between gap-2 border-t-3 border-border pt-3",
+      "grid": "w-full border-collapse",
+      "header": "flex items-center justify-between gap-2",
+      "heading": "font-display text-lg font-black tracking-tight uppercase text-foreground",
+      "nav": "flex items-center gap-2",
+      "navButton": "inline-flex size-11 cursor-pointer items-center justify-center border-3 border-border bg-raised text-foreground shadow-sm transition-[translate,box-shadow] duration-70 ease-linear motion-reduce:transition-none active:translate-x-1 active:translate-y-1 active:shadow-none data-pressed:translate-x-1 data-pressed:translate-y-1 data-pressed:shadow-none outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap",
+      "root": "inline-flex w-full max-w-sm flex-col gap-3 border-3 border-border bg-raised p-4 shadow-sm",
+      "week": undefined,
+      "weekday": "pb-1 text-center font-mono text-xs font-bold tracking-widest uppercase",
+      "weekdays": undefined,
+    },
+    "props": {},
+  },
+]
+`;
+
 exports[`recipe snapshots > card output is stable for every variant combination 1`] = `
 [
   {
@@ -790,6 +1010,59 @@ exports[`recipe snapshots > checkbox output is stable for every variant combinat
 ]
 `;
 
+exports[`recipe snapshots > codeBlock output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "base": undefined,
+      "code": "font-mono",
+      "copy": "shrink-0",
+      "filename": "truncate font-mono text-xs font-bold tracking-widest uppercase text-foreground",
+      "header": "flex items-center justify-between gap-3 border-b-3 border-border bg-surface px-3 py-2",
+      "lineNumbers": "pointer-events-none select-none pr-4 text-right opacity-60",
+      "pre": "w-max min-w-full font-mono p-3 text-xs",
+      "root": "w-full overflow-hidden border-3 border-border bg-ink text-paper shadow-sm",
+      "scroller": "overflow-x-auto outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap",
+    },
+    "props": {
+      "size": "sm",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "code": "font-mono",
+      "copy": "shrink-0",
+      "filename": "truncate font-mono text-xs font-bold tracking-widest uppercase text-foreground",
+      "header": "flex items-center justify-between gap-3 border-b-3 border-border bg-surface px-3 py-2",
+      "lineNumbers": "pointer-events-none select-none pr-4 text-right opacity-60",
+      "pre": "w-max min-w-full font-mono p-4 text-sm",
+      "root": "w-full overflow-hidden border-3 border-border bg-ink text-paper shadow-sm",
+      "scroller": "overflow-x-auto outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap",
+    },
+    "props": {
+      "size": "md",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "code": "font-mono",
+      "copy": "shrink-0",
+      "filename": "truncate font-mono text-xs font-bold tracking-widest uppercase text-foreground",
+      "header": "flex items-center justify-between gap-3 border-b-3 border-border bg-surface px-3 py-2",
+      "lineNumbers": "pointer-events-none select-none pr-4 text-right opacity-60",
+      "pre": "w-max min-w-full font-mono p-5 text-base",
+      "root": "w-full overflow-hidden border-3 border-border bg-ink text-paper shadow-sm",
+      "scroller": "overflow-x-auto outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap",
+    },
+    "props": {
+      "size": "lg",
+    },
+  },
+]
+`;
+
 exports[`recipe snapshots > commandPalette output is stable for every variant combination 1`] = `
 [
   {
@@ -810,6 +1083,89 @@ exports[`recipe snapshots > commandPalette output is stable for every variant co
       "viewport": "fixed inset-0 z-50 flex items-start justify-center p-4 pt-[12dvh]",
     },
     "props": {},
+  },
+]
+`;
+
+exports[`recipe snapshots > descriptionList output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "base": undefined,
+      "description": "font-sans text-foreground text-sm",
+      "group": "border-b-3 border-border last:border-b-0 flex flex-col gap-1 py-3 first:pt-0 last:pb-0",
+      "root": "w-full",
+      "term": "font-mono text-xs font-bold tracking-widest uppercase",
+    },
+    "props": {
+      "layout": "stacked",
+      "size": "sm",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "description": "font-sans text-foreground text-base",
+      "group": "border-b-3 border-border last:border-b-0 flex flex-col gap-1 py-3 first:pt-0 last:pb-0",
+      "root": "w-full",
+      "term": "font-mono text-xs font-bold tracking-widest uppercase",
+    },
+    "props": {
+      "layout": "stacked",
+      "size": "md",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "description": "font-sans text-foreground text-lg",
+      "group": "border-b-3 border-border last:border-b-0 flex flex-col gap-1 py-3 first:pt-0 last:pb-0",
+      "root": "w-full",
+      "term": "font-mono text-xs font-bold tracking-widest uppercase",
+    },
+    "props": {
+      "layout": "stacked",
+      "size": "lg",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "description": "font-sans text-foreground text-sm",
+      "group": "border-b-3 border-border last:border-b-0 grid grid-cols-[minmax(8rem,12rem)_1fr] items-baseline gap-4 py-3 first:pt-0 last:pb-0",
+      "root": "w-full",
+      "term": "font-mono text-xs font-bold tracking-widest uppercase",
+    },
+    "props": {
+      "layout": "inline",
+      "size": "sm",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "description": "font-sans text-foreground text-base",
+      "group": "border-b-3 border-border last:border-b-0 grid grid-cols-[minmax(8rem,12rem)_1fr] items-baseline gap-4 py-3 first:pt-0 last:pb-0",
+      "root": "w-full",
+      "term": "font-mono text-xs font-bold tracking-widest uppercase",
+    },
+    "props": {
+      "layout": "inline",
+      "size": "md",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "description": "font-sans text-foreground text-lg",
+      "group": "border-b-3 border-border last:border-b-0 grid grid-cols-[minmax(8rem,12rem)_1fr] items-baseline gap-4 py-3 first:pt-0 last:pb-0",
+      "root": "w-full",
+      "term": "font-mono text-xs font-bold tracking-widest uppercase",
+    },
+    "props": {
+      "layout": "inline",
+      "size": "lg",
+    },
   },
 ]
 `;
@@ -1030,6 +1386,50 @@ exports[`recipe snapshots > dialog output is stable for every variant combinatio
     "props": {
       "size": "lg",
       "variant": "danger",
+    },
+  },
+]
+`;
+
+exports[`recipe snapshots > emptyState output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "actions": "flex flex-wrap items-center justify-center gap-3 pt-2",
+      "base": undefined,
+      "description": "max-w-prose text-foreground text-sm",
+      "icon": "flex items-center justify-center border-3 border-border bg-secondary size-12",
+      "root": "flex w-full flex-col items-center justify-center gap-4 border-3 border-dashed border-border bg-raised text-center p-6",
+      "title": "font-display font-black tracking-tight text-foreground text-h4",
+    },
+    "props": {
+      "size": "sm",
+    },
+  },
+  {
+    "classes": {
+      "actions": "flex flex-wrap items-center justify-center gap-3 pt-2",
+      "base": undefined,
+      "description": "max-w-prose text-foreground text-base",
+      "icon": "flex items-center justify-center border-3 border-border bg-secondary size-16",
+      "root": "flex w-full flex-col items-center justify-center gap-4 border-3 border-dashed border-border bg-raised text-center p-10",
+      "title": "font-display font-black tracking-tight text-foreground text-h3",
+    },
+    "props": {
+      "size": "md",
+    },
+  },
+  {
+    "classes": {
+      "actions": "flex flex-wrap items-center justify-center gap-3 pt-2",
+      "base": undefined,
+      "description": "max-w-prose text-foreground text-lg",
+      "icon": "flex items-center justify-center border-3 border-border bg-secondary size-20",
+      "root": "flex w-full flex-col items-center justify-center gap-4 border-3 border-dashed border-border bg-raised text-center p-16",
+      "title": "font-display font-black tracking-tight text-foreground text-h2",
+    },
+    "props": {
+      "size": "lg",
     },
   },
 ]
@@ -1305,6 +1705,65 @@ exports[`recipe snapshots > label output is stable for every variant combination
       "base": undefined,
       "indicator": "font-mono text-foreground",
       "root": "inline-flex items-center gap-1 font-display font-bold uppercase tracking-wide text-foreground data-disabled:cursor-not-allowed data-disabled:text-disabled-foreground text-base",
+    },
+    "props": {
+      "size": "lg",
+    },
+  },
+]
+`;
+
+exports[`recipe snapshots > list output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "actions": "flex shrink-0 items-center gap-2 self-center pr-3",
+      "base": undefined,
+      "content": "flex min-w-0 flex-1 flex-col gap-0.5",
+      "description": "truncate text-foreground text-xs",
+      "interactive": "cursor-pointer text-left hover:bg-surface outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap",
+      "item": "flex items-stretch border-b-3 border-border last:border-b-0 data-selected:bg-secondary",
+      "media": "flex shrink-0 items-center justify-center",
+      "meta": "shrink-0 font-mono text-xs font-bold",
+      "root": "flex w-full flex-col border-3 border-border bg-raised",
+      "row": "flex min-w-0 flex-1 items-center gap-4 min-h-14 px-3 py-2",
+      "title": "font-display font-extrabold text-foreground text-sm",
+    },
+    "props": {
+      "size": "sm",
+    },
+  },
+  {
+    "classes": {
+      "actions": "flex shrink-0 items-center gap-2 self-center pr-4",
+      "base": undefined,
+      "content": "flex min-w-0 flex-1 flex-col gap-0.5",
+      "description": "truncate text-foreground text-sm",
+      "interactive": "cursor-pointer text-left hover:bg-surface outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap",
+      "item": "flex items-stretch border-b-3 border-border last:border-b-0 data-selected:bg-secondary",
+      "media": "flex shrink-0 items-center justify-center",
+      "meta": "shrink-0 font-mono text-xs font-bold",
+      "root": "flex w-full flex-col border-3 border-border bg-raised",
+      "row": "flex min-w-0 flex-1 items-center gap-4 min-h-16 px-4 py-3",
+      "title": "font-display font-extrabold text-foreground text-base",
+    },
+    "props": {
+      "size": "md",
+    },
+  },
+  {
+    "classes": {
+      "actions": "flex shrink-0 items-center gap-2 self-center pr-5",
+      "base": undefined,
+      "content": "flex min-w-0 flex-1 flex-col gap-0.5",
+      "description": "truncate text-foreground text-base",
+      "interactive": "cursor-pointer text-left hover:bg-surface outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap",
+      "item": "flex items-stretch border-b-3 border-border last:border-b-0 data-selected:bg-secondary",
+      "media": "flex shrink-0 items-center justify-center",
+      "meta": "shrink-0 font-mono text-xs font-bold",
+      "root": "flex w-full flex-col border-3 border-border bg-raised",
+      "row": "flex min-w-0 flex-1 items-center gap-4 min-h-20 px-5 py-4",
+      "title": "font-display font-extrabold text-foreground text-lg",
     },
     "props": {
       "size": "lg",
@@ -1625,6 +2084,191 @@ exports[`recipe snapshots > popover output is stable for every variant combinati
     },
     "props": {
       "size": "lg",
+    },
+  },
+]
+`;
+
+exports[`recipe snapshots > progress output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "base": undefined,
+      "header": "flex items-baseline justify-between gap-4",
+      "indicator": "h-full transition-[width] duration-100 ease-linear motion-reduce:transition-none data-indeterminate:w-2/5 data-indeterminate:animate-indeterminate bg-primary",
+      "label": "font-display font-bold tracking-wide uppercase text-foreground text-xs",
+      "root": "flex w-full flex-col gap-2",
+      "track": "w-full overflow-hidden border-3 border-border bg-surface h-4",
+      "value": "font-mono font-bold text-foreground text-xs",
+    },
+    "props": {
+      "size": "sm",
+      "variant": "primary",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "header": "flex items-baseline justify-between gap-4",
+      "indicator": "h-full transition-[width] duration-100 ease-linear motion-reduce:transition-none data-indeterminate:w-2/5 data-indeterminate:animate-indeterminate bg-primary",
+      "label": "font-display font-bold tracking-wide uppercase text-foreground text-sm",
+      "root": "flex w-full flex-col gap-2",
+      "track": "w-full overflow-hidden border-3 border-border bg-surface h-6",
+      "value": "font-mono font-bold text-foreground text-sm",
+    },
+    "props": {
+      "size": "md",
+      "variant": "primary",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "header": "flex items-baseline justify-between gap-4",
+      "indicator": "h-full transition-[width] duration-100 ease-linear motion-reduce:transition-none data-indeterminate:w-2/5 data-indeterminate:animate-indeterminate bg-primary",
+      "label": "font-display font-bold tracking-wide uppercase text-foreground text-base",
+      "root": "flex w-full flex-col gap-2",
+      "track": "w-full overflow-hidden border-3 border-border bg-surface h-8",
+      "value": "font-mono font-bold text-foreground text-base",
+    },
+    "props": {
+      "size": "lg",
+      "variant": "primary",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "header": "flex items-baseline justify-between gap-4",
+      "indicator": "h-full transition-[width] duration-100 ease-linear motion-reduce:transition-none data-indeterminate:w-2/5 data-indeterminate:animate-indeterminate bg-secondary",
+      "label": "font-display font-bold tracking-wide uppercase text-foreground text-xs",
+      "root": "flex w-full flex-col gap-2",
+      "track": "w-full overflow-hidden border-3 border-border bg-surface h-4",
+      "value": "font-mono font-bold text-foreground text-xs",
+    },
+    "props": {
+      "size": "sm",
+      "variant": "secondary",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "header": "flex items-baseline justify-between gap-4",
+      "indicator": "h-full transition-[width] duration-100 ease-linear motion-reduce:transition-none data-indeterminate:w-2/5 data-indeterminate:animate-indeterminate bg-secondary",
+      "label": "font-display font-bold tracking-wide uppercase text-foreground text-sm",
+      "root": "flex w-full flex-col gap-2",
+      "track": "w-full overflow-hidden border-3 border-border bg-surface h-6",
+      "value": "font-mono font-bold text-foreground text-sm",
+    },
+    "props": {
+      "size": "md",
+      "variant": "secondary",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "header": "flex items-baseline justify-between gap-4",
+      "indicator": "h-full transition-[width] duration-100 ease-linear motion-reduce:transition-none data-indeterminate:w-2/5 data-indeterminate:animate-indeterminate bg-secondary",
+      "label": "font-display font-bold tracking-wide uppercase text-foreground text-base",
+      "root": "flex w-full flex-col gap-2",
+      "track": "w-full overflow-hidden border-3 border-border bg-surface h-8",
+      "value": "font-mono font-bold text-foreground text-base",
+    },
+    "props": {
+      "size": "lg",
+      "variant": "secondary",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "header": "flex items-baseline justify-between gap-4",
+      "indicator": "h-full transition-[width] duration-100 ease-linear motion-reduce:transition-none data-indeterminate:w-2/5 data-indeterminate:animate-indeterminate bg-success",
+      "label": "font-display font-bold tracking-wide uppercase text-foreground text-xs",
+      "root": "flex w-full flex-col gap-2",
+      "track": "w-full overflow-hidden border-3 border-border bg-surface h-4",
+      "value": "font-mono font-bold text-foreground text-xs",
+    },
+    "props": {
+      "size": "sm",
+      "variant": "success",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "header": "flex items-baseline justify-between gap-4",
+      "indicator": "h-full transition-[width] duration-100 ease-linear motion-reduce:transition-none data-indeterminate:w-2/5 data-indeterminate:animate-indeterminate bg-success",
+      "label": "font-display font-bold tracking-wide uppercase text-foreground text-sm",
+      "root": "flex w-full flex-col gap-2",
+      "track": "w-full overflow-hidden border-3 border-border bg-surface h-6",
+      "value": "font-mono font-bold text-foreground text-sm",
+    },
+    "props": {
+      "size": "md",
+      "variant": "success",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "header": "flex items-baseline justify-between gap-4",
+      "indicator": "h-full transition-[width] duration-100 ease-linear motion-reduce:transition-none data-indeterminate:w-2/5 data-indeterminate:animate-indeterminate bg-success",
+      "label": "font-display font-bold tracking-wide uppercase text-foreground text-base",
+      "root": "flex w-full flex-col gap-2",
+      "track": "w-full overflow-hidden border-3 border-border bg-surface h-8",
+      "value": "font-mono font-bold text-foreground text-base",
+    },
+    "props": {
+      "size": "lg",
+      "variant": "success",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "header": "flex items-baseline justify-between gap-4",
+      "indicator": "h-full transition-[width] duration-100 ease-linear motion-reduce:transition-none data-indeterminate:w-2/5 data-indeterminate:animate-indeterminate bg-danger",
+      "label": "font-display font-bold tracking-wide uppercase text-foreground text-xs",
+      "root": "flex w-full flex-col gap-2",
+      "track": "w-full overflow-hidden border-3 border-border bg-surface h-4",
+      "value": "font-mono font-bold text-foreground text-xs",
+    },
+    "props": {
+      "size": "sm",
+      "variant": "danger",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "header": "flex items-baseline justify-between gap-4",
+      "indicator": "h-full transition-[width] duration-100 ease-linear motion-reduce:transition-none data-indeterminate:w-2/5 data-indeterminate:animate-indeterminate bg-danger",
+      "label": "font-display font-bold tracking-wide uppercase text-foreground text-sm",
+      "root": "flex w-full flex-col gap-2",
+      "track": "w-full overflow-hidden border-3 border-border bg-surface h-6",
+      "value": "font-mono font-bold text-foreground text-sm",
+    },
+    "props": {
+      "size": "md",
+      "variant": "danger",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "header": "flex items-baseline justify-between gap-4",
+      "indicator": "h-full transition-[width] duration-100 ease-linear motion-reduce:transition-none data-indeterminate:w-2/5 data-indeterminate:animate-indeterminate bg-danger",
+      "label": "font-display font-bold tracking-wide uppercase text-foreground text-base",
+      "root": "flex w-full flex-col gap-2",
+      "track": "w-full overflow-hidden border-3 border-border bg-surface h-8",
+      "value": "font-mono font-bold text-foreground text-base",
+    },
+    "props": {
+      "size": "lg",
+      "variant": "danger",
     },
   },
 ]
@@ -2982,6 +3626,41 @@ exports[`recipe snapshots > sidebar output is stable for every variant combinati
 ]
 `;
 
+exports[`recipe snapshots > skeleton output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": "block bg-surface border-3 border-border motion-safe:animate-pulse-stepped h-4 w-full",
+    "props": {
+      "shape": "line",
+    },
+  },
+  {
+    "classes": "block bg-surface border-3 border-border motion-safe:animate-pulse-stepped h-8 w-2/3",
+    "props": {
+      "shape": "title",
+    },
+  },
+  {
+    "classes": "block bg-surface border-3 border-border motion-safe:animate-pulse-stepped h-32 w-full",
+    "props": {
+      "shape": "block",
+    },
+  },
+  {
+    "classes": "block bg-surface border-3 border-border motion-safe:animate-pulse-stepped size-11 rounded-md",
+    "props": {
+      "shape": "avatar",
+    },
+  },
+  {
+    "classes": "block bg-surface border-3 border-border motion-safe:animate-pulse-stepped h-12 w-32",
+    "props": {
+      "shape": "button",
+    },
+  },
+]
+`;
+
 exports[`recipe snapshots > slider output is stable for every variant combination 1`] = `
 [
   {
@@ -3217,6 +3896,146 @@ exports[`recipe snapshots > spinner output is stable for every variant combinati
 ]
 `;
 
+exports[`recipe snapshots > stat output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "base": undefined,
+      "delta": "inline-flex items-center gap-1 font-mono text-sm font-bold text-foreground",
+      "deltaIcon": "size-4",
+      "description": "text-sm text-foreground",
+      "label": "font-mono text-xs font-bold tracking-widest uppercase",
+      "root": "flex flex-col gap-1 border-3 border-border bg-raised shadow-sm p-4",
+      "value": "font-display font-black tracking-tight text-foreground tabular-nums text-h3",
+    },
+    "props": {
+      "size": "sm",
+      "trend": "up",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "delta": "inline-flex items-center gap-1 font-mono text-sm font-bold text-foreground",
+      "deltaIcon": "size-4",
+      "description": "text-sm text-foreground",
+      "label": "font-mono text-xs font-bold tracking-widest uppercase",
+      "root": "flex flex-col gap-1 border-3 border-border bg-raised shadow-sm p-4",
+      "value": "font-display font-black tracking-tight text-foreground tabular-nums text-h3",
+    },
+    "props": {
+      "size": "sm",
+      "trend": "down",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "delta": "inline-flex items-center gap-1 font-mono text-sm font-bold text-foreground",
+      "deltaIcon": "size-4",
+      "description": "text-sm text-foreground",
+      "label": "font-mono text-xs font-bold tracking-widest uppercase",
+      "root": "flex flex-col gap-1 border-3 border-border bg-raised shadow-sm p-4",
+      "value": "font-display font-black tracking-tight text-foreground tabular-nums text-h3",
+    },
+    "props": {
+      "size": "sm",
+      "trend": "flat",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "delta": "inline-flex items-center gap-1 font-mono text-sm font-bold text-foreground",
+      "deltaIcon": "size-4",
+      "description": "text-sm text-foreground",
+      "label": "font-mono text-xs font-bold tracking-widest uppercase",
+      "root": "flex flex-col gap-1 border-3 border-border bg-raised shadow-sm p-5",
+      "value": "font-display font-black tracking-tight text-foreground tabular-nums text-h2",
+    },
+    "props": {
+      "size": "md",
+      "trend": "up",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "delta": "inline-flex items-center gap-1 font-mono text-sm font-bold text-foreground",
+      "deltaIcon": "size-4",
+      "description": "text-sm text-foreground",
+      "label": "font-mono text-xs font-bold tracking-widest uppercase",
+      "root": "flex flex-col gap-1 border-3 border-border bg-raised shadow-sm p-5",
+      "value": "font-display font-black tracking-tight text-foreground tabular-nums text-h2",
+    },
+    "props": {
+      "size": "md",
+      "trend": "down",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "delta": "inline-flex items-center gap-1 font-mono text-sm font-bold text-foreground",
+      "deltaIcon": "size-4",
+      "description": "text-sm text-foreground",
+      "label": "font-mono text-xs font-bold tracking-widest uppercase",
+      "root": "flex flex-col gap-1 border-3 border-border bg-raised shadow-sm p-5",
+      "value": "font-display font-black tracking-tight text-foreground tabular-nums text-h2",
+    },
+    "props": {
+      "size": "md",
+      "trend": "flat",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "delta": "inline-flex items-center gap-1 font-mono text-sm font-bold text-foreground",
+      "deltaIcon": "size-4",
+      "description": "text-sm text-foreground",
+      "label": "font-mono text-xs font-bold tracking-widest uppercase",
+      "root": "flex flex-col gap-1 border-3 border-border bg-raised shadow-sm p-6",
+      "value": "font-display font-black tracking-tight text-foreground tabular-nums text-h1",
+    },
+    "props": {
+      "size": "lg",
+      "trend": "up",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "delta": "inline-flex items-center gap-1 font-mono text-sm font-bold text-foreground",
+      "deltaIcon": "size-4",
+      "description": "text-sm text-foreground",
+      "label": "font-mono text-xs font-bold tracking-widest uppercase",
+      "root": "flex flex-col gap-1 border-3 border-border bg-raised shadow-sm p-6",
+      "value": "font-display font-black tracking-tight text-foreground tabular-nums text-h1",
+    },
+    "props": {
+      "size": "lg",
+      "trend": "down",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "delta": "inline-flex items-center gap-1 font-mono text-sm font-bold text-foreground",
+      "deltaIcon": "size-4",
+      "description": "text-sm text-foreground",
+      "label": "font-mono text-xs font-bold tracking-widest uppercase",
+      "root": "flex flex-col gap-1 border-3 border-border bg-raised shadow-sm p-6",
+      "value": "font-display font-black tracking-tight text-foreground tabular-nums text-h1",
+    },
+    "props": {
+      "size": "lg",
+      "trend": "flat",
+    },
+  },
+]
+`;
+
 exports[`recipe snapshots > stepper output is stable for every variant combination 1`] = `
 [
   {
@@ -3422,6 +4241,83 @@ exports[`recipe snapshots > switchStyles output is stable for every variant comb
 ]
 `;
 
+exports[`recipe snapshots > table output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "actions": "flex items-center justify-end gap-2",
+      "base": undefined,
+      "body": undefined,
+      "caption": "border-b-3 border-border bg-surface px-4 py-3 text-left font-mono text-xs font-bold tracking-widest uppercase",
+      "cell": "align-middle text-foreground px-3 py-2 text-sm",
+      "empty": "px-4 py-12 text-center",
+      "footer": "border-t-3 border-border bg-surface",
+      "head": "border-b-3 border-border bg-secondary",
+      "headerCell": "font-display font-extrabold tracking-wide text-foreground uppercase px-3 py-2 text-xs",
+      "root": "w-full overflow-hidden border-3 border-border bg-raised",
+      "row": "border-b-3 border-border last:border-b-0 data-selected:bg-secondary even:bg-surface hover:bg-surface",
+      "scroller": "w-full overflow-x-auto",
+      "sortButton": "group flex w-full items-center gap-2 text-left font-display font-extrabold tracking-wide uppercase cursor-pointer hover:underline outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap text-xs",
+      "sortIcon": "size-4 shrink-0",
+      "table": "w-full border-collapse text-left",
+    },
+    "props": {
+      "hoverable": true,
+      "size": "sm",
+      "striped": true,
+    },
+  },
+  {
+    "classes": {
+      "actions": "flex items-center justify-end gap-2",
+      "base": undefined,
+      "body": undefined,
+      "caption": "border-b-3 border-border bg-surface px-4 py-3 text-left font-mono text-xs font-bold tracking-widest uppercase",
+      "cell": "align-middle text-foreground px-4 py-3 text-base",
+      "empty": "px-4 py-12 text-center",
+      "footer": "border-t-3 border-border bg-surface",
+      "head": "border-b-3 border-border bg-secondary",
+      "headerCell": "font-display font-extrabold tracking-wide text-foreground uppercase px-4 py-3 text-sm",
+      "root": "w-full overflow-hidden border-3 border-border bg-raised",
+      "row": "border-b-3 border-border last:border-b-0 data-selected:bg-secondary even:bg-surface hover:bg-surface",
+      "scroller": "w-full overflow-x-auto",
+      "sortButton": "group flex w-full items-center gap-2 text-left font-display font-extrabold tracking-wide uppercase cursor-pointer hover:underline outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap text-sm",
+      "sortIcon": "size-4 shrink-0",
+      "table": "w-full border-collapse text-left",
+    },
+    "props": {
+      "hoverable": true,
+      "size": "md",
+      "striped": true,
+    },
+  },
+  {
+    "classes": {
+      "actions": "flex items-center justify-end gap-2",
+      "base": undefined,
+      "body": undefined,
+      "caption": "border-b-3 border-border bg-surface px-4 py-3 text-left font-mono text-xs font-bold tracking-widest uppercase",
+      "cell": "align-middle text-foreground px-5 py-4 text-lg",
+      "empty": "px-4 py-12 text-center",
+      "footer": "border-t-3 border-border bg-surface",
+      "head": "border-b-3 border-border bg-secondary",
+      "headerCell": "font-display font-extrabold tracking-wide text-foreground uppercase px-5 py-4 text-base",
+      "root": "w-full overflow-hidden border-3 border-border bg-raised",
+      "row": "border-b-3 border-border last:border-b-0 data-selected:bg-secondary even:bg-surface hover:bg-surface",
+      "scroller": "w-full overflow-x-auto",
+      "sortButton": "group flex w-full items-center gap-2 text-left font-display font-extrabold tracking-wide uppercase cursor-pointer hover:underline outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap text-base",
+      "sortIcon": "size-4 shrink-0",
+      "table": "w-full border-collapse text-left",
+    },
+    "props": {
+      "hoverable": true,
+      "size": "lg",
+      "striped": true,
+    },
+  },
+]
+`;
+
 exports[`recipe snapshots > tabs output is stable for every variant combination 1`] = `
 [
   {
@@ -3604,6 +4500,59 @@ exports[`recipe snapshots > textarea output is stable for every variant combinat
   },
   {
     "classes": "block w-full min-w-0 resize-y border-3 border-border bg-raised text-foreground shadow-sm font-sans placeholder:text-disabled-foreground aria-invalid:bg-danger/15 data-invalid:bg-danger/15 read-only:shadow-none outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap disabled:cursor-not-allowed disabled:border-disabled-foreground disabled:bg-disabled disabled:text-disabled-foreground disabled:shadow-none disabled:translate-none data-disabled:cursor-not-allowed data-disabled:border-disabled-foreground data-disabled:bg-disabled data-disabled:text-disabled-foreground data-disabled:shadow-none data-disabled:translate-none min-h-36 px-4 py-3 text-lg",
+    "props": {
+      "size": "lg",
+    },
+  },
+]
+`;
+
+exports[`recipe snapshots > timeline output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "base": undefined,
+      "body": "text-foreground text-sm",
+      "connector": "absolute top-6 bottom-0 left-[calc(0.75rem-2px)] w-1 bg-border",
+      "content": "flex min-w-0 flex-1 flex-col gap-1 pb-2",
+      "item": "relative flex gap-4 pb-6 last:pb-0",
+      "marker": "z-10 flex size-6 shrink-0 items-center justify-center border-3 border-border bg-raised data-[state=done]:bg-primary data-[state=current]:bg-secondary",
+      "root": "flex w-full flex-col",
+      "time": "font-mono text-xs font-bold tracking-widest uppercase",
+      "title": "font-display font-extrabold text-foreground text-sm",
+    },
+    "props": {
+      "size": "sm",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "body": "text-foreground text-base",
+      "connector": "absolute top-6 bottom-0 left-[calc(0.75rem-2px)] w-1 bg-border",
+      "content": "flex min-w-0 flex-1 flex-col gap-1 pb-2",
+      "item": "relative flex gap-4 pb-6 last:pb-0",
+      "marker": "z-10 flex size-6 shrink-0 items-center justify-center border-3 border-border bg-raised data-[state=done]:bg-primary data-[state=current]:bg-secondary",
+      "root": "flex w-full flex-col",
+      "time": "font-mono text-xs font-bold tracking-widest uppercase",
+      "title": "font-display font-extrabold text-foreground text-base",
+    },
+    "props": {
+      "size": "md",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "body": "text-foreground text-lg",
+      "connector": "absolute top-6 bottom-0 left-[calc(0.75rem-2px)] w-1 bg-border",
+      "content": "flex min-w-0 flex-1 flex-col gap-1 pb-2",
+      "item": "relative flex gap-4 pb-6 last:pb-0",
+      "marker": "z-10 flex size-6 shrink-0 items-center justify-center border-3 border-border bg-raised data-[state=done]:bg-primary data-[state=current]:bg-secondary",
+      "root": "flex w-full flex-col",
+      "time": "font-mono text-xs font-bold tracking-widest uppercase",
+      "title": "font-display font-extrabold text-foreground text-lg",
+    },
     "props": {
       "size": "lg",
     },
