@@ -1,7 +1,13 @@
 import { expect, test } from "@playwright/test";
 import { componentSlugs } from "../routes.ts";
 
-for (const slug of componentSlugs) {
+/**
+ * The calendar draws the month it is opened on, so its picture changes every
+ * day. Its appearance is covered by the component tests instead.
+ */
+const NOT_STABLE_OVER_TIME = new Set(["calendar"]);
+
+for (const slug of componentSlugs.filter((name) => !NOT_STABLE_OVER_TIME.has(name))) {
   test(`${slug} preview matches the baseline`, async ({ page }) => {
     await page.goto(`/docs/components/${slug}`, { waitUntil: "networkidle" });
     await page.evaluate(() => document.fonts.ready);
