@@ -17,6 +17,8 @@ export const navbar = tv({
       focusRing,
     ],
     actions: "ml-auto flex items-center gap-3",
+    /** The button that opens the links in a sheet, below the md breakpoint. */
+    menuButton: "md:hidden",
   },
   variants: {
     size: {

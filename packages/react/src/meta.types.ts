@@ -1,5 +1,5 @@
 export type ComponentCategory =
-  "foundation" | "forms" | "overlays" | "navigation" | "data-display" | "motion";
+  "foundation" | "forms" | "overlays" | "navigation" | "data-display" | "motion" | "marketing";
 
 export interface KeyboardInteraction {
   keys: string;
@@ -17,6 +17,11 @@ export interface ComponentMeta {
   /** One sentence, shown under the title and in the registry. */
   description: string;
   category: ComponentCategory;
+  /**
+   * A block is a whole section of a page, composed from components. Blocks
+   * ship as registry:block and live under /docs/blocks.
+   */
+  kind?: "component" | "block";
   status: "stable" | "beta";
   /** Exported component names documented on the page, in order. */
   exports: string[];

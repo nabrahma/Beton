@@ -90,3 +90,18 @@ export {
   type TypewriterVariants,
 } from "./text-effects.ts";
 export { ticker, type TickerVariants } from "./ticker.ts";
+export { bentoGrid, type BentoGridVariants } from "./bento-grid.ts";
+export { changelogEntry, type ChangelogEntryVariants } from "./changelog-entry.ts";
+export { ctaBand, type CtaBandVariants } from "./cta-band.ts";
+export { faq, type FaqVariants } from "./faq.ts";
+export { featureGrid, type FeatureGridVariants } from "./feature-grid.ts";
+export { footer, type FooterVariants } from "./footer.ts";
+export { hero, type HeroVariants } from "./hero.ts";
+export { logoCloud, type LogoCloudVariants } from "./logo-cloud.ts";
+export { newsletterSignup, type NewsletterSignupVariants } from "./newsletter-signup.ts";
+export { notFoundPage, type NotFoundPageVariants } from "./not-found-page.ts";
+export { pricingTable, type PricingTableVariants } from "./pricing-table.ts";
+export { section, type SectionVariants } from "./section.ts";
+export { statsBand, type StatsBandVariants } from "./stats-band.ts";
+export { teamGrid, type TeamGridVariants } from "./team-grid.ts";
+export { testimonial, type TestimonialVariants } from "./testimonial.ts";

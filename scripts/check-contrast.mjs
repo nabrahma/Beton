@@ -49,6 +49,7 @@ const pairs = [
   ["foreground", "success", TEXT, "ink on success fill"],
   ["foreground", "warning", TEXT, "ink on warning fill"],
   ["paper", "ink", TEXT, "code on the ink surface"],
+  ["primary", "ink", TEXT, "accent text on the ink surface"],
   ["disabled-foreground", "disabled", TEXT, "disabled label on disabled fill"],
   ["border", "surface", NON_TEXT, "strokes on paper"],
   ["border", "raised", NON_TEXT, "strokes on raised surfaces"],
@@ -63,16 +64,30 @@ const rows = pairs.map(([fg, bg, min, reason]) => {
   return { pair: `${fg} on ${bg}`, ratio: ratio.toFixed(2), min, pass, reason };
 });
 
-// Accents are forbidden as text colour in recipes.
+/**
+ * Accents are forbidden as text colour in recipes, because they fail against
+ * paper. Two files are allowed, for reasons that are checked above or are not
+ * about legibility at all. Anything else is a failure.
+ */
+const ACCENT_TEXT_ALLOWED = new Map([
+  ["ticker.ts", "accent text sits on the ink surface, which is checked above"],
+  ["text-effects.ts", "glitch layers are hidden duplicates behind the real ink text"],
+]);
+
 const accentText =
   /(?<![\w-])(?:[a-z-]+:)*text-(teal|magenta|yellow|mint|primary|secondary|danger|success|warning)(?![\w-])/g;
 const recipesDir = join(root, "packages/recipes/src");
 const violations = [];
+const allowances = new Set();
 if (existsSync(recipesDir)) {
   for (const file of readdirSync(recipesDir, { recursive: true })) {
     if (!/\.ts$/.test(file) || /\.test\.ts$/.test(file)) continue;
     const source = readFileSync(join(recipesDir, file), "utf8");
-    for (const m of source.matchAll(accentText)) violations.push(`${file}: ${m[0]}`);
+    const allowed = ACCENT_TEXT_ALLOWED.get(String(file));
+    for (const m of source.matchAll(accentText)) {
+      if (allowed) allowances.add(`${file}: ${allowed}`);
+      else violations.push(`${file}: ${m[0]}`);
+    }
   }
 }
 
@@ -86,6 +101,7 @@ for (const accent of ["primary", "secondary", "danger", "success"]) {
   const ratio = contrast(resolve(accent), resolve("surface"));
   console.log(`INFO  ${ratio.toFixed(2).padStart(5)}:1  ${accent} as text on paper: not allowed`);
 }
+for (const note of [...allowances].sort()) console.log(`NOTE  ${note}`);
 if (violations.length) {
   console.log("\nAccent colours used as text in recipes:");
   for (const v of violations) console.log(`FAIL  ${v}`);

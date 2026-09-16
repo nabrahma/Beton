@@ -226,7 +226,8 @@ for (const name of componentDirs) {
   componentItems.push({
     $schema: ITEM_SCHEMA,
     name,
-    type: "registry:ui",
+    // A block is a whole section of a page; shadcn installs it as one.
+    type: meta.kind === "block" ? "registry:block" : "registry:ui",
     title: meta.title,
     description: meta.description,
     author: AUTHOR,
