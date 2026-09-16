@@ -1,0 +1,40 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tooltip",
+  "type": "registry:ui",
+  "title": "Tooltip",
+  "description": "A short visual label shown on hover and keyboard focus.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/tooltip.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/tooltip.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const tooltip = tv({\n  slots: {\n    positioner: \"z-50 outline-none\",\n    popup:\n      \"max-w-64 border-2 border-border bg-ink px-2.5 py-1.5 font-mono text-xs font-bold text-paper\",\n  },\n});\n\nexport type TooltipVariants = VariantProps<typeof tooltip>;\n"
+    },
+    {
+      "path": "registry/beton/ui/tooltip.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/tooltip.tsx",
+      "content": "\"use client\";\n\nimport { Tooltip as BaseTooltip } from \"@base-ui/react/tooltip\";\nimport { tooltip } from \"@/lib/beton/recipes/tooltip.recipe\";\nimport type { ReactElement, ReactNode } from \"react\";\n\nexport interface TooltipProps extends Omit<BaseTooltip.Root.Props, \"children\"> {\n  /** The tooltip text. Mirror it in the trigger's accessible name. */\n  content: ReactNode;\n  /** The element the tooltip describes. Must accept props and a ref. */\n  children: ReactElement;\n  className?: string;\n  side?: BaseTooltip.Positioner.Props[\"side\"];\n  align?: BaseTooltip.Positioner.Props[\"align\"];\n  sideOffset?: number;\n  /** Milliseconds before it opens on hover. Focus opens it immediately. */\n  delay?: number;\n  closeDelay?: number;\n}\n\n/**\n * A short visual label shown on hover and on keyboard focus.\n *\n * Tooltips are supplementary and visual only: they add no ARIA role and no\n * description, because touch and screen reader users never see them. Give the\n * trigger an accessible name that matches the tooltip text, and put anything\n * essential in the page or in a Popover instead.\n */\nexport function Tooltip({\n  content,\n  children,\n  className,\n  side = \"top\",\n  align = \"center\",\n  sideOffset = 8,\n  delay,\n  closeDelay,\n  ...props\n}: TooltipProps) {\n  const styles = tooltip();\n  return (\n    <BaseTooltip.Root {...props}>\n      <BaseTooltip.Trigger delay={delay} closeDelay={closeDelay} render={children} />\n      <BaseTooltip.Portal>\n        <BaseTooltip.Positioner\n          side={side}\n          align={align}\n          sideOffset={sideOffset}\n          className={styles.positioner()}\n        >\n          <BaseTooltip.Popup className={styles.popup({ class: className })}>\n            {content}\n          </BaseTooltip.Popup>\n        </BaseTooltip.Positioner>\n      </BaseTooltip.Portal>\n    </BaseTooltip.Root>\n  );\n}\n\n/** Shares hover delays between tooltips, so moving between them feels instant. */\nexport const TooltipProvider = BaseTooltip.Provider;\n"
+    }
+  ],
+  "categories": [
+    "overlays"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "Tooltip",
+      "TooltipProvider"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/tooltip"
+  }
+}

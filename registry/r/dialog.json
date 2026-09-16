@@ -1,0 +1,40 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dialog",
+  "type": "registry:ui",
+  "title": "Dialog",
+  "description": "A modal window for focused tasks, with trapped focus and a clear way out.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json",
+    "https://beton.dev/r/button.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/dialog.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/dialog.recipe.ts",
+      "content": "import { backdrop, popupSurface } from \"@/lib/beton/shared\";\nimport { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const dialog = tv({\n  slots: {\n    backdrop,\n    viewport: \"fixed inset-0 z-50 flex items-center justify-center overflow-y-auto p-4 sm:p-6\",\n    popup: [\n      \"relative flex max-h-[calc(100dvh-2rem)] w-full flex-col overflow-hidden rounded-lg shadow-lg\",\n      popupSurface,\n    ],\n    header: \"flex flex-col gap-2 border-b-3 border-border p-6 pr-16\",\n    title: \"font-display text-2xl font-black leading-tight tracking-tight\",\n    description: \"text-base\",\n    body: \"flex flex-1 flex-col gap-4 overflow-y-auto p-6\",\n    footer: \"flex flex-wrap items-center justify-end gap-3 border-t-3 border-border bg-surface p-6\",\n    close: \"absolute top-4 right-4\",\n  },\n  variants: {\n    variant: {\n      primary: { header: \"bg-primary\" },\n      secondary: { header: \"bg-secondary\" },\n      ghost: { header: \"bg-raised\" },\n      danger: { header: \"bg-danger\" },\n    },\n    size: {\n      sm: { popup: \"max-w-sm\" },\n      md: { popup: \"max-w-lg\" },\n      lg: { popup: \"max-w-2xl\" },\n    },\n  },\n  defaultVariants: {\n    variant: \"ghost\",\n    size: \"md\",\n  },\n});\n\nexport type DialogVariants = VariantProps<typeof dialog>;\n"
+    },
+    {
+      "path": "registry/beton/ui/dialog.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/dialog.tsx",
+      "content": "\"use client\";\n\nimport { Dialog as BaseDialog } from \"@base-ui/react/dialog\";\nimport { button, type ButtonVariants } from \"@/lib/beton/recipes/button.recipe\";\nimport { dialog, type DialogVariants } from \"@/lib/beton/recipes/dialog.recipe\";\nimport { createContext, useContext, type ComponentProps, type ReactNode } from \"react\";\nimport { CloseIcon } from \"@/lib/beton/icons\";\n\nconst DialogContext = createContext<DialogVariants>({ variant: \"ghost\", size: \"md\" });\n\nfunction useStyles() {\n  return dialog(useContext(DialogContext));\n}\n\nexport interface DialogProps extends BaseDialog.Root.Props, DialogVariants {}\n\nfunction DialogRoot({ variant = \"ghost\", size = \"md\", ...props }: DialogProps) {\n  return (\n    <DialogContext.Provider value={{ variant, size }}>\n      <BaseDialog.Root {...props} />\n    </DialogContext.Provider>\n  );\n}\n\nexport interface DialogTriggerProps\n  extends Omit<BaseDialog.Trigger.Props, \"className\">, Pick<ButtonVariants, \"variant\" | \"size\"> {\n  className?: string;\n}\n\nfunction DialogTrigger({\n  variant = \"primary\",\n  size = \"md\",\n  className,\n  ...props\n}: DialogTriggerProps) {\n  return <BaseDialog.Trigger {...props} className={button({ variant, size, class: className })} />;\n}\n\nexport interface DialogContentProps extends Omit<BaseDialog.Popup.Props, \"className\"> {\n  className?: string;\n  /** Shows the close button in the corner. */\n  showClose?: boolean;\n  closeLabel?: string;\n}\n\nfunction DialogContent({\n  className,\n  children,\n  showClose = true,\n  closeLabel = \"Close dialog\",\n  ...props\n}: DialogContentProps) {\n  const styles = useStyles();\n  return (\n    <BaseDialog.Portal>\n      <BaseDialog.Backdrop className={styles.backdrop()} />\n      <BaseDialog.Viewport className={styles.viewport()}>\n        <BaseDialog.Popup {...props} className={styles.popup({ class: className })}>\n          {children}\n          {showClose ? (\n            <BaseDialog.Close\n              aria-label={closeLabel}\n              className={button({\n                variant: \"ghost\",\n                size: \"sm\",\n                iconOnly: true,\n                class: styles.close(),\n              })}\n            >\n              <CloseIcon width={18} height={18} />\n            </BaseDialog.Close>\n          ) : null}\n        </BaseDialog.Popup>\n      </BaseDialog.Viewport>\n    </BaseDialog.Portal>\n  );\n}\n\nfunction DialogHeader({ className, ...props }: ComponentProps<\"div\">) {\n  return <div {...props} className={useStyles().header({ class: className })} />;\n}\n\nfunction DialogTitle({\n  className,\n  ...props\n}: Omit<BaseDialog.Title.Props, \"className\"> & { className?: string }) {\n  return <BaseDialog.Title {...props} className={useStyles().title({ class: className })} />;\n}\n\nfunction DialogDescription({\n  className,\n  ...props\n}: Omit<BaseDialog.Description.Props, \"className\"> & { className?: string }) {\n  return (\n    <BaseDialog.Description {...props} className={useStyles().description({ class: className })} />\n  );\n}\n\nfunction DialogBody({ className, ...props }: ComponentProps<\"div\">) {\n  return <div {...props} className={useStyles().body({ class: className })} />;\n}\n\nfunction DialogFooter({ className, ...props }: ComponentProps<\"div\">) {\n  return <div {...props} className={useStyles().footer({ class: className })} />;\n}\n\nexport interface DialogCloseProps\n  extends Omit<BaseDialog.Close.Props, \"className\">, Pick<ButtonVariants, \"variant\" | \"size\"> {\n  className?: string;\n  children?: ReactNode;\n}\n\nfunction DialogClose({\n  variant = \"secondary\",\n  size = \"md\",\n  className,\n  ...props\n}: DialogCloseProps) {\n  return <BaseDialog.Close {...props} className={button({ variant, size, class: className })} />;\n}\n\n/**\n * A modal dialog. Focus is trapped inside while open, Escape and an outside\n * click close it, and focus returns to the trigger.\n */\nexport const Dialog = Object.assign(DialogRoot, {\n  Trigger: DialogTrigger,\n  Content: DialogContent,\n  Header: DialogHeader,\n  Title: DialogTitle,\n  Description: DialogDescription,\n  Body: DialogBody,\n  Footer: DialogFooter,\n  Close: DialogClose,\n});\n"
+    }
+  ],
+  "categories": [
+    "overlays"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "Dialog"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/dialog"
+  }
+}

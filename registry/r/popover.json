@@ -1,0 +1,40 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "popover",
+  "type": "registry:ui",
+  "title": "Popover",
+  "description": "A non-modal panel anchored to its trigger, for secondary detail and small forms.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json",
+    "https://beton.dev/r/button.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/popover.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/popover.recipe.ts",
+      "content": "import { popupSurface } from \"@/lib/beton/shared\";\nimport { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const popover = tv({\n  slots: {\n    positioner: \"z-50 outline-none\",\n    popup: [\"relative flex max-w-(--available-width) flex-col gap-2 p-5 shadow-sm\", popupSurface],\n    title: \"pr-10 font-display text-lg font-extrabold leading-tight\",\n    description: \"text-sm\",\n    close: \"absolute top-2 right-2\",\n  },\n  variants: {\n    size: {\n      sm: { popup: \"w-56\" },\n      md: { popup: \"w-72\" },\n      lg: { popup: \"w-96\" },\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n});\n\nexport type PopoverVariants = VariantProps<typeof popover>;\n"
+    },
+    {
+      "path": "registry/beton/ui/popover.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/popover.tsx",
+      "content": "\"use client\";\n\nimport { Popover as BasePopover } from \"@base-ui/react/popover\";\nimport { button, type ButtonVariants } from \"@/lib/beton/recipes/button.recipe\";\nimport { popover, type PopoverVariants } from \"@/lib/beton/recipes/popover.recipe\";\nimport { createContext, useContext, type ReactNode } from \"react\";\nimport { CloseIcon } from \"@/lib/beton/icons\";\n\nconst PopoverContext = createContext<PopoverVariants>({ size: \"md\" });\n\nfunction useStyles() {\n  return popover(useContext(PopoverContext));\n}\n\nexport interface PopoverProps extends BasePopover.Root.Props, PopoverVariants {}\n\nfunction PopoverRoot({ size = \"md\", ...props }: PopoverProps) {\n  return (\n    <PopoverContext.Provider value={{ size }}>\n      <BasePopover.Root {...props} />\n    </PopoverContext.Provider>\n  );\n}\n\nexport interface PopoverTriggerProps\n  extends Omit<BasePopover.Trigger.Props, \"className\">, Pick<ButtonVariants, \"variant\" | \"size\"> {\n  className?: string;\n}\n\nfunction PopoverTrigger({\n  variant = \"secondary\",\n  size = \"md\",\n  className,\n  ...props\n}: PopoverTriggerProps) {\n  return <BasePopover.Trigger {...props} className={button({ variant, size, class: className })} />;\n}\n\nexport interface PopoverContentProps extends Omit<BasePopover.Popup.Props, \"className\"> {\n  className?: string;\n  side?: BasePopover.Positioner.Props[\"side\"];\n  align?: BasePopover.Positioner.Props[\"align\"];\n  sideOffset?: number;\n  /** Shows a close button in the corner. */\n  showClose?: boolean;\n  closeLabel?: string;\n}\n\nfunction PopoverContent({\n  className,\n  children,\n  side = \"bottom\",\n  align = \"center\",\n  sideOffset = 8,\n  showClose = false,\n  closeLabel = \"Close\",\n  ...props\n}: PopoverContentProps) {\n  const styles = useStyles();\n  return (\n    <BasePopover.Portal>\n      <BasePopover.Positioner\n        side={side}\n        align={align}\n        sideOffset={sideOffset}\n        className={styles.positioner()}\n      >\n        <BasePopover.Popup {...props} className={styles.popup({ class: className })}>\n          {children}\n          {showClose ? (\n            <BasePopover.Close\n              aria-label={closeLabel}\n              className={button({\n                variant: \"ghost\",\n                size: \"sm\",\n                iconOnly: true,\n                class: styles.close(),\n              })}\n            >\n              <CloseIcon width={16} height={16} />\n            </BasePopover.Close>\n          ) : null}\n        </BasePopover.Popup>\n      </BasePopover.Positioner>\n    </BasePopover.Portal>\n  );\n}\n\nfunction PopoverTitle({\n  className,\n  ...props\n}: Omit<BasePopover.Title.Props, \"className\"> & { className?: string }) {\n  return <BasePopover.Title {...props} className={useStyles().title({ class: className })} />;\n}\n\nfunction PopoverDescription({\n  className,\n  ...props\n}: Omit<BasePopover.Description.Props, \"className\"> & { className?: string }) {\n  return (\n    <BasePopover.Description {...props} className={useStyles().description({ class: className })} />\n  );\n}\n\nexport interface PopoverCloseProps\n  extends Omit<BasePopover.Close.Props, \"className\">, Pick<ButtonVariants, \"variant\" | \"size\"> {\n  className?: string;\n  children?: ReactNode;\n}\n\nfunction PopoverClose({\n  variant = \"secondary\",\n  size = \"sm\",\n  className,\n  ...props\n}: PopoverCloseProps) {\n  return <BasePopover.Close {...props} className={button({ variant, size, class: className })} />;\n}\n\n/**\n * A non-modal panel anchored to its trigger. Escape closes it, an outside click\n * closes it, and focus returns to the trigger.\n */\nexport const Popover = Object.assign(PopoverRoot, {\n  Trigger: PopoverTrigger,\n  Content: PopoverContent,\n  Title: PopoverTitle,\n  Description: PopoverDescription,\n  Close: PopoverClose,\n});\n"
+    }
+  ],
+  "categories": [
+    "overlays"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "Popover"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/popover"
+  }
+}

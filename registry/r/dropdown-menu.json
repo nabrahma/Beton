@@ -1,0 +1,40 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dropdown-menu",
+  "type": "registry:ui",
+  "title": "Dropdown Menu",
+  "description": "A menu of actions opened from a button, with checkboxes, radios and submenus.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json",
+    "https://beton.dev/r/button.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/menu.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/menu.recipe.ts",
+      "content": "import { popupSurface } from \"@/lib/beton/shared\";\nimport { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const menu = tv({\n  slots: {\n    positioner: \"z-50 outline-none\",\n    popup: [\"min-w-52 max-w-(--available-width) py-1 shadow-sm\", popupSurface],\n    item: [\n      \"relative flex min-h-11 cursor-pointer select-none items-center gap-3 px-3 font-medium outline-none\",\n      \"data-highlighted:bg-secondary data-popup-open:bg-secondary\",\n      \"data-disabled:cursor-not-allowed data-disabled:text-disabled-foreground\",\n    ],\n    indicator: \"flex size-4 shrink-0 items-center justify-center\",\n    shortcut: \"ml-auto pl-6 font-mono text-xs font-bold\",\n    chevron: \"ml-auto size-4 shrink-0 -rotate-90\",\n    separator: \"my-1 h-0.5 bg-border\",\n    groupLabel: \"px-3 pt-2 pb-1 font-mono text-xs font-bold uppercase\",\n  },\n  variants: {\n    size: {\n      sm: { item: \"text-sm\" },\n      md: { item: \"text-base\" },\n      lg: { item: \"min-h-12 text-lg\" },\n    },\n    danger: {\n      true: { item: \"data-highlighted:bg-danger\" },\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n    danger: false,\n  },\n});\n\nexport type MenuVariants = VariantProps<typeof menu>;\n"
+    },
+    {
+      "path": "registry/beton/ui/dropdown-menu.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/dropdown-menu.tsx",
+      "content": "\"use client\";\n\nimport { Menu } from \"@base-ui/react/menu\";\nimport { button, type ButtonVariants } from \"@/lib/beton/recipes/button.recipe\";\nimport { menu, type MenuVariants } from \"@/lib/beton/recipes/menu.recipe\";\nimport { createContext, useContext, type ReactNode } from \"react\";\nimport { CheckIcon, ChevronDownIcon } from \"@/lib/beton/icons\";\n\nconst MenuContext = createContext<Pick<MenuVariants, \"size\">>({ size: \"md\" });\n\nfunction useStyles(danger = false) {\n  return menu({ ...useContext(MenuContext), danger });\n}\n\nexport interface DropdownMenuProps extends Menu.Root.Props, Pick<MenuVariants, \"size\"> {}\n\nfunction DropdownMenuRoot({ size = \"md\", ...props }: DropdownMenuProps) {\n  return (\n    <MenuContext.Provider value={{ size }}>\n      <Menu.Root {...props} />\n    </MenuContext.Provider>\n  );\n}\n\nexport interface DropdownMenuTriggerProps\n  extends Omit<Menu.Trigger.Props, \"className\">, Pick<ButtonVariants, \"variant\" | \"size\"> {\n  className?: string;\n}\n\nfunction DropdownMenuTrigger({\n  variant = \"secondary\",\n  size = \"md\",\n  className,\n  ...props\n}: DropdownMenuTriggerProps) {\n  return <Menu.Trigger {...props} className={button({ variant, size, class: className })} />;\n}\n\nexport interface DropdownMenuContentProps extends Omit<Menu.Popup.Props, \"className\"> {\n  className?: string;\n  side?: Menu.Positioner.Props[\"side\"];\n  align?: Menu.Positioner.Props[\"align\"];\n  sideOffset?: number;\n}\n\nfunction DropdownMenuContent({\n  className,\n  children,\n  side = \"bottom\",\n  align = \"start\",\n  sideOffset = 8,\n  ...props\n}: DropdownMenuContentProps) {\n  const styles = useStyles();\n  return (\n    <Menu.Portal>\n      <Menu.Positioner\n        side={side}\n        align={align}\n        sideOffset={sideOffset}\n        className={styles.positioner()}\n      >\n        <Menu.Popup {...props} className={styles.popup({ class: className })}>\n          {children}\n        </Menu.Popup>\n      </Menu.Positioner>\n    </Menu.Portal>\n  );\n}\n\nexport interface DropdownMenuItemProps extends Omit<Menu.Item.Props, \"className\"> {\n  className?: string;\n  /** Styles the item as destructive. */\n  danger?: boolean;\n  /** Keyboard shortcut shown on the right. Display only: bind the key yourself. */\n  shortcut?: ReactNode;\n}\n\nfunction DropdownMenuItem({\n  className,\n  children,\n  danger = false,\n  shortcut,\n  ...props\n}: DropdownMenuItemProps) {\n  const styles = useStyles(danger);\n  return (\n    <Menu.Item {...props} className={styles.item({ class: className })}>\n      {children}\n      {shortcut ? <span className={styles.shortcut()}>{shortcut}</span> : null}\n    </Menu.Item>\n  );\n}\n\nexport interface DropdownMenuLinkProps extends Omit<Menu.LinkItem.Props, \"className\"> {\n  className?: string;\n}\n\nfunction DropdownMenuLink({ className, ...props }: DropdownMenuLinkProps) {\n  return <Menu.LinkItem {...props} className={useStyles().item({ class: className })} />;\n}\n\nfunction DropdownMenuCheckboxItem({\n  className,\n  children,\n  ...props\n}: Omit<Menu.CheckboxItem.Props, \"className\"> & { className?: string }) {\n  const styles = useStyles();\n  return (\n    <Menu.CheckboxItem {...props} className={styles.item({ class: className })}>\n      <span className={styles.indicator()}>\n        <Menu.CheckboxItemIndicator>\n          <CheckIcon width={16} height={16} />\n        </Menu.CheckboxItemIndicator>\n      </span>\n      {children}\n    </Menu.CheckboxItem>\n  );\n}\n\nfunction DropdownMenuRadioGroup(props: Menu.RadioGroup.Props) {\n  return <Menu.RadioGroup {...props} />;\n}\n\nfunction DropdownMenuRadioItem({\n  className,\n  children,\n  ...props\n}: Omit<Menu.RadioItem.Props, \"className\"> & { className?: string }) {\n  const styles = useStyles();\n  return (\n    <Menu.RadioItem {...props} className={styles.item({ class: className })}>\n      <span className={styles.indicator()}>\n        <Menu.RadioItemIndicator>\n          <CheckIcon width={16} height={16} />\n        </Menu.RadioItemIndicator>\n      </span>\n      {children}\n    </Menu.RadioItem>\n  );\n}\n\nfunction DropdownMenuGroup(props: Menu.Group.Props) {\n  return <Menu.Group {...props} />;\n}\n\nfunction DropdownMenuGroupLabel({\n  className,\n  ...props\n}: Omit<Menu.GroupLabel.Props, \"className\"> & { className?: string }) {\n  return <Menu.GroupLabel {...props} className={useStyles().groupLabel({ class: className })} />;\n}\n\nfunction DropdownMenuSeparator({\n  className,\n  ...props\n}: Omit<Menu.Separator.Props, \"className\"> & { className?: string }) {\n  return <Menu.Separator {...props} className={useStyles().separator({ class: className })} />;\n}\n\nfunction DropdownMenuSubmenu(props: Menu.SubmenuRoot.Props) {\n  return <Menu.SubmenuRoot {...props} />;\n}\n\nfunction DropdownMenuSubmenuTrigger({\n  className,\n  children,\n  ...props\n}: Omit<Menu.SubmenuTrigger.Props, \"className\"> & { className?: string }) {\n  const styles = useStyles();\n  return (\n    <Menu.SubmenuTrigger {...props} className={styles.item({ class: className })}>\n      {children}\n      <ChevronDownIcon className={styles.chevron()} />\n    </Menu.SubmenuTrigger>\n  );\n}\n\n/**\n * A menu of actions opened from a button. Arrow keys move between items,\n * Escape closes, and focus returns to the trigger.\n */\nexport const DropdownMenu = Object.assign(DropdownMenuRoot, {\n  Trigger: DropdownMenuTrigger,\n  Content: DropdownMenuContent,\n  Item: DropdownMenuItem,\n  Link: DropdownMenuLink,\n  CheckboxItem: DropdownMenuCheckboxItem,\n  RadioGroup: DropdownMenuRadioGroup,\n  RadioItem: DropdownMenuRadioItem,\n  Group: DropdownMenuGroup,\n  GroupLabel: DropdownMenuGroupLabel,\n  Separator: DropdownMenuSeparator,\n  Submenu: DropdownMenuSubmenu,\n  SubmenuTrigger: DropdownMenuSubmenuTrigger,\n});\n"
+    }
+  ],
+  "categories": [
+    "overlays"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "DropdownMenu"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/dropdown-menu"
+  }
+}

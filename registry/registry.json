@@ -150,6 +150,39 @@
       ]
     },
     {
+      "name": "alert-dialog",
+      "type": "registry:ui",
+      "title": "Alert Dialog",
+      "description": "Interrupts to confirm a consequential action. The choice has to be explicit.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json",
+        "https://beton.dev/r/button.json",
+        "https://beton.dev/r/dialog.json"
+      ],
+      "categories": [
+        "overlays"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "AlertDialog"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/alert-dialog"
+      },
+      "files": [
+        {
+          "path": "registry/beton/ui/alert-dialog.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/alert-dialog.tsx"
+        }
+      ]
+    },
+    {
       "name": "avatar",
       "type": "registry:ui",
       "title": "Avatar",
@@ -327,6 +360,153 @@
       ]
     },
     {
+      "name": "command-palette",
+      "type": "registry:ui",
+      "title": "Command Palette",
+      "description": "A searchable list of commands in a dialog, opened with a keyboard shortcut.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json",
+        "https://beton.dev/r/kbd.json"
+      ],
+      "categories": [
+        "overlays"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "CommandPalette"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/command-palette"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/command-palette.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/command-palette.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/command-palette.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/command-palette.tsx"
+        }
+      ]
+    },
+    {
+      "name": "context-menu",
+      "type": "registry:ui",
+      "title": "Context Menu",
+      "description": "A menu opened by right-clicking an area, with the same items as a dropdown menu.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "overlays"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "ContextMenu"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/context-menu"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/menu.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/menu.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/context-menu.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/context-menu.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "A modal window for focused tasks, with trapped focus and a clear way out.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json",
+        "https://beton.dev/r/button.json"
+      ],
+      "categories": [
+        "overlays"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "Dialog"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/dialog"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/dialog.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/dialog.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/dialog.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/dialog.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "Dropdown Menu",
+      "description": "A menu of actions opened from a button, with checkboxes, radios and submenus.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json",
+        "https://beton.dev/r/button.json"
+      ],
+      "categories": [
+        "overlays"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "DropdownMenu"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/dropdown-menu"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/menu.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/menu.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/dropdown-menu.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/dropdown-menu.tsx"
+        }
+      ]
+    },
+    {
       "name": "field",
       "type": "registry:ui",
       "title": "Field",
@@ -463,6 +643,42 @@
           "path": "registry/beton/ui/form.tsx",
           "type": "registry:ui",
           "target": "@ui/beton/form.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hover-card",
+      "type": "registry:ui",
+      "title": "Hover Card",
+      "description": "A preview panel shown when a link is hovered or focused.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "overlays"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "HoverCard"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/hover-card"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/hover-card.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/hover-card.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/hover-card.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/hover-card.tsx"
         }
       ]
     },
@@ -643,6 +859,43 @@
       ]
     },
     {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "A non-modal panel anchored to its trigger, for secondary detail and small forms.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json",
+        "https://beton.dev/r/button.json"
+      ],
+      "categories": [
+        "overlays"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "Popover"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/popover"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/popover.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/popover.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/popover.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/popover.tsx"
+        }
+      ]
+    },
+    {
       "name": "radio-group",
       "type": "registry:ui",
       "title": "Radio Group",
@@ -782,6 +1035,43 @@
           "path": "registry/beton/ui/separator.tsx",
           "type": "registry:ui",
           "target": "@ui/beton/separator.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sheet",
+      "type": "registry:ui",
+      "title": "Sheet",
+      "description": "A panel anchored to an edge of the screen. A dialog, parked at the side.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json",
+        "https://beton.dev/r/button.json"
+      ],
+      "categories": [
+        "overlays"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "Sheet"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/sheet"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/sheet.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/sheet.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/sheet.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/sheet.tsx"
         }
       ]
     },
@@ -963,35 +1253,121 @@
       ]
     },
     {
+      "name": "toast",
+      "type": "registry:ui",
+      "title": "Toast",
+      "description": "Brief messages that stack in the corner and never steal focus.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json",
+        "https://beton.dev/r/button.json"
+      ],
+      "categories": [
+        "overlays"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "ToastProvider",
+          "useToast",
+          "createToastManager"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/toast"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/toast.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/toast.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/toast.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/toast.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "A short visual label shown on hover and keyboard focus.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "overlays"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "Tooltip",
+          "TooltipProvider"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/tooltip"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/tooltip.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/tooltip.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/tooltip.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/tooltip.tsx"
+        }
+      ]
+    },
+    {
       "name": "all",
       "type": "registry:item",
       "title": "Every Béton component",
       "description": "Installs the theme, core and every component.",
       "author": "Nabaskar Brahma (https://github.com/nabrahma)",
       "registryDependencies": [
+        "https://beton.dev/r/alert-dialog.json",
         "https://beton.dev/r/avatar.json",
         "https://beton.dev/r/badge.json",
         "https://beton.dev/r/button.json",
         "https://beton.dev/r/card.json",
         "https://beton.dev/r/checkbox.json",
+        "https://beton.dev/r/command-palette.json",
+        "https://beton.dev/r/context-menu.json",
+        "https://beton.dev/r/dialog.json",
+        "https://beton.dev/r/dropdown-menu.json",
         "https://beton.dev/r/field.json",
         "https://beton.dev/r/fieldset.json",
         "https://beton.dev/r/file-upload.json",
         "https://beton.dev/r/form.json",
+        "https://beton.dev/r/hover-card.json",
         "https://beton.dev/r/input.json",
         "https://beton.dev/r/kbd.json",
         "https://beton.dev/r/label.json",
         "https://beton.dev/r/number-input.json",
         "https://beton.dev/r/otp-input.json",
+        "https://beton.dev/r/popover.json",
         "https://beton.dev/r/radio-group.json",
         "https://beton.dev/r/search-input.json",
         "https://beton.dev/r/select.json",
         "https://beton.dev/r/separator.json",
+        "https://beton.dev/r/sheet.json",
         "https://beton.dev/r/slider.json",
         "https://beton.dev/r/spinner.json",
         "https://beton.dev/r/switch.json",
         "https://beton.dev/r/text.json",
-        "https://beton.dev/r/textarea.json"
+        "https://beton.dev/r/textarea.json",
+        "https://beton.dev/r/toast.json",
+        "https://beton.dev/r/tooltip.json"
       ],
       "categories": [
         "bundle"

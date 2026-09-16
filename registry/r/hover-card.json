@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hover-card",
+  "type": "registry:ui",
+  "title": "Hover Card",
+  "description": "A preview panel shown when a link is hovered or focused.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/hover-card.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/hover-card.recipe.ts",
+      "content": "import { popupSurface } from \"@/lib/beton/shared\";\nimport { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const hoverCard = tv({\n  slots: {\n    positioner: \"z-50 outline-none\",\n    popup: [\"flex max-w-(--available-width) flex-col gap-3 p-5 shadow-lg\", popupSurface],\n  },\n  variants: {\n    size: {\n      sm: { popup: \"w-60\" },\n      md: { popup: \"w-80\" },\n      lg: { popup: \"w-[26rem]\" },\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n});\n\nexport type HoverCardVariants = VariantProps<typeof hoverCard>;\n"
+    },
+    {
+      "path": "registry/beton/ui/hover-card.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/hover-card.tsx",
+      "content": "\"use client\";\n\nimport { PreviewCard } from \"@base-ui/react/preview-card\";\nimport { hoverCard, type HoverCardVariants } from \"@/lib/beton/recipes/hover-card.recipe\";\nimport { createContext, useContext } from \"react\";\n\nconst HoverCardContext = createContext<HoverCardVariants>({ size: \"md\" });\n\nfunction useStyles() {\n  return hoverCard(useContext(HoverCardContext));\n}\n\nexport interface HoverCardProps extends PreviewCard.Root.Props, HoverCardVariants {}\n\nfunction HoverCardRoot({ size = \"md\", ...props }: HoverCardProps) {\n  return (\n    <HoverCardContext.Provider value={{ size }}>\n      <PreviewCard.Root {...props} />\n    </HoverCardContext.Provider>\n  );\n}\n\n/** The link that reveals the card. Renders an anchor. */\nfunction HoverCardTrigger(props: PreviewCard.Trigger.Props) {\n  return <PreviewCard.Trigger {...props} />;\n}\n\nexport interface HoverCardContentProps extends Omit<PreviewCard.Popup.Props, \"className\"> {\n  className?: string;\n  side?: PreviewCard.Positioner.Props[\"side\"];\n  align?: PreviewCard.Positioner.Props[\"align\"];\n  sideOffset?: number;\n}\n\nfunction HoverCardContent({\n  className,\n  children,\n  side = \"bottom\",\n  align = \"center\",\n  sideOffset = 8,\n  ...props\n}: HoverCardContentProps) {\n  const styles = useStyles();\n  return (\n    <PreviewCard.Portal>\n      <PreviewCard.Positioner\n        side={side}\n        align={align}\n        sideOffset={sideOffset}\n        className={styles.positioner()}\n      >\n        <PreviewCard.Popup {...props} className={styles.popup({ class: className })}>\n          {children}\n        </PreviewCard.Popup>\n      </PreviewCard.Positioner>\n    </PreviewCard.Portal>\n  );\n}\n\n/**\n * A preview panel shown when a link is hovered or focused. Everything inside it\n * must also be reachable another way, since touch users never see it.\n */\nexport const HoverCard = Object.assign(HoverCardRoot, {\n  Trigger: HoverCardTrigger,\n  Content: HoverCardContent,\n});\n"
+    }
+  ],
+  "categories": [
+    "overlays"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "HoverCard"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/hover-card"
+  }
+}

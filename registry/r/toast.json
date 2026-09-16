@@ -1,0 +1,42 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toast",
+  "type": "registry:ui",
+  "title": "Toast",
+  "description": "Brief messages that stack in the corner and never steal focus.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json",
+    "https://beton.dev/r/button.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/toast.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/toast.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const toast = tv({\n  slots: {\n    viewport: [\n      \"fixed right-4 bottom-4 z-[60] flex w-[calc(100vw-2rem)] flex-col-reverse gap-3 outline-none\",\n      \"sm:right-6 sm:bottom-6 sm:w-96\",\n    ],\n    root: [\n      \"relative flex w-full items-start gap-3 border-3 border-border bg-raised p-4 pr-14 text-foreground shadow-sm outline-none\",\n      \"data-[type=success]:bg-success data-[type=error]:bg-danger data-[type=warning]:bg-secondary data-[type=info]:bg-primary\",\n      \"data-limited:hidden\",\n    ],\n    content: \"flex min-w-0 flex-1 flex-col gap-1\",\n    title: \"font-display text-base font-extrabold leading-tight\",\n    description: \"text-sm\",\n    actions: \"mt-2 flex flex-wrap gap-2\",\n    close: \"absolute top-2 right-2\",\n  },\n});\n\nexport type ToastVariants = VariantProps<typeof toast>;\n"
+    },
+    {
+      "path": "registry/beton/ui/toast.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/toast.tsx",
+      "content": "\"use client\";\n\nimport { Toast as BaseToast } from \"@base-ui/react/toast\";\nimport { button } from \"@/lib/beton/recipes/button.recipe\";\nimport { toast } from \"@/lib/beton/recipes/toast.recipe\";\nimport type { ReactNode } from \"react\";\nimport { CloseIcon } from \"@/lib/beton/icons\";\n\nexport interface ToastProviderProps extends Omit<BaseToast.Provider.Props, \"children\"> {\n  children: ReactNode;\n  /** Accessible name of each toast's dismiss button. */\n  closeLabel?: string;\n}\n\n/**\n * Hosts the toast queue and renders the stack. Put it once, near the root of\n * your app, then call useToast() anywhere below it.\n */\nexport function ToastProvider({\n  children,\n  closeLabel = \"Dismiss notification\",\n  ...props\n}: ToastProviderProps) {\n  const styles = toast();\n  return (\n    <BaseToast.Provider {...props}>\n      {children}\n      <BaseToast.Portal>\n        <BaseToast.Viewport className={styles.viewport()}>\n          <ToastList closeLabel={closeLabel} />\n        </BaseToast.Viewport>\n      </BaseToast.Portal>\n    </BaseToast.Provider>\n  );\n}\n\nfunction ToastList({ closeLabel }: { closeLabel: string }) {\n  const styles = toast();\n  const { toasts } = BaseToast.useToastManager();\n\n  return toasts.map((item) => (\n    <BaseToast.Root key={item.id} toast={item} className={styles.root()}>\n      <BaseToast.Content className={styles.content()}>\n        <BaseToast.Title className={styles.title()} />\n        <BaseToast.Description className={styles.description()} />\n        {item.actionProps ? (\n          <div className={styles.actions()}>\n            <BaseToast.Action className={button({ variant: \"secondary\", size: \"sm\" })} />\n          </div>\n        ) : null}\n      </BaseToast.Content>\n      <BaseToast.Close\n        aria-label={closeLabel}\n        className={button({\n          variant: \"ghost\",\n          size: \"sm\",\n          iconOnly: true,\n          class: styles.close(),\n        })}\n      >\n        <CloseIcon width={16} height={16} />\n      </BaseToast.Close>\n    </BaseToast.Root>\n  ));\n}\n\n/**\n * Adds, updates and closes toasts. Set `type` to \"success\", \"error\",\n * \"warning\" or \"info\" to colour the toast.\n */\nexport const useToast = BaseToast.useToastManager;\n\n/** Creates a manager for showing toasts from outside React. */\nexport const createToastManager = BaseToast.createToastManager;\n"
+    }
+  ],
+  "categories": [
+    "overlays"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "ToastProvider",
+      "useToast",
+      "createToastManager"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/toast"
+  }
+}

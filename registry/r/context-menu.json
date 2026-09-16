@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "context-menu",
+  "type": "registry:ui",
+  "title": "Context Menu",
+  "description": "A menu opened by right-clicking an area, with the same items as a dropdown menu.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/menu.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/menu.recipe.ts",
+      "content": "import { popupSurface } from \"@/lib/beton/shared\";\nimport { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const menu = tv({\n  slots: {\n    positioner: \"z-50 outline-none\",\n    popup: [\"min-w-52 max-w-(--available-width) py-1 shadow-sm\", popupSurface],\n    item: [\n      \"relative flex min-h-11 cursor-pointer select-none items-center gap-3 px-3 font-medium outline-none\",\n      \"data-highlighted:bg-secondary data-popup-open:bg-secondary\",\n      \"data-disabled:cursor-not-allowed data-disabled:text-disabled-foreground\",\n    ],\n    indicator: \"flex size-4 shrink-0 items-center justify-center\",\n    shortcut: \"ml-auto pl-6 font-mono text-xs font-bold\",\n    chevron: \"ml-auto size-4 shrink-0 -rotate-90\",\n    separator: \"my-1 h-0.5 bg-border\",\n    groupLabel: \"px-3 pt-2 pb-1 font-mono text-xs font-bold uppercase\",\n  },\n  variants: {\n    size: {\n      sm: { item: \"text-sm\" },\n      md: { item: \"text-base\" },\n      lg: { item: \"min-h-12 text-lg\" },\n    },\n    danger: {\n      true: { item: \"data-highlighted:bg-danger\" },\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n    danger: false,\n  },\n});\n\nexport type MenuVariants = VariantProps<typeof menu>;\n"
+    },
+    {
+      "path": "registry/beton/ui/context-menu.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/context-menu.tsx",
+      "content": "\"use client\";\n\nimport { ContextMenu as BaseContextMenu } from \"@base-ui/react/context-menu\";\nimport { menu, type MenuVariants } from \"@/lib/beton/recipes/menu.recipe\";\nimport { createContext, useContext, type ReactNode } from \"react\";\nimport { CheckIcon, ChevronDownIcon } from \"@/lib/beton/icons\";\n\nconst ContextMenuContext = createContext<Pick<MenuVariants, \"size\">>({ size: \"md\" });\n\nfunction useStyles(danger = false) {\n  return menu({ ...useContext(ContextMenuContext), danger });\n}\n\nexport interface ContextMenuProps extends BaseContextMenu.Root.Props, Pick<MenuVariants, \"size\"> {}\n\nfunction ContextMenuRoot({ size = \"md\", ...props }: ContextMenuProps) {\n  return (\n    <ContextMenuContext.Provider value={{ size }}>\n      <BaseContextMenu.Root {...props} />\n    </ContextMenuContext.Provider>\n  );\n}\n\n/** The area that opens the menu on right-click, long-press or the Menu key. */\nfunction ContextMenuTrigger(props: BaseContextMenu.Trigger.Props) {\n  return <BaseContextMenu.Trigger {...props} />;\n}\n\nexport interface ContextMenuContentProps extends Omit<BaseContextMenu.Popup.Props, \"className\"> {\n  className?: string;\n}\n\nfunction ContextMenuContent({ className, children, ...props }: ContextMenuContentProps) {\n  const styles = useStyles();\n  return (\n    <BaseContextMenu.Portal>\n      <BaseContextMenu.Positioner className={styles.positioner()}>\n        <BaseContextMenu.Popup {...props} className={styles.popup({ class: className })}>\n          {children}\n        </BaseContextMenu.Popup>\n      </BaseContextMenu.Positioner>\n    </BaseContextMenu.Portal>\n  );\n}\n\nexport interface ContextMenuItemProps extends Omit<BaseContextMenu.Item.Props, \"className\"> {\n  className?: string;\n  danger?: boolean;\n  shortcut?: ReactNode;\n}\n\nfunction ContextMenuItem({\n  className,\n  children,\n  danger = false,\n  shortcut,\n  ...props\n}: ContextMenuItemProps) {\n  const styles = useStyles(danger);\n  return (\n    <BaseContextMenu.Item {...props} className={styles.item({ class: className })}>\n      {children}\n      {shortcut ? <span className={styles.shortcut()}>{shortcut}</span> : null}\n    </BaseContextMenu.Item>\n  );\n}\n\nfunction ContextMenuCheckboxItem({\n  className,\n  children,\n  ...props\n}: Omit<BaseContextMenu.CheckboxItem.Props, \"className\"> & { className?: string }) {\n  const styles = useStyles();\n  return (\n    <BaseContextMenu.CheckboxItem {...props} className={styles.item({ class: className })}>\n      <span className={styles.indicator()}>\n        <BaseContextMenu.CheckboxItemIndicator>\n          <CheckIcon width={16} height={16} />\n        </BaseContextMenu.CheckboxItemIndicator>\n      </span>\n      {children}\n    </BaseContextMenu.CheckboxItem>\n  );\n}\n\nfunction ContextMenuRadioGroup(props: BaseContextMenu.RadioGroup.Props) {\n  return <BaseContextMenu.RadioGroup {...props} />;\n}\n\nfunction ContextMenuRadioItem({\n  className,\n  children,\n  ...props\n}: Omit<BaseContextMenu.RadioItem.Props, \"className\"> & { className?: string }) {\n  const styles = useStyles();\n  return (\n    <BaseContextMenu.RadioItem {...props} className={styles.item({ class: className })}>\n      <span className={styles.indicator()}>\n        <BaseContextMenu.RadioItemIndicator>\n          <CheckIcon width={16} height={16} />\n        </BaseContextMenu.RadioItemIndicator>\n      </span>\n      {children}\n    </BaseContextMenu.RadioItem>\n  );\n}\n\nfunction ContextMenuGroup(props: BaseContextMenu.Group.Props) {\n  return <BaseContextMenu.Group {...props} />;\n}\n\nfunction ContextMenuGroupLabel({\n  className,\n  ...props\n}: Omit<BaseContextMenu.GroupLabel.Props, \"className\"> & { className?: string }) {\n  return (\n    <BaseContextMenu.GroupLabel\n      {...props}\n      className={useStyles().groupLabel({ class: className })}\n    />\n  );\n}\n\nfunction ContextMenuSeparator({\n  className,\n  ...props\n}: Omit<BaseContextMenu.Separator.Props, \"className\"> & { className?: string }) {\n  return (\n    <BaseContextMenu.Separator {...props} className={useStyles().separator({ class: className })} />\n  );\n}\n\nfunction ContextMenuSubmenu(props: BaseContextMenu.SubmenuRoot.Props) {\n  return <BaseContextMenu.SubmenuRoot {...props} />;\n}\n\nfunction ContextMenuSubmenuTrigger({\n  className,\n  children,\n  ...props\n}: Omit<BaseContextMenu.SubmenuTrigger.Props, \"className\"> & { className?: string }) {\n  const styles = useStyles();\n  return (\n    <BaseContextMenu.SubmenuTrigger {...props} className={styles.item({ class: className })}>\n      {children}\n      <ChevronDownIcon className={styles.chevron()} />\n    </BaseContextMenu.SubmenuTrigger>\n  );\n}\n\n/**\n * A menu opened by right-clicking an area. Keyboard users open it with the\n * Menu key or Shift+F10, so never make it the only way to reach an action.\n */\nexport const ContextMenu = Object.assign(ContextMenuRoot, {\n  Trigger: ContextMenuTrigger,\n  Content: ContextMenuContent,\n  Item: ContextMenuItem,\n  CheckboxItem: ContextMenuCheckboxItem,\n  RadioGroup: ContextMenuRadioGroup,\n  RadioItem: ContextMenuRadioItem,\n  Group: ContextMenuGroup,\n  GroupLabel: ContextMenuGroupLabel,\n  Separator: ContextMenuSeparator,\n  Submenu: ContextMenuSubmenu,\n  SubmenuTrigger: ContextMenuSubmenuTrigger,\n});\n"
+    }
+  ],
+  "categories": [
+    "overlays"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "ContextMenu"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/context-menu"
+  }
+}

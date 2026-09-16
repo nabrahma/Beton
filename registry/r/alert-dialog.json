@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert-dialog",
+  "type": "registry:ui",
+  "title": "Alert Dialog",
+  "description": "Interrupts to confirm a consequential action. The choice has to be explicit.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json",
+    "https://beton.dev/r/button.json",
+    "https://beton.dev/r/dialog.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/ui/alert-dialog.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/alert-dialog.tsx",
+      "content": "\"use client\";\n\nimport { AlertDialog as BaseAlertDialog } from \"@base-ui/react/alert-dialog\";\nimport { button, type ButtonVariants } from \"@/lib/beton/recipes/button.recipe\";\nimport { dialog, type DialogVariants } from \"@/lib/beton/recipes/dialog.recipe\";\nimport { createContext, useContext, type ComponentProps, type ReactNode } from \"react\";\n\nconst AlertDialogContext = createContext<DialogVariants>({ variant: \"danger\", size: \"sm\" });\n\nfunction useStyles() {\n  return dialog(useContext(AlertDialogContext));\n}\n\nexport interface AlertDialogProps extends BaseAlertDialog.Root.Props, DialogVariants {}\n\nfunction AlertDialogRoot({ variant = \"danger\", size = \"sm\", ...props }: AlertDialogProps) {\n  return (\n    <AlertDialogContext.Provider value={{ variant, size }}>\n      <BaseAlertDialog.Root {...props} />\n    </AlertDialogContext.Provider>\n  );\n}\n\nexport interface AlertDialogTriggerProps\n  extends\n    Omit<BaseAlertDialog.Trigger.Props, \"className\">,\n    Pick<ButtonVariants, \"variant\" | \"size\"> {\n  className?: string;\n}\n\nfunction AlertDialogTrigger({\n  variant = \"danger\",\n  size = \"md\",\n  className,\n  ...props\n}: AlertDialogTriggerProps) {\n  return (\n    <BaseAlertDialog.Trigger {...props} className={button({ variant, size, class: className })} />\n  );\n}\n\nexport interface AlertDialogContentProps extends Omit<BaseAlertDialog.Popup.Props, \"className\"> {\n  className?: string;\n}\n\nfunction AlertDialogContent({ className, children, ...props }: AlertDialogContentProps) {\n  const styles = useStyles();\n  return (\n    <BaseAlertDialog.Portal>\n      <BaseAlertDialog.Backdrop className={styles.backdrop()} />\n      <BaseAlertDialog.Viewport className={styles.viewport()}>\n        <BaseAlertDialog.Popup {...props} className={styles.popup({ class: className })}>\n          {children}\n        </BaseAlertDialog.Popup>\n      </BaseAlertDialog.Viewport>\n    </BaseAlertDialog.Portal>\n  );\n}\n\nfunction AlertDialogHeader({ className, ...props }: ComponentProps<\"div\">) {\n  return <div {...props} className={useStyles().header({ class: className })} />;\n}\n\nfunction AlertDialogTitle({\n  className,\n  ...props\n}: Omit<BaseAlertDialog.Title.Props, \"className\"> & { className?: string }) {\n  return <BaseAlertDialog.Title {...props} className={useStyles().title({ class: className })} />;\n}\n\nfunction AlertDialogDescription({\n  className,\n  ...props\n}: Omit<BaseAlertDialog.Description.Props, \"className\"> & { className?: string }) {\n  return (\n    <BaseAlertDialog.Description\n      {...props}\n      className={useStyles().description({ class: className })}\n    />\n  );\n}\n\nfunction AlertDialogBody({ className, ...props }: ComponentProps<\"div\">) {\n  return <div {...props} className={useStyles().body({ class: className })} />;\n}\n\nfunction AlertDialogFooter({ className, ...props }: ComponentProps<\"div\">) {\n  return <div {...props} className={useStyles().footer({ class: className })} />;\n}\n\nexport interface AlertDialogCloseProps\n  extends Omit<BaseAlertDialog.Close.Props, \"className\">, Pick<ButtonVariants, \"variant\" | \"size\"> {\n  className?: string;\n  children?: ReactNode;\n}\n\n/** Dismisses the dialog. Use it for both the cancel and the confirm action. */\nfunction AlertDialogClose({\n  variant = \"secondary\",\n  size = \"md\",\n  className,\n  ...props\n}: AlertDialogCloseProps) {\n  return (\n    <BaseAlertDialog.Close {...props} className={button({ variant, size, class: className })} />\n  );\n}\n\n/**\n * A dialog that interrupts to confirm a consequential action. Unlike Dialog it\n * cannot be dismissed by clicking outside, so the choice has to be explicit.\n */\nexport const AlertDialog = Object.assign(AlertDialogRoot, {\n  Trigger: AlertDialogTrigger,\n  Content: AlertDialogContent,\n  Header: AlertDialogHeader,\n  Title: AlertDialogTitle,\n  Description: AlertDialogDescription,\n  Body: AlertDialogBody,\n  Footer: AlertDialogFooter,\n  Close: AlertDialogClose,\n});\n"
+    }
+  ],
+  "categories": [
+    "overlays"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "AlertDialog"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/alert-dialog"
+  }
+}
