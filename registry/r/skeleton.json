@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "skeleton",
+  "type": "registry:ui",
+  "title": "Skeleton",
+  "description": "A placeholder for content that has not arrived.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/skeleton.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/skeleton.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const skeleton = tv({\n  base: [\"block bg-surface\", \"border-3 border-border\", \"motion-safe:animate-pulse-stepped\"],\n  variants: {\n    shape: {\n      line: \"h-4 w-full\",\n      title: \"h-8 w-2/3\",\n      block: \"h-32 w-full\",\n      avatar: \"size-11 rounded-md\",\n      button: \"h-12 w-32\",\n    },\n  },\n  defaultVariants: {\n    shape: \"line\",\n  },\n});\n\nexport type SkeletonVariants = VariantProps<typeof skeleton>;\n"
+    },
+    {
+      "path": "registry/beton/ui/skeleton.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/skeleton.tsx",
+      "content": "import { skeleton, type SkeletonVariants } from \"@/lib/beton/recipes/skeleton.recipe\";\nimport type { ComponentProps } from \"react\";\nimport { renderElement, type RenderProp } from \"@/lib/beton/render-element\";\n\nexport interface SkeletonProps extends ComponentProps<\"span\">, SkeletonVariants {\n  render?: RenderProp;\n}\n\n/**\n * A placeholder for content that has not arrived. Hidden from screen readers:\n * put the loading state in a live region or on the control that started it.\n */\nexport function Skeleton({ shape = \"line\", className, render, ...props }: SkeletonProps) {\n  return renderElement(\n    \"span\",\n    {\n      ...props,\n      \"aria-hidden\": \"true\",\n      className: skeleton({ shape, class: className }),\n    },\n    render,\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "data-display"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": false,
+    "exports": [
+      "Skeleton"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/skeleton"
+  }
+}

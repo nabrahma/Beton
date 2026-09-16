@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "timeline",
+  "type": "registry:ui",
+  "title": "Timeline",
+  "description": "What happened, in order: releases, deployments, an audit trail.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/timeline.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/timeline.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const timeline = tv({\n  slots: {\n    root: \"flex w-full flex-col\",\n    item: \"relative flex gap-4 pb-6 last:pb-0\",\n    marker: [\n      \"z-10 flex size-6 shrink-0 items-center justify-center border-3 border-border bg-raised\",\n      \"data-[state=done]:bg-primary data-[state=current]:bg-secondary\",\n    ],\n    connector: \"absolute top-6 bottom-0 left-[calc(0.75rem-2px)] w-1 bg-border\",\n    content: \"flex min-w-0 flex-1 flex-col gap-1 pb-2\",\n    time: \"font-mono text-xs font-bold tracking-widest uppercase\",\n    title: \"font-display font-extrabold text-foreground\",\n    body: \"text-foreground\",\n  },\n  variants: {\n    size: {\n      sm: { title: \"text-sm\", body: \"text-sm\" },\n      md: { title: \"text-base\", body: \"text-base\" },\n      lg: { title: \"text-lg\", body: \"text-lg\" },\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n});\n\nexport type TimelineVariants = VariantProps<typeof timeline>;\n"
+    },
+    {
+      "path": "registry/beton/ui/timeline.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/timeline.tsx",
+      "content": "import { timeline, type TimelineVariants } from \"@/lib/beton/recipes/timeline.recipe\";\nimport {\n  Children,\n  cloneElement,\n  isValidElement,\n  type ComponentProps,\n  type ReactElement,\n  type ReactNode,\n} from \"react\";\n\nexport type TimelineState = \"done\" | \"current\" | \"upcoming\";\n\nexport interface TimelineProps extends Omit<ComponentProps<\"ol\">, \"children\">, TimelineVariants {\n  children?: ReactNode;\n}\n\nfunction TimelineRoot({ size = \"md\", className, children, ...props }: TimelineProps) {\n  const styles = timeline({ size });\n  const items = Children.toArray(children).filter(isValidElement);\n  return (\n    <ol {...props} className={styles.root({ class: className })}>\n      {items.map((item, index) =>\n        cloneElement(item as ReactElement<TimelineItemProps>, {\n          size,\n          last: index === items.length - 1,\n        }),\n      )}\n    </ol>\n  );\n}\n\nexport interface TimelineItemProps extends Omit<ComponentProps<\"li\">, \"title\">, TimelineVariants {\n  /** What happened. */\n  title: ReactNode;\n  /** When it happened. */\n  time?: ReactNode;\n  /** A machine-readable date, so the time is more than decoration. */\n  dateTime?: string;\n  /** What goes in the marker. Defaults to a plain dot. */\n  marker?: ReactNode;\n  /** Colours the marker: done, current or still to come. */\n  state?: TimelineState;\n  /** Set by Timeline. */\n  last?: boolean;\n}\n\nfunction TimelineItem({\n  title,\n  time,\n  dateTime,\n  marker,\n  state = \"done\",\n  last = false,\n  size = \"md\",\n  className,\n  children,\n  ...props\n}: TimelineItemProps) {\n  const styles = timeline({ size });\n  return (\n    <li {...props} data-state={state} className={styles.item({ class: className })}>\n      <span data-state={state} className={styles.marker()}>\n        {marker}\n      </span>\n      {last ? null : <span aria-hidden=\"true\" className={styles.connector()} />}\n      <div className={styles.content()}>\n        {time ? (\n          <time dateTime={dateTime} className={styles.time()}>\n            {time}\n          </time>\n        ) : null}\n        <p className={styles.title()}>{title}</p>\n        {children ? <div className={styles.body()}>{children}</div> : null}\n      </div>\n    </li>\n  );\n}\n\n/** What happened, in order: releases, deployments, an audit trail. */\nexport const Timeline = Object.assign(TimelineRoot, { Item: TimelineItem });\n"
+    }
+  ],
+  "categories": [
+    "data-display"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": false,
+    "exports": [
+      "Timeline"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/timeline"
+  }
+}

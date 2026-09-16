@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "progress",
+  "type": "registry:ui",
+  "title": "Progress",
+  "description": "How far along a task is, from zero to done.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/progress.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/progress.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const progress = tv({\n  slots: {\n    root: \"flex w-full flex-col gap-2\",\n    header: \"flex items-baseline justify-between gap-4\",\n    label: \"font-display font-bold tracking-wide uppercase text-foreground\",\n    value: \"font-mono font-bold text-foreground\",\n    track: \"w-full overflow-hidden border-3 border-border bg-surface\",\n    indicator: [\n      \"h-full transition-[width] duration-100 ease-linear motion-reduce:transition-none\",\n      \"data-indeterminate:w-2/5 data-indeterminate:animate-indeterminate\",\n    ],\n  },\n  variants: {\n    variant: {\n      primary: { indicator: \"bg-primary\" },\n      secondary: { indicator: \"bg-secondary\" },\n      success: { indicator: \"bg-success\" },\n      danger: { indicator: \"bg-danger\" },\n    },\n    size: {\n      sm: { track: \"h-4\", label: \"text-xs\", value: \"text-xs\" },\n      md: { track: \"h-6\", label: \"text-sm\", value: \"text-sm\" },\n      lg: { track: \"h-8\", label: \"text-base\", value: \"text-base\" },\n    },\n  },\n  defaultVariants: {\n    variant: \"primary\",\n    size: \"md\",\n  },\n});\n\nexport type ProgressVariants = VariantProps<typeof progress>;\n"
+    },
+    {
+      "path": "registry/beton/ui/progress.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/progress.tsx",
+      "content": "\"use client\";\n\nimport { Progress as BaseProgress } from \"@base-ui/react/progress\";\nimport { progress, type ProgressVariants } from \"@/lib/beton/recipes/progress.recipe\";\nimport type { ReactNode } from \"react\";\n\nexport interface ProgressProps\n  extends Omit<BaseProgress.Root.Props, \"className\">, ProgressVariants {\n  className?: string;\n  /** Names the bar. Required unless you pass aria-label or aria-labelledby. */\n  label?: ReactNode;\n  /** Shows the percentage beside the label. On by default when there is a label. */\n  showValue?: boolean;\n}\n\n/** How far along a task is, from zero to done. */\nexport function Progress({\n  variant = \"primary\",\n  size = \"md\",\n  label,\n  showValue,\n  className,\n  ...props\n}: ProgressProps) {\n  const styles = progress({ variant, size });\n  const withValue = showValue ?? Boolean(label);\n  return (\n    <BaseProgress.Root {...props} className={styles.root({ class: className })}>\n      {label || withValue ? (\n        <div className={styles.header()}>\n          {label ? (\n            <BaseProgress.Label className={styles.label()}>{label}</BaseProgress.Label>\n          ) : null}\n          {withValue ? <BaseProgress.Value className={styles.value()} /> : null}\n        </div>\n      ) : null}\n      <BaseProgress.Track className={styles.track()}>\n        <BaseProgress.Indicator className={styles.indicator()} />\n      </BaseProgress.Track>\n    </BaseProgress.Root>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "data-display"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "Progress"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/progress"
+  }
+}

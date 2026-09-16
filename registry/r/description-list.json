@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "description-list",
+  "type": "registry:ui",
+  "title": "Description List",
+  "description": "Pairs of terms and their values: metadata, receipts, specifications.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/description-list.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/description-list.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const descriptionList = tv({\n  slots: {\n    root: \"w-full\",\n    group: \"border-b-3 border-border last:border-b-0\",\n    term: \"font-mono text-xs font-bold tracking-widest uppercase\",\n    description: \"font-sans text-foreground\",\n  },\n  variants: {\n    layout: {\n      stacked: {\n        group: \"flex flex-col gap-1 py-3 first:pt-0 last:pb-0\",\n      },\n      inline: {\n        group:\n          \"grid grid-cols-[minmax(8rem,12rem)_1fr] items-baseline gap-4 py-3 first:pt-0 last:pb-0\",\n      },\n    },\n    size: {\n      sm: { description: \"text-sm\" },\n      md: { description: \"text-base\" },\n      lg: { description: \"text-lg\" },\n    },\n  },\n  defaultVariants: {\n    layout: \"stacked\",\n    size: \"md\",\n  },\n});\n\nexport type DescriptionListVariants = VariantProps<typeof descriptionList>;\n"
+    },
+    {
+      "path": "registry/beton/ui/description-list.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/description-list.tsx",
+      "content": "import { descriptionList, type DescriptionListVariants } from \"@/lib/beton/recipes/description-list.recipe\";\nimport type { ComponentProps, ReactNode } from \"react\";\nimport { renderElement, type RenderProp } from \"@/lib/beton/render-element\";\n\nexport interface DescriptionListProps extends ComponentProps<\"dl\">, DescriptionListVariants {\n  render?: RenderProp;\n}\n\nfunction DescriptionListRoot({\n  layout = \"stacked\",\n  size = \"md\",\n  className,\n  render,\n  ...props\n}: DescriptionListProps) {\n  const styles = descriptionList({ layout, size });\n  return renderElement(\n    \"dl\",\n    { ...props, \"data-layout\": layout, className: styles.root({ class: className }) },\n    render,\n  );\n}\n\nexport interface DescriptionListItemProps\n  extends Omit<ComponentProps<\"div\">, \"children\">, DescriptionListVariants {\n  /** The name of the field. */\n  term: ReactNode;\n  /** Its value. */\n  children: ReactNode;\n}\n\nfunction DescriptionListItem({\n  layout = \"stacked\",\n  size = \"md\",\n  term,\n  children,\n  className,\n  ...props\n}: DescriptionListItemProps) {\n  const styles = descriptionList({ layout, size });\n  return (\n    <div {...props} className={styles.group({ class: className })}>\n      <dt className={styles.term()}>{term}</dt>\n      <dd className={styles.description()}>{children}</dd>\n    </div>\n  );\n}\n\n/** Pairs of terms and their values: metadata, receipts, specifications. */\nexport const DescriptionList = Object.assign(DescriptionListRoot, { Item: DescriptionListItem });\n"
+    }
+  ],
+  "categories": [
+    "data-display"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": false,
+    "exports": [
+      "DescriptionList"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/description-list"
+  }
+}

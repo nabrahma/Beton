@@ -65,7 +65,9 @@
           "ease-*": "initial",
           "ease-linear": "linear",
           "animate-spin-stepped": "spin-stepped 960ms steps(8, end) infinite",
-          "animate-blink": "blink 1s steps(1, end) infinite"
+          "animate-blink": "blink 1s steps(1, end) infinite",
+          "animate-pulse-stepped": "pulse-stepped 1.2s steps(1, end) infinite",
+          "animate-indeterminate": "indeterminate 1.2s steps(6, end) infinite"
         }
       },
       "css": {
@@ -77,6 +79,19 @@
         "@keyframes blink": {
           "50%": {
             "opacity": "0"
+          }
+        },
+        "@keyframes pulse-stepped": {
+          "50%": {
+            "background-color": "var(--color-disabled)"
+          }
+        },
+        "@keyframes indeterminate": {
+          "from": {
+            "translate": "-100% 0"
+          },
+          "to": {
+            "translate": "260% 0"
           }
         },
         "@layer base": {
@@ -182,6 +197,40 @@
           "path": "registry/beton/ui/accordion.tsx",
           "type": "registry:ui",
           "target": "@ui/beton/accordion.tsx"
+        }
+      ]
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "description": "A message that stays on the page: a warning, a result, a piece of context.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "data-display"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": false,
+        "exports": [
+          "Alert"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/alert"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/alert.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/alert.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/alert.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/alert.tsx"
         }
       ]
     },
@@ -395,6 +444,40 @@
       ]
     },
     {
+      "name": "calendar",
+      "type": "registry:ui",
+      "title": "Calendar",
+      "description": "A month of dates, one of which can be chosen.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "data-display"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "Calendar"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/calendar"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/calendar.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/calendar.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/calendar.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/calendar.tsx"
+        }
+      ]
+    },
+    {
       "name": "card",
       "type": "registry:ui",
       "title": "Card",
@@ -461,6 +544,41 @@
           "path": "registry/beton/ui/checkbox.tsx",
           "type": "registry:ui",
           "target": "@ui/beton/checkbox.tsx"
+        }
+      ]
+    },
+    {
+      "name": "code-block",
+      "type": "registry:ui",
+      "title": "Code Block",
+      "description": "A block of code with a copy button and a scrolling region you can reach.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json",
+        "https://beton.dev/r/button.json"
+      ],
+      "categories": [
+        "data-display"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "CodeBlock"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/code-block"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/code-block.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/code-block.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/code-block.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/code-block.tsx"
         }
       ]
     },
@@ -538,6 +656,40 @@
       ]
     },
     {
+      "name": "description-list",
+      "type": "registry:ui",
+      "title": "Description List",
+      "description": "Pairs of terms and their values: metadata, receipts, specifications.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "data-display"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": false,
+        "exports": [
+          "DescriptionList"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/description-list"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/description-list.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/description-list.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/description-list.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/description-list.tsx"
+        }
+      ]
+    },
+    {
       "name": "dialog",
       "type": "registry:ui",
       "title": "Dialog",
@@ -608,6 +760,40 @@
           "path": "registry/beton/ui/dropdown-menu.tsx",
           "type": "registry:ui",
           "target": "@ui/beton/dropdown-menu.tsx"
+        }
+      ]
+    },
+    {
+      "name": "empty-state",
+      "type": "registry:ui",
+      "title": "Empty State",
+      "description": "What to show where there is nothing yet: no results, no records, no files.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "data-display"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": false,
+        "exports": [
+          "EmptyState"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/empty-state"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/empty-state.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/empty-state.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/empty-state.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/empty-state.tsx"
         }
       ]
     },
@@ -892,6 +1078,40 @@
       ]
     },
     {
+      "name": "list",
+      "type": "registry:ui",
+      "title": "List",
+      "description": "A vertical list of records: a mark, a title, a line of detail and row actions.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "data-display"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "List"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/list"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/list.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/list.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/list.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/list.tsx"
+        }
+      ]
+    },
+    {
       "name": "menubar",
       "type": "registry:ui",
       "title": "Menubar",
@@ -1103,6 +1323,42 @@
           "path": "registry/beton/ui/popover.tsx",
           "type": "registry:ui",
           "target": "@ui/beton/popover.tsx"
+        }
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "description": "How far along a task is, from zero to done.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "data-display"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "Progress"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/progress"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/progress.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/progress.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/progress.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/progress.tsx"
         }
       ]
     },
@@ -1357,6 +1613,40 @@
       ]
     },
     {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "A placeholder for content that has not arrived.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "data-display"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": false,
+        "exports": [
+          "Skeleton"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/skeleton"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/skeleton.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/skeleton.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/skeleton.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/skeleton.tsx"
+        }
+      ]
+    },
+    {
       "name": "slider",
       "type": "registry:ui",
       "title": "Slider",
@@ -1427,6 +1717,40 @@
       ]
     },
     {
+      "name": "stat",
+      "type": "registry:ui",
+      "title": "Stat",
+      "description": "A single number with its label, its change and a line of context.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "data-display"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": false,
+        "exports": [
+          "Stat"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/stat"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/stat.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/stat.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/stat.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/stat.tsx"
+        }
+      ]
+    },
+    {
       "name": "stepper",
       "type": "registry:ui",
       "title": "Stepper",
@@ -1493,6 +1817,40 @@
           "path": "registry/beton/ui/switch.tsx",
           "type": "registry:ui",
           "target": "@ui/beton/switch.tsx"
+        }
+      ]
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "title": "Table",
+      "description": "Rows and columns of data, with sortable headers and row actions.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "data-display"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": true,
+        "exports": [
+          "Table"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/table"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/table.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/table.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/table.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/table.tsx"
         }
       ]
     },
@@ -1604,6 +1962,40 @@
       ]
     },
     {
+      "name": "timeline",
+      "type": "registry:ui",
+      "title": "Timeline",
+      "description": "What happened, in order: releases, deployments, an audit trail.",
+      "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://beton.dev/r/core.json"
+      ],
+      "categories": [
+        "data-display"
+      ],
+      "meta": {
+        "status": "stable",
+        "client": false,
+        "exports": [
+          "Timeline"
+        ],
+        "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/timeline"
+      },
+      "files": [
+        {
+          "path": "registry/beton/recipes/timeline.recipe.ts",
+          "type": "registry:lib",
+          "target": "@lib/beton/recipes/timeline.recipe.ts"
+        },
+        {
+          "path": "registry/beton/ui/timeline.tsx",
+          "type": "registry:ui",
+          "target": "@ui/beton/timeline.tsx"
+        }
+      ]
+    },
+    {
       "name": "toast",
       "type": "registry:ui",
       "title": "Toast",
@@ -1687,18 +2079,23 @@
       "author": "Nabaskar Brahma (https://github.com/nabrahma)",
       "registryDependencies": [
         "https://beton.dev/r/accordion.json",
+        "https://beton.dev/r/alert.json",
         "https://beton.dev/r/alert-dialog.json",
         "https://beton.dev/r/avatar.json",
         "https://beton.dev/r/back-to-top.json",
         "https://beton.dev/r/badge.json",
         "https://beton.dev/r/breadcrumbs.json",
         "https://beton.dev/r/button.json",
+        "https://beton.dev/r/calendar.json",
         "https://beton.dev/r/card.json",
         "https://beton.dev/r/checkbox.json",
+        "https://beton.dev/r/code-block.json",
         "https://beton.dev/r/command-palette.json",
         "https://beton.dev/r/context-menu.json",
+        "https://beton.dev/r/description-list.json",
         "https://beton.dev/r/dialog.json",
         "https://beton.dev/r/dropdown-menu.json",
+        "https://beton.dev/r/empty-state.json",
         "https://beton.dev/r/field.json",
         "https://beton.dev/r/fieldset.json",
         "https://beton.dev/r/file-upload.json",
@@ -1707,12 +2104,14 @@
         "https://beton.dev/r/input.json",
         "https://beton.dev/r/kbd.json",
         "https://beton.dev/r/label.json",
+        "https://beton.dev/r/list.json",
         "https://beton.dev/r/menubar.json",
         "https://beton.dev/r/navbar.json",
         "https://beton.dev/r/number-input.json",
         "https://beton.dev/r/otp-input.json",
         "https://beton.dev/r/pagination.json",
         "https://beton.dev/r/popover.json",
+        "https://beton.dev/r/progress.json",
         "https://beton.dev/r/radio-group.json",
         "https://beton.dev/r/scroll-area.json",
         "https://beton.dev/r/search-input.json",
@@ -1720,13 +2119,17 @@
         "https://beton.dev/r/separator.json",
         "https://beton.dev/r/sheet.json",
         "https://beton.dev/r/sidebar.json",
+        "https://beton.dev/r/skeleton.json",
         "https://beton.dev/r/slider.json",
         "https://beton.dev/r/spinner.json",
+        "https://beton.dev/r/stat.json",
         "https://beton.dev/r/stepper.json",
         "https://beton.dev/r/switch.json",
+        "https://beton.dev/r/table.json",
         "https://beton.dev/r/tabs.json",
         "https://beton.dev/r/text.json",
         "https://beton.dev/r/textarea.json",
+        "https://beton.dev/r/timeline.json",
         "https://beton.dev/r/toast.json",
         "https://beton.dev/r/tooltip.json"
       ],

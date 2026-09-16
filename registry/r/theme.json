@@ -61,7 +61,9 @@
       "ease-*": "initial",
       "ease-linear": "linear",
       "animate-spin-stepped": "spin-stepped 960ms steps(8, end) infinite",
-      "animate-blink": "blink 1s steps(1, end) infinite"
+      "animate-blink": "blink 1s steps(1, end) infinite",
+      "animate-pulse-stepped": "pulse-stepped 1.2s steps(1, end) infinite",
+      "animate-indeterminate": "indeterminate 1.2s steps(6, end) infinite"
     }
   },
   "css": {
@@ -73,6 +75,19 @@
     "@keyframes blink": {
       "50%": {
         "opacity": "0"
+      }
+    },
+    "@keyframes pulse-stepped": {
+      "50%": {
+        "background-color": "var(--color-disabled)"
+      }
+    },
+    "@keyframes indeterminate": {
+      "from": {
+        "translate": "-100% 0"
+      },
+      "to": {
+        "translate": "260% 0"
       }
     },
     "@layer base": {

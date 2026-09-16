@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "empty-state",
+  "type": "registry:ui",
+  "title": "Empty State",
+  "description": "What to show where there is nothing yet: no results, no records, no files.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/empty-state.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/empty-state.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const emptyState = tv({\n  slots: {\n    root: \"flex w-full flex-col items-center justify-center gap-4 border-3 border-dashed border-border bg-raised text-center\",\n    icon: \"flex items-center justify-center border-3 border-border bg-secondary\",\n    title: \"font-display font-black tracking-tight text-foreground\",\n    description: \"max-w-prose text-foreground\",\n    actions: \"flex flex-wrap items-center justify-center gap-3 pt-2\",\n  },\n  variants: {\n    size: {\n      sm: { root: \"p-6\", icon: \"size-12\", title: \"text-h4\", description: \"text-sm\" },\n      md: { root: \"p-10\", icon: \"size-16\", title: \"text-h3\", description: \"text-base\" },\n      lg: { root: \"p-16\", icon: \"size-20\", title: \"text-h2\", description: \"text-lg\" },\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n});\n\nexport type EmptyStateVariants = VariantProps<typeof emptyState>;\n"
+    },
+    {
+      "path": "registry/beton/ui/empty-state.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/empty-state.tsx",
+      "content": "import { emptyState, type EmptyStateVariants } from \"@/lib/beton/recipes/empty-state.recipe\";\nimport type { ComponentProps, ReactNode } from \"react\";\n\nexport interface EmptyStateProps extends Omit<ComponentProps<\"div\">, \"title\">, EmptyStateVariants {\n  /** What is missing, in a few words. */\n  title: ReactNode;\n  /** Why it is missing, or what to do about it. */\n  description?: ReactNode;\n  /** A mark above the title. Decorative: it is hidden from screen readers. */\n  icon?: ReactNode;\n  /** Buttons under the text. */\n  actions?: ReactNode;\n  /** The heading level the title takes. Defaults to h3. */\n  headingLevel?: 2 | 3 | 4 | 5 | 6;\n}\n\n/** What to show where there is nothing yet: no results, no records, no files. */\nexport function EmptyState({\n  size = \"md\",\n  title,\n  description,\n  icon,\n  actions,\n  headingLevel = 3,\n  className,\n  children,\n  ...props\n}: EmptyStateProps) {\n  const styles = emptyState({ size });\n  const Heading = `h${headingLevel}` as const;\n  return (\n    <div {...props} className={styles.root({ class: className })}>\n      {icon ? (\n        <span aria-hidden=\"true\" className={styles.icon()}>\n          {icon}\n        </span>\n      ) : null}\n      <Heading className={styles.title()}>{title}</Heading>\n      {description ? <p className={styles.description()}>{description}</p> : null}\n      {children}\n      {actions ? <div className={styles.actions()}>{actions}</div> : null}\n    </div>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "data-display"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": false,
+    "exports": [
+      "EmptyState"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/empty-state"
+  }
+}

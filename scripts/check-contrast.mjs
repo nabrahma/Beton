@@ -48,6 +48,7 @@ const pairs = [
   ["foreground", "danger", TEXT, "ink on danger fill"],
   ["foreground", "success", TEXT, "ink on success fill"],
   ["foreground", "warning", TEXT, "ink on warning fill"],
+  ["paper", "ink", TEXT, "code on the ink surface"],
   ["disabled-foreground", "disabled", TEXT, "disabled label on disabled fill"],
   ["border", "surface", NON_TEXT, "strokes on paper"],
   ["border", "raised", NON_TEXT, "strokes on raised surfaces"],

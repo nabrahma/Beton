@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stat",
+  "type": "registry:ui",
+  "title": "Stat",
+  "description": "A single number with its label, its change and a line of context.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/stat.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/stat.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const stat = tv({\n  slots: {\n    root: \"flex flex-col gap-1 border-3 border-border bg-raised shadow-sm\",\n    label: \"font-mono text-xs font-bold tracking-widest uppercase\",\n    value: \"font-display font-black tracking-tight text-foreground tabular-nums\",\n    delta: \"inline-flex items-center gap-1 font-mono text-sm font-bold\",\n    deltaIcon: \"size-4\",\n    description: \"text-sm text-foreground\",\n  },\n  variants: {\n    size: {\n      sm: { root: \"p-4\", value: \"text-h3\" },\n      md: { root: \"p-5\", value: \"text-h2\" },\n      lg: { root: \"p-6\", value: \"text-h1\" },\n    },\n    trend: {\n      up: { delta: \"text-foreground\" },\n      down: { delta: \"text-foreground\" },\n      flat: { delta: \"text-foreground\" },\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n    trend: \"flat\",\n  },\n});\n\nexport type StatVariants = VariantProps<typeof stat>;\n"
+    },
+    {
+      "path": "registry/beton/ui/stat.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/stat.tsx",
+      "content": "import { stat, type StatVariants } from \"@/lib/beton/recipes/stat.recipe\";\nimport { visuallyHidden } from \"@/lib/beton/shared\";\nimport type { ComponentProps, ReactNode } from \"react\";\nimport { ChevronDownIcon, ChevronUpIcon, MinusIcon } from \"@/lib/beton/icons\";\n\nexport interface StatProps extends ComponentProps<\"div\">, Omit<StatVariants, \"trend\"> {\n  /** What the number measures. */\n  label: ReactNode;\n  /** The number itself. */\n  value: ReactNode;\n  /** The change since last time, such as \"+12%\". */\n  delta?: ReactNode;\n  /** Which way the change went. Says so in words as well as with an arrow. */\n  trend?: \"up\" | \"down\" | \"flat\";\n  /** A line of context under the number. */\n  description?: ReactNode;\n}\n\nconst TREND_LABEL = { up: \"up\", down: \"down\", flat: \"no change\" } as const;\n\n/** A single number with its label, its change and a line of context. */\nexport function Stat({\n  size = \"md\",\n  label,\n  value,\n  delta,\n  trend = \"flat\",\n  description,\n  className,\n  children,\n  ...props\n}: StatProps) {\n  const styles = stat({ size, trend });\n  const TrendIcon = trend === \"up\" ? ChevronUpIcon : trend === \"down\" ? ChevronDownIcon : MinusIcon;\n  return (\n    <div {...props} data-trend={trend} className={styles.root({ class: className })}>\n      <p className={styles.label()}>{label}</p>\n      <p className={styles.value()}>{value}</p>\n      {delta ? (\n        <p className={styles.delta()}>\n          <TrendIcon className={styles.deltaIcon()} />\n          {delta}\n          <span className={visuallyHidden}> ({TREND_LABEL[trend]})</span>\n        </p>\n      ) : null}\n      {description ? <p className={styles.description()}>{description}</p> : null}\n      {children}\n    </div>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "data-display"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": false,
+    "exports": [
+      "Stat"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/stat"
+  }
+}

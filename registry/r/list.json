@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "list",
+  "type": "registry:ui",
+  "title": "List",
+  "description": "A vertical list of records: a mark, a title, a line of detail and row actions.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/list.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/list.recipe.ts",
+      "content": "import { focusRing } from \"@/lib/beton/shared\";\nimport { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const list = tv({\n  slots: {\n    root: \"flex w-full flex-col border-3 border-border bg-raised\",\n    item: [\n      \"flex items-stretch border-b-3 border-border last:border-b-0\",\n      \"data-selected:bg-secondary\",\n    ],\n    row: \"flex min-w-0 flex-1 items-center gap-4\",\n    interactive: [\"cursor-pointer text-left hover:bg-surface\", focusRing],\n    media: \"flex shrink-0 items-center justify-center\",\n    content: \"flex min-w-0 flex-1 flex-col gap-0.5\",\n    title: \"font-display font-extrabold text-foreground\",\n    description: \"truncate text-foreground\",\n    meta: \"shrink-0 font-mono text-xs font-bold\",\n    actions: \"flex shrink-0 items-center gap-2 self-center\",\n  },\n  variants: {\n    size: {\n      sm: {\n        row: \"min-h-14 px-3 py-2\",\n        actions: \"pr-3\",\n        title: \"text-sm\",\n        description: \"text-xs\",\n      },\n      md: {\n        row: \"min-h-16 px-4 py-3\",\n        actions: \"pr-4\",\n        title: \"text-base\",\n        description: \"text-sm\",\n      },\n      lg: {\n        row: \"min-h-20 px-5 py-4\",\n        actions: \"pr-5\",\n        title: \"text-lg\",\n        description: \"text-base\",\n      },\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n});\n\nexport type ListVariants = VariantProps<typeof list>;\n"
+    },
+    {
+      "path": "registry/beton/ui/list.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/list.tsx",
+      "content": "\"use client\";\n\nimport { list, type ListVariants } from \"@/lib/beton/recipes/list.recipe\";\nimport { createContext, useContext, type ComponentProps, type ReactNode } from \"react\";\nimport { renderElement, type RenderProp } from \"@/lib/beton/render-element\";\n\ninterface ListState {\n  styles: ReturnType<typeof list>;\n  size: NonNullable<ListVariants[\"size\"]>;\n}\n\nconst ListContext = createContext<ListState>({ styles: list(), size: \"md\" });\n\nexport interface ListProps extends ComponentProps<\"ul\">, ListVariants {\n  render?: RenderProp;\n}\n\nfunction ListRoot({ size = \"md\", className, render, ...props }: ListProps) {\n  const styles = list({ size });\n  return (\n    <ListContext.Provider value={{ styles, size }}>\n      {renderElement(\"ul\", { ...props, className: styles.root({ class: className }) }, render)}\n    </ListContext.Provider>\n  );\n}\n\nexport interface ListItemProps extends Omit<ComponentProps<\"li\">, \"title\"> {\n  /** The line that names the item. */\n  title?: ReactNode;\n  /** A second line under the title. */\n  description?: ReactNode;\n  /** Shown before the text: an avatar, an icon, a thumbnail. */\n  media?: ReactNode;\n  /** Shown after the text, such as a timestamp. */\n  meta?: ReactNode;\n  /** Buttons at the end of the row. */\n  actions?: ReactNode;\n  /** Turns the whole row into a link. Actions inside stay separately reachable. */\n  href?: string;\n  /** Marks the row as the one being shown, on screen and to screen readers. */\n  selected?: boolean;\n  render?: RenderProp;\n}\n\nfunction ListItem({\n  className,\n  title,\n  description,\n  media,\n  meta,\n  actions,\n  href,\n  selected,\n  children,\n  render,\n  ...props\n}: ListItemProps) {\n  const { styles, size } = useContext(ListContext);\n  const body = (\n    <>\n      {media ? <span className={styles.media()}>{media}</span> : null}\n      <span className={styles.content()}>\n        {title ? <span className={styles.title()}>{title}</span> : null}\n        {description ? <span className={styles.description()}>{description}</span> : null}\n        {children}\n      </span>\n      {meta ? <span className={styles.meta()}>{meta}</span> : null}\n    </>\n  );\n\n  return (\n    <li\n      {...props}\n      // aria-selected belongs to listboxes and grids, not to a plain list, so\n      // the row says it is the current one instead.\n      aria-current={selected ? \"true\" : undefined}\n      data-selected={selected ? \"\" : undefined}\n      className={styles.item({ class: className })}\n    >\n      {href || render ? (\n        renderElement(\n          \"a\",\n          {\n            href,\n            \"data-size\": size,\n            className: styles.interactive({ class: styles.row() }),\n            children: body,\n          },\n          render,\n        )\n      ) : (\n        <div className={styles.row()}>{body}</div>\n      )}\n      {actions ? <span className={styles.actions()}>{actions}</span> : null}\n    </li>\n  );\n}\n\n/** A vertical list of records: avatars, titles, meta and row actions. */\nexport const List = Object.assign(ListRoot, { Item: ListItem });\n"
+    }
+  ],
+  "categories": [
+    "data-display"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "List"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/list"
+  }
+}

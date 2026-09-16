@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert",
+  "type": "registry:ui",
+  "title": "Alert",
+  "description": "A message that stays on the page: a warning, a result, a piece of context.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/alert.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/alert.recipe.ts",
+      "content": "import { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const alert = tv({\n  slots: {\n    root: \"flex w-full items-start gap-3 border-3 border-border shadow-sm\",\n    icon: \"shrink-0\",\n    content: \"flex min-w-0 flex-1 flex-col gap-1\",\n    title: \"font-display font-extrabold tracking-wide uppercase text-foreground\",\n    description: \"text-foreground\",\n    actions: \"flex flex-wrap items-center gap-3 pt-1\",\n    close: \"-mt-1 -mr-1 shrink-0\",\n  },\n  variants: {\n    variant: {\n      info: { root: \"bg-raised\" },\n      success: { root: \"bg-success/20\" },\n      warning: { root: \"bg-secondary/40\" },\n      danger: { root: \"bg-danger/15\" },\n    },\n    size: {\n      sm: { root: \"p-3\", title: \"text-sm\", description: \"text-sm\", icon: \"size-5\" },\n      md: { root: \"p-4\", title: \"text-base\", description: \"text-base\", icon: \"size-6\" },\n      lg: { root: \"p-5\", title: \"text-lg\", description: \"text-lg\", icon: \"size-7\" },\n    },\n  },\n  defaultVariants: {\n    variant: \"info\",\n    size: \"md\",\n  },\n});\n\nexport type AlertVariants = VariantProps<typeof alert>;\n"
+    },
+    {
+      "path": "registry/beton/ui/alert.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/alert.tsx",
+      "content": "import { alert, type AlertVariants } from \"@/lib/beton/recipes/alert.recipe\";\nimport type { ComponentProps, ReactNode } from \"react\";\n\nexport interface AlertProps extends Omit<ComponentProps<\"div\">, \"title\">, AlertVariants {\n  /** The headline of the message. */\n  title?: ReactNode;\n  /** A mark before the text. Decorative: it is hidden from screen readers. */\n  icon?: ReactNode;\n  /** Buttons under the text. */\n  actions?: ReactNode;\n  /** A dismiss button at the end of the banner. */\n  onClose?: ReactNode;\n  /**\n   * Announces the message as it appears. Use \"assertive\" only for something\n   * that has gone wrong right now.\n   */\n  live?: \"off\" | \"polite\" | \"assertive\";\n}\n\n/** A message that stays on the page: a warning, a result, a piece of context. */\nexport function Alert({\n  variant = \"info\",\n  size = \"md\",\n  title,\n  icon,\n  actions,\n  onClose,\n  live,\n  className,\n  children,\n  ...props\n}: AlertProps) {\n  const styles = alert({ variant, size });\n  const assertive = live === \"assertive\" || (live === undefined && variant === \"danger\");\n  return (\n    <div\n      {...props}\n      role={assertive ? \"alert\" : \"status\"}\n      aria-live={live === \"off\" ? \"off\" : assertive ? \"assertive\" : \"polite\"}\n      data-variant={variant}\n      className={styles.root({ class: className })}\n    >\n      {icon ? (\n        <span aria-hidden=\"true\" className={styles.icon()}>\n          {icon}\n        </span>\n      ) : null}\n      <div className={styles.content()}>\n        {title ? <p className={styles.title()}>{title}</p> : null}\n        {children ? <div className={styles.description()}>{children}</div> : null}\n        {actions ? <div className={styles.actions()}>{actions}</div> : null}\n      </div>\n      {onClose ? <div className={styles.close()}>{onClose}</div> : null}\n    </div>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "data-display"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": false,
+    "exports": [
+      "Alert"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/alert"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "code-block",
+  "type": "registry:ui",
+  "title": "Code Block",
+  "description": "A block of code with a copy button and a scrolling region you can reach.",
+  "author": "Nabaskar Brahma (https://github.com/nabrahma)",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://beton.dev/r/core.json",
+    "https://beton.dev/r/button.json"
+  ],
+  "files": [
+    {
+      "path": "registry/beton/recipes/code-block.recipe.ts",
+      "type": "registry:lib",
+      "target": "@lib/beton/recipes/code-block.recipe.ts",
+      "content": "import { focusRing } from \"@/lib/beton/shared\";\nimport { tv, type VariantProps } from \"@/lib/beton/tv\";\n\nexport const codeBlock = tv({\n  slots: {\n    root: \"w-full overflow-hidden border-3 border-border bg-ink text-paper shadow-sm\",\n    header: \"flex items-center justify-between gap-3 border-b-3 border-border bg-surface px-3 py-2\",\n    filename: \"truncate font-mono text-xs font-bold tracking-widest uppercase text-foreground\",\n    copy: \"shrink-0\",\n    scroller: [\"overflow-x-auto\", focusRing],\n    pre: \"w-max min-w-full p-4 font-mono text-sm leading-relaxed\",\n    code: \"font-mono\",\n    lineNumbers: \"pointer-events-none select-none pr-4 text-right opacity-60\",\n  },\n  variants: {\n    size: {\n      sm: { pre: \"p-3 text-xs\" },\n      md: { pre: \"p-4 text-sm\" },\n      lg: { pre: \"p-5 text-base\" },\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n});\n\nexport type CodeBlockVariants = VariantProps<typeof codeBlock>;\n"
+    },
+    {
+      "path": "registry/beton/ui/code-block.tsx",
+      "type": "registry:ui",
+      "target": "@ui/beton/code-block.tsx",
+      "content": "\"use client\";\n\nimport { codeBlock, type CodeBlockVariants } from \"@/lib/beton/recipes/code-block.recipe\";\nimport { useEffect, useRef, useState, type ComponentProps, type ReactNode } from \"react\";\nimport { Button } from \"@/components/ui/beton/button\";\nimport { CheckIcon } from \"@/lib/beton/icons\";\n\nexport interface CodeBlockProps extends Omit<ComponentProps<\"div\">, \"children\">, CodeBlockVariants {\n  /** The code itself. Passed as a string so it can also be copied. */\n  children: string;\n  /** Shown in the header, usually a file name. */\n  filename?: ReactNode;\n  /** The language, written to the code element as a class for highlighters. */\n  language?: string;\n  /** Number the lines down the left. Numbers are hidden from screen readers. */\n  lineNumbers?: boolean;\n  /** Show the copy button. On by default. */\n  copyable?: boolean;\n  /** Names the scrolling region. Defaults to the filename, or \"Code\". */\n  label?: string;\n}\n\n/** A block of code with a copy button and a scrolling region you can reach. */\nexport function CodeBlock({\n  size = \"md\",\n  children,\n  filename,\n  language,\n  lineNumbers = false,\n  copyable = true,\n  label,\n  className,\n  ...props\n}: CodeBlockProps) {\n  const styles = codeBlock({ size });\n  const [copied, setCopied] = useState(false);\n  const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);\n\n  useEffect(() => () => clearTimeout(timer.current), []);\n\n  const code = children.replace(/\\n$/, \"\");\n  const lines = code.split(\"\\n\");\n  const name = label ?? (typeof filename === \"string\" ? filename : \"Code\");\n  // A hook for syntax highlighters such as Prism or Shiki, not a utility class.\n  const languageClass = language ? `language-${language}` : undefined;\n\n  async function copy() {\n    try {\n      await navigator.clipboard.writeText(code);\n      setCopied(true);\n      clearTimeout(timer.current);\n      timer.current = setTimeout(() => setCopied(false), 2000);\n    } catch {\n      // Clipboard access can be refused. Saying nothing is better than lying.\n      setCopied(false);\n    }\n  }\n\n  return (\n    <div {...props} className={styles.root({ class: className })}>\n      {filename || copyable ? (\n        <div className={styles.header()}>\n          <span className={styles.filename()}>{filename}</span>\n          {copyable ? (\n            <Button\n              type=\"button\"\n              variant=\"secondary\"\n              size=\"sm\"\n              className={styles.copy()}\n              onClick={copy}\n            >\n              {copied ? <CheckIcon width={16} height={16} /> : null}\n              {copied ? \"Copied\" : \"Copy\"}\n            </Button>\n          ) : null}\n        </div>\n      ) : null}\n      {/* The code scrolls sideways, so it needs a name and a tab stop. */}\n      <div tabIndex={0} role=\"group\" aria-label={name} className={styles.scroller()}>\n        <pre className={styles.pre()}>\n          <code data-language={language} className={styles.code({ class: languageClass })}>\n            {lineNumbers\n              ? lines.map((line, index) => (\n                  <span key={index}>\n                    <span aria-hidden=\"true\" className={styles.lineNumbers()}>\n                      {String(index + 1).padStart(String(lines.length).length, \" \")}\n                    </span>\n                    {line}\n                    {index < lines.length - 1 ? \"\\n\" : null}\n                  </span>\n                ))\n              : code}\n          </code>\n        </pre>\n      </div>\n    </div>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "data-display"
+  ],
+  "meta": {
+    "status": "stable",
+    "client": true,
+    "exports": [
+      "CodeBlock"
+    ],
+    "source": "https://github.com/nabrahma/Beton/tree/main/packages/react/src/code-block"
+  }
+}
