@@ -47,3 +47,6 @@ export const popupSurface = "border-3 border-border bg-raised text-foreground ou
 /** Label typography shared by Label, Field and group legends. */
 export const labelText =
   "font-display font-bold uppercase tracking-wide text-foreground data-disabled:text-disabled-foreground";
+
+/** Hides text from the screen while leaving it available to screen readers. */
+export const visuallyHidden = "sr-only";

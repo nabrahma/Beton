@@ -1,5 +1,55 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`recipe snapshots > accordion output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "base": undefined,
+      "content": "flex flex-col gap-3 px-4 py-3 text-sm",
+      "header": "flex",
+      "icon": "size-5 shrink-0 transition-transform duration-70 ease-linear motion-reduce:transition-none group-data-panel-open:rotate-180",
+      "item": "border-b-3 border-border last:border-b-0",
+      "panel": "overflow-hidden border-t-3 border-border",
+      "root": "flex w-full flex-col border-3 border-border bg-raised",
+      "trigger": "flex w-full cursor-pointer items-center justify-between gap-4 text-left font-display font-extrabold text-foreground hover:bg-secondary data-panel-open:bg-secondary data-disabled:cursor-not-allowed data-disabled:bg-disabled data-disabled:text-disabled-foreground outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap min-h-11 px-4 text-base",
+    },
+    "props": {
+      "size": "sm",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "content": "flex flex-col gap-3 px-5 py-4",
+      "header": "flex",
+      "icon": "size-5 shrink-0 transition-transform duration-70 ease-linear motion-reduce:transition-none group-data-panel-open:rotate-180",
+      "item": "border-b-3 border-border last:border-b-0",
+      "panel": "overflow-hidden border-t-3 border-border",
+      "root": "flex w-full flex-col border-3 border-border bg-raised",
+      "trigger": "flex w-full cursor-pointer items-center justify-between gap-4 text-left font-display font-extrabold text-foreground hover:bg-secondary data-panel-open:bg-secondary data-disabled:cursor-not-allowed data-disabled:bg-disabled data-disabled:text-disabled-foreground outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap min-h-14 px-5 text-lg",
+    },
+    "props": {
+      "size": "md",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "content": "flex flex-col gap-3 px-6 py-5 text-lg",
+      "header": "flex",
+      "icon": "size-5 shrink-0 transition-transform duration-70 ease-linear motion-reduce:transition-none group-data-panel-open:rotate-180",
+      "item": "border-b-3 border-border last:border-b-0",
+      "panel": "overflow-hidden border-t-3 border-border",
+      "root": "flex w-full flex-col border-3 border-border bg-raised",
+      "trigger": "flex w-full cursor-pointer items-center justify-between gap-4 text-left font-display font-extrabold text-foreground hover:bg-secondary data-panel-open:bg-secondary data-disabled:cursor-not-allowed data-disabled:bg-disabled data-disabled:text-disabled-foreground outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap min-h-16 px-6 text-xl",
+    },
+    "props": {
+      "size": "lg",
+    },
+  },
+]
+`;
+
 exports[`recipe snapshots > avatar output is stable for every variant combination 1`] = `
 [
   {
@@ -149,6 +199,29 @@ exports[`recipe snapshots > avatar output is stable for every variant combinatio
 ]
 `;
 
+exports[`recipe snapshots > backToTop output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "base": undefined,
+      "root": "fixed right-4 bottom-4 z-40 sm:right-6 sm:bottom-6 pointer-events-none invisible opacity-0",
+    },
+    "props": {
+      "hidden": true,
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "root": "fixed right-4 bottom-4 z-40 sm:right-6 sm:bottom-6 visible opacity-100",
+    },
+    "props": {
+      "hidden": false,
+    },
+  },
+]
+`;
+
 exports[`recipe snapshots > badge output is stable for every variant combination 1`] = `
 [
   {
@@ -254,6 +327,53 @@ exports[`recipe snapshots > badge output is stable for every variant combination
     "props": {
       "size": "lg",
       "variant": "success",
+    },
+  },
+]
+`;
+
+exports[`recipe snapshots > breadcrumbs output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "base": undefined,
+      "current": "inline-flex min-h-11 items-center font-display font-extrabold text-foreground text-sm",
+      "item": "flex items-center gap-2",
+      "link": "relative inline-flex min-h-11 items-center font-display font-bold text-foreground underline decoration-3 decoration-primary underline-offset-4 hover:bg-secondary outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap text-sm",
+      "list": "flex flex-wrap items-center gap-x-2 gap-y-1",
+      "root": "w-full",
+      "separator": "font-mono font-bold text-foreground select-none text-sm",
+    },
+    "props": {
+      "size": "sm",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "current": "inline-flex min-h-11 items-center font-display font-extrabold text-foreground text-base",
+      "item": "flex items-center gap-2",
+      "link": "relative inline-flex min-h-11 items-center font-display font-bold text-foreground underline decoration-3 decoration-primary underline-offset-4 hover:bg-secondary outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap text-base",
+      "list": "flex flex-wrap items-center gap-x-2 gap-y-1",
+      "root": "w-full",
+      "separator": "font-mono font-bold text-foreground select-none text-base",
+    },
+    "props": {
+      "size": "md",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "current": "inline-flex min-h-11 items-center font-display font-extrabold text-foreground text-lg",
+      "item": "flex items-center gap-2",
+      "link": "relative inline-flex min-h-11 items-center font-display font-bold text-foreground underline decoration-3 decoration-primary underline-offset-4 hover:bg-secondary outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap text-lg",
+      "list": "flex flex-wrap items-center gap-x-2 gap-y-1",
+      "root": "w-full",
+      "separator": "font-mono font-bold text-foreground select-none text-lg",
+    },
+    "props": {
+      "size": "lg",
     },
   },
 ]
@@ -1249,6 +1369,91 @@ exports[`recipe snapshots > menu output is stable for every variant combination 
 ]
 `;
 
+exports[`recipe snapshots > menubar output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "base": undefined,
+      "root": "flex w-fit items-center gap-1 border-3 border-border bg-raised p-1 shadow-sm",
+      "trigger": "flex min-h-11 cursor-pointer select-none items-center gap-2 border-3 border-transparent px-3 font-display font-extrabold uppercase tracking-wide text-foreground hover:border-border data-popup-open:border-border data-popup-open:bg-secondary data-disabled:cursor-not-allowed data-disabled:text-disabled-foreground outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap text-xs",
+    },
+    "props": {
+      "size": "sm",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "root": "flex w-fit items-center gap-1 border-3 border-border bg-raised p-1 shadow-sm",
+      "trigger": "flex min-h-11 cursor-pointer select-none items-center gap-2 border-3 border-transparent px-3 font-display font-extrabold uppercase tracking-wide text-foreground hover:border-border data-popup-open:border-border data-popup-open:bg-secondary data-disabled:cursor-not-allowed data-disabled:text-disabled-foreground outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap text-sm",
+    },
+    "props": {
+      "size": "md",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "root": "flex w-fit items-center gap-1 border-3 border-border bg-raised p-1 shadow-sm",
+      "trigger": "flex cursor-pointer select-none items-center gap-2 border-3 border-transparent px-3 font-display font-extrabold uppercase tracking-wide text-foreground hover:border-border data-popup-open:border-border data-popup-open:bg-secondary data-disabled:cursor-not-allowed data-disabled:text-disabled-foreground outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap min-h-12 text-base",
+    },
+    "props": {
+      "size": "lg",
+    },
+  },
+]
+`;
+
+exports[`recipe snapshots > navbar output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "actions": "ml-auto flex items-center gap-3",
+      "base": undefined,
+      "brand": "flex shrink-0 items-center gap-2.5 font-display font-black uppercase tracking-tight text-foreground outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap text-lg",
+      "inner": "mx-auto flex w-full max-w-7xl items-center gap-6 px-4 sm:px-6 h-14",
+      "link": "flex min-h-11 items-center border-3 border-transparent px-3 font-display font-extrabold uppercase tracking-wide text-foreground hover:border-border aria-[current=page]:border-border aria-[current=page]:bg-secondary outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap text-sm",
+      "nav": "hidden flex-1 items-center gap-1 md:flex",
+      "root": "w-full border-b-3 border-border bg-raised sticky top-0 z-40",
+    },
+    "props": {
+      "size": "sm",
+      "sticky": true,
+    },
+  },
+  {
+    "classes": {
+      "actions": "ml-auto flex items-center gap-3",
+      "base": undefined,
+      "brand": "flex shrink-0 items-center gap-2.5 font-display font-black uppercase tracking-tight text-foreground outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap text-2xl",
+      "inner": "mx-auto flex w-full max-w-7xl items-center gap-6 px-4 sm:px-6 h-16",
+      "link": "flex min-h-11 items-center border-3 border-transparent px-3 font-display font-extrabold uppercase tracking-wide text-foreground hover:border-border aria-[current=page]:border-border aria-[current=page]:bg-secondary outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap text-sm",
+      "nav": "hidden flex-1 items-center gap-1 md:flex",
+      "root": "w-full border-b-3 border-border bg-raised sticky top-0 z-40",
+    },
+    "props": {
+      "size": "md",
+      "sticky": true,
+    },
+  },
+  {
+    "classes": {
+      "actions": "ml-auto flex items-center gap-3",
+      "base": undefined,
+      "brand": "flex shrink-0 items-center gap-2.5 font-display font-black uppercase tracking-tight text-foreground outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap text-3xl",
+      "inner": "mx-auto flex w-full max-w-7xl items-center gap-6 px-4 sm:px-6 h-20",
+      "link": "flex min-h-11 items-center border-3 border-transparent px-3 font-display font-extrabold uppercase tracking-wide text-foreground hover:border-border aria-[current=page]:border-border aria-[current=page]:bg-secondary outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap text-base",
+      "nav": "hidden flex-1 items-center gap-1 md:flex",
+      "root": "w-full border-b-3 border-border bg-raised sticky top-0 z-40",
+    },
+    "props": {
+      "size": "lg",
+      "sticky": true,
+    },
+  },
+]
+`;
+
 exports[`recipe snapshots > numberInput output is stable for every variant combination 1`] = `
 [
   {
@@ -1329,6 +1534,50 @@ exports[`recipe snapshots > otpInput output is stable for every variant combinat
       "input": "border-3 border-border bg-raised text-foreground shadow-sm placeholder:text-disabled-foreground aria-invalid:bg-danger/15 data-invalid:bg-danger/15 text-center font-mono font-bold caret-foreground data-filled:bg-secondary aria-invalid:data-filled:bg-danger/15 outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap disabled:cursor-not-allowed disabled:border-disabled-foreground disabled:bg-disabled disabled:text-disabled-foreground disabled:shadow-none disabled:translate-none data-disabled:cursor-not-allowed data-disabled:border-disabled-foreground data-disabled:bg-disabled data-disabled:text-disabled-foreground data-disabled:shadow-none data-disabled:translate-none size-14 text-2xl",
       "root": "flex w-fit flex-wrap items-center gap-2",
       "separator": "h-1 w-3 shrink-0 bg-border",
+    },
+    "props": {
+      "size": "lg",
+    },
+  },
+]
+`;
+
+exports[`recipe snapshots > pagination output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "base": undefined,
+      "ellipsis": "inline-flex items-center justify-center font-mono font-bold select-none size-11 text-sm",
+      "item": "inline-flex shrink-0 cursor-pointer items-center justify-center border-3 border-border bg-raised font-display font-extrabold text-foreground aria-[current=page]:bg-primary data-disabled:cursor-not-allowed data-disabled:border-disabled-foreground data-disabled:bg-disabled data-disabled:text-disabled-foreground data-disabled:shadow-none shadow-sm transition-[translate,box-shadow] duration-70 ease-linear motion-reduce:transition-none active:translate-x-1 active:translate-y-1 active:shadow-none data-pressed:translate-x-1 data-pressed:translate-y-1 data-pressed:shadow-none outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap size-11 text-sm",
+      "list": "flex flex-wrap items-center gap-2",
+      "root": "flex w-full items-center justify-between gap-4",
+      "status": "font-mono text-sm font-bold",
+    },
+    "props": {
+      "size": "sm",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "ellipsis": "inline-flex items-center justify-center font-mono font-bold select-none size-12",
+      "item": "inline-flex shrink-0 cursor-pointer items-center justify-center border-3 border-border bg-raised font-display font-extrabold text-foreground aria-[current=page]:bg-primary data-disabled:cursor-not-allowed data-disabled:border-disabled-foreground data-disabled:bg-disabled data-disabled:text-disabled-foreground data-disabled:shadow-none shadow-sm transition-[translate,box-shadow] duration-70 ease-linear motion-reduce:transition-none active:translate-x-1 active:translate-y-1 active:shadow-none data-pressed:translate-x-1 data-pressed:translate-y-1 data-pressed:shadow-none outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap size-12 text-base",
+      "list": "flex flex-wrap items-center gap-2",
+      "root": "flex w-full items-center justify-between gap-4",
+      "status": "font-mono text-sm font-bold",
+    },
+    "props": {
+      "size": "md",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "ellipsis": "inline-flex items-center justify-center font-mono font-bold select-none size-14 text-lg",
+      "item": "inline-flex shrink-0 cursor-pointer items-center justify-center border-3 border-border bg-raised font-display font-extrabold text-foreground aria-[current=page]:bg-primary data-disabled:cursor-not-allowed data-disabled:border-disabled-foreground data-disabled:bg-disabled data-disabled:text-disabled-foreground data-disabled:shadow-none shadow-sm transition-[translate,box-shadow] duration-70 ease-linear motion-reduce:transition-none active:translate-x-1 active:translate-y-1 active:shadow-none data-pressed:translate-x-1 data-pressed:translate-y-1 data-pressed:shadow-none outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap size-14 text-lg",
+      "list": "flex flex-wrap items-center gap-2",
+      "root": "flex w-full items-center justify-between gap-4",
+      "status": "font-mono text-sm font-bold",
     },
     "props": {
       "size": "lg",
@@ -1634,6 +1883,23 @@ exports[`recipe snapshots > radioGroup output is stable for every variant combin
       "size": "lg",
       "variant": "danger",
     },
+  },
+]
+`;
+
+exports[`recipe snapshots > scrollArea output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "base": undefined,
+      "content": "min-w-full",
+      "corner": "bg-surface",
+      "root": "relative overflow-hidden",
+      "scrollbar": "flex touch-none select-none border-border bg-surface p-0.5 data-[orientation=vertical]:w-4 data-[orientation=vertical]:border-l-3 data-[orientation=horizontal]:h-4 data-[orientation=horizontal]:flex-col data-[orientation=horizontal]:border-t-3",
+      "thumb": "flex-1 bg-foreground",
+      "viewport": "size-full overscroll-contain outline-none",
+    },
+    "props": {},
   },
 ]
 `;
@@ -2660,6 +2926,62 @@ exports[`recipe snapshots > sheet output is stable for every variant combination
 ]
 `;
 
+exports[`recipe snapshots > sidebar output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "badge": "ml-auto",
+      "base": undefined,
+      "icon": "size-5 shrink-0",
+      "item": "flex",
+      "link": "flex min-h-11 w-full items-center gap-3 border-l-4 border-transparent px-3 font-medium text-foreground hover:border-border hover:bg-surface aria-[current=page]:border-border aria-[current=page]:bg-secondary aria-[current=page]:font-bold outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap text-sm",
+      "list": "flex flex-col gap-0.5",
+      "root": "flex h-full w-full flex-col border-border bg-raised gap-4 p-3 border-r-3",
+      "section": "flex flex-col gap-1",
+      "sectionLabel": "px-2 pb-1 font-mono text-xs font-bold tracking-widest uppercase",
+    },
+    "props": {
+      "bordered": true,
+      "size": "sm",
+    },
+  },
+  {
+    "classes": {
+      "badge": "ml-auto",
+      "base": undefined,
+      "icon": "size-5 shrink-0",
+      "item": "flex",
+      "link": "flex min-h-11 w-full items-center gap-3 border-l-4 border-transparent px-3 font-medium text-foreground hover:border-border hover:bg-surface aria-[current=page]:border-border aria-[current=page]:bg-secondary aria-[current=page]:font-bold outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap text-base",
+      "list": "flex flex-col gap-0.5",
+      "root": "flex h-full w-full flex-col border-border bg-raised gap-6 p-4 border-r-3",
+      "section": "flex flex-col gap-1",
+      "sectionLabel": "px-2 pb-1 font-mono text-xs font-bold tracking-widest uppercase",
+    },
+    "props": {
+      "bordered": true,
+      "size": "md",
+    },
+  },
+  {
+    "classes": {
+      "badge": "ml-auto",
+      "base": undefined,
+      "icon": "size-5 shrink-0",
+      "item": "flex",
+      "link": "flex min-h-11 w-full items-center gap-3 border-l-4 border-transparent px-3 font-medium text-foreground hover:border-border hover:bg-surface aria-[current=page]:border-border aria-[current=page]:bg-secondary aria-[current=page]:font-bold outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap text-lg",
+      "list": "flex flex-col gap-0.5",
+      "root": "flex h-full w-full flex-col border-border bg-raised gap-8 p-5 border-r-3",
+      "section": "flex flex-col gap-1",
+      "sectionLabel": "px-2 pb-1 font-mono text-xs font-bold tracking-widest uppercase",
+    },
+    "props": {
+      "bordered": true,
+      "size": "lg",
+    },
+  },
+]
+`;
+
 exports[`recipe snapshots > slider output is stable for every variant combination 1`] = `
 [
   {
@@ -2895,6 +3217,107 @@ exports[`recipe snapshots > spinner output is stable for every variant combinati
 ]
 `;
 
+exports[`recipe snapshots > stepper output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "base": undefined,
+      "connector": "bg-border data-[state=complete]:bg-primary absolute top-(--connector-offset) left-[calc(50%+var(--marker-half))] right-[calc(-50%+var(--marker-half))] h-1",
+      "content": "flex min-w-0 flex-col gap-0.5",
+      "description": "text-caption text-foreground",
+      "item": "relative flex min-w-0 flex-1 gap-3 flex-col items-center text-center",
+      "marker": "z-10 flex shrink-0 items-center justify-center border-3 border-border bg-raised font-display font-black text-foreground data-[state=complete]:bg-primary data-[state=current]:bg-secondary size-9 text-sm [--marker-size:2.25rem] [--marker-half:1.125rem] [--connector-offset:1rem]",
+      "root": "flex w-full flex-row items-start gap-2",
+      "title": "font-display font-extrabold text-foreground text-sm",
+    },
+    "props": {
+      "orientation": "horizontal",
+      "size": "sm",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "connector": "bg-border data-[state=complete]:bg-primary absolute top-(--connector-offset) left-[calc(50%+var(--marker-half))] right-[calc(-50%+var(--marker-half))] h-1",
+      "content": "flex min-w-0 flex-col gap-0.5",
+      "description": "text-caption text-foreground",
+      "item": "relative flex min-w-0 flex-1 gap-3 flex-col items-center text-center",
+      "marker": "z-10 flex shrink-0 items-center justify-center border-3 border-border bg-raised font-display font-black text-foreground data-[state=complete]:bg-primary data-[state=current]:bg-secondary size-11 text-base [--marker-size:2.75rem] [--marker-half:1.375rem] [--connector-offset:1.25rem]",
+      "root": "flex w-full flex-row items-start gap-2",
+      "title": "font-display font-extrabold text-foreground text-base",
+    },
+    "props": {
+      "orientation": "horizontal",
+      "size": "md",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "connector": "bg-border data-[state=complete]:bg-primary absolute top-(--connector-offset) left-[calc(50%+var(--marker-half))] right-[calc(-50%+var(--marker-half))] h-1",
+      "content": "flex min-w-0 flex-col gap-0.5",
+      "description": "text-caption text-foreground",
+      "item": "relative flex min-w-0 flex-1 gap-3 flex-col items-center text-center",
+      "marker": "z-10 flex shrink-0 items-center justify-center border-3 border-border bg-raised font-display font-black text-foreground data-[state=complete]:bg-primary data-[state=current]:bg-secondary size-14 text-lg [--marker-size:3.5rem] [--marker-half:1.75rem] [--connector-offset:1.625rem]",
+      "root": "flex w-full flex-row items-start gap-2",
+      "title": "font-display font-extrabold text-foreground text-lg",
+    },
+    "props": {
+      "orientation": "horizontal",
+      "size": "lg",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "connector": "bg-border data-[state=complete]:bg-primary absolute top-(--marker-size) bottom-0 left-(--connector-offset) w-1",
+      "content": "flex min-w-0 flex-col gap-0.5",
+      "description": "text-caption text-foreground",
+      "item": "relative flex min-w-0 flex-1 gap-3 flex-row items-start pb-6 last:pb-0",
+      "marker": "z-10 flex shrink-0 items-center justify-center border-3 border-border bg-raised font-display font-black text-foreground data-[state=complete]:bg-primary data-[state=current]:bg-secondary size-9 text-sm [--marker-size:2.25rem] [--marker-half:1.125rem] [--connector-offset:1rem]",
+      "root": "flex w-full flex-col gap-6",
+      "title": "font-display font-extrabold text-foreground text-sm",
+    },
+    "props": {
+      "orientation": "vertical",
+      "size": "sm",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "connector": "bg-border data-[state=complete]:bg-primary absolute top-(--marker-size) bottom-0 left-(--connector-offset) w-1",
+      "content": "flex min-w-0 flex-col gap-0.5",
+      "description": "text-caption text-foreground",
+      "item": "relative flex min-w-0 flex-1 gap-3 flex-row items-start pb-6 last:pb-0",
+      "marker": "z-10 flex shrink-0 items-center justify-center border-3 border-border bg-raised font-display font-black text-foreground data-[state=complete]:bg-primary data-[state=current]:bg-secondary size-11 text-base [--marker-size:2.75rem] [--marker-half:1.375rem] [--connector-offset:1.25rem]",
+      "root": "flex w-full flex-col gap-6",
+      "title": "font-display font-extrabold text-foreground text-base",
+    },
+    "props": {
+      "orientation": "vertical",
+      "size": "md",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "connector": "bg-border data-[state=complete]:bg-primary absolute top-(--marker-size) bottom-0 left-(--connector-offset) w-1",
+      "content": "flex min-w-0 flex-col gap-0.5",
+      "description": "text-caption text-foreground",
+      "item": "relative flex min-w-0 flex-1 gap-3 flex-row items-start pb-6 last:pb-0",
+      "marker": "z-10 flex shrink-0 items-center justify-center border-3 border-border bg-raised font-display font-black text-foreground data-[state=complete]:bg-primary data-[state=current]:bg-secondary size-14 text-lg [--marker-size:3.5rem] [--marker-half:1.75rem] [--connector-offset:1.625rem]",
+      "root": "flex w-full flex-col gap-6",
+      "title": "font-display font-extrabold text-foreground text-lg",
+    },
+    "props": {
+      "orientation": "vertical",
+      "size": "lg",
+    },
+  },
+]
+`;
+
 exports[`recipe snapshots > switchStyles output is stable for every variant combination 1`] = `
 [
   {
@@ -2994,6 +3417,95 @@ exports[`recipe snapshots > switchStyles output is stable for every variant comb
     "props": {
       "size": "lg",
       "variant": "danger",
+    },
+  },
+]
+`;
+
+exports[`recipe snapshots > tabs output is stable for every variant combination 1`] = `
+[
+  {
+    "classes": {
+      "base": undefined,
+      "indicator": "absolute bg-primary bottom-0 left-0 h-1 w-(--active-tab-width) translate-x-(--active-tab-left)",
+      "list": "flex flex-row flex-wrap border-b-3 border-border",
+      "panel": "min-w-0 flex-1 outline-none p-4",
+      "root": "flex w-full flex-col",
+      "tab": "relative flex shrink-0 cursor-pointer select-none items-center justify-center gap-2 border-3 border-transparent font-display font-extrabold uppercase tracking-wide text-foreground hover:underline data-active:border-border data-active:bg-raised data-disabled:cursor-not-allowed data-disabled:text-disabled-foreground data-disabled:no-underline outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap -mb-[3px] data-active:border-b-surface min-h-11 px-3 text-sm",
+    },
+    "props": {
+      "orientation": "horizontal",
+      "size": "sm",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "indicator": "absolute bg-primary bottom-0 left-0 h-1 w-(--active-tab-width) translate-x-(--active-tab-left)",
+      "list": "flex flex-row flex-wrap border-b-3 border-border",
+      "panel": "min-w-0 flex-1 outline-none p-6",
+      "root": "flex w-full flex-col",
+      "tab": "relative flex shrink-0 cursor-pointer select-none items-center justify-center gap-2 border-3 border-transparent font-display font-extrabold uppercase tracking-wide text-foreground hover:underline data-active:border-border data-active:bg-raised data-disabled:cursor-not-allowed data-disabled:text-disabled-foreground data-disabled:no-underline outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap -mb-[3px] data-active:border-b-surface min-h-12 px-4 text-base",
+    },
+    "props": {
+      "orientation": "horizontal",
+      "size": "md",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "indicator": "absolute bg-primary bottom-0 left-0 h-1 w-(--active-tab-width) translate-x-(--active-tab-left)",
+      "list": "flex flex-row flex-wrap border-b-3 border-border",
+      "panel": "min-w-0 flex-1 outline-none p-8",
+      "root": "flex w-full flex-col",
+      "tab": "relative flex shrink-0 cursor-pointer select-none items-center justify-center gap-2 border-3 border-transparent font-display font-extrabold uppercase tracking-wide text-foreground hover:underline data-active:border-border data-active:bg-raised data-disabled:cursor-not-allowed data-disabled:text-disabled-foreground data-disabled:no-underline outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap -mb-[3px] data-active:border-b-surface min-h-14 px-5 text-lg",
+    },
+    "props": {
+      "orientation": "horizontal",
+      "size": "lg",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "indicator": "absolute bg-primary top-0 left-0 h-(--active-tab-height) w-1 translate-y-(--active-tab-top)",
+      "list": "flex flex-col border-r-3 border-border",
+      "panel": "min-w-0 flex-1 outline-none p-4",
+      "root": "flex w-full flex-row",
+      "tab": "relative flex shrink-0 cursor-pointer select-none items-center gap-2 border-3 border-transparent font-display font-extrabold uppercase tracking-wide text-foreground hover:underline data-active:border-border data-active:bg-raised data-disabled:cursor-not-allowed data-disabled:text-disabled-foreground data-disabled:no-underline outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap -mr-[3px] justify-start data-active:border-r-surface min-h-11 px-3 text-sm",
+    },
+    "props": {
+      "orientation": "vertical",
+      "size": "sm",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "indicator": "absolute bg-primary top-0 left-0 h-(--active-tab-height) w-1 translate-y-(--active-tab-top)",
+      "list": "flex flex-col border-r-3 border-border",
+      "panel": "min-w-0 flex-1 outline-none p-6",
+      "root": "flex w-full flex-row",
+      "tab": "relative flex shrink-0 cursor-pointer select-none items-center gap-2 border-3 border-transparent font-display font-extrabold uppercase tracking-wide text-foreground hover:underline data-active:border-border data-active:bg-raised data-disabled:cursor-not-allowed data-disabled:text-disabled-foreground data-disabled:no-underline outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap -mr-[3px] justify-start data-active:border-r-surface min-h-12 px-4 text-base",
+    },
+    "props": {
+      "orientation": "vertical",
+      "size": "md",
+    },
+  },
+  {
+    "classes": {
+      "base": undefined,
+      "indicator": "absolute bg-primary top-0 left-0 h-(--active-tab-height) w-1 translate-y-(--active-tab-top)",
+      "list": "flex flex-col border-r-3 border-border",
+      "panel": "min-w-0 flex-1 outline-none p-8",
+      "root": "flex w-full flex-row",
+      "tab": "relative flex shrink-0 cursor-pointer select-none items-center gap-2 border-3 border-transparent font-display font-extrabold uppercase tracking-wide text-foreground hover:underline data-active:border-border data-active:bg-raised data-disabled:cursor-not-allowed data-disabled:text-disabled-foreground data-disabled:no-underline outline-none focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-solid focus-visible:outline-focus focus-visible:ring-3 focus-visible:ring-focus-gap -mr-[3px] justify-start data-active:border-r-surface min-h-14 px-5 text-lg",
+    },
+    "props": {
+      "orientation": "vertical",
+      "size": "lg",
     },
   },
 ]
