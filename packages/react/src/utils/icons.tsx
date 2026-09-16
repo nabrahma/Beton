@@ -52,6 +52,46 @@ export function ChevronDownIcon(props: IconProps) {
   );
 }
 
+export function ChevronLeftIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="M15 5l-7 7 7 7" />
+    </Icon>
+  );
+}
+
+export function ChevronRightIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="M9 5l7 7-7 7" />
+    </Icon>
+  );
+}
+
+export function ChevronUpIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="M5 15l7-7 7 7" />
+    </Icon>
+  );
+}
+
+export function ArrowUpIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="M12 20V4M5 11l7-7 7 7" />
+    </Icon>
+  );
+}
+
+export function EllipsisIcon(props: IconProps) {
+  return (
+    <Icon {...props} strokeLinecap="butt">
+      <path d="M5 12h1.5M11.25 12h1.5M17.5 12H19" />
+    </Icon>
+  );
+}
+
 export function CloseIcon(props: IconProps) {
   return (
     <Icon {...props}>
